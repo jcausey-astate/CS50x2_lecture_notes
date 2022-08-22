@@ -1,0 +1,6 @@
+author = "Sebastian Porto, Jason L Causey"
+description = "A Hugo theme for creating groups of remark slideshows"
+license = "MIT"
+name = "remark-academic"
+source_repo = ""
+tags = ["", ""]

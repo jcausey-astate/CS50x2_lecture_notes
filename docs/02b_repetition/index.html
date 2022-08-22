@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+# Repetition
+
+## Gaddis (Ch. 5)
+
+---
+
+## First, some helpful new operators...
+
+* Shortcut Assignment Operators
+  - Make modifying an existing value easy.
+* Increment and Decrement Operators
+  - Make counting up and down easy.
+
+---
+
+**Shortcut Assignment Operators**
+
+A more general set of shortcut operators are provided for modifying a variable by applying one of the 5 basic mathematical operations.
+
+&lt;pre&gt;
+Operator Example    Equivalent
+-------------------------------------------------------
+   &#43;=    x &#43;= y;    x = x &#43; y;
+   -=    x -= y;    x = x - y;
+   *=    x *= y;    x = x * y;
+   /=    x /= y;    x = x / y;
+   %=    x %= y;    x = x % y;
+&lt;/pre&gt;
+
+---
+
+**Increment and Decrement Operators**
+
+To make it even easier to add or subtract one from a variable, C&#43;&#43; offers a set of two _increment_ (add one) and two _decrement_ (subtract one) operators:
+
+&lt;pre&gt;
+Operator Example  Description
+--------------------------------------------------------
+   &#43;&#43;    &#43;&#43;x;     Prefix increment operator.  Increments
+                  x then evaluates to the updated value.
+
+   &#43;&#43;    x&#43;&#43;;     Postfix increment operator.  Evaluates
+                  to the original value of x, then 
+                  increments x.
+
+   --    --x;     Prefix decrement operator.  Decrements
+                  x then evaluates to the updated value.
+
+   --    x--;     Postfix decrement operator.  Evaluates
+                  to the original value of x, then 
+                  decrements x.
+&lt;/pre&gt;
+
+---
+
+## Repetition
+
+We have now seen how to make decisions about whether or not to execute a statement or block of code in C&#43;&#43;.
+
+The next step to increasing our ability to control the execution of our programs is to learn to repeat sections of code.
+
+The ability to perform repetitive tasks at great speed is one of the most powerful features of a computer...
+
+---
+
+## Loops
+
+Repeating code is accomplished with the help of a control structure called a _loop_.  C&#43;&#43; provides three loop constructs (four if you count the C&#43;&#43;11 _range-based_ version of `for`):
+
+* `while`
+* `for`
+    &#43; Range-based `for`
+* `do`-`while`
+
+But before we get into the specifics of the code, let&#39;s examine some terms and theory related to looping in general.
+
+---
+
+## Terms
+
+* **Loop Control Variable** : a variable whose value is tested in order to determine whether the loop body should execute.
+* **Loop Condition** : a Boolean expression whose result determines whether the loop body will execute (`true` causes the loop to execute).
+
+---
+
+## Three Parts of a Loop
+
+* Set up the Loop Control Variable (LCV) in preparation for the loop.
+* A proper loop condition must be created to test the LCV.
+* The value of the LCV must be changed _within the body of the loop_.
+
+---
+
+### Example: Count to 10
+
+``` cpp
+int counter = 1;                    // set up LCV
+while ( counter &lt;= 10 ) {           // loop condition
+    std::cout &lt;&lt; counter &lt;&lt; &#34;\t&#34;;   // loop body
+    counter = counter &#43; 1;          // update LCV
+}
+```
+Result:
+
+    1    2    3    4    5    6    7    8    9    10
+
+---
+
+**Types of Loops (by method of control)**  
+
+* **Iterative Loop** (AKA &#34;Counting Loop&#34;) : a loop that repeats a specific number of times, or for a specific range of values.
+* **Event-Controlled Loop** : a loop that repeats until a specific event occurs.  3 sub-types:
+    - **Sentinel Controlled Loop** : a loop that repeats until a specified data value is encountered (this value is called the _sentinel_)
+    - **Flag Controlled Loop** : a loop that repeats until the truth value of a Boolean flag is flipped.
+    - **End-Of-File Controlled Loop** : a loop that repeats (based on a stream) until the End Of File marker is read.
+
+---
+
+**Types of Loops (by timing of the _test_)**  
+
+Loops can also be classified by the timing of when they test their _loop condition_:
+
+* **pre-test loop** : a loop that tests the loop condition _before loop entry_ (at the beginning of each loop)
+* **post-test loop** : a loop that tests the loop condition _at loop exit_ (at the end of each loop)
+
+---
+
+## The `while` Loop
+
+`while` is a pre-test loop.  
+_**Syntax:**_
+&lt;small&gt;&lt;br /&gt;&lt;/small&gt;
+
+`while( `_`loop_condition`_` )`  
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_to_repeat;`_
+
+&lt;small&gt;&lt;br /&gt;&lt;/small&gt;
+**_Using a Block_**
+&lt;small&gt;&lt;br /&gt;&lt;/small&gt;
+
+`while( `_`loop_condition`_` ) {`  
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_1;`_   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`[...]`_   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_n`_   
+`}`
+
+---
+
+**Example (iterative)**  
+
+``` cpp
+int counter = 10;                   // set up LCV
+while ( counter &gt; 0 ) {             // loop condition
+    std::cout &lt;&lt; counter &lt;&lt; &#34;\t&#34;;   // loop body
+    counter = counter - 1;          // update LCV
+}
+```
+
+**Example (event controlled)**  
+
+``` cpp
+int value = 0;                      // set up LCV
+while( value &lt;= 0 ){                // until LCV is positive
+    std::cout &lt;&lt; &#34;Enter a positive integer: &#34;;
+    std::cin  &gt;&gt; value;             // update the LCV
+}
+```
+_**Hint**: You can recognize an Event Controlled loop because you cannot look a the loop and tell how many times it will repeat!_
+
+---
+
+## The `for` Loop
+
+**`for`** is a pre-test loop.  
+**_Syntax:_**
+&lt;small&gt;&lt;br /&gt;&lt;/small&gt;
+
+`for( `_`initializer`_` ; `_`test`_` ; `_`update`_` )`  
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_to_repeat;`_
+
+&lt;small&gt;&lt;br /&gt;&lt;/small&gt;
+**_Using a Block_**
+&lt;small&gt;&lt;br /&gt;&lt;/small&gt;
+
+`for( `_`initializer`_` ; `_`test`_` ; `_`update`_` ) {`  
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_1;`_   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`[...]`_   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_n`_   
+`}`
+
+---
+
+**Example 1 (iterative)**
+``` cpp
+for( int counter = 1; counter &lt;= 10; counter &#43;= 1 ) {
+    std::cout &lt;&lt; counter &lt;&lt; &#34;\t&#34;;
+}
+```
+
+**Example 2 (iterative)**
+``` cpp
+int counter;
+for( counter = 10; counter &gt; 0; counter -= 1 ) {
+    std::cout &lt;&lt; counter &lt;&lt; &#34;\t&#34;;
+}
+```
+
+**Example 3 (event controlled)**
+``` cpp
+int value;
+for( value = 0; value &lt;= 0; std::cin &gt;&gt; value ){
+    std::cout &lt;&lt; &#34;Enter a positive integer: &#34;;
+}
+```
+
+---
+
+## The Range-Based `for` Loop
+
+C&#43;&#43;11 added the ability for a `for` loop to iterate over all elements of a sequence container using a more concise syntax:
+
+**Syntax**    
+`for( `*`item_declaration `*&amp;nbsp;` : `&amp;nbsp;*` container`*` )`    
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_to_repeat;`_    
+
+_or more generally:_
+
+`for( `*`item_declaration `*&amp;nbsp;` : `&amp;nbsp;*` container`*` ) {`    
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_1;`_   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`[...]`_   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_n`_   
+`}`    
+
+---
+
+**Example**
+
+The following example shows the range-based `for` loop being used to print the value of all elements of an vector of integers to the screen.  **Don&#39;t worry** that we haven&#39;t introduced _vectors_ yet &amp;mdash; we will revisit this topic.
+
+```cpp
+// Create some values in a collection:
+std::vector&lt;int&gt; values{ 2, 4, 6, 8, 10 };
+// Print them to standard output using the 
+// range-based `for`:
+for( int item : values ) {
+    std::cout &lt;&lt; item &lt;&lt; &#34;\n&#34;;
+}
+```
+
+---
+
+## The `do`-`while` Loop
+
+**`do`-`while`** is a post-test loop.  
+_**Syntax:**_
+
+&lt;small&gt;&lt;br /&gt;&lt;/small&gt;
+
+`do {`  
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_1;`_   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`[...]`_   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;_`statement_n`_   
+`} while( `_`loop_condition`_` );`  
+
+&lt;small&gt;&lt;br /&gt;&lt;/small&gt;
+
+_**Notice** the semicolon at the end!.  &lt;small&gt;The do-while is the only C&#43;&#43; control structure that ends with a semicolon.&lt;/small&gt;_
+
+---
+
+**Example (iterative)**  
+
+``` cpp
+int counter = 1;                    // set up LCV
+do {                                // loop entry
+    std::cout &lt;&lt; counter &lt;&lt; &#34;\t&#34;;   // loop body
+    counter = counter &#43; 1;          // update LCV
+} while( counter &lt;= 10 );           // loop condition
+```
+
+**Example (event controlled)**  
+
+``` cpp
+int value;                          // declare LCV
+do {                                // loop entry
+    std::cout &lt;&lt; &#34;Enter a positive integer: &#34;;
+    std::cin  &gt;&gt; value;             // read/update LCV
+} while( value &lt;= 0 );              // until LCV is positive
+```
+
+_Don&#39;t forget the semicolon!_
+
+---
+
+## Which Loop to Choose?
+
+* **`while`** 
+    - pre-test loop
+    - well suited to _Event Controlled Loops_
+* **`for`**
+    - pre-test loop
+    - well suited to _Iterative Loops_
+    - range-based `for` is great for containers
+* **`do`-`while`**
+    - post-test loop
+    - well suited to _Event Controlled Loops_ used for _validation_
+
+
+
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create();
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>

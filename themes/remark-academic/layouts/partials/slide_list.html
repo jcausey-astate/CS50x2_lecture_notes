@@ -1,0 +1,11 @@
+<article class='slide-listing'>
+<ul class='three-col'>
+{{ range .Data.Pages.ByTitle }}
+
+<li class='three-col'>
+<a href="{{ .Permalink}}" alt="{{ .Title}}">{{ .Title}}</a>
+</li>
+
+{{ end }}
+</ul>
+</article>
