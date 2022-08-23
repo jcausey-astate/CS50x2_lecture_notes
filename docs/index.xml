@@ -12,7 +12,7 @@
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/01a_sp_basics/</guid>
-      <description>StructuredProgrammingBasics Gaddis (Ch. 1, 2)  First Principles  computer - a programmable machine designed to follow instructions  Computers are able to perform mathematical and logical operations at great speed.   algorithm - a precise, step-by-step plan for solving a problem program - a set of instructions expressed in a programming language that a computer follows to perform a task programmer - a person who writes a computer program programming language - any language designed specifically for use in creating computer programs   A computer is simply a re-configurable mechanical tool.</description>
+      <description>StructuredProgrammingBasics Gaddis (Ch. 1, 2) First Principles computer - a programmable machine designed to follow instructions Computers are able to perform mathematical and logical operations at great speed. algorithm - a precise, step-by-step plan for solving a problem program - a set of instructions expressed in a programming language that a computer follows to perform a task programmer - a person who writes a computer program programming language - any language designed specifically for use in creating computer programs A computer is simply a re-configurable mechanical tool.</description>
     </item>
     
     <item>
@@ -21,8 +21,8 @@
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/01b_variables_operators_errors/</guid>
-      <description>Variables Operators Common Errors Gaddis (Ch. 2)  The Big Picture All programming languages must provide certain functionality:
- Temporary data storage and retrieval.  How is data stored in RAM?   Operators that can be applied to the data.  What can I do to manipulate the data, and how?   Input and Output  Where does the data come from, and how?   Control Structures  Conditional execution and repetition.</description>
+      <description>Variables Operators Common Errors Gaddis (Ch. 2) The Big Picture All programming languages must provide certain functionality:
+Temporary data storage and retrieval. How is data stored in RAM? Operators that can be applied to the data. What can I do to manipulate the data, and how? Input and Output Where does the data come from, and how? Control Structures Conditional execution and repetition. To learn a language, figure these things out first.</description>
     </item>
     
     <item>
@@ -31,8 +31,8 @@
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/02a_selection/</guid>
-      <description>Selection Gaddis (Ch. 4)  Making Decisions One of the things computers are &amp;ldquo;good at&amp;rdquo; is determining the result of logic-based (Boolean) expressions, and using those results to make decisions quickly.
- Choose to whether or not to perform an operation.  If it is raining outside, take an umbrella.   Choose between possible outcomes.  If you are taller than 38&amp;quot;, proceed to the ride, otherwise leave the line.</description>
+      <description>Selection Gaddis (Ch. 4) Making Decisions One of the things computers are &amp;ldquo;good at&amp;rdquo; is determining the result of logic-based (Boolean) expressions, and using those results to make decisions quickly.
+Choose to whether or not to perform an operation. If it is raining outside, take an umbrella. Choose between possible outcomes. If you are taller than 38&amp;quot;, proceed to the ride, otherwise leave the line. Select from a variety of possible choices.</description>
     </item>
     
     <item>
@@ -41,9 +41,9 @@
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/02b_repetition/</guid>
-      <description>Repetition Gaddis (Ch. 5)  First, some helpful new operators&amp;hellip;  Shortcut Assignment Operators  Make modifying an existing value easy.   Increment and Decrement Operators  Make counting up and down easy.     Shortcut Assignment Operators
+      <description>Repetition Gaddis (Ch. 5) First, some helpful new operators&amp;hellip; Shortcut Assignment Operators Make modifying an existing value easy. Increment and Decrement Operators Make counting up and down easy. Shortcut Assignment Operators
 A more general set of shortcut operators are provided for modifying a variable by applying one of the 5 basic mathematical operations.
- Increment and Decrement Operators
+Increment and Decrement Operators
 To make it even easier to add or subtract one from a variable, C++ offers a set of two increment (add one) and two decrement (subtract one) operators:</description>
     </item>
     
@@ -53,9 +53,9 @@ To make it even easier to add or subtract one from a variable, C++ offers a set 
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/03a_functions_value_parameters/</guid>
-      <description>Functions and Value Parameters Gaddis (Ch. 6)  Modular Programming   Modular programming refers to the practice of designing a program so that it is broken up into small, manageable pieces called functions or modules.
-  In C++, a function is a collection of related statements that perform a single logical task.
-  In Object-Oriented programming, a function may also be referred to as a method. For example, in cin.</description>
+      <description>Functions and Value Parameters Gaddis (Ch. 6) Modular Programming Modular programming refers to the practice of designing a program so that it is broken up into small, manageable pieces called functions or modules.
+In C++, a function is a collection of related statements that perform a single logical task.
+In Object-Oriented programming, a function may also be referred to as a method. For example, in cin.ignore(), the ignore() function is actually a method owned by the cin object.</description>
     </item>
     
     <item>
@@ -64,7 +64,7 @@ To make it even easier to add or subtract one from a variable, C++ offers a set 
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/03b_functions_reference_parameters/</guid>
-      <description>Functions &amp;amp; Reference Parameters Gaddis (Ch. 6)  Review: Pass by Value  In pass by value, the value of the actual parameter is copied into the formal parameter. Pass by value is the default method by which data is moved into a function for primitive types, structured types and object types.  Changes to the formal parameter cannot affect the actual parameter.     Pass by Reference  In pass by reference, no copy is made.</description>
+      <description>Functions &amp;amp; Reference Parameters Gaddis (Ch. 6) Review: Pass by Value In pass by value, the value of the actual parameter is copied into the formal parameter. Pass by value is the default method by which data is moved into a function for primitive types, structured types and object types. Changes to the formal parameter cannot affect the actual parameter. Pass by Reference In pass by reference, no copy is made.</description>
     </item>
     
   </channel>

@@ -187,6 +187,16 @@ __Terms from Program Parts__
 
 ---
 
+## Some Linux / UNIX terminal basics
+
+<https://towardsdatascience.com/basics-of-bash-for-beginners-92e53a4c117a>
+
+<https://www.educative.io/blog/bash-shell-command-cheat-sheet>
+
+<https://wiki.cs.astate.edu/index.php/Common_Linux_Commands>
+
+---
+
 ## Practice Developing and Compiling
 
 ``` cpp
