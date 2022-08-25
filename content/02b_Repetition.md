@@ -40,36 +40,26 @@ Operator Example    Equivalent
 To make it even easier to add or subtract one from a variable, C++ offers a set of two _increment_ (add one) and two _decrement_ (subtract one) operators:
 
 <pre>
-Operator Example  Description
---------------------------------------------------------
-   ++    ++x;     Prefix increment operator.  Increments
+Operator Example Description
+-------------------------------------------------------
+  ++     ++x;     Prefix increment operator. Increments
                   x then evaluates to the updated value.
 
-   ++    x++;     Postfix increment operator.  Evaluates
+  ++     x++;     Postfix increment operator. Evaluates
                   to the original value of x, then 
                   increments x.
 
-   --    --x;     Prefix decrement operator.  Decrements
+  --     --x;     Prefix decrement operator. Decrements
                   x then evaluates to the updated value.
 
-   --    x--;     Postfix decrement operator.  Evaluates
+  --     x--;     Postfix decrement operator. Evaluates
                   to the original value of x, then 
                   decrements x.
 </pre>
 
 ---
 
-## Repetition
-
-We have now seen how to make decisions about whether or not to execute a statement or block of code in C++.
-
-The next step to increasing our ability to control the execution of our programs is to learn to repeat sections of code.
-
-The ability to perform repetitive tasks at great speed is one of the most powerful features of a computer...
-
----
-
-## Loops
+## Repetition (loops)
 
 Repeating code is accomplished with the help of a control structure called a _loop_.  C++ provides three loop constructs (four if you count the C++11 _range-based_ version of `for`):
 
@@ -86,6 +76,7 @@ But before we get into the specifics of the code, let's examine some terms and t
 
 * **Loop Control Variable** : a variable whose value is tested in order to determine whether the loop body should execute.
 * **Loop Condition** : a Boolean expression whose result determines whether the loop body will execute (`true` causes the loop to execute).
+* **Update step** : a modification that is made to the loop control variable within the scope of the loop body.
 
 ---
 
@@ -134,6 +125,7 @@ Loops can also be classified by the timing of when they test their _loop conditi
 ## The `while` Loop
 
 `while` is a pre-test loop.  
+
 _**Syntax:**_
 <small><br /></small>
 
@@ -177,7 +169,8 @@ _**Hint**: You can recognize an Event Controlled loop because you cannot look a 
 
 ## The `for` Loop
 
-**`for`** is a pre-test loop.  
+**`for`** is a pre-test loop.
+
 **_Syntax:_**
 <small><br /></small>
 
@@ -226,6 +219,7 @@ for( value = 0; value <= 0; std::cin >> value ){
 C++11 added the ability for a `for` loop to iterate over all elements of a sequence container using a more concise syntax:
 
 **Syntax**    
+
 `for( `*`item_declaration `*&nbsp;` : `&nbsp;*` container`*` )`    
 &nbsp;&nbsp;&nbsp;&nbsp;_`statement_to_repeat;`_    
 
@@ -310,6 +304,5 @@ _Don't forget the semicolon!_
 * **`do`-`while`**
     - post-test loop
     - well suited to _Event Controlled Loops_ used for _validation_
-
 
 

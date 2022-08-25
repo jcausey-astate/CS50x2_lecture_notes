@@ -111,13 +111,15 @@ Although control structures (such as the `if`) are _not actually statements_, th
 
 ## The `if` Control Structure
 
-The most basic form of the C++ `if` statement allows us to choose whether or not to take a specific action:
+The most basic form of the C++ `if` control structure allows us to choose whether or not to take a specific action:
 
-**Syntax**  
+**Syntax**
+
 `if( `<i>`conditional_expression`</i>` )`   
 &nbsp;&nbsp;&nbsp;&nbsp;<i>`statement_executed_if_true;`</i>
 
 **Example**
+
 ``` cpp
 // Assume x is an integer whose value was entered by the user.
 
@@ -141,6 +143,8 @@ if( x < 0 )  { // Check for a negative value
 }
 ```
 
+_Recall that a **block** just means a set of statements contained within curly braces._
+
 ---
 
 ## Choose Between Two Outcomes
@@ -148,6 +152,7 @@ if( x < 0 )  { // Check for a negative value
 The `if`-`else` construct allows us to choose between two outcomes:
 
 **Syntax**  
+
 `if( `<i>`conditional_expression`</i>` )`   
 &nbsp;&nbsp;&nbsp;&nbsp;<i>`statement_executed_if_true;`</i><br>
 `else`   
@@ -199,7 +204,7 @@ else {
 
 ## Selecting from Multiple Options
 
-A clever application of nesting `if`s inside `else`s is commonly used to select from multiple (more than 2) options.  It is often referred to as the `if-else chain`:
+A clever application of nesting `if`s inside `else`s is commonly used to select from multiple (more than 2) options.  It is often referred to as the _`if`-`else` chain_:
 
 ``` cpp
 // Assume door is an integer containing 1, 2, or 3:
@@ -220,7 +225,7 @@ else {                  // door #3
 
 ### Default Conditions
 
-<small>If there is a possibility of unexpected data, you can use the trailing `else` as a "default":</small>
+<small>If there is a possibility of unexpected values, you can use the trailing `else` as a "default":</small>
 
 ``` cpp
 // Assume door is an integer containing a user-entered value:

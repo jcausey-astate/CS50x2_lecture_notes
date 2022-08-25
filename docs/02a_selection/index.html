@@ -121,13 +121,15 @@ Although control structures (such as the `if`) are _not actually statements_, th
 
 ## The `if` Control Structure
 
-The most basic form of the C&#43;&#43; `if` statement allows us to choose whether or not to take a specific action:
+The most basic form of the C&#43;&#43; `if` control structure allows us to choose whether or not to take a specific action:
 
-**Syntax**  
+**Syntax**
+
 `if( `&lt;i&gt;`conditional_expression`&lt;/i&gt;` )`   
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;`statement_executed_if_true;`&lt;/i&gt;
 
 **Example**
+
 ``` cpp
 // Assume x is an integer whose value was entered by the user.
 
@@ -151,6 +153,8 @@ if( x &lt; 0 )  { // Check for a negative value
 }
 ```
 
+_Recall that a **block** just means a set of statements contained within curly braces._
+
 ---
 
 ## Choose Between Two Outcomes
@@ -158,6 +162,7 @@ if( x &lt; 0 )  { // Check for a negative value
 The `if`-`else` construct allows us to choose between two outcomes:
 
 **Syntax**  
+
 `if( `&lt;i&gt;`conditional_expression`&lt;/i&gt;` )`   
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;i&gt;`statement_executed_if_true;`&lt;/i&gt;&lt;br&gt;
 `else`   
@@ -209,7 +214,7 @@ else {
 
 ## Selecting from Multiple Options
 
-A clever application of nesting `if`s inside `else`s is commonly used to select from multiple (more than 2) options.  It is often referred to as the `if-else chain`:
+A clever application of nesting `if`s inside `else`s is commonly used to select from multiple (more than 2) options.  It is often referred to as the _`if`-`else` chain_:
 
 ``` cpp
 // Assume door is an integer containing 1, 2, or 3:
@@ -230,7 +235,7 @@ else {                  // door #3
 
 ### Default Conditions
 
-&lt;small&gt;If there is a possibility of unexpected data, you can use the trailing `else` as a &#34;default&#34;:&lt;/small&gt;
+&lt;small&gt;If there is a possibility of unexpected values, you can use the trailing `else` as a &#34;default&#34;:&lt;/small&gt;
 
 ``` cpp
 // Assume door is an integer containing a user-entered value:
