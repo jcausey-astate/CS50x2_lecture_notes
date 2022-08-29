@@ -18,7 +18,10 @@ drafts:
 
 push: build check-git-clean
 	@echo "Pushing..."
-	@git push origin master
+	@git push origin main
 
 check-git-clean: build
 	@git diff --quiet || { echo; echo "Git tree not clean."; echo ; git status; echo; false; }
+
+commit:
+	@git add content static docs && git commit -a

@@ -67,5 +67,17 @@ In Object-Oriented programming, a function may also be referred to as a method. 
       <description>Functions &amp;amp; Reference Parameters Gaddis (Ch. 6) Review: Pass by Value In pass by value, the value of the actual parameter is copied into the formal parameter. Pass by value is the default method by which data is moved into a function for primitive types, structured types and object types. Changes to the formal parameter cannot affect the actual parameter. Pass by Reference In pass by reference, no copy is made.</description>
     </item>
     
+    <item>
+      <title>04: Recursion</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/04_recursion/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/04_recursion/</guid>
+      <description>Recursion Gaddis Ch. 6 &amp;amp; 19
+Recursion A function is said to be recursive if it contains a call to itself.
+Recursive definitions are often more &amp;ldquo;natural&amp;rdquo;. Embodies a &amp;ldquo;divide-and-conquer&amp;rdquo; strategy void countDown(int timer) { if (timer == 0) { std::cout &amp;lt;&amp;lt; &amp;#34;Blastoff!&amp;#34;; } else{ std::cout &amp;lt;&amp;lt; timer &amp;lt;&amp;lt; &amp;#34;...\n&amp;#34;; countDown(timer-1); // recursive call } } Tracing a Recursive Call
+Purpose Recursion is an alternative way to achieve repetition. Sometimes the iterative approach (loop) isn&amp;rsquo;t obvious.</description>
+    </item>
+    
   </channel>
 </rss>
