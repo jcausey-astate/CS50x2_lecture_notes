@@ -161,7 +161,7 @@ Fruitful functions producing a value by means of a _`return` statement_ in the f
 
 * Must define the type of the return value in the function header.
 * The value returned must match the type specified in the header.
-* When called, the function call is "replaced" by the value that is returned.
+* When called, the function call is "replaced" by the value that it returns.
 
 ---
 
@@ -303,3 +303,27 @@ double divide( double dividend, double divisor ){
     - The rest can be left "empty" until later.
 * **_function stub_**: an empty function used for incremental development.
 * **_driver_**: a function used only for testing other functions by calling them.
+
+---
+
+**Example: Stub and driver**
+
+``` cpp
+int  mul2(int x);
+bool driver();
+
+int main(){
+    int x = stub(); // compiles; minimal functionality
+    if(! driver() ){
+        std::cout << "The 'mul2' function is failing to multiply by 2." << std::endl;
+    }
+}
+
+int mul2( int x ){
+    return 0;  // this function is just a stub at the moment; TODO: finish it.
+}
+
+bool driver(){  // test driver for `mul2()`
+    return (mul2(0) == 0) && (mul2(42) == 84) && (mul2(-42) == -84);
+}
+```
