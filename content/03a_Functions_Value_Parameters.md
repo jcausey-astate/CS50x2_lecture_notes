@@ -313,7 +313,7 @@ int  mul2(int x);
 bool driver();
 
 int main(){
-    int x = stub(); // compiles; minimal functionality
+    int x = mul2(8); // compiles; minimal functionality
     if(! driver() ){
         std::cout << "The 'mul2' function is failing to multiply by 2." << std::endl;
     }
