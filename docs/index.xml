@@ -7,6 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jcausey-astate.github.io/CS50x2_lecture_notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>05b2_Parallel_&amp;_Multi-Dimensional_Arrays</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b2_parallel_and_multi-dimensional_arrays/</link>
+      <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b2_parallel_and_multi-dimensional_arrays/</guid>
+      <description>Parallel &amp;amp;Multi-DimensionalArrays Gaddis Ch. 7 Parallel Arrays Parallel Arrays: Two or more arrays containing related data such that the elements at corresponding indexes are related. All elements at index i the parallel arrays make up a single record i. Example
+const int N_CONTESTANTS = 5; std::string names[N_CONTESTANTS]; int votes[N_CONTESTANTS]; // Each contestant has a name and a vote count. for(int i = 0; i &amp;lt; N_CONTESTANTS; i++){ std::cout &amp;lt;&amp;lt; &amp;#34;Contestant &amp;#34; &amp;lt;&amp;lt; (i+1) &amp;lt;&amp;lt; &amp;#34; name: &amp;#34;; std::cin &amp;gt;&amp;gt; names[i]; std::cout &amp;lt;&amp;lt; &amp;#34;# of votes for &amp;#34; &amp;lt;&amp;lt; names[i] &amp;lt;&amp;lt; &amp;#34;: &amp;#34;; std::cin &amp;gt;&amp;gt; votes[i]; } Parallel Arrays Since the parallel arrays are separate, they may be of mixed type.</description>
+    </item>
+    
+    <item>
       <title>01a: Structured Programming Basics</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/01a_sp_basics/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
@@ -77,6 +87,46 @@ In Object-Oriented programming, a function may also be referred to as a method. 
 Recursion A function is said to be recursive if it contains a call to itself.
 Recursive definitions are often more &amp;ldquo;natural&amp;rdquo;. Embodies a &amp;ldquo;divide-and-conquer&amp;rdquo; strategy void countDown(int timer) { if (timer == 0) { std::cout &amp;lt;&amp;lt; &amp;#34;Blastoff!&amp;#34;; } else{ std::cout &amp;lt;&amp;lt; timer &amp;lt;&amp;lt; &amp;#34;...\n&amp;#34;; countDown(timer-1); // recursive call } } Tracing a Recursive Call
 Purpose Recursion is an alternative way to achieve repetition. Sometimes the iterative approach (loop) isn&amp;rsquo;t obvious.</description>
+    </item>
+    
+    <item>
+      <title>05b: C-Style Strings</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b_c-strings/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b_c-strings/</guid>
+      <description>Characters &amp;amp;C-Style Strings Gaddis Ch. 10 ASCII Encoding Internally, all characters must be encoded into a numeric representation.
+There is more than one way to do it&amp;hellip; But C++ (by default) type char uses the ASCII encoding scheme.
+background-image: url(../images/shared/ascii_table.svg)
+Testing Characters The following functions require the &amp;lt;cctype&amp;gt; header.
+![Character testing functions.]../imagesc_strings/char_testing.png)
+Case Conversion Also require the &amp;lt;cctype&amp;gt; header.
+Functions:
+toupper(char c): if c is a lowercase letter, return uppercase equivalent; otherwise, return c unchanged.</description>
+    </item>
+    
+    <item>
+      <title>06: Pointers</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/06_pointers/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/06_pointers/</guid>
+      <description>Pointers Gaddis Ch. 9 Addresses and Data Every variable in a program is stored at a unique memory address.
+The unary &amp;amp; is the address operator; the address operator retrieves the address of its operand:
+int x = 42; // Print out the address at which x is stored: std::cout &amp;lt;&amp;lt; &amp;amp;x &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; Pointers A pointer is a variable that stores a memory address. Declare by adding the pointer type modifier ( * ) to a variable declaration.</description>
+    </item>
+    
+    <item>
+      <title>05a_Arrays</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05a_arrays/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/05a_arrays/</guid>
+      <description>Arrays Gaddis Ch. 7 The C++ Array Arrays allow programmers to store multiple related values of the same type.
+Values are stored sequentially in memory. Declaration syntax: type arrayname[ size_declarator ]; Example Declarations
+int a[100]; // Declares an array of 100 integers. double b[50]; // Declares an array of 50 doubles. Array Memory Layout The declaration:
+int tests[5]; allocates the following memory:
+Arrays are a reference type. The array variable does not refer to the array as a whole, only to the location of the first element.</description>
     </item>
     
   </channel>
