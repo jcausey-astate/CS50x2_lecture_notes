@@ -99,7 +99,6 @@ Purpose Recursion is an alternative way to achieve repetition. Sometimes the ite
 There is more than one way to do it&amp;hellip; But C++ (by default) type char uses the ASCII encoding scheme.
 background-image: url(../images/shared/ascii_table.svg)
 Testing Characters The following functions require the &amp;lt;cctype&amp;gt; header.
-![Character testing functions.]../imagesc_strings/char_testing.png)
 Case Conversion Also require the &amp;lt;cctype&amp;gt; header.
 Functions:
 toupper(char c): if c is a lowercase letter, return uppercase equivalent; otherwise, return c unchanged.</description>

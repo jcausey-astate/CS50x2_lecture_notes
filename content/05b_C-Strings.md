@@ -26,7 +26,7 @@ background-image: url(../images/shared/ascii_table.svg)
 
 The following functions require the `<cctype>` header.
 
-![Character testing functions.]../imagesc_strings/char_testing.png)
+![Character testing functions.](../images/c_strings/char_testing.png)
 
 ---
 
@@ -67,7 +67,7 @@ C++ provides support for a low-level representation of strings of characters as 
 * String literals such as `"SMITH"` are internally represented as c-strings by default.
 * Internally, they look like the following:
 
-![Character testing functions.](../imagesc_strings/c_string_literal_in_memory.svg)
+!["SMITH" as seen in memory.](../images/c_strings/c_string_literal_in_memory.svg)
 
 ---
 
@@ -81,7 +81,7 @@ char name[6] = "SMITH";
 
 Produces:
 
-![Character testing functions.](../images/shared/c_string_in_memory.svg)
+!["SMITH" as seen in a C-style string.](../images/c_strings/c_string_in_memory.svg)
 
 * The trailing `'\0'` is added automatically during the initialization.
 
