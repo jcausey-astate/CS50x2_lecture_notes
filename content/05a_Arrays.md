@@ -84,7 +84,7 @@ Elements are identified by an integer _index_, starting from 0.
 
 ## Initial Values
 
-Array elements start out _uninitialized_.
+Array elements start out _uninitialized_ if their base types do (primitive types, for example).
 
 ![Array elements are uninitialized.](../images/shared/integer_array_uninitialized.svg)
 
@@ -232,7 +232,8 @@ void print_tests(int tests[], int size){
 
 * Size declarator must be a literal or constant.
 * C++ provides no bounds-checking for indices.
-* Array elements start out uninitialized.
+* Array elements start out uninitialized if their base types do.
+  * They are _default constructed_ if the base type is a structured or object type.
 * Arrays cannot be directly assigned.
 * Arrays are always passed by reference to functions.
 * Arrays do not "know" their own size.
