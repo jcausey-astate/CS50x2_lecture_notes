@@ -266,6 +266,41 @@ This design pattern is very common in the C&#43;&#43; Standard Template Library.
 * Pointers may also be passed by reference if the address in the pointer itself should be changed by the function.
     - Doing so requires adding the _reference type modifier_  (` &amp; `)to the formal parameter, just like with any other primitive data.
 
+---
+
+## Common design pattern:  &#34;Range&#34;-based operations with pointers to arrays
+
+```cpp
+// Assume array `a` already declared as `int a[5];`
+int* begin = a;     // &#34;left&#34; edge of array
+int* end   = a &#43; 5; // &#34;right&#34; edge of array
+```
+
+![Pointers to range in array `a`.](../images/shared/range_iterators_in_array.svg)
+
+Notice that `end` physically points to the first memory address _beyond_ the end of the
+array.  For this reason, i**t would be an error to try to dereference `end`**.  We must be
+careful to ensure that never happens.
+
+**This pattern also applies to _iterators_ to array-like data structures.**
+
+---
+
+## Common design pattern:  &#34;Range&#34;-based operations with pointers to sub-arrays
+
+```cpp
+// Assume array `a` already declared as `int a[5];`
+int* first = a &#43; 1;  // &#34;left&#34; edge of subrange
+int* last  = a &#43; 4;  // &#34;right&#34; edge of subrange
+```
+
+![Pointers to range in array `a`.](../images/shared/range_iterators_to_subrange.svg)
+
+In this usage, we are bracketing a _subrange_ of values within the larger array.  Again,
+notice that the `last` pointer points to a value outside that subrange - it should not
+be dereferenced.
+
+**This pattern also applies to _iterators_ to array-like data structures.**
 
 </textarea>
     <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>

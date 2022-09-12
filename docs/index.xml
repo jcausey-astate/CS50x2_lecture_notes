@@ -116,6 +116,42 @@ int x = 42; // Print out the address at which x is stored: std::cout &amp;lt;&am
     </item>
     
     <item>
+      <title>07a: Vectors</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07a_vector/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07a_vector/</guid>
+      <description>STL and std::vector Gaddis(Ch. 16.5) background-image: url(../images/STL/circle_template.jpg)
+STL The C++ Standard Template Library The Standard Template Library What is STL? Why use STL? Overview of STL Features and Concepts Containers Iterators Algorithms References for more information on STL What is STL? &amp;ldquo;The Standard Template Library provides a set of well structured generic C++ components that work together in a seamless way.&amp;rdquo;
+- Alexander Stepanov &amp;amp; Meng Lee,
+The Standard Template Library</description>
+    </item>
+    
+    <item>
+      <title>07b: Input and Output</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b_input_and_output/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b_input_and_output/</guid>
+      <description>Input and Output Gaddis Ch. 3, 5.11 Review: Output Streams Recall that a stream is a one-way flow of information. Output streams are streams that take information from the running program and move it to the outside world.
+The standard output stream is named std::cout Often shortened to cout (add using std::cout; after the include) We will refer to the standard output stream as cout in discussion. Output streams work together with the stream insertion operator ( &amp;lt;&amp;lt; ).</description>
+    </item>
+    
+    <item>
+      <title>08: Searching and Sorting</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/08_searching_sorting/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/08_searching_sorting/</guid>
+      <description>Search &amp;amp;SortAlgorithms Gaddis Ch. 8 Search Problem: Given an array filled with data, you want to determine if a particular value is in the array.
+Is the value present? If so, where is it located? Does this array contain the value 85? If so, where?
+What about 72?
+Linear Search Linear search is a simple, brute-force approach:
+To find a value V in array A:
+Linear Search Discussion Advantages Simple to understand Always finds the target value (if it is present) Places no requirement on the ordering of the array Disadvantage Slow Best, average, worst performance?</description>
+    </item>
+    
+    <item>
       <title>05a_Arrays</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05a_arrays/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
