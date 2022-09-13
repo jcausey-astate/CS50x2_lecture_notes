@@ -149,6 +149,8 @@ for(vector&lt;string&gt;::size_type i=0;  // size type is unsigned
 }                                   // vector like an array
 ```
 
+**HINT:** Use `v.at(i)` instead of `v[i]` to enable bounds-checking!
+
 ---
 
 &lt;!-- .slide: data-transition=&#34;linear&#34;, data-background=&#34;aliceblue&#34; --&gt;
@@ -164,7 +166,7 @@ v.push_back(&#34;The number is 10&#34;);    // push some values
 v.push_back(&#34;The number is 20&#34;);    // into it...
 v.push_back(&#34;The number is 30&#34;);
 
-cout &lt;&lt; &#34;Loop by range:&#34; &lt;&lt; endl;
+cout &lt;&lt; &#34;Loop by range using iterators:&#34; &lt;&lt; endl;
 
 for(auto it = v.begin();            // iterator
     it != v.end();                  // runs from begin()
@@ -183,7 +185,7 @@ for(auto it = v.begin();            // iterator
 
 &lt;!-- .slide: data-transition=&#34;linear&#34;, data-background=&#34;aliceblue&#34; --&gt;
 
-## `std::vector` Example 2b
+## `std::vector` Example 3
     
 ``` cpp
 std::vector&lt;std::string&gt; v;         // create vector
@@ -192,7 +194,7 @@ v.push_back(&#34;The number is 10&#34;);    // push some values
 v.push_back(&#34;The number is 20&#34;);    // into it...
 v.push_back(&#34;The number is 30&#34;);
 
-cout &lt;&lt; &#34;Loop by range:&#34; &lt;&lt; endl;
+cout &lt;&lt; &#34;Loop by range-based `for`:&#34; &lt;&lt; endl;
 
 for( auto item : v ){               // for each item in v
    cout &lt;&lt; item &lt;&lt; endl;            // print the item
@@ -203,7 +205,7 @@ for( auto item : v ){               // for each item in v
 
 &lt;!-- .slide: data-transition=&#34;linear&#34;, data-background=&#34;aliceblue&#34; --&gt;
 
-## `std::vector` Example 3
+## `std::vector` Example 4
     
 ``` cpp
 auto v = std::vector&lt;std::string&gt;{3};    // pre-size to 3
@@ -247,11 +249,11 @@ Iterators are a generalization of pointers.
 &lt;!-- .slide: data-transition=&#34;none&#34;, data-background=&#34;aliceblue&#34; --&gt;
 
 ``` cpp
-std::vector&lt;int&gt; scores{3};
+std::vector&lt;int&gt; scores{3};  // pre-size to 3
 
-scores[0] = 88;
-scores[1] = 92;
-scores[2] = 76;
+scores.at(0) = 88;
+scores.at(1) = 92;
+scores.at(2) = 76;
 
 for(auto it = scores.begin(); it != grade_list.end(); it&#43;&#43;){
     std::cout &lt;&lt; *it &lt;&lt; &#39;\t&#39;;
@@ -381,7 +383,6 @@ for( auto value : v ){
 }
 // 1  2  3  4  5  6  7  8  9  10
 ```
-
 
 
 </textarea>

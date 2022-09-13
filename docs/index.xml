@@ -128,26 +128,6 @@ The Standard Template Library</description>
     </item>
     
     <item>
-      <title>07b Supplement 2: cmath and Epsilon Comparison</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-2_cmath_epsilon_comparison/</link>
-      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
-      
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-2_cmath_epsilon_comparison/</guid>
-      <description>Epsilon Comparison Gaddis Ch. 4 Supplement Mathematical Functions There are many mathematical functions that do not have an operator in C++. The &amp;lt;cmath&amp;gt; library provides definitions for these. Some examples are:
-Example #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; int main(){ double a = 3.0; double b = 4.0; double c = sqrt( pow(a, 2) + pow(b, 2) ); // Pythagorean Theorem std::cout &amp;lt;&amp;lt; &amp;#34;The hypotenuse is: &amp;#34; &amp;lt;&amp;lt; c &amp;lt;&amp;lt; &amp;#34;.\n&amp;#34;; return 0; } Numerical Inaccuracy Computers use binary (base-2) numbers internally.</description>
-    </item>
-    
-    <item>
-      <title>07b Supplement: Formatted Output</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement_formatted_output_getline/</link>
-      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
-      
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement_formatted_output_getline/</guid>
-      <description>Formatted Output,getline(), &amp;lt;cmath&amp;gt; Gaddis Ch. 2, 3 Supplement Formatted Output The &amp;lt;iomanip&amp;gt; library supplies a set of stream manipulators that may be used in conjunction with the stream insertion operator to format output.
-Example double price = 100.0 / 3.0; // 33.3333333... std::cout &amp;lt;&amp;lt; std::setprecision(2) &amp;lt;&amp;lt; std::fixed; std::cout &amp;lt;&amp;lt; &amp;#34;Total price: $&amp;#34; &amp;lt;&amp;lt; std::setw(8) &amp;lt;&amp;lt; price &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; std::cout &amp;lt;&amp;lt; &amp;#34;100 items: $&amp;#34; &amp;lt;&amp;lt; std::setw(8) &amp;lt;&amp;lt; 100 * price &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; Output:</description>
-    </item>
-    
-    <item>
       <title>07b: Input and Output</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b_input_and_output/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
@@ -155,6 +135,26 @@ Example double price = 100.0 / 3.0; // 33.3333333... std::cout &amp;lt;&amp;lt; 
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b_input_and_output/</guid>
       <description>Input and Output Gaddis Ch. 3, 5.11 Review: Output Streams Recall that a stream is a one-way flow of information. Output streams are streams that take information from the running program and move it to the outside world.
 The standard output stream is named std::cout Often shortened to cout (add using std::cout; after the include) We will refer to the standard output stream as cout in discussion. Output streams work together with the stream insertion operator ( &amp;lt;&amp;lt; ).</description>
+    </item>
+    
+    <item>
+      <title>07b2 Supplement 1: Formatted Output</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-1_formatted_output_getline/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-1_formatted_output_getline/</guid>
+      <description>Formatted Output,getline(), &amp;lt;cmath&amp;gt; Gaddis Ch. 2, 3 Supplement Formatted Output The &amp;lt;iomanip&amp;gt; library supplies a set of stream manipulators that may be used in conjunction with the stream insertion operator to format output.
+Example double price = 100.0 / 3.0; // 33.3333333... std::cout &amp;lt;&amp;lt; std::setprecision(2) &amp;lt;&amp;lt; std::fixed; std::cout &amp;lt;&amp;lt; &amp;#34;Total price: $&amp;#34; &amp;lt;&amp;lt; std::setw(8) &amp;lt;&amp;lt; price &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; std::cout &amp;lt;&amp;lt; &amp;#34;100 items: $&amp;#34; &amp;lt;&amp;lt; std::setw(8) &amp;lt;&amp;lt; 100 * price &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; Output:</description>
+    </item>
+    
+    <item>
+      <title>07b3 Supplement 2: cmath and Epsilon Comparison</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-2_cmath_epsilon_comparison/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-2_cmath_epsilon_comparison/</guid>
+      <description>Epsilon Comparison Gaddis Ch. 4 Supplement Mathematical Functions There are many mathematical functions that do not have an operator in C++. The &amp;lt;cmath&amp;gt; library provides definitions for these. Some examples are:
+Example #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; int main(){ double a = 3.0; double b = 4.0; double c = sqrt( pow(a, 2) + pow(b, 2) ); // Pythagorean Theorem std::cout &amp;lt;&amp;lt; &amp;#34;The hypotenuse is: &amp;#34; &amp;lt;&amp;lt; c &amp;lt;&amp;lt; &amp;#34;.\n&amp;#34;; return 0; } Numerical Inaccuracy Computers use binary (base-2) numbers internally.</description>
     </item>
     
     <item>

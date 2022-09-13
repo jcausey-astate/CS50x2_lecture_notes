@@ -139,6 +139,8 @@ for(vector<string>::size_type i=0;  // size type is unsigned
 }                                   // vector like an array
 ```
 
+**HINT:** Use `v.at(i)` instead of `v[i]` to enable bounds-checking!
+
 ---
 
 <!-- .slide: data-transition="linear", data-background="aliceblue" -->
@@ -154,7 +156,7 @@ v.push_back("The number is 10");    // push some values
 v.push_back("The number is 20");    // into it...
 v.push_back("The number is 30");
 
-cout << "Loop by range:" << endl;
+cout << "Loop by range using iterators:" << endl;
 
 for(auto it = v.begin();            // iterator
     it != v.end();                  // runs from begin()
@@ -173,7 +175,7 @@ for(auto it = v.begin();            // iterator
 
 <!-- .slide: data-transition="linear", data-background="aliceblue" -->
 
-## `std::vector` Example 2b
+## `std::vector` Example 3
     
 ``` cpp
 std::vector<std::string> v;         // create vector
@@ -182,7 +184,7 @@ v.push_back("The number is 10");    // push some values
 v.push_back("The number is 20");    // into it...
 v.push_back("The number is 30");
 
-cout << "Loop by range:" << endl;
+cout << "Loop by range-based `for`:" << endl;
 
 for( auto item : v ){               // for each item in v
    cout << item << endl;            // print the item
@@ -193,7 +195,7 @@ for( auto item : v ){               // for each item in v
 
 <!-- .slide: data-transition="linear", data-background="aliceblue" -->
 
-## `std::vector` Example 3
+## `std::vector` Example 4
     
 ``` cpp
 auto v = std::vector<std::string>{3};    // pre-size to 3
@@ -237,11 +239,11 @@ Iterators are a generalization of pointers.
 <!-- .slide: data-transition="none", data-background="aliceblue" -->
 
 ``` cpp
-std::vector<int> scores{3};
+std::vector<int> scores{3};  // pre-size to 3
 
-scores[0] = 88;
-scores[1] = 92;
-scores[2] = 76;
+scores.at(0) = 88;
+scores.at(1) = 92;
+scores.at(2) = 76;
 
 for(auto it = scores.begin(); it != grade_list.end(); it++){
     std::cout << *it << '\t';
@@ -371,4 +373,3 @@ for( auto value : v ){
 }
 // 1  2  3  4  5  6  7  8  9  10
 ```
-
