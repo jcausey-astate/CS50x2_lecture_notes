@@ -6,7 +6,7 @@ draft: false
 
 
 # STL and `std::vector`
-## Gaddis(Ch. 16.5)
+## Gaddis Ch. 16.5
 
 
 ---
@@ -16,7 +16,6 @@ background-image: url(../images/STL/circle_template.jpg)
 ##  The C++ <br> Standard Template Library
 
 ---
-
 
 ## The Standard Template Library
 
