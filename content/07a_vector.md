@@ -365,7 +365,7 @@ std::vector<int> v;
 v.resize(10);
 
 for(int i = 0; i < v.size(); ++i){
-    v[i] = (i+1);
+    v.at(i) = (i+1);
 }
 
 for( auto value : v ){
@@ -373,3 +373,147 @@ for( auto value : v ){
 }
 // 1  2  3  4  5  6  7  8  9  10
 ```
+
+---
+
+## Passing `vector`s to functions
+
+`std::vector` is an _object type_, meaning that it is passed **by value** by default!  This means that even though it "looks and feels" like an array, the argument-to-parameter communication mechanism is quite different.
+
+Let's look at an example...
+
+---
+
+**Example: Vectors as parameters VS arrays as parameters**
+
+First, the "main" part of the program, which will utilize two overloaded functions:
+
+```cpp
+#include <iostream>
+#include <vector>
+
+void example(int a[], int size);
+void example(std::vector<int> v);
+void print_all(int a[], int size);
+void print_all(std::vector<int> v);
+
+int main(){
+    int              a[]{1, 2, 3, 4, 5};
+    std::vector<int> v  {1, 2, 3, 4, 5};
+
+    example(a, 5);
+    example(v);
+
+    print_all(a, 5);
+    print_all(v);
+    
+    return 0;
+}
+```
+
+---
+
+**Example: Vectors as parameters VS arrays as parameters**
+
+```cpp
+void example(int a[], int size){
+    for(int i = 0; i < size; ++i)
+        a[i] *= 2;
+}
+
+void example(std::vector<int> v){
+    for(std::vector<int>::size_type i = 0; i < v.size(); ++i)
+        v[i] *= 2;
+}
+
+void print_all(int a[], int size){
+    for (int i = 0; i < size; ++i)
+        std::cout << a[i] << '\t';
+    std::cout << '\n';
+}
+
+void print_all(std::vector<int> v){
+    for(auto value : v)
+        std::cout << value << '\t';
+    std::cout << '\n';
+}
+```
+
+---
+
+**Example: Vectors as parameters VS arrays as parameters**
+
+Here is the relevant part of the main program again...
+
+**_What output do you expect from this code?_**
+
+```cpp
+int main(){
+    int              a[]{1, 2, 3, 4, 5};
+    std::vector<int> v  {1, 2, 3, 4, 5};
+
+    example(a, 5);
+    example(v);
+
+    print_all(a, 5);
+    print_all(v);
+    
+    return 0;
+}
+```
+
+---
+
+**Example: Vectors as parameters VS arrays as parameters**
+
+Here is the output:
+
+```text
+2	4	6	8	10
+1	2	3	4	5
+```
+
+Is that what you expected?    
+
+The `std::vector` is _passed by value_, so the elements are not modified in the caller (`main`) even though they were modified in the `example` function.
+
+* This means a copy was made - we need to keep in mind the potential cost of the copy when working with STL containers.
+
+---
+
+**We can pass _by reference_ if we want to.**  While we're at it, let's use `const` qualifiers to add safety guarantees to the printing functions.
+
+```cpp
+void example(int a[], int size){
+    for(int i = 0; i < size; ++i)
+        a[i] *= 2;
+}
+
+void example(std::vector<int>& v){
+    for(std::vector<int>::size_type i = 0; i < v.size(); ++i)
+        v[i] *= 2;
+}
+
+void print_all(const int a[], int size){
+    for (int i = 0; i < size; ++i)
+        std::cout << a[i] << '\t';
+    std::cout << '\n';
+}
+
+void print_all(const std::vector<int>& v){
+    for(auto value : v)
+        std::cout << value << '\t';
+    std::cout << '\n';
+}
+```
+
+---
+
+**Now, the output - without changing `main()` at all:**
+
+```text
+2	4	6	8	10
+2	4	6	8	10
+```
+
+**Hint:** Prefer to pass a `vector` (or other STL container) by `const` reference (or plain reference if you want to modify it in the function) unless there is a "good reason" to make a copy.
