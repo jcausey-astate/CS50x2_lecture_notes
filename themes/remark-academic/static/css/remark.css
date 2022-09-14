@@ -4,13 +4,13 @@
 
 
 
-body { font-family: 'Droid Serif', 'Times New Roman', Times, serif; }
+body { font-family: 'Droid Serif'; }
 h1, h2, h3 {
-	font-family: 'Yanone Kaffeesatz', Helvetica, sans-serif;
+	font-family: 'Yanone Kaffeesatz';
 	font-weight: normal;
 }
 .remark-code, .remark-inline-code {
-	font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
+	font-family: 'Ubuntu Mono';
 }
 /*************/
 /* Container */

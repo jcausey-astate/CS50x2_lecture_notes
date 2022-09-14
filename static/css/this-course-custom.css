@@ -1,0 +1,23 @@
+article.slide-listing {
+    font-size: 2em;
+    color: #6ADD15;
+    text-decoration: none;
+    text-overflow: ellipsis;
+}
+
+article.slide-listing a,
+a:visited,
+a:hover {
+    color: #6ADD15;
+    text-decoration: none;
+}
+
+ul li.three-col {
+    min-height: 1.5em;
+    max-height: 1.6em;
+    padding-right: .5em;
+}
+
+pre {
+    font-size: 0.85em;
+}

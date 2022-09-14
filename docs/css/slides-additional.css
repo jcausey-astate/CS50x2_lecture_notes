@@ -19,14 +19,14 @@ ul li.three-col {
 }
 
 article {
-    font-size: 3.2em;
-    line-height: 2em;
     font-family: 'Yanone Kaffeesatz', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     min-width: 100%;
     min-height: 100%;
 }
 
 article.slide-listing {
+    font-size: 3.2em;
+    line-height: 2em;
     color: #6ADD15;
     text-decoration: none;
     font-size: 32pt;
