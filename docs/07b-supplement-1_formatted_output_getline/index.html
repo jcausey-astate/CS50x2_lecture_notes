@@ -23,7 +23,7 @@
 ### Formatted Output
 
 The `&lt;iomanip&gt;` library supplies a set of _stream manipulators_ that may be used in conjunction with the stream insertion operator to format output.  
-&lt;pre&gt;
+&lt;pre style=&#39;font-size: .85em&#39;&gt;
 Manipulator            Description
 -----------------------------------------------------------
 std::setw( w )         set the width of the next item in the
@@ -113,6 +113,21 @@ std::cin.get(ch); // Will wait for the enter key, then continue.
 The `get()` function also works with other streams, in general the syntax is: &lt;br /&gt;
 _`stream`_`.get(`*`character_var`*`)`
 
+
+---
+
+## In case the stream goes bad...
+
+If you are working with an open stream, several things can cause the stream to no longer be in the &#34;good&#34; state.  The most common are:
+
+* Failure of stream extraction operator to convert the apparent type it &#34;sees&#34; to the type requested on its right-hand side.
+* End-of-file (or end of stream) encountered during a &#34;read&#34; operation.
+
+In these cases you may be able to remedy the problem -- perhaps by removing unwanted characters from the stream with `ignore()`, or by moving the stream position &#34;earlier&#34; in the stream in case of EOF -- then resume operation.  The `clear()` method will help with this by clearing the stream&#39;s _state flags_:
+
+``` cpp
+std::cin.clear();  // clears the state flags on `cin`
+```
 
 
 </textarea>

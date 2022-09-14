@@ -1,5 +1,5 @@
 ---
-title: "07b2 Supplement 1: Formatted Output"
+title: "07b2 Supplement 1: `get`, `getline`, and Formatted Output"
 date: 2021-01-13T12:00:00-05:00
 draft: false
 ---
@@ -13,7 +13,7 @@ draft: false
 ### Formatted Output
 
 The `<iomanip>` library supplies a set of _stream manipulators_ that may be used in conjunction with the stream insertion operator to format output.  
-<pre>
+<pre style='font-size: .85em'>
 Manipulator            Description
 -----------------------------------------------------------
 std::setw( w )         set the width of the next item in the
@@ -103,3 +103,18 @@ std::cin.get(ch); // Will wait for the enter key, then continue.
 The `get()` function also works with other streams, in general the syntax is: <br />
 _`stream`_`.get(`*`character_var`*`)`
 
+
+---
+
+## In case the stream goes bad...
+
+If you are working with an open stream, several things can cause the stream to no longer be in the "good" state.  The most common are:
+
+* Failure of stream extraction operator to convert the apparent type it "sees" to the type requested on its right-hand side.
+* End-of-file (or end of stream) encountered during a "read" operation.
+
+In these cases you may be able to remedy the problem -- perhaps by removing unwanted characters from the stream with `ignore()`, or by moving the stream position "earlier" in the stream in case of EOF -- then resume operation.  The `clear()` method will help with this by clearing the stream's _state flags_:
+
+``` cpp
+std::cin.clear();  // clears the state flags on `cin`
+```
