@@ -17,7 +17,8 @@ Problem:  Given an array filled with data, you want to determine if a particular
 
 ![Example array with integer values.](../images/shared/integer_array_with_values.svg)
 
-Does this array contain the value 85?  If so, where?  
+Does this array contain the value 85?  If so, where?
+
 What about 72?
 
 ---
