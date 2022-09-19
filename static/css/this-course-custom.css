@@ -21,3 +21,7 @@ ul li.three-col {
 pre {
     font-size: 1.6vw;
 }
+
+small > pre {
+    font-size: 0.7em;
+}

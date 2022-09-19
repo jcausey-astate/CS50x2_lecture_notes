@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/this-course-custom.css" />
+
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+# Binary Files &amp; Random Access
+
+## (Ch. 12)
+
+---
+
+## Files – Review
+
+_**File**_: a set of data stored on a computer; often on secondary storage such as a disk drive.
+
+* Used to abstract the concept of &#34;a blob of data&#34; in a well-understood and system-wide way.
+* Can be read and/or written (depending on permissions).
+
+---
+
+## Files – Review
+
+* Requires the `fstream` header file.
+* `ifstream` objects are specialized for input
+* `ofstream` object are specialized for output
+* `fstream` objects are more general – can do both input and output.
+* Operators `&lt;&lt;` and `&gt;&gt;` work with file streams.
+* `get()` and `getline()` also work with file streams.
+
+---
+
+## `fstream`  Object
+
+* Can be used for input and/or output.
+* Must specify the _mode_ when opening the file.
+    - `ios::in`  – input
+    - `ios::out` – output
+    - `ios::app` – append
+    - There are others...
+* Modes may be combined with bitwise OR:
+    -  `ios::in | ios::out`  - gives input and output.
+
+---
+
+**File modes**
+
+&lt;small&gt;
+
+| `ios::openmode` | Meaning                                                                                                                                             |
+|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ios::app `     | Append mode.  If the file exists, all output is written to the end of the file. Create the file if it does not exist.                               |
+| `ios::ate`      | If the file exists, the initial position markers are moved to the end of it.                                                                        |
+| `ios::binary `  | Binary mode.  Data is written/read in pure binary format (no en/decoding takes place)                                                               |
+| `ios::in `      | Input mode.  Data will be read from the file.  If the file does not exist, it will not be created and the open will fail.                           |
+| `ios::out`      | Output mode.  Data will be written to the file. By default, the file&#39;s contents will be deleted if it already exists; it will be created otherwise. |
+| `ios::trunc `   | If the file already exists, its contents will be deleted (truncated).  This is the default mode used by `ios::out`.                                 |
+
+&lt;/small&gt;
+
+
+---
+
+## Binary Files
+
+* The default open mode is &#34;text mode&#34;
+    - ASCII – encoded text
+* Opening in &#34;binary mode&#34; (`ios::binary`) means no encoding scheme is used.
+    - Raw binary data is written as-is.
+    - Use `read()` and `write()` methods instead of `&gt;&gt;` and `&lt;&lt;`.
+
+**Example**
+``` cpp
+fstream fin{&#34;my_file&#34;, ios::in|ios::binary};
+char ch;
+fin.read(&amp;ch, sizeof(ch)); // read 1 character.
+```
+
+---
+
+## Binary Files
+
+To read/write non-character data, you must cast using:
+``` cpp
+reinterpret_cast&lt;char*&gt;( address_of_object )
+```
+
+_**Reason:**_  The `read()` and `write()` methods are designed to input/output raw _bytes_ of data.  `char` is a convenient &#34;package&#34; for raw bytes.     
+`reinterpret_cast` forces the compiler to treat a pointer/address of one type as if it were another.
+
+---
+
+## Random Access
+
+The idea is to create an &#34;array-in-a-file&#34; that can be accessed at any arbitrary location (index or offset) easily.
+
+* Should probably be called &#34;arbitrary access files&#34;.
+* Each item in the file (called a record) must be the same size.
+* Structures and classes are both perfect for this.
+    - (provided they are constant-sized)
+
+---
+
+## Random Access
+
+* Open the file for both input and output.
+    -  While not always necessary, it often is.
+* Open file in binary mode
+    - ASCII-encoding would be undesirable
+* Move to desired location (_seek_)
+    - You can seek the read and write position independently.
+* Read or write a record (or records).
+    - Must be done as a series of bytes (`char`s).
+
+---
+
+## Positioning
+
+**`seekg()`** : &#34;seek get&#34; – move the &#34;read cursor&#34;
+
+**`seekp()`** : &#34;seek put&#34; – move the &#34;write cursor&#34;.
+
+* Can be used to go to any location in a file.
+* Math similar to pointer-based array access is used.
+
+**Syntax:**    
+_`stream`_`.seekg(`_`offset`_`, `_`mode`_`)`       
+_`stream`_`.seekp(`_`offset`_`, `_`mode`_`)`
+
+Where _stream_ is the file stream, offset_ is distance to seek (bytes), _mode_ is where to start from (mathematically).
+
+``` cpp
+// seek 25 bytes from the beginning of stream `fin`
+fin.seekg(25L, ios::beg); 
+```
+
+---
+
+## Useful `ios` Methods
+
+**_`stream`_`.seekg()`** : seek &#34;get&#34; to an offset in _`stream`_
+
+**_`stream`_`.seekp()`** : seek &#34;put&#34; to an offset in _`stream`_
+
+**_`stream`_`.read()`** : read raw bytes from _`stream`_
+
+**_`stream`_`.write()`** : write raw bytes to _`stream`_
+
+**_`stream`_`.clear()`** : clear _`stream`_&#39;s _state flags_
+
+**_`stream`_`.tellg()`** : where is the &#34;get&#34; cursor?
+
+**_`stream`_`.tellp()`** : where is the &#34;put&#34; cursor?
+
+---
+
+## Keep records simple
+
+Every record in a (simple) random-access file needs to be the same _size_ (in bytes).
+
+* Avoid using any attributes that are pointers.
+* Avoid using any attribute type that is not _trivially copyable_:
+    * http://en.cppreference.com/w/cpp/types/is_trivially_copyable 
+
+```cpp
+#include &lt;iostream&gt;
+#include &lt;type_traits&gt;
+//[...]
+// Let class A be the class you are interested in...
+std::cout &lt;&lt; std::boolalpha;
+std::cout &lt;&lt; std::is_trivially_copyable&lt;A&gt;::value &lt;&lt; &#39;\n&#39;;
+// if the output is &#39;false&#39; then A is not trivially copyable.
+```
+
+---
+
+&lt;small&gt;
+
+```cpp
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;type_traits&gt;
+
+struct A{
+    int x;
+private:
+    int y;
+};
+
+struct B{
+    int x[10];
+private:
+    int y[10];
+};
+
+struct C{
+    int x[10];
+    std::string s;              // not OK!
+private:
+    int y[10];
+};
+
+struct D{
+    int* x = nullptr;           // watch out! probably not OK...
+};
+
+struct E{
+    int* x = nullptr;           
+    E () : x{ new int{3} } {}   // not OK!
+    ~E() { delete x; }
+};
+ 
+int main(){
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; std::is_trivially_copyable&lt;A&gt;::value &lt;&lt; &#39;\n&#39;; // true
+    std::cout &lt;&lt; std::is_trivially_copyable&lt;B&gt;::value &lt;&lt; &#39;\n&#39;; // true
+    std::cout &lt;&lt; std::is_trivially_copyable&lt;C&gt;::value &lt;&lt; &#39;\n&#39;; // false
+    std::cout &lt;&lt; std::is_trivially_copyable&lt;D&gt;::value &lt;&lt; &#39;\n&#39;; // true
+    std::cout &lt;&lt; std::is_trivially_copyable&lt;E&gt;::value &lt;&lt; &#39;\n&#39;; // false
+    std::cout &lt;&lt; &#39;\n&#39;;
+    return 0;
+}
+```
+
+&lt;/small&gt;
+
+---
+
+## Zero Memory Quickly
+
+For security, it is often desirable to clear _all_ bytes associated with an object&#39;s memory allocation.  This can be done efficiently with `memset()`:
+
+**`memset()`** : (not a method) – useful for clearing memory within a record.
+
+* `memset` is defined in the `&lt;cstring&gt;` header file.
+
+**Syntax:**      
+`memset(`_`start`_`, `_`value`_`, `_`size`_`)`
+
+``` cpp
+// zero all bytes contained in `myObj`:
+memset(&amp;myObj, 0, sizeof(myObj));
+// IMPORTANT:  Don&#39;t try this if your object contains non-primitive
+//             attributes or is a derived class!
+```
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create();
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>
