@@ -44,7 +44,6 @@ WorkDayAbr today = mon;
 ---
 
 ### `enum` (continued)
-<small style="font-size: 80%;">
 
 - `enum` values are internally represented by integers.
 - `enum` will implicitly cast to `int`, but not vice-versa.
@@ -63,7 +62,6 @@ for(int i = mon; i <= fri; ++i){
          << endl;
 }
 ```
-</small>
 
 ---
 
