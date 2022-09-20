@@ -73,7 +73,7 @@ _**File**_: a set of data stored on a computer; often on secondary storage such 
 ``` cpp
 fstream fin{"my_file", ios::in|ios::binary};
 char ch;
-fin.read(&ch, sizeof(ch)); // read 1 character.
+fin.read(&ch, sizeof(char)); // read 1 character.
 ```
 
 ---
@@ -85,8 +85,26 @@ To read/write non-character data, you must cast using:
 reinterpret_cast<char*>( address_of_object )
 ```
 
-_**Reason:**_  The `read()` and `write()` methods are designed to input/output raw _bytes_ of data.  `char` is a convenient "package" for raw bytes.     
+_**Reason:**_  The `read()` and `write()` methods are designed to input/output raw _bytes_ of data.  `char` is a convenient "package" for raw bytes.      
 `reinterpret_cast` forces the compiler to treat a pointer/address of one type as if it were another.
+
+Here are the prototypes for `read()` and `write()`:
+``` cpp
+istream& read (char* s, streamsize n);
+ostream& write (char* s, streamsize n);
+```
+
+---
+
+### More realistic example:
+
+* Reading / writing any value that isn't type `char` requires casting the pointer (first argument) to type `char*`:
+
+``` cpp
+fstream fin{"my_file", ios::in|ios::binary};
+int x;
+fin.read(reinterpret_cast<char*>(&x), sizeof(int)); // read 1 int (4 bytes).
+```
 
 ---
 
