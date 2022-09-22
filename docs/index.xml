@@ -183,7 +183,7 @@ Allows the programmer to specify mnemonic literals. Low-level, not very flexible
     </item>
     
     <item>
-      <title>10: Binary Files &amp; Random Access</title>
+      <title>09b: Binary Files &amp; Random Access</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/09b_random_access/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
@@ -206,7 +206,7 @@ Arrays are a reference type. The array variable does not refer to the array as a
     </item>
     
     <item>
-      <title>10 Dynamic Memory</title>
+      <title>10: Dynamic Memory</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/10_dynamic_memory/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
