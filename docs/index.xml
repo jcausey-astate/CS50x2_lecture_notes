@@ -224,5 +224,16 @@ Arrays are a reference type. The array variable does not refer to the array as a
 new operator allocates new memory. returns a pointer to the allocated space. Places responsibility on the programmer to &amp;ldquo;clean up&amp;rdquo; the memory later. delete operator de-allocates memory that was allocated with new. Failure to de-allocate memory creates a memory leak. Both operators come in two forms; one for a single data item and one for an array.</description>
     </item>
     
+    <item>
+      <title>12 Classes and Objects</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/12_classes_and_objects/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/12_classes_and_objects/</guid>
+      <description>Classes and Objects Gaddis Ch. 13 Introduction Procedural (structured) Programming Concerned with processes (actions) that occur in a program. Basic unit of modularity is the function. Object-Oriented Programming (OOP) Focuses on the data (things) and the functions that operate on it. Basic unit of modularity is the class (or structure). OOP Central Concepts Encapsulation
+Bundling Data / Implementation Hiding Principle of least privilege. Public Interface Class Hierarchies (Inheritance)
+Factoring out common data/behavior.</description>
+    </item>
+    
   </channel>
 </rss>

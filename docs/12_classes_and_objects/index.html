@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/this-course-custom.css" />
+
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+# Classes and Objects
+
+## Gaddis Ch. 13
+
+---
+
+## Introduction
+
+* Procedural (structured) Programming
+    - Concerned with processes (_actions_) that occur in a program.
+    - Basic unit of modularity is the _function_.
+* Object-Oriented Programming (OOP)
+    - Focuses on the data (_things_) and the functions that operate on it.
+    - Basic unit of modularity is the _class_ (or structure).
+
+---
+
+## OOP Central Concepts
+
+* Encapsulation
+    - Bundling
+    - Data / Implementation Hiding
+        &#43; Principle of *least privilege*.
+    - Public Interface
+
+* Class Hierarchies (Inheritance)
+    - Factoring out common data/behavior.
+    - Standardizing a common (public) interface.
+
+---
+
+## OOP Terminology
+
+_**Class**_ - basically like a _structure_.  Encapsulates data and functions that are related.
+
+* The class is the _blueprint_ describing the new type of thing.
+
+_**Object**_ - an instance of a class.
+
+* The object is the real thing that is built by following the blueprint.
+
+_**Attributes**_ - a class&#39;s _member data_
+
+_**Methods**_ - a class&#39;s _member functions_
+
+@snap[south span-100 text-red]
+&lt;small&gt;We will use `class` and `struct` somewhat interchangeably.&lt;/small&gt;
+@snapend
+
+
+---
+
+## Format of a Class
+
+```cpp
+class ClassName 
+{
+    declaration;
+    declaration;
+};
+```
+
+**Example**
+
+```
+struct Rectangle {  |   class Rectangle {
+    double length;  |       public:
+    double width;   |           double length;
+    double area;    |           double width;
+};                  |           double area();
+                    |   };
+```
+
+---
+
+## Access Specifiers
+
+**`public`** - Available both inside and _outside_ the class definition.
+
+**`private`** - Only available _inside_ the class definition.
+
+**`protected`** - Similar to `private` (we&#39;ll see this later).
+
+* Order doesn&#39;t matter.
+* Default is `private` for `class`.  (Default is `public` for `struct`.)
+
+---
+
+## Methods
+
+* Prototype in _class declaration_
+* Definition usually in separate _implementation file_.
+    - May also be in same file.
+* _Scope resolution operator_ ( `::` ) – used to establish ownership of an identifier
+    - Must be used when splitting method definitions from the class declaration.
+* Private methods – what good are they?
+
+---
+
+## Accessors and Mutators
+
+* Provides a way to safely access data members.
+* Principle of _least privilege_.
+* Stale data (Avoid it!)
+* Allows the class to disallow incorrect states.
+
+---
+
+## Constructors
+
+* Allow an object to be _instantiated_ (created) in an already-working state.
+    - Contrast this with the _uninitialized_ state that regular data and `struct`s begin with.
+* Constructors _do not_ have any return type.
+* Constructors have the same name as the class.
+* _Default constructor_ is a constructor that takes no parameters; used to create a &#34;default&#34; or &#34;blank&#34; object.
+* Constructors may take parameters to allow _initialization_ during instantiation.
+* Classes do not always have a default constructor.
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create();
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>
