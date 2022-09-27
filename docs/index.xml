@@ -193,6 +193,15 @@ Used to abstract the concept of &amp;ldquo;a blob of data&amp;rdquo; in a well-u
     </item>
     
     <item>
+      <title>11b: Exceptions</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/11b_exceptions/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/11b_exceptions/</guid>
+      <description>Exceptions (When Everything Goes Wrong) Gaddis Ch. 16 Exceptions Used to communicate that something unexpected has occurred. Allows the programmer to deal with unexpected situations in a controlled manner. May be as simple or as complex as desired (depending on usage in the program) In C++, any data value can be used as an exception! Key Words throw - Used to generate an exception and “throw” it up the call stack.</description>
+    </item>
+    
+    <item>
       <title>05a_Arrays</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05a_arrays/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
@@ -206,11 +215,11 @@ Arrays are a reference type. The array variable does not refer to the array as a
     </item>
     
     <item>
-      <title>10: Dynamic Memory</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/10_dynamic_memory/</link>
+      <title>11a: Dynamic Memory</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/11a_dynamic_memory/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/10_dynamic_memory/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/11a_dynamic_memory/</guid>
       <description>Dynamic Memory Allocation Gaddis Chapter 9.8 Creating Memory at Runtime New memory can be allocated for individual data values or arrays at runtime.
 new operator allocates new memory. returns a pointer to the allocated space. Places responsibility on the programmer to &amp;ldquo;clean up&amp;rdquo; the memory later. delete operator de-allocates memory that was allocated with new. Failure to de-allocate memory creates a memory leak. Both operators come in two forms; one for a single data item and one for an array.</description>
     </item>

@@ -1,5 +1,5 @@
 ---
-title: "10: Dynamic Memory"
+title: "11a: Dynamic Memory"
 date: 2020-10-02T12:30:15-05:00
 draft: false
 ---
