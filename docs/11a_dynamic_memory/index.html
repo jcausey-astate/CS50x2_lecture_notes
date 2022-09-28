@@ -84,7 +84,7 @@ This gives us the ability to write programs that &#34;adapt&#34; to the size of 
 ### Example (dynamic array)
 
 ``` cpp
-double* scores;                         // array ptr
+double* scores = nullptr;               // array ptr
 int n_scores;                           // size
 std::cout &lt;&lt; &#34;Enter number of scores: &#34;;
 std::cin  &gt;&gt; n_scores;
@@ -113,6 +113,7 @@ int size = 10;
 int* a = new int[size];   // new array
 // [...]
 delete [] a;              // delete array
+a = nullptr;
 ```
 
 **`new` Array Syntax**&lt;br /&gt;
@@ -139,10 +140,14 @@ __Ex:__  `if(xPtr == nullptr)   // failed`
 ---
 
 ## Dynamic Memory Summary
+
 * If you &#34;`new`&#34; it, you &#34;`delete`&#34; it!
+
 * `new` and `delete` operations may or may not be in the same scope
     - _This is a feature_:  It is one way to make data survive going out of scope.
+
 * Failure to `delete` == memory leak!
+
 * This is what destructors are good at!
     - Objects that do &#34;`new`&#34; operations will require a _destructor_.
 

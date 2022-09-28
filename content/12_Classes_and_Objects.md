@@ -49,10 +49,7 @@ _**Attributes**_ - a class's _member data_
 
 _**Methods**_ - a class's _member functions_
 
-@snap[south span-100 text-red]
-<small>We will use `class` and `struct` somewhat interchangeably.</small>
-@snapend
-
+<span style="color: crimson;">We will use `class` and `struct` somewhat interchangeably.</span>
 
 ---
 
@@ -87,8 +84,12 @@ struct Rectangle {  |   class Rectangle {
 
 **`protected`** - Similar to `private` (we'll see this later).
 
+<br>
+
 * Order doesn't matter.
+
 * Default is `private` for `class`.  (Default is `public` for `struct`.)
+  * This is the _only_ difference between `class` and `struct` in C++.
 
 ---
 
