@@ -104,12 +104,23 @@ struct Rectangle {  |   class Rectangle {
 
 ---
 
+## Separating *Specification* and *Implementation*
+
+* Header files ( _`MyClass`_`.h` ) – place class specification (declaration) here
+* Implementation file ( _`MyClass`_`.cpp` ) – implement methods here
+* `#include` the header from the implementation file
+* Implementation ( `.cpp` ) files can be compiled; header files cannot.
+* **NEVER** `#include` a `.cpp` file!
+
+
+---
+
 ## Accessors and Mutators
 
 * Provides a way to safely access data members.
 * Principle of _least privilege_.
 * Stale data (Avoid it!)
-* Allows the class to disallow incorrect states.
+* Allows the class to _disallow incorrect states_.
 
 ---
 
@@ -122,3 +133,172 @@ struct Rectangle {  |   class Rectangle {
 * _Default constructor_ is a constructor that takes no parameters; used to create a "default" or "blank" object.
 * Constructors may take parameters to allow _initialization_ during instantiation.
 * Classes do not always have a default constructor.
+
+
+---
+
+## Constructors
+
+* Allow an object to be _instantiated_ (created) in an already-working state.
+    - Contrast this with the _uninitialized_ state that regular data and `struct`s begin with.
+* Constructors _do not_ have any return type.
+* Constructors have the same name as the class.
+* _Default constructor_ is a constructor that takes no parameters; used to create a "default" or "blank" object.
+* Constructors may take parameters to allow _initialization_ during instantiation.
+* Classes do not always have a default constructor.
+
+---
+
+## c-tor initialization lists
+
+* Compact syntax for placing values into attributes in a constructor implementation.
+* Guarantees initialization *before* body of constructor executes.
+
+**Example**
+
+```cpp
+struct Rectangle{
+    Rectangle(int l, int w) : length{l}, width{w} {}
+    int length;
+    int width;
+};
+```
+
+The body of the constructor above is _empty_ since there is no more initialization work to do... But the body (curly braces) is still required syntactically.
+
+---
+
+## c-tor initialization lists
+
+There is no need for name disambiguation in a constructor initialization list, due to the syntactic requirements of the language.
+
+**Example**
+
+```cpp
+struct Rectangle{
+    Rectangle(int length, int width) : length{length}, width{width} {}
+    int length;
+    int width;
+};
+```
+
+This can allow you to write more expressive code, more easily.
+
+---
+
+## Destructors
+
+* Called when object is destroyed
+    * Either by being deleted or going out of scope
+* Named same as class, but begins with `~`
+* No return value, no parameters
+* Cannot be overloaded
+* ... when and why destructors are needed
+
+---
+
+## Inline Methods
+
+* Implemented directly in class specification.
+* Substituted during compilation.
+* Speed VS executable size
+* “inline all 1-liners”
+* `inline` keyword
+    - Can be used to inline functions implemented separately.
+
+---
+
+## Overloading
+* Constructors may be overloaded
+    - Remember that there are consequences for default constructor
+* Methods may be overloaded
+* Destructors _may NOT_ be overloaded
+
+---
+
+## Pointers to Objects
+
+* Uses same pointer notation
+* “dot-notation” becomes “arrow-notation”:
+* Arrow operator (  `->`  )
+* Dynamic allocation of objects is possible
+
+---
+
+**`this` keyword**
+
+* `this` is a keyword representing a *pointer to* the current object.
+* Used to disambiguate naming within method bodies.
+
+**Example**
+
+```cpp
+class Rectangle{
+    Rectangle(int l, int w);
+    void set_length(int length){
+        this->length = length;
+    }
+    // [...] other methods not shown.
+private:
+    int length;
+    int width;
+};
+```
+
+<small>
+[CPP Core Guideline: Use a class if any member is non-public.](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c8-use-class-rather-than-struct-if-any-member-is-non-public)
+</small>
+
+---
+
+**Uniform Initialization Syntax**
+
+* Added in C++11
+* Allows initialization of all types of variables with the same syntax.
+* The "old" syntax for each type still works, but consider using uniform syntax.
+
+**Syntax:**
+`variableType  variableName{argument1, argument2};`
+
+**Example:**
+```cpp
+int       age{23};
+Rectangle classroom{24, 30};
+// The following is an array - we will talk more about these soon:
+double    temperatures[]{78.8, 80.2, 92.4, 87.5, 95.3, 95.1, 92.8};
+```
+
+---
+
+## Other Details
+
+* Timing of constructors, destructors
+* Arrays of objects
+    - Requires default constructor ...
+    - ... unless initialization syntax is used.
+        * May provide arguments only or constructor invocations.
+
+---
+
+## `const` methods
+
+* In classes / structures, a method can "promise" not to modify the *state* of the object.
+    - meaning, values of attributes will not be modified
+* accomplished by marking methods as `const`:
+
+```cpp
+class Rectangle{
+public:
+    int get_length() const;  // const method
+    //[... other code not shown ...]
+private:
+    int length;
+    int width;
+};
+```
+
+`get_length()` *cannot* modify the attributes (`length` and `width`).
+
+* This protection is often added to accessors, and *should* be added whenever possible.
+    - Mutators cannot be `const` methods, since they need to change the state of the object.
+
