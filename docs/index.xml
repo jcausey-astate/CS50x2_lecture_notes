@@ -225,14 +225,24 @@ new operator allocates new memory. returns a pointer to the allocated space. Pla
     </item>
     
     <item>
-      <title>12 Classes and Objects</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/12_classes_and_objects/</link>
+      <title>12.1 Classes and Objects</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/12.1_classes_and_objects/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/12_classes_and_objects/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/12.1_classes_and_objects/</guid>
       <description>Classes and Objects Gaddis Ch. 13 Introduction Procedural (structured) Programming Concerned with processes (actions) that occur in a program. Basic unit of modularity is the function. Object-Oriented Programming (OOP) Focuses on the data (things) and the functions that operate on it. Basic unit of modularity is the class (or structure). OOP Central Concepts Encapsulation
 Bundling Data / Implementation Hiding Principle of least privilege. Public Interface Class Hierarchies (Inheritance)
 Factoring out common data/behavior.</description>
+    </item>
+    
+    <item>
+      <title>12.2 Aggregation</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/12.2_aggregation_of_objects/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/12.2_aggregation_of_objects/</guid>
+      <description>Aggregation of Objects Gaddis Ch. 14.7 Aggregation Aggregation: an object of one class is used as an attribute in another class Often called composition Creates the &amp;ldquo;has a&amp;rdquo; relationship. Large book example in Chapter 14
+Instructor Textbook Course Example class Tool{ public: [...] // interface not shown for brevity private: std::string name; double weight; }; class ToolBox{ public: [...] // interface not shown for brevity private: Tool inventory[1024]; // aggregation of &amp;#34;Tool&amp;#34; objects }; </description>
     </item>
     
   </channel>
