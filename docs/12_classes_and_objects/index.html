@@ -159,40 +159,71 @@ struct Rectangle {  |   class Rectangle {
 
 ---
 
-## c-tor initialization lists
+## Constructors (c-tors)
 
-* Compact syntax for placing values into attributes in a constructor implementation.
-* Guarantees initialization *before* body of constructor executes.
-
-**Example**
-
-```cpp
-struct Rectangle{
-    Rectangle(int l, int w) : length{l}, width{w} {}
-    int length;
-    int width;
+A constructor&#39;s job is to initialize attributes of the class:
+``` cpp
+class Rectangle {
+    public:
+        Rectangle (int l, int w){
+            length = l;
+            width  = w;
+        }
+        int length = 0;
+        int width  = 0;
 };
 ```
-
-The body of the constructor above is _empty_ since there is no more initialization work to do... But the body (curly braces) is still required syntactically.
 
 ---
 
 ## c-tor initialization lists
 
-There is no need for name disambiguation in a constructor initialization list, due to the syntactic requirements of the language.
+But... there is another way to do it:  **_Constructor initialization list_**
 
-**Example**
+* Compact syntax for placing values into attributes in a constructor implementation.
+* Guarantees initialization *before* body of constructor executes.
 
-```cpp
-struct Rectangle{
-    Rectangle(int length, int width) : length{length}, width{width} {}
-    int length;
-    int width;
+
+---
+
+**Example: c-tor initialization list**
+
+
+``` cpp
+class Rectangle {
+    public:
+        Rectangle (int l, int w) : length{l}, width{w} {}
+        int length = 0;
+        int width  = 0;
 };
 ```
 
-This can allow you to write more expressive code, more easily.
+This:
+
+``` cpp
+ : length{l}, width{w}
+```
+
+Is the _constructor initialization list_.  It is followed in this case by an _empty_ method body `{}`, which is OK since there is nothing more for this constructor to do.
+
+* The initialization list takes effect _before_ the body of the c-tor method begins to execute!
+
+---
+
+**No scope resolution ambiguity!**
+
+``` cpp
+class Rectangle {
+    public:
+        Rectangle (int length, int width) 
+            : length{length}, width{width} {}
+        int length = 0;
+        int width  = 0;
+};
+```
+
+* Constructor initialization lists can only contain initializations for attributes and constructor delegation to base classes (we will see later).
+    * So, there cannot be ambiguity with respect to attribute versus parameter names.
 
 ---
 
