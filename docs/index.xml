@@ -188,7 +188,7 @@ Allows the programmer to specify mnemonic literals. Low-level, not very flexible
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13b_operator_overloading/</guid>
-      <description>OperatorOverloading Operators as Functions Operators in C++ are actually just symbolic shorthand for function calls.
+      <description>OperatorOverloading Gaddis Ch. 14.5 Operators as Functions Operators in C++ are actually just symbolic shorthand for function calls.
 Example Expression:
 area = pi * r * r; Consider just the first operator that will be applied:
 pi * r This expression will actually result in the following function call:
