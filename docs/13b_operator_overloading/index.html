@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+    <base target="_blank" />
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+# Operator&lt;br /&gt;Overloading
+
+---
+
+## Operators as Functions
+
+Operators in C&#43;&#43; are actually just symbolic shorthand for function calls.
+
+**Example Expression:**
+``` cpp
+area = pi * r * r;
+```
+
+Consider just the first operator that will be applied:
+
+``` cpp
+pi * r
+```
+
+This expression will actually result in the following function call:
+
+``` cpp
+operator* (pi, r)
+```
+
+The entire expression could be written as:
+
+``` cpp
+operator= ( operator*( operator*( pi, r ), r ));
+```
+
+---
+
+## Overloading Operators
+
+Since operators are really just function calls in disguise, if we know the right _prototypes_ for the function calls, we can overload them.
+
+* Most operators in C&#43;&#43; can be overloaded.
+* Corresponding functions are always named `operator` followed by the symbol for the operator.
+
+---
+
+## Operator Prototypes
+
+Operator function prototypes follow the following patterns, depending on the number of _operands_:
+
+* Binary operators (2 operands):
+    - _`returntype`_&amp;nbsp;&amp;nbsp;` operator`_&amp;nbsp;&amp;lt;SYMBOL&amp;gt;_` ( `_`left_operand, right_operand`_`)`
+* Unary operators (1 operand):
+    - _`returntype`_&amp;nbsp;&amp;nbsp;` operator`_&amp;nbsp;&amp;lt;SYMBOL&amp;gt;_` ( `_`right_operand`_`)` 
+
+---
+
+**Example: Fraction**
+``` cpp
+struct Fraction{
+    int num;
+    int den;
+};
+
+// Multiply two Fractions:
+Fraction operator* (const Fraction&amp; lhs, 
+                    const Fraction&amp; rhs) 
+{
+    Fraction result;
+    result.num = lhs.num * rhs.num;
+    result.den = lhs.den * rhs.den;                        
+    return result;
+}
+```
+
+---
+
+## Multiple Overloads Needed
+
+``` cpp
+Fraction operator* (const Fraction&amp; lhs, 
+                    const Fraction&amp; rhs);
+```
+* This prototype only covers a `Fraction * Fraction` expression.
+    - Consider **`int * Fraction`**,&lt;br /&gt;  ** `Fraction * int`** , etc...
+* More overloaded functions are needed to support all desirable interfaces.
+
+_Overload only when the operator makes sense for the new type being created!_
+
+---
+
+## Stream Operators `&lt;&lt;` and `&gt;&gt;`
+
+* Binary operators
+* Left-hand operand is the stream, and should be _passed by reference_.
+    - (Don&#39;t make copies of streams.)
+* Right-hand operand is the &#34;thing&#34; you are reading/writing.
+* Return type should be the stream, _by reference_.
+
+**Example**
+``` cpp
+std::ostream&amp; operator&lt;&lt; (std::ostream&amp;   strm, 
+                          const Fraction&amp; rhs);
+```
+
+---
+
+## `&#43;&#43;` and `--`
+
+**Prefix (`&#43;&#43;x` or `--x`)** &lt;br /&gt;
+``` cpp
+type&amp; operator&#43;&#43; (type&amp; rhs);
+type&amp; operator-- (type&amp; rhs);
+```
+
+**Postfix (`x&#43;&#43;` or `x--`)** &lt;br /&gt;
+``` cpp
+type operator&#43;&#43;(type&amp; lhs, int);
+type operator--(type&amp; lhs, int);
+```
+* Notice the &#34;phantom&#34; `int` second parameter &amp;mdash; this is used only so that the compiler can tell the prefix and postfix versions apart.
+* Also note that a _copy_ of `lhs` (with its previous value) is returned.
+
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create();
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>
