@@ -66,6 +66,35 @@ draft: false
 
 ---
 
+### The `tail` pointer
+
+To add at the end of the list (where the list only has a `head` pointer), we have to traverse the entire list to find the last element...   $O(N)$ steps.
+
+If we could jump directly to the end, it would become $O(1)$...  
+
+We can!  Just add one more pointer to the _List_:  We call it a `tail` pointer, and it always points to the final element in the list:
+
+
+.center[![:scale Linked List, 80%](../images/LinkedList/LinkedListWithTail.svg)]
+
+---
+
+### Complexity of common operations in Singly-Linked lists
+
+* Add node at the front (head) of the list:  $O(1)$
+* Add node at the end (tail) of the list:  $O(N)$
+  * ... with a tail pointer:  $O(1)$
+* Add a node in-order in a sorted list:  $O(N)$
+* Traverse the linked list:  $O(N)$
+* Search the list:  $O(N)$
+* Delete a node from head:  $O(1)$
+* Delete a node from tail:  $O(N)$
+  * ... with a tail pointer:   **Still $O(N)$**
+* Delete a node by searching for it: $O(N)$
+* Empty the list:  $O(N)$
+
+---
+
 ## Doubly-Linked Lists
 
 A _doubly-linked list_ is a linked list in which the _nodes_ support access to both the _next_ and _previous_ items in the list, allowing bidirectional traversal.
