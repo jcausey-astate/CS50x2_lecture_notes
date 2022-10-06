@@ -271,5 +271,15 @@ Rectangle r1{3, 4}; Rectangle r2{2, 3}; r2 = r1; // what happens here? What happ
 Rectangle r1{3, 4}; Rectangle r2{2, 3}; r2 = r1; // what happens here? Each attribute in r2 receives a copy of the corresponding attribute in r1.</description>
     </item>
     
+    <item>
+      <title>14: Linked Lists</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/14_linked_lists/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/14_linked_lists/</guid>
+      <description>Linked Lists Gaddis Ch. 18 Drozdek Ch. 3 The Linked List ADT Linked list: set of data structures (nodes) that contain references to other data structures Relationship is linear: Each node references the next node (and sometimes the previous node). References may be addresses (pointers) or array indices Nodes can be located anywhere in memory. Data can be added/removed during execution. .center[]
+Singly-Linked Lists Can grow or shrink as needed (unlike arrays).</description>
+    </item>
+    
   </channel>
 </rss>
