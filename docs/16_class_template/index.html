@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+    <base target="_blank" />
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+# Templates, Stacks, and Queues
+
+## Gaddis Ch. 16, 19
+
+---
+
+## Function Templates
+
+Function templates provide a pattern for a function that can work with many types of data.
+
+* When written, the data type specifiers are replaced with type parameters.
+* When called, the compiler generates a function with actual data types that match those provided in the call.
+
+**Example**
+
+```cpp
+template&lt;typename Numeric&gt;
+Numeric times10(Numeric num){
+     return 10 * num;
+}
+```
+
+`Numeric` is the _type parameter_ (it can be any valid identifier, but is usually capitalized (`UpperCamelCase` or sometimes `ALL_CAPS`) by convention.
+
+&lt;small&gt;&lt;i&gt;&lt;b&gt;Tip&lt;/b&gt;:  Write the function for a normal data type first, then convert to a function template!&lt;/i&gt;&lt;/small&gt;
+
+---
+
+## Function Template Notes
+
+* Multiple type parameters can be used.
+* Function templates can be overloaded (as long as each overload has a unique signature).
+* All type parameters specified in template prefix must be used in the definition.
+
+---
+
+## Function Template Notes
+* A function template is just a pattern:  No actual code is generated until the function is called.
+    - A function template uses no memory.
+* When passing objects to a function template, the object must be able to _behave_ in the way expected by the function.
+    - If the function is expecting a number, your object must be able to _behave_ like a number.
+
+---
+
+## Class Templates
+
+C&#43;&#43; _class templates_ are used to create _generic classes_ and _abstract data types_.
+
+* Often used for &#34;container types&#34;.
+    - Allows writing a container once, re-using it for many types.
+* Type arguments are provided when an object of the class template type is created.
+
+---
+
+**Example**
+```cpp
+template&lt;typename GradeType&gt;
+class Grade{
+    public:
+        Grade(const GradeType&amp;);
+        void      setGrade(const GradeType&amp;);
+        GradeType getGrade() const;
+    private:
+        GradeType  grade;
+};
+```
+
+---
+
+**Example (implementation)**
+```cpp
+template&lt;typename GradeType&gt;
+Grade&lt;GradeType&gt;::Grade(const GradeType&amp; newgrade) {
+    grade = newgrade;
+}
+template&lt;typename GradeType&gt;
+void Grade&lt;GradeType&gt;::setGrade(const GradeType&amp; newgrade) {
+    grade = newgrade;
+}
+template&lt;typename GradeType&gt;
+GradeType Grade&lt;GradeType&gt;::getGrade() const {
+    return grade;
+}
+```
+
+
+---
+
+## Class Template Notes
+
+* All references to the class as a type must include the type argument list.
+    - When declaring/instantiating objects
+    - Whenever scope resolution is required.
+
+---
+
+## Examples
+
+* Linked List node as a template
+* Array template
+* Stack template
+* Queue template
+* Ring buffer template
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create();
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>

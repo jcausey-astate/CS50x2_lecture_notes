@@ -216,6 +216,28 @@ Used to abstract the concept of &amp;ldquo;a blob of data&amp;rdquo; in a well-u
     </item>
     
     <item>
+      <title>15b Stack, Queue, Circular List</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/15b_stack_queue_circularlist/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/15b_stack_queue_circularlist/</guid>
+      <description>Stacks, Queues, and Circular Lists Stacks A stack is a data structure optimized for addition and removal only at one end. It focuses on the last-in, first-out access pattern.
+Stack Operations: Primary stack operations are:
+push : Add a value at the &amp;ldquo;top&amp;rdquo; of the stack. pop : Remove the value at the &amp;ldquo;top&amp;rdquo; of the stack. top : Access the value at the &amp;ldquo;top&amp;rdquo; of the stack, but do not remove it.</description>
+    </item>
+    
+    <item>
+      <title>16 Class Template</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/16_class_template/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/16_class_template/</guid>
+      <description>Templates, Stacks, and Queues Gaddis Ch. 16, 19 Function Templates Function templates provide a pattern for a function that can work with many types of data.
+When written, the data type specifiers are replaced with type parameters. When called, the compiler generates a function with actual data types that match those provided in the call. Example
+template&amp;lt;typename Numeric&amp;gt; Numeric times10(Numeric num){ return 10 * num; } Numeric is the type parameter (it can be any valid identifier, but is usually capitalized (UpperCamelCase or sometimes ALL_CAPS) by convention.</description>
+    </item>
+    
+    <item>
       <title>05a_Arrays</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05a_arrays/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
