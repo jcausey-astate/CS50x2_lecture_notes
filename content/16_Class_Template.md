@@ -1,10 +1,10 @@
 ---
-title: "16 Class Template"
+title: "16 Templates and Generic Programming"
 date: 2020-10-02T12:30:16-05:00
 draft: false
 ---
 
-# Templates, Stacks, and Queues
+# Templates
 
 ## Gaddis Ch. 16, 19
 
@@ -34,17 +34,46 @@ Numeric times10(Numeric num){
 
 ## Function Template Notes
 
-* Multiple type parameters can be used.
+* Multiple type parameters can be defined.
+    - All type parameters specified in template prefix must be used in the definition.
 * Function templates can be overloaded (as long as each overload has a unique signature).
-* All type parameters specified in template prefix must be used in the definition.
+
+---
+
+**Multiple type parameters can be defined.**
+
+```cpp
+template<typename Type1, typename Type2>
+void print_pair(const Type1& v1, const Type2& v2){
+    std::cout << '(' << v1, ", " << v2 << ')';
+}
+```
+
+**All type parameters specified in template prefix must be used in the definition.**
+
+---
+
+**Function templates can be overloaded (as long as each overload has a unique signature).**
+
+```cpp
+template<typename ValueType>
+void add(ValueType v1, ValueType v2);
+
+template<typename ValueType>
+void add(ValueType v1, ValueType v2, ValueType v3);
+```
 
 ---
 
 ## Function Template Notes
+
 * A function template is just a pattern:  No actual code is generated until the function is called.
     - A function template uses no memory.
+
 * When passing objects to a function template, the object must be able to _behave_ in the way expected by the function.
     - If the function is expecting a number, your object must be able to _behave_ like a number.
+    - You can determine the requirements by examining _operators_ and _operations_ performed on the parameters.
+    - Be sure to document these requirements in your function documentation!
 
 ---
 

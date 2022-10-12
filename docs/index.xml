@@ -227,12 +227,12 @@ push : Add a value at the &amp;ldquo;top&amp;rdquo; of the stack. pop : Remove t
     </item>
     
     <item>
-      <title>16 Class Template</title>
+      <title>16 Templates and Generic Programming</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/16_class_template/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/16_class_template/</guid>
-      <description>Templates, Stacks, and Queues Gaddis Ch. 16, 19 Function Templates Function templates provide a pattern for a function that can work with many types of data.
+      <description>Templates Gaddis Ch. 16, 19 Function Templates Function templates provide a pattern for a function that can work with many types of data.
 When written, the data type specifiers are replaced with type parameters. When called, the compiler generates a function with actual data types that match those provided in the call. Example
 template&amp;lt;typename Numeric&amp;gt; Numeric times10(Numeric num){ return 10 * num; } Numeric is the type parameter (it can be any valid identifier, but is usually capitalized (UpperCamelCase or sometimes ALL_CAPS) by convention.</description>
     </item>
