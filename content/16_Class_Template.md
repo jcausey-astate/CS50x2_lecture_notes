@@ -129,6 +129,16 @@ GradeType Grade<GradeType>::getGrade() const {
 
 ---
 
+## Implementation Note
+
+Template libraries (classes, functions, methods) should be implemented in the header file.  We do not split into _.h_/_.cpp_ pairs as we would with non-template code.
+
+This is the result of the fact that template code does not directly compile to any object representation.
+
+Remember that templates provide a _pattern_ from which the compiler will generate the actual "code" and produce an object representation automatically.
+
+---
+
 ## Examples
 
 * Linked List node as a template
