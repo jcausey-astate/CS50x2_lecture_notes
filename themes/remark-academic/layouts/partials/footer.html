@@ -2,7 +2,11 @@
 <script src="{{ .Site.BaseURL}}/js/remark-macros.js"></script>
 <script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
 <script>
-	var slideshow = remark.create();
+	var slideshow = remark.create({
+		highlightStyle: "github",
+		highlightLines: true,
+  		highlightSpans: true
+	});
 
 	// Setup MathJax
 	MathJax.Hub.Config({

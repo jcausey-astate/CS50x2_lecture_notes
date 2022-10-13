@@ -463,7 +463,11 @@ Programmers are human.&lt;sup&gt;&lt;small&gt;[citation needed]&lt;/small&gt;&lt
 <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
 <script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
 <script>
-	var slideshow = remark.create();
+	var slideshow = remark.create({
+		highlightStyle: "github",
+		highlightLines: true,
+  		highlightSpans: true
+	});
 
 	
 	MathJax.Hub.Config({

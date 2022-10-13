@@ -28,7 +28,18 @@ Numeric times10(Numeric num){
 
 `Numeric` is the _type parameter_ (it can be any valid identifier, but is usually capitalized (`UpperCamelCase` or sometimes `ALL_CAPS`) by convention.
 
-<small><i><b>Tip</b>:  Write the function for a normal data type first, then convert to a function template!</i></small>
+---
+
+```cpp
+template<typename Numeric>
+Numeric times10(Numeric num){
+     return 10 * num;
+}
+```
+
+`Numeric` is the _type parameter_ (it can be any valid identifier, but is usually capitalized (`UpperCamelCase` or sometimes `ALL_CAPS`) by convention.
+
+<i><b>Tip</b>:  Write the function for a normal data type first, then convert to a function template!</i>
 
 ---
 
@@ -45,7 +56,7 @@ Numeric times10(Numeric num){
 ```cpp
 template<typename Type1, typename Type2>
 void print_pair(const Type1& v1, const Type2& v2){
-    std::cout << '(' << v1, ", " << v2 << ')';
+    std::cout << '(' << v1 << ", " << v2 << ')';
 }
 ```
 
@@ -139,10 +150,149 @@ Remember that templates provide a _pattern_ from which the compiler will generat
 
 ---
 
-## Examples
+## Example
 
-* Linked List node as a template
-* Array template
-* Stack template
-* Queue template
-* Ring buffer template
+A linked list node just joins a "payload" value to a pointer to the next node...  We don't really care about what _type_ the payload is...
+
+```cpp
+// This node only holds integers...
+class Node{
+public:
+    Node(int v);
+    int   get_value() const;
+    Node* get_next () const;
+    void  set_next(Node* n);
+private:
+    int   payload;
+    Node* next = nullptr;
+};
+```
+
+---
+
+```cpp
+// This node only holds integers...
+class Node{
+public:
+    Node(int v);
+    int   get_value() const;
+    Node* get_next () const;
+    void  set_next(Node* n);
+private:
+    int   payload;
+    Node* next = nullptr;
+};
+```
+
+We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload...
+
+---
+
+We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload...
+
+```cpp
+*template <typename PayloadType>
+class Node{
+```
+
+---
+
+Now, we _carefully_ replace any reference to the _type_ that was associated with the payload with the parameterized `PayloadType`.  That means we will be replacing `int` with `PayloadType` whenever the `int` referred to the type of the payload (beware of loop counters, etc.).
+
+```cpp
+template <typename PayloadType>
+class Node{
+public:
+    Node(`int` v);
+    `int`   get_value() const;
+    Node* get_next () const;
+    void  set_next(Node* n);
+private:
+    `int`   payload;
+    Node* next = nullptr;
+};
+```
+
+---
+
+Now, we _carefully_ replace any reference to the _type_ that was associated with the payload with the parameterized `PayloadType`.  That means we will be replacing `int` with `PayloadType` whenever the `int` referred to the type of the payload (beware of loop counters, etc.).
+
+```cpp
+template <typename PayloadType>
+class Node{
+public:
+    Node(`PayloadType` v);
+    `PayloadType` get_value() const;
+    Node*       get_next()  const;
+    void        set_next(Node* n);
+private:
+    `PayloadType` payload;
+    Node*       next = nullptr;
+};
+```
+
+---
+
+```cpp
+template <typename PayloadType>
+class Node{
+public:
+    Node(PayloadType v);
+    PayloadType get_value() const;
+    `Node`*       get_next()  const;
+    void        set_next(`Node`* n);
+private:
+    PayloadType payload;
+    `Node`*       next = nullptr;
+};
+```
+
+Next, we replace any instance of the class name `Node` that is being used as a typename, so that we add the template parameterization list to it...
+
+---
+
+```cpp
+template <typename PayloadType>
+class Node{
+public:
+    Node(PayloadType v);
+    PayloadType        get_value() const;
+    `Node<PayloadType>`* get_next()  const;
+    void               set_next(`Node<PayloadType>`* n);
+private:
+    PayloadType        payload;
+    `Node<PayloadType>`* next = nullptr;
+};
+```
+
+Now, we have a fully templated class definition.
+
+---
+
+```cpp
+template <typename PayloadType>
+class Node{
+public:
+    Node(PayloadType v);
+    PayloadType        get_value() const;
+    Node<PayloadType>* get_next()  const;
+    void               set_next(Node<PayloadType>* n);
+private:
+    PayloadType        payload;
+    Node<PayloadType>* next = nullptr;
+};
+```
+
+Here are two example method implementations:
+
+```cpp
+template <typename PayloadType>
+Node<PayloadType>* Node<PayloadType>::get_next() const{
+    return next;
+}
+
+template <typename PayloadType>
+void Node<PayloadType>::set_next(Node<PayloadType>* n){
+    next = n;
+}
+```
