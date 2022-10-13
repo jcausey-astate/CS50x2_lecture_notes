@@ -1,10 +1,10 @@
 ---
-title: "16 Templates and Generic Programming"
+title: "16: Templates and Generic Programming"
 date: 2020-10-02T12:30:16-05:00
 draft: false
 ---
 
-# Templates
+# Templates and Generic Programming
 
 ## Gaddis Ch. 16, 19
 

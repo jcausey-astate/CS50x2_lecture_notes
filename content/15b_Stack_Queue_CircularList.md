@@ -1,5 +1,5 @@
 ---
-title: "15b Stack, Queue, Circular List"
+title: "15b: Stack, Queue, Circular List"
 date: 2020-10-02T12:30:16-05:00
 draft: false
 ---
