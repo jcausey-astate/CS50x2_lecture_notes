@@ -75,9 +75,12 @@ code {
 
 .left-column {
   color: #777;
-  width: 20%;
+  min-width: 20%;
+  max-width: 49%;
   height: 92%;
   float: left;
+  margin-bottom: -.75em;
+  margin-top: 0;
 }
 
 .left-column h2:last-of-type,
@@ -86,15 +89,21 @@ code {
 }
 
 .right-column {
-  width: 75%;
+  min-width: 20%;
+  max-width: 49%;
+  height: 92%;
   float: right;
-  padding-top: 1em;
+  padding-top: .2em;
 }
 
 blockquote {
   border-left: 0.25em solid rgba(0, 0, 0, 0.33);
   padding: 0 8px;
   margin: 0 .67em;
+}
+
+.small{
+  font-size: 70%;
 }
 
 .red {

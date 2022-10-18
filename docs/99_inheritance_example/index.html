@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/slides-additional.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+    <base target="_blank" />
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+A Square by inheriting from a Rectangle:
+&gt; A Square is just a rectangle with the additional constraint that the 
+&gt; width and height are identical.
+
+```cpp
+class Rectangle{
+public:
+    Rectangle(int w, int h) : width{w}, height{h} {}
+    int  get_width()  const;
+    int  get_height() const;
+    int  get_area()   const;
+    void print()      const;
+    void set_width(int w);
+    void set_height(int w);
+
+private:
+    int width;
+    int height;
+};
+```
+
+---
+
+```cpp
+class Rectangle{
+public:
+    Rectangle(int w, int h) : width{w}, height{h} {}
+    int  get_width()  const;
+    int  get_height() const;
+    int  get_area()   const;
+    void print()      const;
+    void set_width(int w);
+    void set_height(int w);
+
+private:
+    int width;
+    int height;
+};
+
+class Square : public Rectangle{
+public:
+    Square(int s) : Rectangle{s, s} {}
+};
+```
+
+.green[Simple!]  But, it leads to an issue.
+
+---
+
+```cpp
+class Square : public Rectangle{
+public:
+    Square(int s) : Rectangle{s, s} {}
+};
+```
+
+.green[Simple!]  But, it leads to an issue.
+
+.left-column[
+```cpp
+Square s1{3}; // 3x3 square
+s1.print();   // &#34;w=3, h=3&#34;
+s1.set_width(4);
+s1.print();   // &#34;w=4, h=3&#34; ERROR
+```
+]
+
+.right-column[.small[
+We inherited by `public` from `Rectangle`, so we can use any `Rectangle` method.
+
+Bad news - this lets us make a .red[mistake] by setting width/height _independently_.
+]]
+
+How can we fix this problem?
+
+
+
+---
+
+What if we define a &#34;safe&#34; way to set the side length?
+
+```cpp
+class Square : public Rectangle{
+public:
+    Square(int s) : Rectangle{s, s} {}
+    void set_side_length(int s) {
+        set_width(s); 
+        set_height(s); 
+    }
+};
+```
+
+
+```cpp
+Square s1{3}; // 3x3 square
+s1.print();   // &#34;w=3, h=3&#34;
+s1.set_side_length(4)
+s1.print();   // &#34;w=4, h=4&#34; Better...
+```
+
+---
+
+What if we define a &#34;safe&#34; way to set the side length?
+
+```cpp
+class Square : public Rectangle{
+public:
+    Square(int s) : Rectangle{s, s} {}
+    void set_side_length(int s) {
+        set_width(s); 
+        set_height(s); 
+    }
+};
+```
+
+
+```cpp
+Square s1{3}; // 3x3 square
+s1.print();   // &#34;w=3, h=3&#34;
+s1.set_side_length(4)
+s1.print();   // &#34;w=4, h=4&#34; Better...
+*s1.set_width(5);
+*s1.print();   // &#34;w=5, h=4&#34; ERROR STILL!
+```
+
+The new method .green[allows us] to do the right thing, but it does not .red[prevent us] from doing the wrong thing.  We can do better...
+
+---
+
+What if we redefine the behavior of the `set` methods for width/height?
+
+```cpp
+class Square : public Rectangle{
+public:
+    Square(int s) : Rectangle{s, s} {}
+    void set_side_length(int s);  // sets both width and height
+    void set_width(int w)  { set_side_length(w); }
+    void set_height(int h) { set_side_length(h); }
+};
+```
+
+
+```cpp
+Square s1{3}; // 3x3 square
+s1.print();   // &#34;w=3, h=3&#34;
+s1.set_side_length(4)
+s1.print();   // &#34;w=4, h=4&#34; Better...
+*s1.set_width(5);
+*s1.print();   // &#34;w=5, h=5&#34; FIXED!
+```
+
+Now, we are .blue[able] to interact with the object in any way we expect, but it will .green[always do the &#34;right&#34; thing].  It prevents us from ending up in an inconsistent state.
+
+---
+
+```cpp
+class Square : public Rectangle{
+public:
+    Square(int s) : Rectangle{s, s} {}
+    void set_side_length(int s);  // sets both width and height
+    void set_width(int w)  { set_side_length(w); }
+    void set_height(int h) { set_side_length(h); }
+};
+```
+
+What are the benefits / problems of this solution?
+
+What about _aggregation_?
+
+What about `protected` inheritance?
+
+---
+
+What about `protected` inheritance?
+
+```cpp
+class Square : protected Rectangle{
+public:
+    Square(int s) : Rectangle{s, s} {}
+*   int  get_side_length() const { return get_width(); }
+*   int  get_area()        const { return Rectangle::get_area(); }
+*   void print()           const { Rectangle::print(); }
+    void set_side_length(int s) { 
+        set_width(s); 
+        set_height(s); 
+    }
+};
+```
+
+Forces us to redefine any methods we want in our public interface...
+
+But if the overlap isn&#39;t too large, that might not be too many.
+
+Also, the redefined methods are mostly simple &#34;_pass-through_&#34; methods.
+
+---
+
+```cpp
+class Square : protected Rectangle{
+public:
+    Square(int s) : Rectangle{s, s} {}
+    int  get_side_length() const;
+    int  get_area()        const;
+    void print()           const;
+    void set_side_length(int s);
+};
+```
+
+Are there any remaining problems?
+
+--
+
+Maybe `print()` needs to be customized:
+
+```cpp
+void Square::print() const{
+    cout &lt;&lt; &#34;s=&#34; &lt;&lt; get_side_length();
+}
+```
+
+--
+
+.blue[There might still be a monster lurking in the bushes...  
+
+But we&#39;ll see more about that soon...]
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create({
+		highlightStyle: "github",
+		highlightLines: true,
+  		highlightSpans: true
+	});
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>

@@ -220,6 +220,17 @@ operator= ( operator*( operator*( pi, r ), r )); Overloading Operators Since ope
     </item>
     
     <item>
+      <title>99a: Inheritance Example</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/99_inheritance_example/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/99_inheritance_example/</guid>
+      <description>A Square by inheriting from a Rectangle:
+A Square is just a rectangle with the additional constraint that the width and height are identical.
+class Rectangle{ public: Rectangle(int w, int h) : width{w}, height{h} {} int get_width() const; int get_height() const; int get_area() const; void print() const; void set_width(int w); void set_height(int w); private: int width; int height; }; class Rectangle{ public: Rectangle(int w, int h) : width{w}, height{h} {} int get_width() const; int get_height() const; int get_area() const; void print() const; void set_width(int w); void set_height(int w); private: int width; int height; }; class Square : public Rectangle{ public: Square(int s) : Rectangle{s, s} {} }; .</description>
+    </item>
+    
+    <item>
       <title>09b: Binary Files &amp; Random Access</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/09b_random_access/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
