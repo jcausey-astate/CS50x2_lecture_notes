@@ -1,4 +1,6 @@
 @import url(//fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+/* @import url(//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic); */
+@import url(//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
 ul.three-col {
   flex-direction: column;
@@ -39,4 +41,86 @@ article.slide-listing a, a:visited, a:hover  {
 
 body {
     background-color: black;
+}
+
+code {
+    font-family: 'Yanone Kaffeesatz', 'Courier New', monospace;
+}
+
+.pull-left {
+  float: left;
+  width: 47%;
+}
+
+.pull-right {
+  float: right;
+  width: 47%;
+}
+
+.pull-right~p {
+  clear: both;
+}
+
+.inverse {
+  background: #272822;
+  color: #777872;
+  text-shadow: 0 0 20px #333;
+}
+
+.inverse h1,
+.inverse h2 {
+  color: #f3f3f3;
+  line-height: 0.8em;
+}
+
+.left-column {
+  color: #777;
+  width: 20%;
+  height: 92%;
+  float: left;
+}
+
+.left-column h2:last-of-type,
+.left-column h3:last-child {
+  color: #000;
+}
+
+.right-column {
+  width: 75%;
+  float: right;
+  padding-top: 1em;
+}
+
+blockquote {
+  border-left: 0.25em solid rgba(0, 0, 0, 0.33);
+  padding: 0 8px;
+  margin: 0 .67em;
+}
+
+.red {
+  color: #cc092f;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: blue;
+}
+.orange {
+  color: orange;
+}
+.highlight {
+  background-color: yellow;
+}
+.highlight-red {
+  background-color: rgba(204, 9, 47, 0.20);
+}
+.highlight-green {
+  background-color: rgba(106, 221, 21, 0.5);
+}
+.highlight-blue {
+  background-color: rgba(173, 216, 230, 0.5);
+}
+.highlight-orange {
+  background-color: rgba(255, 165, 0, 0.33);
 }

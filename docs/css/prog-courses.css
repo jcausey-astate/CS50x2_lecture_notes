@@ -42,6 +42,11 @@ img {
   max-height: 100%;
 }
 
+.term {
+  color:darkblue;
+  font-style: italic;
+}
+
 /* print filling whole paper
    found at https://bl.ocks.org/bellbind/cbe25c08651ce56637dfb08346a8cfee
 */

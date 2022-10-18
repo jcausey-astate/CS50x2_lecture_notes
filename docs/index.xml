@@ -7,6 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jcausey-astate.github.io/CS50x2_lecture_notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>17a: Inheritance</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/17a_inheritance/</link>
+      <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/17a_inheritance/</guid>
+      <description>Inheritance Gaddis Ch. 15 Inheritance Establishes an &amp;ldquo;is-a&amp;rdquo; relationship:
+A flower is a plant. An ale is a beer. A lager is a beer. A truck is a vehicle. A dump truck is a truck. A mammal is a(n) animal. A dog is a mammal. A poodle is a dog. &amp;hellip; Infinite examples: The real world works this way!
+Terminology and Notation Base class (or parent): the more general class&amp;hellip; the &amp;ldquo;starting point&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>17b: virtual and Polymorphism</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/17b_virtual_and_polymorphism/</link>
+      <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/17b_virtual_and_polymorphism/</guid>
+      <description>Virtual Methods &amp;amp; Polymorphism Gaddis Ch. 15.4 Redefining Base Class Methods A method is said to be .term[redefined] in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
+This is not the same thing as overloading. Base class objects use the base class method&amp;hellip; derived class objects use the derived class method.
+Problem with Redefining Consider this situation:
+Class .</description>
+    </item>
+    
+    <item>
       <title>05b2_Parallel_&amp;_Multi-Dimensional_Arrays</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b2_parallel_and_multi-dimensional_arrays/</link>
       <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/slides-additional.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+    <base target="_blank" />
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+# Inheritance
+
+## Gaddis Ch. 15
+
+---
+
+## Inheritance
+
+Establishes an &#34;_is-a_&#34; relationship:
+
+* A flower _is a_ plant.
+* An ale _is a_ beer.
+* A lager _is a_ beer.
+* A truck _is a_ vehicle.
+    * A dump truck _is a_ truck.
+* A mammal _is a(n)_ animal.
+    * A dog _is a_ mammal.
+        * A poodle _is a_ dog.
+ 
+_... Infinite examples:  The real world works this way!_
+
+---
+
+## Terminology and Notation
+
+* _Base class_ (or _parent_): the more general class... the &#34;starting point&#34;.
+* _Derived class_ (or _child_): more specialized, derived from base class.
+* Notation:
+
+![Base and derived class headers.](../images/Inheritance/base_and_derived_class_headers.png )
+
+
+---
+
+## How &#34;is-a&#34; Works
+
+.blue[The derived class object &#34;**is a**(n)&#34; object of the base class.]
+
+--
+
+* Has all characteristics of base class!
+
+    - All members defined in base class.
+    - Plus all members defined in derived class.
+
+--
+
+* Derived class objects can &#34;use&#34; (access):
+
+    - All `public` or `protected` members of base class.
+    - All members of derived class.
+
+---
+
+## How &#34;is-a&#34; Works
+
+.center[![:scale Base and derived class., 80%](../images/Inheritance/base_and_derived_class_diagram.svg )]
+
+The _physical object_ for a derived class object includes .blue[_all parts_] of the base class, even though the `private` base class members are not directly accessible to derived class methods.
+
+---
+
+
+## Wait... `protected`?
+
+* `protected` : _access specifier_, similar to `private`
+  * Except:  `protected` members .blue[_can_] be accessed by derived classes!
+  * Useful when you know you are writing a base class.
+
+* `private` data from base class is part of derived class, but _cannot be accessed_.
+
+---
+
+## Class Access Specifiers
+
+You may also inherit with a selected maximum level of access:
+--
+
+- **.blue[`public`]**
+    &#43; True &#34;is-a&#34; relationship.
+    &#43; Does not change any member&#39;s downstream access level.
+
+--
+
+- **.orange[`protected`]**
+    &#43; `public` items from base class become `protected` in derived class.
+
+--
+
+- **.red[`private`]**
+    &#43; `public` and `protected` items from base class become `private` in derived class.
+    &#43; Derived class object _cannot_ be treated as an object of the base class.
+
+---
+
+## Class Access Specifiers
+
+.center[![Diagram of effect of access specifiers.](../images/Inheritance/Inheritance_Access_Levels.svg)]
+
+---
+
+## Building and Tearing-Down
+
+* Base class must be constructed before derived class.
+* Derived class must be destructed before the base class.
+* Derived class may pass arguments to base class constructor:
+
+```cpp
+    Square::Square(int s) : `Rectangle{s, s}` { }
+```
+
+You _must_ use the constructor&#39;s _member initialization list_ for this.
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create({
+		highlightStyle: "github",
+		highlightLines: true,
+  		highlightSpans: true
+	});
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>
