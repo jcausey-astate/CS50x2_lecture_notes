@@ -1,8 +1,19 @@
----
-title: "99: Skip Lists"
-date: 2022-10-14
-draft: true
----
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/slides-additional.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+    <base target="_blank" />
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
 
 # Skip Lists
 
@@ -61,7 +72,7 @@ By making different nodes hold different numbers of pointers\, you can search no
 
 ---
 
-The “level” of a node refers to the number of pointers it has.  The highest level is given by  _log2(n) \+ 1 _  _(1-indexed_  _)\, or log2(n) _ (0-indexed) _ _  .
+The “level” of a node refers to the number of pointers it has.  The highest level is given by  _log2(n) \&#43; 1 _  _(1-indexed_  _)\, or log2(n) _ (0-indexed) _ _  .
 
 .center[![:scale Skip List Levels, 80%](../images/skip_list/skip_lists2.png)]
 
@@ -155,3 +166,34 @@ Space:  $O(n \cdot \log_2(n))$
 
 .center[![:scale Imperfect Skip List, 80%](../images/skip_list/skip_lists3.png)]
 
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create({
+		highlightStyle: "github",
+		highlightLines: true,
+  		highlightSpans: true
+	});
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>

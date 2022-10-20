@@ -18,15 +18,43 @@ Terminology and Notation Base class (or parent): the more general class&amp;hell
     </item>
     
     <item>
-      <title>17b: virtual and Polymorphism</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/17b_virtual_and_polymorphism/</link>
+      <title>18: virtual and Polymorphism</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/18_virtual_and_polymorphism/</link>
       <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/17b_virtual_and_polymorphism/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/18_virtual_and_polymorphism/</guid>
       <description>Virtual Methods &amp;amp; Polymorphism Gaddis Ch. 15.4 Redefining Base Class Methods A method is said to be .term[redefined] in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
 This is not the same thing as overloading. Base class objects use the base class method&amp;hellip; derived class objects use the derived class method.
 Problem with Redefining Consider this situation:
 Class .</description>
+    </item>
+    
+    <item>
+      <title>99: Sparse Tables</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/19a_sparse_tables/</link>
+      <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/19a_sparse_tables/</guid>
+      <description>Sparse Tables Drozdeck Ch. 3.6 &amp;ldquo;Tables&amp;rdquo; are a natural way to express information for many real-world applications.
+Think of spreadsheets&amp;hellip; Imagine storing ratings for movies.
+&amp;ldquo;Makes sense&amp;rdquo; as a table with one row per user and one column per movie&amp;hellip; Every movie may be reviewed on a &amp;ldquo;5-star&amp;rdquo; scale. Every user may rate any movie they want&amp;hellip; or may not. Let&amp;rsquo;s say we have 8000 users and 500 movies. Table size is $8000 \times 500 = 4,000,000$ cells.</description>
+    </item>
+    
+    <item>
+      <title>99: Skip Lists</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/19b_skip_lists/</link>
+      <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/19b_skip_lists/</guid>
+      <description>Skip Lists Drozdek - Ch. 3 Linked List Efficiency How efficient is a linked list?
+&amp;ndash;
+Adding/removing items
+at Head at Tail in-order Finding (searching) items
+Ordered list? Un-ordered list? Traversal
+What About Binary Search? Recall how the binary search algorithm removed the complexity from searching an (ordered) array&amp;hellip;
+.red[What if we could do some kind of non-sequential search on a linked list?]
+&amp;ndash;
+A special kind of linked list that allows just such a search is called a skip list .</description>
     </item>
     
     <item>
