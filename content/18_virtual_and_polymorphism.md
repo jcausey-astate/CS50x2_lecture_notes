@@ -265,6 +265,114 @@ virtual void y() = 0;
 
 ---
 
+Here is what it looks like in a class diagram:
+
+.center[![:scale Multiple Inheritance Class Diagram, 80%](../images/Inheritance/multiple_inheritance_diagram.svg)]
+
+---
+
+## Example:  Students and faculty.
+
+```cpp
+class Student{                 | class Faculty{                                     
+public:                        | public:
+    std::string   name;        |    std::string name;              
+    unsigned long id;          |    double      salary;                            
+};                             | };         
+```
+
+Notice the overlap - both classes need a `name` (and maybe other things as well).
+
+.blue[Good programming practice would say we should "factor out" the common code...]
+
+---
+
+## Example:  Students and faculty.
+
+```cpp
+class Person{
+public:
+    std::string name;
+};
+
+class Student : public Person{ | class Faculty : public Person{                                     
+public:                        | public:              
+    unsigned long id;          |    double salary;                            
+};                             | };         
+```
+
+Now, we have the common code collected in a base class `Person`.  .green[Good!]
+
+--
+
+But what if we want to add graduate assistants (_GA's_)?
+
+--
+
+A GA is a student who also has some responsibilities similar to faculty.  .blue[Could we use multiple inheritance?]
+
+---
+
+## Example:  Students and faculty.
+
+
+
+``` cpp
+class Person{
+public:
+    std::string name;
+};
+
+class Student : public Person{ | class Faculty : public Person{                                     
+public:                        | public:              
+    unsigned long id;          |    double salary;                            
+};                             | };         
+
+class GA : public Student, public Faculty {
+public:
+    std::vector<std::string> labs;
+};
+```
+
+--
+
+```cpp
+int main() {
+    GA ga1;
+*   ga1.name = "Alice";  // Error!
+}
+```
+
+---
+
+Let's look at the class diagram for this situation...
+
+We started with a simple class hierarchy:
+
+.center[![:scale Person, Student, Faculty, 80%](../images/Inheritance/inheritance_person_student_faculty.svg)]
+
+---
+
+Then we changed it so that a `GA` inherited from both `Student` and `Faculty` (which makes sense on some level).
+
+.center[![:scale Person, Student, Faculty, 80%](../images/Inheritance/multiple_inheritance_diamond_of_death.svg)]
+
+--
+
+Notice the "diamond" shape this created, with `Person` as a _common ancestor_ of both parent classes. 
+
+---
+
+Notice the "diamond" shape this created, with `Person` as a _common ancestor_ of both parent classes.  
+
+.center[![:scale Person, Student, Faculty, 80%](../images/Inheritance/multiple_inheritance_diamond_of_death.svg)]
+
+This situation creates several challenges, and is known in programming circles as the .term[.red[Diamond of Death]].
+
+---
+
+**Back to the example...**
+
 ``` cpp
 class Person{
 public:
@@ -311,6 +419,8 @@ int main() {
 }
 ```
 
+We can use scope resolution... (but it is tedious, and doesn't solve the redundancy)
+
 ---
 
 ``` cpp
@@ -338,6 +448,8 @@ int main() {
 *       << ga1.Faculty::name << "?\n";  
 }
 ```
+
+
 
 ---
 
@@ -367,6 +479,8 @@ int main() {
 }
 ```
 
+.red[Ouch.]
+
 ---
 ### The solution: .term[**Virtual Inheritance**].
 
@@ -394,3 +508,12 @@ int main() {
 }
 ```
 
+---
+
+**Without `virtual` Inheritance:**
+
+.center[![:scale Diamond Problem in a Physical Object, 33%](../images/Inheritance/ga_example_physical_object.svg)]
+
+**With `virtual` Inheritance**
+
+.center[![:scale Diamond Problem in a Physical Object, 33%](../images/Inheritance/ga_example_physical_object_virtual_inheritance.svg)]
