@@ -1,4 +1,38 @@
-# Hugo Remark theme
+# Lecture slides for CS 50x2: Accelerated Programming Series
+
+This repository serves the live slides from the _docs_ directory using GitHub Pages.
+
+The raw source for the slides is in the _content_ directory.  The slides are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) format, with some extensions provided by the [Remark](https://github.com/gnab/remark) presentation framework.  The whole thing is rendered from its source form into a static website by the [Hugo](https://gohugo.io/) framework.
+
+## How to edit the slides
+
+The slides themselves are maintained as markdown files in the _content_ directory.  By editing those files, or adding new ones, you are contributing to the content for the course.  You can learn about the presentation-specific extensions to markdown by looking at the documentation for the [Remark](https://github.com/gnab/remark) presentation framework.
+
+Any new markdown file created beneath _content_ will become an independent slide deck, and will be listed on the index page generated at the document root (in the _docs_ directory) when you build the Hugo site.  The index page is auto-generated from the **title** attribute of each markdown file, which is set in the YAML frontmatter.
+
+## How to build the site
+
+To build the actual static website from the markdown source, use Hugo ([which must be installed locally](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)) by running the
+
+```bash
+hugo --cleanDestinationDir
+```
+
+command, or with the Make utility by running `make all`.  You can run a local preview server by doing 
+
+```bash
+hugo serve --buildDrafts --cleanDestinationDir
+```
+
+or by running `make preview`.
+
+## Deploying the site
+
+To deploy as a GitHub Pages site, follow the instruction [here](https://gohugo.io/hosting-and-deployment/hosting-on-github/).
+
+To deploy to an arbitrary webserver, just copy the files from the _docs_ directory onto your server's document root.
+
+## Hugo Remark theme
 
 This theme is based on the fantastic Hugo Remark theme by Sebastian Porto: https://github.com/sporto/hugo-remark
 
@@ -12,11 +46,11 @@ What is **remark.js**?
 
 [Remark](https://github.com/gnab/remark) is a simple slide show generator from markdown files.
 
-## About this theme
+### About this theme
 
 This theme creates a remark presentation using Hugo to concatenate and serve the files.
 
-## Why use Hugo and not just remark.js?
+### Why use Hugo and not just remark.js?
 
 Remark.js doesn't come with a way of serving files or reload them on changes. Also it requires you to write all your slides on just one html page.
 
@@ -26,20 +60,20 @@ By using Hugo:
 - Hugo will watch for changes and reload immediatelly
 - You can write your slides on different markdown files, Hugo will concatenate them
 
-## Installation
+### Installation
 
 Follow the hugo [installation intructions](http://gohugo.io/). On mac simply do `brew install hugo`
 
-## How to use
+### How to use
 
-### Generating the site
+#### Generating the site
 
 ```bash
 hugo new site /path/to/presentation
 cd /path/to/presentation
 ```
 
-### Install this theme
+#### Install this theme
 
 Inside the presentation folder do:
 
@@ -50,7 +84,7 @@ Add to config file
 ```
 theme = "remark-academic"
 ```
-### Generate new slides
+#### Generate new slides
 
 Inside the presentation folder do:
 
@@ -70,7 +104,7 @@ title = "001 First Day Lecture"
 Slides will be created in the `./content` subfolder.
 Edit the slides using markdown.
 
-### Serve the slideshow
+#### Serve the slideshow
 
 To show your slides run:
 
@@ -80,7 +114,7 @@ hugo server --buildDrafts
 
 And open the given url in a browser, e.g. `http://localhost:1313`
 
-### Custom styles
+#### Custom styles
 
 You can add custom styles to your slides:
 
@@ -91,7 +125,7 @@ You can add custom styles to your slides:
 - Add your CSS in `./static/css/[some-name].css`
 - Or just write your CSS in this file using `style` tags.
 
-### Custom JS on the head
+#### Custom JS on the head
 
 - Create a file `./layouts/partials/custom_head.html`
 - Link `custom_head.html` in `head.html` by adding `{{ partial "custom_head.html" }}` to where you want.
@@ -101,7 +135,7 @@ You can add custom styles to your slides:
 - Add your JS in `./static/js/[some-name].js`
 
 
-### Custom JS on the footer
+#### Custom JS on the footer
 
 You can also add custom JS on the footer, this is loaded after the remark initialisation. This is useful for adding custom behaviour to your presentation.
 
