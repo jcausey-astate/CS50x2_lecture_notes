@@ -30,7 +30,7 @@ Class .</description>
     </item>
     
     <item>
-      <title>99: Sparse Tables</title>
+      <title>19a: Sparse Tables</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/19a_sparse_tables/</link>
       <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
       
@@ -41,7 +41,7 @@ Think of spreadsheets&amp;hellip; Imagine storing ratings for movies.
     </item>
     
     <item>
-      <title>99: Skip Lists</title>
+      <title>19b: Skip Lists</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/19b_skip_lists/</link>
       <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
       

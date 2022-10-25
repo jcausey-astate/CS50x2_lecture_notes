@@ -1,5 +1,5 @@
 ---
-title: "99: Skip Lists"
+title: "19b: Skip Lists"
 date: 2022-10-14
 draft: false
 ---
