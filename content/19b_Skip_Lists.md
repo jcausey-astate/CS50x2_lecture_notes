@@ -46,7 +46,7 @@ layout: true
 
 ---
 
-By making different nodes hold different numbers of pointers\, you can search non-sequentially:
+By making different nodes hold different numbers of pointers, you can search non-sequentially:
 
 .center[![:scale Perfect Skip List, 80%](../images/skip_list/skip_lists1.png)]
 
@@ -61,15 +61,15 @@ By making different nodes hold different numbers of pointers\, you can search no
 
 ---
 
-The “level” of a node refers to the number of pointers it has.  The highest level is given by  _log2(n) \+ 1 _  _(1-indexed_  _)\, or log2(n) _ (0-indexed) _ _  .
+The “level” of a node refers to the number of pointers it has.  The highest level is given by  $\lg(n) + 1$ (1-indexed), or $\lg(n)$ (0-indexed).
 
 .center[![:scale Skip List Levels, 80%](../images/skip_list/skip_lists2.png)]
 
 ---
 
 * To search a skip list:
-  * start at the highest level\, and traverse until an element is found that is too large\, or NULL is encountered.
-  * If either case occurs\, restart at the previous node\, but at the next lowest level
+  * start at the highest level, and traverse until an element is found that is too large, or NULL is encountered.
+  * If either case occurs, restart at the previous node, but at the next lowest level
   * Continue until the target value is found
     * Or until you hit the NULL at the end of the first-level list.
 
@@ -87,13 +87,13 @@ Consider adding a new item / removing an item.
 
 Nodes do not have to be perfectly distributed...
 
-As long as the requirements are met for the number of nodes at each level\, the skip list can still work.
+As long as the requirements are met for the number of nodes at each level, the skip list can still work.
 
 .center[![:scale Imperfect Skip List, 80%](../images/skip_list/skip_lists3.png)]
 
 ---
 
-The new node can determine its number of links at random\, provided that it uses a probability distribution that (in the long run) maintains the correct proportions of levels...
+The new node can determine its number of links at random, provided that it uses a probability distribution that (in the long run) maintains the correct proportions of levels...
 
 .center[![:scale Imperfect Skip List, 80%](../images/skip_list/skip_lists3.png)]
 

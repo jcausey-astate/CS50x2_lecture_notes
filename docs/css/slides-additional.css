@@ -133,3 +133,15 @@ blockquote {
 .highlight-orange {
   background-color: rgba(255, 165, 0, 0.33);
 }
+
+.footnote {
+  position: absolute;
+  bottom: 0.3em;
+  font-size: x-small;
+}
+.ref{
+  font-variant-position: super;
+  font-size: .92em;
+}
+.ref::before { content: "[" }
+.ref::after  { content: "]" }

@@ -58,6 +58,21 @@ A special kind of linked list that allows just such a search is called a skip li
     </item>
     
     <item>
+      <title>20: Self-Organizing Lists</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/20_self_organizing_lists/</link>
+      <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/20_self_organizing_lists/</guid>
+      <description>Self-Organizing Lists Drozdek Ch. 3.5 Skip lists were introduced to make searching more efficient ( $O(\textrm{lg}(N))$ ), but require significant pointer overhead.
+Searching in a singly-linked or doubly-linked list requires $O(N)$ time.
+But what if the value you are searching for is at (or near) the &amp;ldquo;front&amp;rdquo; of the list?
+&amp;ndash;
+OK, but how do we do that? &amp;ndash; * Magic?
+Re-organize the values over time!
+.term[Self-Organizing Lists] change the order of the values they contain so the values that are deemed more likely to be searched will appear nearer to the beginning of the list.</description>
+    </item>
+    
+    <item>
       <title>05b2_Parallel_&amp;_Multi-Dimensional_Arrays</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b2_parallel_and_multi-dimensional_arrays/</link>
       <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>
@@ -286,6 +301,16 @@ push : Add a value at the &amp;ldquo;top&amp;rdquo; of the stack. pop : Remove t
       <description>Templates and Generic Programming Gaddis Ch. 16, 19 Function Templates Function templates provide a pattern for a function that can work with many types of data.
 When written, the data type specifiers are replaced with type parameters. When called, the compiler generates a function with actual data types that match those provided in the call. Example
 template&amp;lt;typename Numeric&amp;gt; Numeric times10(Numeric num){ return 10 * num; } Numeric is the type parameter (it can be any valid identifier, but is usually capitalized (UpperCamelCase or sometimes ALL_CAPS) by convention.</description>
+    </item>
+    
+    <item>
+      <title>21a: Trees - Binary Trees</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/21a_trees/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/21a_trees/</guid>
+      <description>The Binary Search Tree Gaddis Ch. 21 Trees In the computer science sense, .term[trees] are simply non-linear linked structures where each node may link to two or more other nodes, in a hierarchical fashion.
+The entry point into a tree is called the .term[root]. Trees are (usually) drawn &amp;ldquo;upside down&amp;rdquo;, with the root at the top. Normally, we don’t draw the null pointers when we draw a tree&amp;hellip; but we must remember that they are there.</description>
     </item>
     
     <item>
