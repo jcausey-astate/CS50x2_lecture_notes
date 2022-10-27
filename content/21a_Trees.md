@@ -62,7 +62,7 @@ The binary tree "Node" must store a payload value and maintain pointers to the l
 
 ## Binary Tree
 
-The "Tree" object must store an owning pointer to the root of the tree.  The tree itself has ownership responsibility too all nodes in the data structure.
+The "Tree" object must store an owning pointer to the root of the tree.  The tree itself has ownership responsibility for all nodes in the data structure.
 
 .center[![](../images/Trees/Binary_Tree.svg)]
 

@@ -75,4 +75,3 @@ There are different ways to re-organize the list according to which values are s
 .footnote[ 
 .ref[1] Drozdek, Ch. 3.5, final paragraph.
 ]
-
