@@ -69,3 +69,10 @@ If the tree is "heavy" in the "inside" of a subtree (either the right-side of a 
 * right-left
     * Just a right-rotate at the child, followed by a left-rotate at the original (pivot) node with the &plusmn;2 balance factor.
 
+---
+
+## Visualizations
+
+<https://www.cs.usfca.edu/~galles/visualization/AVLtree.html>
+
+
