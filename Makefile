@@ -4,6 +4,7 @@
 .PHONY: drafts
 .PHONY: push
 .PHONY: build
+.PHONY: commit
 
 all: build
 
