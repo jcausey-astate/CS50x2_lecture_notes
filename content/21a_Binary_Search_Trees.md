@@ -110,3 +110,7 @@ Binary search trees are shaped by the order in which values are added to the con
     * post-order
 
 * Remove items
+
+**Visualizations**
+
+<https://www.cs.usfca.edu/~galles/visualization/BST.html>
