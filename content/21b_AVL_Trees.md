@@ -47,11 +47,26 @@ the other.
 
 ### Rotations
 
-**Rotate Left**
+.term[**Rotate Left**]
 
 .center[![:scale Rotate Left - $Q$ is the pivot node., 70%](../images/avl_tree/tree_rotate_left.svg "Rotate Left - $Q$ is the pivot node.")]
 
-**Rotate Right**    
+.tight[
+(a) The tree is balanced w.r.t. node _P_
+
+(b) A value is added to the subtree on the right of _Q_, increasing its height by one. This causes the balance factor at _P_ to become +2, which is no longer considered balanced.
+
+(c) A single .term[left rotation] is performed at node _P_.  This results in _Q_ becoming the parent of _P_, and the tree is again balanced.  (Note that _Q_'s left subtree became _P_'s right subtree in the rotation.)
+]
+---
+
+### Rotations
+
+**Rotate Left**
+
+.center[![:scale Rotate Left - $Q$ is the pivot node., 60%](../images/avl_tree/tree_rotate_left.svg "Rotate Left - $Q$ is the pivot node.")]
+
+.term[**Rotate Right**]
 
 * _Mirror image of above._
 

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/slides-additional.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+    <base target="_blank" />
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+# Heaps and Heapsort
+
+## Drozdek Ch. 6.9
+
+---
+
+
+## Heaps
+
+A .term[heap] is a kind of (usually binary) tree.  They normally come in two varieties:
+
+* .term[Min-Heaps] always maintain the smallest value at the root.
+* .term[Max-Heaps] always maintain the largest value at the root.
+
+--
+&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+_There is also a more exotic heap called a &#34;.term[min-max-heap]&#34; that allows you
+to find the smallest and largest values in constant time, but we won&#39;t consider
+that variation here._
+
+
+---
+
+
+## Heaps
+
+In order to be a Heap, the following properties must hold (a _min heap_ is used as an example; for a _max heap_ just reverse the comparison operator).
+
+* The empty tree is a heap.
+* A non-empty tree is a heap if and only if the .term[heap property] is satisfied for all nodes in the tree.
+
+
+---
+
+
+## The _Heap Property_
+
+The .term[heap property], for any node in a tree, states:
+
+* A node with no children satisfies the heap property.
+* A node with one or more children satisfies the heap property if and only if: 
+    *  (for a _min-heap_) The subtree rooted at node $R$ is a min-heap if each of $R$&#39;s child subtrees are min-heaps and the values of each of $R$&#39;s direct descendants (if they exist) are greater than or equal to the value at $R$. 
+    
+    *  (for a _max-heap_) The subtree rooted at node $R$ is a max-heap if each of $R$&#39;s child subtrees are max-heaps and the values of each of $R$&#39;s direct descendants (if they exist) are less than or equal to the value at $R$. 
+
+
+---
+
+
+## Binary Max Heap
+
+.center[![:scale Complete Binary Max Heap, 80%](../images/HeapSort/complete_binary_max_heap.png)]
+
+---
+
+
+## Binary Min Heap
+
+.center[![:scale Complete Binary Min Heap, 80%](../images/HeapSort/incomplete_binary_min_heap.png)]
+
+---
+
+
+## Heap Convention
+
+It is convention (not strictly a requirement) that heaps &#34;fill in&#34; at the leaf level from left-to-right, as shown in the image below.
+
+&#43; All leaves are on the tree at level $h$ or $h-1$ where $h$ is the tree height.
+&#43; The tree is balanced.
+&#43; Leaves are added at level $h$ from left-to-right.
+
+.center[![:scale Complete Binary Max Heap, 50%](../images/HeapSort/complete_binary_max_heap.png)]
+
+---
+
+## Heap Convention
+
+It is convention (not strictly a requirement) that heaps &#34;fill in&#34; at the leaf level from left-to-right, as shown in the image below.
+
+&#43; All leaves are on the tree at level $h$ or $h-1$ where $h$ is the tree height.
+&#43; The tree is balanced.
+&#43; Leaves are added at level $h$ from left-to-right.
+
+&lt;table&gt;&lt;tr&gt;
+&lt;td&gt;.left[![:scale Complete Binary Max Heap, 100%](../images/HeapSort/complete_binary_max_heap.png)]&lt;/td&gt;
+&lt;td&gt;.right[![:scale Max Heap in Array, 80%](../images/HeapSort/heap_in_array_both_views.svg)]&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+---
+
+
+## Heap Convention
+
+This allows us to make an easy representation of a heap in an array, by applying the following rules:
+
+- The first item in the array (index $0$) is the root.
+- An item at any index $i$ can find its left-child at index $2i&#43;1$ and its right-child at index $2i&#43;2$.
+    - By inverse relation, the parent of any node is at index $(i-1)/2$ using integer division.
+
+.center[![:scale Max Heap in Array, 80%](../images/HeapSort/heap_in_array_both_views.svg)]
+
+---
+
+
+## Inserting Into a Heap
+
+When inserting a new item in an existing heap, the item must be placed into a leaf, then the heap property must be restored.
+
+- Insert at leaf
+    &#43; first &#34;empty&#34; location in the array
+- Restore Heap
+    &#43; &#34;Percolate up&#34;
+
+---
+
+
+## Removing From a Heap
+
+We generally only care about removing the item at the root of the heap.
+
+- Since the heap is an array, this would open a &#34;hole&#34; at the beginning.
+    &#43; &#34;shifting&#34; the entire array left would be expensive.
+- Instead, the value of the last leaf is moved up to the root position, and then the heap property must be restored.
+    - This re-heapify is a simple operation.
+    - Usually referred to as &#34;_sift-down_&#34;.
+
+
+---
+
+
+## Heapify
+
+If an array can be represented as a tree, then it should be possible to convert any arbitrary array to a min or max heap.  We call this operation _heapify_.
+
+- How can we perform _heapify_?
+    &#43; Top-down
+    &#43; Bottom-up
+
+---
+
+## Heapify
+
+If an array can be represented as a tree, then it should be possible to convert any arbitrary array to a min or max heap.  We call this operation _heapify_.
+
+- How can we perform _heapify_?
+    &#43; Top-down
+        * Construct the heap by using the algorithm for insertion into an empty heap. (Can be performed in-place.)
+    &#43; Bottom-up
+
+---
+
+## Heapify
+
+If an array can be represented as a tree, then it should be possible to convert any arbitrary array to a min or max heap.  We call this operation _heapify_.
+
+- How can we perform _heapify_?
+    &#43; Top-down
+        * Construct the heap by using the algorithm for insertion into an empty heap. (Can be performed in-place.)
+    &#43; Bottom-up
+        * Construct the heap by first making heaps from all of the subtrees (beginning at the leaves) and working toward the root.
+
+---
+
+
+## Uses for Heaps
+
+- Priorty Queue
+    &#43; More space-efficient VS a linked-list Pri. Queue.
+- As the underlying data structure for _Heapsort_.
+
+---
+
+
+## Heapsort
+
+- First the array must be made into a heap by running _heapify_.
+    &#43; Traditionally a max heap is used.
+- Then, the sort proceeds by taking advantage of the partial ordering provided by the heap property.  On each &#34;pass&#34;
+    &#43; The maximum item is always at the top, so on each iteration, &#34;remove&#34; it by swapping it with the last element of the remaining heap.
+        * reduce the &#34;size&#34; of the heap by 1
+    &#43; Restore the heap property by performing a sift-down from the root.
+
+
+---
+
+## Heapsort Complexity
+
+- _Heapify_ (bottom-up) takes $O(n)$ steps.
+    &#43; (top-down) takes $O(n\lg(n))$ steps.
+- Each &#34;pass&#34; yields 1 value in the right place.
+- $n$ passes are required to sort all items.
+- _Sift-Down_ takes $O(\lg(n))$ steps.
+
+---
+
+## Heapsort Complexity
+
+- _Heapify_ (bottom-up) takes $O(n)$ steps.
+    &#43; (top-down) takes $O(n\lg(n))$ steps.
+        * (done once) 
+- Each &#34;pass&#34; yields 1 value in the right place.
+- $n$ passes are required to sort all items.
+- _Sift-Down_ takes $O(\lg(n))$ steps. &lt;br /&gt;&lt;br /&gt;
+- Overall:  $O(n\lg(n))$
+
+
+
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src='https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML' type="text/javascript"></script>
+<script>
+	var slideshow = remark.create({
+		highlightStyle: "github",
+		highlightLines: true,
+  		highlightSpans: true
+	});
+
+	
+	MathJax.Hub.Config({
+		tex2jax: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+		}
+	});
+	MathJax.Hub.Queue(function () {
+		$(MathJax.Hub.getAllJax()).map(function (index, elem) {
+			return (elem.SourceElement());
+		}).parent().addClass('has-jax');
+	});
+
+	MathJax.Hub.Configured();
+</script>
+</body>
+
+</html>

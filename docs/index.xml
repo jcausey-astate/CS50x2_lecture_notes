@@ -326,6 +326,16 @@ Balance If the magnitude of any node&amp;rsquo;s balance factor becomes $&amp;gt
     </item>
     
     <item>
+      <title>23a_Heaps_and_HeapSort</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/23a_heaps_and_heapsort/</link>
+      <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/23a_heaps_and_heapsort/</guid>
+      <description>Heaps and Heapsort Drozdek Ch. 6.9 Heaps A .term[heap] is a kind of (usually binary) tree. They normally come in two varieties:
+.term[Min-Heaps] always maintain the smallest value at the root. .term[Max-Heaps] always maintain the largest value at the root. &amp;ndash; There is also a more exotic heap called a &amp;ldquo;.term[min-max-heap]&amp;rdquo; that allows you to find the smallest and largest values in constant time, but we won&amp;rsquo;t consider that variation here.</description>
+    </item>
+    
+    <item>
       <title>05a_Arrays</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05a_arrays/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>

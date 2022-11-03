@@ -103,7 +103,23 @@ blockquote {
 }
 
 .small{
-  font-size: 70%;
+  font-size: 0.7em;
+}
+
+.tight{
+  font-size: 0.8em;
+}
+
+.tight > p {
+  margin-top: .25em;
+  margin-bottom: .45em;
+  line-height: 1.1em;
+}
+
+.tight > li {
+  margin-top: .25em;
+  margin-bottom: .45em;
+  line-height: 1.1em;
 }
 
 .red {
