@@ -116,6 +116,8 @@ When inserting a new item in an existing heap, the item must be placed into a le
 - Restore Heap
     + "Percolate up"
 
+.center[![:scale Max Heap in Array, 80%](../images/HeapSort/heap_in_array_both_views.svg)]
+
 ---
 
 
@@ -129,6 +131,7 @@ We generally only care about removing the item at the root of the heap.
     - This re-heapify is a simple operation.
     - Usually referred to as "_sift-down_".
 
+.center[![:scale Max Heap in Array, 80%](../images/HeapSort/heap_in_array_both_views.svg)]
 
 ---
 
