@@ -7,6 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jcausey-astate.github.io/CS50x2_lecture_notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>23b: Multiway Trees</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/23b_multiway_trees/</link>
+      <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/23b_multiway_trees/</guid>
+      <description>Multiway Trees (m-Trees) Drozdek Ch. 7 Definition A .term[multiway tree] of order $m$ is a generalized tree in which each node may have up to $m$ children (each of which may also be trees).
+A .term[multiway search tree] of order $m$ is a multiway tree in which:
+Each node has $m$ children and $m-1$ keys. The keys in each node are in ascending order The keys in the first $i$ children are less than the $i$th key.</description>
+    </item>
+    
+    <item>
       <title>17a: Inheritance</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/17a_inheritance/</link>
       <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
@@ -326,7 +337,7 @@ Balance If the magnitude of any node&amp;rsquo;s balance factor becomes $&amp;gt
     </item>
     
     <item>
-      <title>23a_Heaps_and_HeapSort</title>
+      <title>23a: Heaps and HeapSort</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/23a_heaps_and_heapsort/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
