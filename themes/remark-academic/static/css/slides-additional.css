@@ -102,6 +102,10 @@ blockquote {
   margin: 0 .67em;
 }
 
+.tiny{
+  font-size: 0.4em;
+}
+
 .small{
   font-size: 0.7em;
 }
@@ -161,3 +165,9 @@ blockquote {
 }
 .ref::before { content: "[" }
 .ref::after  { content: "]" }
+
+div.transparent pre code, div.transparent pre, div.transparent code, div.transparent, .transparent{
+  background-color: rgba(0,0,0,0.02) !important;
+  text-shadow: -.08em .08em 2px #fff, .08em .08em 2px #fff, .08em -.08em 2px #fff, -.08em -.08em 2px #fff,
+               -.033em .033em 0 #fff, .033em .033em 0 #fff, .033em -.033em 0 #fff, -.033em -.033em 0 #fff;
+}
