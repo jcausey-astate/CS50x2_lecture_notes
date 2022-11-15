@@ -111,6 +111,26 @@ Binary search trees are shaped by the order in which values are added to the con
 
 * Remove items
 
+---
+
+## Tree deletion - trivial cases
+
+.center[![:scale Delete a leaf node., 80%](../images/Trees/tree_delete_leaf_fig_6.26.png)]
+
+<br>
+
+.center[![:scale Delete a node with a single subtree., 80%](../images/Trees/tree_delete_node-with-one-child_fig_6.27.png)]
+
+---
+## Tree deletion - delete by merge (refer to Drozdek Ch. 6.6 for algorithms)
+
+.center[![:scale Delete by merging., 80%](../images/Trees/tree_delete_by-merge_fig_6.28.png)]
+
+.center[![:scale Delete by merging., 80%](../images/Trees/tree_delete_by-merge_fig_6.30.png)]
+
+
+---
+
 **Visualizations**
 
 <https://www.cs.usfca.edu/~galles/visualization/BST.html>

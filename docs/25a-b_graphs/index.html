@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/slides-additional.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+    <base target="_blank" />
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+background-image: url(&#39;../images/graphs/directed_graph_with_6_nodes.svg&#39;)
+background-size: 45%
+
+# Graphs
+
+## Drozdek, Ch. 8
+
+---
+
+##  Definition and Terminology 
+
+&#43; A .term[graph] is a data structure containing nodes and connections between them (much like a tree), but with no requirement for hierarchical ordering.
+   &#43; We often call the nodes .term[vertices], and the connections between them .term[edges].
+   &#43; A .term[simple graph], then is the non-empty set of vertices and edges $G=(V,E)$.
+
+.center[
+![:scale A graph, 300px](../images/graphs/undirected_graph_with_6_nodes.svg)
+![:scale A directed graph, 200px](../images/graphs/directed_graph_with_6_nodes.svg)
+![:scale A weighted graph, 250px](../images/graphs/undirected_graph_with_weighted_edges.svg)
+]
+
+
+---
+
+##  Terminology 
+
+&#43; A .term[directed graph] (or &#34;digraph&#34;) is the non-empty set of vertices and edges $G=(V,E)$ where the edges $E={v_i, v_j}$ have a direction associated with them.
+   &#43; Neither simple graphs nor digraphs allow pairs of vertices to have more than one edge connecting them.  A .term[multigraph] relaxes this restriction.
+   &#43; A .term[pseudograph] allows an edge to connect a single vertex to itself (a loop).
+
+
+.center[![:scale A directed graph, 220px](../images/graphs/directed_graph_with_6_nodes.svg)]
+
+---
+
+##  Terminology 
+
+&#43; A .term[weighted graph] is a graph in which each edge has a number (or .term[weight]) assigned.
+    &#43; Depending on context, weight is also called &#34;cost&#34;, &#34;distance&#34;, &#34;length&#34;, or some other name.
+
+&#43; A graph is .term[complete] if for each pair of distinct vertices, there is exactly one edge connecting them.
+
+.center[![:scale A weighted graph, 300px](../images/graphs/undirected_graph_with_weighted_edges.svg)]
+
+---
+
+##  Terminology 
+
+&#43; A .term[subgraph] is a set of edges and vertices that are themselves subsets of the edges and vertices of a larger graph.
+    &#43; A subgraph .term[induced by] vertices $V&#39;$ is a graph such that any edges in the subgraph $(V&#39;, E&#39;)$ are also in the larger graph.
+    &#43; Two vertices are .term[adjacent] if there is an edge connecting them that is a member of the same graph.
+    &#43; The edge connecting them is said to be .term[incident] with them.
+
+.center[![:scale A Subgraph (in blue), 300px](../images/graphs/subgraph.svg)]
+
+---
+
+##  Terminology 
+
+&#43; The .term[degree] of a vertex $v$ is the number of edges incident with $v$.
+
+   &#43; A vertex with no incident edges is called an .term[isolated vertex].
+
+      &#43; It is possible to have a graph $G$ containing only isolated vertices.  ($E$ can be empty).
+
+.center[![:scale Vertex Degrees, 300px](../images/graphs/vertex_degrees.svg)]
+
+---
+
+##  Representations 
+
+&#43; Aside from drawings: Graphs may be represented by
+   &#43; .term[Adjacency lists]
+   &#43; .term[Adjacency matrices]
+   &#43; .term[Incidence matrices]
+      &#43; See Drozdek pg 378-379
+
+---
+
+##  Representation: Adjacency List
+
+.footnote[Drozdek, Figure 8.2]
+
+.left-column[
+![:scale Graph, 10.5em](../images/graphs/fig_8.2a_graph.svg)
+
+![:scale Adjacency Table, 10.5em](../images/graphs/fig_8.2b_adjacency_list_table.svg)
+]
+
+.right-column[![:scale , 11.5em](../images/graphs/fig_8.2c_adjacency_list_logical.svg)]
+
+---
+
+##  Representation: Adjacency matrix
+
+.footnote[Drozdek, Figure 8.2]
+
+.center[![:scale , 260px](../images/graphs/fig_8.2a_graph.svg)]
+
+.center[![:scale , 450px](../images/graphs/fig_8.2d_adjacency_matrix.svg)]
+
+---
+
+##  Representation: Incidence matrix
+
+.footnote[Drozdek, Figure 8.2]
+
+.center[![:scale , 260px](../images/graphs/fig_8.2a_graph.svg)]
+
+.center[![:scale , 490px](../images/graphs/fig_8.2e_incidence_matrix.svg)]
+
+---
+
+##  Traversals 
+
+* Much like tree traversals, vertices are &#34;visited&#34; one at a time.
+   
+* Unlike trees, graphs have .term[cycles], so tree traversal algorithms would result in infinite loops.
+  * A .term[cycle] is a path from one vertex $v_i$ through one or more edges such that the path returns to $v_i$.
+
+* Vertices must be &#34;marked&#34; to avoid re-visiting the same vertex.
+* Isolated vertices must also be visited in some way.
+
+---
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3a_undirected_graph.svg)]
+
+---
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_1.svg)]
+
+---
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_2.svg)]
+
+---
+
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_3.svg)]
+
+---
+
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_4.svg)]
+
+---
+
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_5.svg)]
+
+---
+
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_6.svg)]
+
+---
+
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_7.svg)]
+
+---
+
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_8.svg)]
+
+---
+
+
+##  Depth-First Search 
+
+&#43; Starting with the list $V$  of vertices, the next available vertex v is visited
+    &#43; Create the list of vertices adjacent to $v$ , and perform depth-first search on them.
+    &#43; If v has no adjacent vertices, backtrack to the predecessor of $v$ .
+    &#43; When you backtrack to the vertex where you started, you are done.
+    &#43; Repeat as long as there are unvisited vertices
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_9.svg)]
+
+---
+
+##  Depth-First Search 
+
+* This algorithm generates a tree (or forest , a set of trees) called a .term[spanning tree].
+
+   * A spanning tree includes all vertices of the original graph, but does not contain any cycles.
+
+.center[![](../images/graphs/fig_8.3b_undirected_graph_depth-first_finished.svg)]
+
+---
+
+##  Breadth-First Search 
+
+* Start with a vertex $v$ , that is unvisited.  Add it to the queue.
+    * Take the first element, $v$ from the queue:
+        * Visit $v$
+        * Add each vertex adjacent to $v$ to the queue.
+    * Repeat as long as there are unvisited vertices
+    * (Here, you are visiting all the adjacent vertices first, then following the edges.)
+
+.center[![](../images/graphs/fig_8.4a_directed_graph.svg)]
+
+---
+
+##  Breadth-First Search 
+
+&#43; Start with a vertex $v$ , that is unvisited.  Add it to the queue.
+    &#43; Take the first element, $v$ from the queue:
+        &#43; Visit $v$
+        &#43; Add each vertex adjacent to $v$ to the queue.
+    &#43; Repeat as long as there are unvisited vertices
+    &#43; (Here, you are visiting all the adjacent vertices first, then following the edges.)
+
+.center[![](../images/graphs/fig_8.4b_directed_graph_breadth-first_finished.svg)]
+
+---
+
+##  Dijkstra&#39;s Algorithm 
+
+* Let the node at which we are starting be called the _initial node_. Let the distance of node $Y$ be the distance from the initial node to $Y$.  Dijkstra&#39;s algorithm will assign some initial distance values and will try to improve them step by step.
+
+---
+
+##  Dijkstra&#39;s Algorithm 
+
+(1) Assign to every node a tentative distance value: set it to zero for our initial node and to infinity for all other nodes.
+
+(2) Mark all nodes except the initial node as unvisited. Set the initial node as current. Create a set of the unvisited nodes called the unvisited set consisting of all the nodes except the initial node.
+
+---
+
+##  Dijkstra&#39;s Algorithm 
+
+(3) For the current node, consider all of its unvisited neighbors and calculate their tentative distances.
+* For example, if the current node $A$ is marked with a distance of 6, and the edge connecting it with a neighbor $B$ has length 2, then the distance to $B$ (through $A$) will be $6&#43;2=8$. 
+* If this distance is less than the previously recorded distance, then overwrite that distance. Even though a neighbor has been examined, it is not marked as visited at this time, and it remains in the unvisited set .
+
+---
+
+##  Dijkstra&#39;s Algorithm 
+
+(4) When finished considering the neighbors of current node, mark current node as visited and remove it from the unvisited set . A visited node will never be checked again; its distance recorded now is final and minimal.
+* The next current node will be the node marked with the lowest (tentative) distance in the unvisited set .
+* If the unvisited set is empty, then stop. The algorithm has finished. Otherwise, set the unvisited node marked with the smallest tentative distance as the next &#34;current node&#34; and go back to step (3).
+
+---
+
+##  Dijkstra&#39;s Algorithm 
+
+
+```text
+function Dijkstra(Graph, source):
+    let Q be an empty queue
+    for each vertex v in Graph.Vertices:  # Initialize
+        dist[v] ← INFINITY
+        prev[v] ← UNDEFINED
+        add v to Q
+    dist[source] ← 0
+    
+    while Q is not empty:
+        u ← vertex in Q with min dist[u]
+        remove u from Q
+        
+        for each neighbor v of u still in Q:
+            alt ← dist[u] &#43; Graph.Edges(u, v)
+            if alt &lt; dist[v]:
+                dist[v] ← alt
+                prev[v] ← u
+    return dist[], prev[]
+```
+
+.footnote[Source: &lt;https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm&gt;]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_0.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_1.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_2.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_3.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_4.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_5.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_6.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_7.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_8.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_9.svg)]
+
+---
+
+.footnote[Drozdek, Figure 8.7]
+
+## Dijkstra&#39;s Algorithm Example
+
+.center[![](../images/graphs/fig_8.7_weighted_digraph.svg)]
+
+.center[![](../images/graphs/fig_8.7b_Dijkstra_10.svg)]
+
+You can find the shortest path by backtracking to the points where the &#34;best&#34;
+assigned distance updated to the final value.
+
+---
+
+##  Ford&#39;s Algorithm (Bellman-Ford algorithm)
+
+Dijkstra&#39;s Algorithm does not work if some weights are negative.
+
+To solve this problem, a _label-correcting_ algorithm can be used.
+
+Ford&#39;s algorithm is an example.
+
+* Does not permanently determine the shortest distance for any vertex until it processes the entire graph.
+
+---
+
+##  Ford&#39;s Algorithm (Bellman-Ford algorithm)
+
+
+```text
+function BellmanFord(list vertices, list edges, vertex source) is
+    distance := list of size n
+    predecessor := list of size n
+
+    for each vertex v in vertices do // Step 1: initialize graph
+        distance[v] := inf           // Init. vertex dist. to infinity
+        predecessor[v] := null       // Init. a null predecessor
+    
+    distance[source] := 0            // Dist. to self is zero.
+
+    repeat |V|−1 times:              // Step 2: relax edges repeatedly
+         for each edge(u, v) with weight w in edges do
+             if distance[u] &#43; w &lt; distance[v] then
+                 distance[v] := distance[u] &#43; w
+                 predecessor[v] := u
+
+                                     // Step 3: error if neg. weight cycle
+    if a negative-weight cycle exists, raise an error 
+
+    return distance, predecessor
+```
+
+.footnote[Source: &lt;https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm&gt;]
+
+
+---
+
+##  General Label-Correcting Algorithm 
+
+.footnote[Based on Drozdek, Chapter 8.3]
+
+```text
+function labelCorrectingAlgorithm (weighted simple digraph Graph, vertex first)
+    for all vertices v in Graph do      // Step 1: initialize graph
+        currDist[v] := inf              // Init. vertex dist. to infinity
+    currDist[first] := 0                // Dist. to self is zero
+    toBeChecked := {first}              // Set of vertices to check
+    while toBeChecked is not empty      // Step 2: relax edges repeatedly
+        v := a vertex in toBeChecked
+        remove v from toBeChecked
+        for all vertices u adjacent to v do
+            if currDist[u] &gt; currDist[v] &#43; weight(edge(vu))
+                currDist[u] := currDist[v] &#43; weight(edge(vu))
+                predecessor[u] := v
+                add u to toBeChecked if it is not there
+```
+
+Efficiency hinges on the data structured used for `toBeChecked`
+
+---
+
+##  All-To-All Shortest PathsThe WFI Algorithm 
+
+.footnote[Based on Drozdek, Chapter 8.3]
+
+```text
+function WFI(matrix weights):
+   for i := 1 to numberOfVertices do
+      for j := 1 to numberOfVertices do
+         for k := 1 to numberOfVertices do
+            if weights[j][k] &gt; weights[j][i] &#43; weights[i][k] then
+               weights[j][k] := weights[j][i] &#43; weights[i][k] then         
+   return weights
+```
+
+* `weights` is an adjacency matrix
+
+* N-cubed efficiency...
+
+* Can detect cycles if the diagonal of the weight matrix is initialized to infinity.
+
+---
+
+##  Cycle Detection 
+
+We often need to detect cycles in both directed and undirected graphs.
+
+Depth-First Search can be used for this.
+
+---
+
+##  Cycle Detection: Undirected Graphs
+
+```text
+function detectCyclesDFS(vertex v, Graph G):
+    let static visited := {}   // Set of visited nodes (shared between calls)
+    let static edges   := {}   // Set of edges found (shared for all calls)
+    let has_cycle := false
+    insert v into visited
+    for each vertex u in G adjacent to v do
+        if u is not in visited:
+            has_cycle := has_cycle || detectCyclesDFS(u, G)
+        else if edge(u,v) is not in edges:
+            has_cycle := true  // cycle detected
+        add edge(u,v) to edges
+    return has_cycle
+```
+
+---
+
+##  Cycle Detection: Digraphs 
+
+Algorithm is a bit more complicated.  Label vertices as &#34;working&#34; when we 
+discover them, and as &#34;finished&#34; when we exhaust recursively traversing all 
+adjacent nodes.  
+
+If we see a vertex labeled &#34;working&#34; for the second time, we have a cycle.
+
+```text
+function detectDigraphCyclesDFS(vertex v, Graph G):
+    let has_cycle := false
+    label[v] = WORKING         // label the current vertex as &#34;working&#34;
+    for each vertex u in G adjacent to v do
+        if u has no label yet:
+            has_cycle := has_cycle || detectDigraphCyclesDFS(u, G)
+        else if label[u] is not FINISHED
+            has_cycle := true  // cycle detected
+    num[v] = FINISHED          // mark v as &#34;finished&#34;
+    return has_cycle
+```
+
+---
+
+##  Eulerian Graphs 
+
+.small[_(Euler is pronounced very much like &#34;oiler&#34;.)_]
+
+* An .trail[Eulerian trail] is a path that includes all edges of the graph only once.
+
+* An .trail[Eulerian cycle] is a cycle that is also an Eulerian trail.
+
+* An .trail[Eulerian graph] is a graph that has an Eulerian cycle.
+    * A graph is Eulerian if every vertex is incident to an even number of edges.
+
+---
+
+##  Finding Eulerian Cycles : Fleury&#39;s Algorithm
+
+.green[&#34;_Only take a bridge when there is no other path to take._&#34;]
+
+```text
+function FleuryAlgorithm(undirected graph G):
+    let success := false
+    let v := any vertex in G
+    let path := v
+    let untraversed := G
+    while v has untraversed edges
+        let e represent an edge to be determined later
+        if edge(v,u) is the only untraversed edge
+            e := edge(v,u)
+            remove v from untraversed
+        else e := edge(v,u) which is not a bridge in untraversed
+        path := path &#43; u
+        remove e from untraversed
+        v := u
+    if untraversed has no edges
+        success := true
+    return success, path
+```
+
+---
+
+## Eularian graph and cycle
+
+.footnote[Drozdek, Figure 8.34]
+
+.left-column[
+.small-80[.center[.blue[
+&lt;br&gt;
+&lt;br&gt;
+An Eulerian graph
+]]]
+
+.center[![:scale Eulerian Graph, 11em](../images/graphs/fig_8.34_a_Eulerian_graph.svg)]
+]
+
+.right-column[
+.small-80[.center[.blue[
+An Eulerian path illustrated (numbers indicate traversal order from **b**)
+]]]
+
+.center[![:scale Eulerian Path, 11em](../images/graphs/fig_8.34_c_Eulerian_path.svg)]
+]
+
+---
+
+##  Hamiltonian Graphs
+
+* A .term[Hamiltonian cycle] is a cycle that passes through all the vertices of the graph.
+   * A .term[Hamiltonian graph] is a graph that includes at least one Hamiltonian cycle.
+   * All complete graphs are Hamiltonian.
+      * As a consequence, an algorithm of first create a complete graph using false edges, then reducing it can be used to find Hamiltonian cycles in incomplete graphs.
+
+.center[![:scale Hamiltonian Graph, 11em](../images/graphs/Hamiltonian_graph.svg)]
+
+.footnote[Image: https://commons.wikimedia.org/wiki/File:Hamiltonian_path.svg]
+
+---
+
+##  The Traveling Salesman Problem (TSP) 
+
+Given a set of $n$ cities, find the minimum length tour in which each city is visited exactly once, then you return home.
+
+* This is equivalent to finding the minimum Hamiltonian cycle.
+* If distances between each of the $n$ cities are known, there are $(n - 1)!$ possible routes.
+    * Eliminating reverse routes, you get $\frac{(n - 1)!}{2}$
+    * Clever algorithms can do it in a polynomial factor of $2^n$  steps...
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+<script>
+	var slideshow = remark.create({
+		highlightStyle: "github",
+		highlightLines: true,
+  		highlightSpans: true
+	});
+
+	
+	window.MathJax = {
+		tex: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			displayMath: [             
+      			['$$', '$$'],
+      			['\\[', '\\]']
+    		],
+		}
+	};
+</script>
+</body>
+
+</html>

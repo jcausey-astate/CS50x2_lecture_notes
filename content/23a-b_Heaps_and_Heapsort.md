@@ -1,5 +1,5 @@
 ---
-title: "23a: Heaps and HeapSort"
+title: "23a,b: Heaps and HeapSort"
 date: 2020-10-02T12:30:16-05:00
 draft: false
 ---
