@@ -1,7 +1,7 @@
 ---
 title: '25a,b: Graphs'
 subtitle: 'Drozdek, Ch. 8'
-author: Jason L Causey, Adam Drozdek
+author: Jason L Causey
 date: 2022-11-13
 draft: false
 ---

@@ -18,6 +18,27 @@ Terminology A .term[directed graph] (or &amp;ldquo;digraph&amp;rdquo;) is the no
     </item>
     
     <item>
+      <title>26: Breadth-First Traversals on Graphs</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/26_breadth-first_traversals_on_graphs/</link>
+      <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/26_breadth-first_traversals_on_graphs/</guid>
+      <description>Graphs: Breadth-First Traversals Drozdek, Ch. 8.2 Breadth-First Traversals We have discussed Depth-First traversals, where the traversal choose one path and &amp;ldquo;follows&amp;rdquo; it as far as possible before returning to try other paths.
+The .term[Breadth-First Traversal] instead focuses on visiting all neighboring vertices before proceeding to other vertices.
+In a tree-like structure, we could visualize this as working across each level of the tree before proceeding further &amp;ldquo;down&amp;rdquo; toward the leaves.</description>
+    </item>
+    
+    <item>
+      <title>26b: Decision Trees</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/99_decision_trees/</link>
+      <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/99_decision_trees/</guid>
+      <description>Decision Trees Drozdek Chapter 9.2 Decision Trees A .term[decision tree] is a special form of tree with the following properties:
+Every node has either zero or two children. i.e. they are strict binary trees. Nodes represent a .term[decision], which is a condition or query on some value in a dataset of interest. The decision must evaluate to a Boolean result. Edges represent the value of the result from the originating node: either True or False.</description>
+    </item>
+    
+    <item>
       <title>23b: Multiway Trees</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/24_multiway_trees/</link>
       <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>

@@ -7,5 +7,6 @@
 **/.venv
 **/.vscode
 **/sandbox
+**/.$*
 .hugo_build.lock
 topics.txt
