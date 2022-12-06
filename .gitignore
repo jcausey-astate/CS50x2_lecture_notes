@@ -10,3 +10,6 @@
 **/.$*
 .hugo_build.lock
 topics.txt
+todo.txt
+.todo.done
+.todo.report

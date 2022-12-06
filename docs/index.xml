@@ -7,6 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jcausey-astate.github.io/CS50x2_lecture_notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>29a,b: Hashing</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/29a-b_hashing/</link>
+      <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/29a-b_hashing/</guid>
+      <description>Hashing Drozdek, Chapter 10 What is Hashing? Searching often involves looking for a .term[key], which is a way of uniquely identifying a record.
+If the key is known, a .term[hash table] can be created using the value of the key as the only indication of position.
+Searching is then a $O(1)$ operation&amp;hellip;
+If you know the key, you can go directly to the correct record in the table.
+In practice, we can never perfectly achieve this, but we can get close.</description>
+    </item>
+    
+    <item>
       <title>25a,b: Graphs</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/25a-b_graphs/</link>
       <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
@@ -30,10 +43,10 @@ In a tree-like structure, we could visualize this as working across each level o
     
     <item>
       <title>26b: Decision Trees</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/99_decision_trees/</link>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/26b_decision_trees/</link>
       <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/99_decision_trees/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/26b_decision_trees/</guid>
       <description>Decision Trees Drozdek Chapter 9.2 Decision Trees A .term[decision tree] is a special form of tree with the following properties:
 Every node has either zero or two children. i.e. they are strict binary trees. Nodes represent a .term[decision], which is a condition or query on some value in a dataset of interest. The decision must evaluate to a Boolean result. Edges represent the value of the result from the originating node: either True or False.</description>
     </item>
