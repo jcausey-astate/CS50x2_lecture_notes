@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jcausey-astate.github.io/CS50x2_lecture_notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>39: Hashing</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/39_hashing/</link>
+      <title>38: Hashing</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/38_hashing/</link>
       <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/39_hashing/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/38_hashing/</guid>
       <description>Hashing Drozdek, Chapter 10 What is Hashing? Searching often involves looking for a .term[key], which is a way of uniquely identifying a record.
 If the key is known, a .term[hash table] can be created using the value of the key as the only indication of position.
 Searching is then a $O(1)$ operation&amp;hellip;
@@ -31,32 +31,21 @@ Terminology A .term[directed graph] (or &amp;ldquo;digraph&amp;rdquo;) is the no
     </item>
     
     <item>
-      <title>36: Breadth-First Traversals on Graphs</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/36_breadth-first_traversals_on_graphs/</link>
+      <title>36: Decision Trees</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/36_decision_trees/</link>
       <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/36_breadth-first_traversals_on_graphs/</guid>
-      <description>Graphs: Breadth-First Traversals Drozdek, Ch. 8.2 Breadth-First Traversals We have discussed Depth-First traversals, where the traversal choose one path and &amp;ldquo;follows&amp;rdquo; it as far as possible before returning to try other paths.
-The .term[Breadth-First Traversal] instead focuses on visiting all neighboring vertices before proceeding to other vertices.
-In a tree-like structure, we could visualize this as working across each level of the tree before proceeding further &amp;ldquo;down&amp;rdquo; toward the leaves.</description>
-    </item>
-    
-    <item>
-      <title>37: Decision Trees</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/37_decision_trees/</link>
-      <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/37_decision_trees/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/36_decision_trees/</guid>
       <description>Decision Trees Drozdek Chapter 9.2 Decision Trees A .term[decision tree] is a special form of tree with the following properties:
 Every node has either zero or two children. i.e. they are strict binary trees. Nodes represent a .term[decision], which is a condition or query on some value in a dataset of interest. The decision must evaluate to a Boolean result. Edges represent the value of the result from the originating node: either True or False.</description>
     </item>
     
     <item>
-      <title>38: Efficient Sorting</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/38_efficient_sorting/</link>
+      <title>37: Efficient Sorting</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/37_efficient_sorting/</link>
       <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/38_efficient_sorting/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/37_efficient_sorting/</guid>
       <description>Efficient Sorting Drozdek Chapter 9.3 First - Simple sorting (may be review) We will look at (or review) the following &amp;ldquo;simple&amp;rdquo; sorting algorithms:
 Bubble Sort Selection Sort Insertion Sort class: algorithm
 Bubble Sort To get an array A into ascending order:
@@ -208,7 +197,8 @@ In Object-Oriented programming, a function may also be referred to as a method. 
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/06_functions_reference_parameters/</guid>
-      <description>Functions &amp;amp; Reference Parameters Gaddis (Ch. 6) Review: Pass by Value In pass by value, the value of the actual parameter is copied into the formal parameter. Pass by value is the default method by which data is moved into a function for primitive types, structured types and object types. Changes to the formal parameter cannot affect the actual parameter. Pass by Reference In pass by reference, no copy is made.</description>
+      <description>Functions &amp;amp; Reference Parameters Gaddis (Ch. 6) Review: Pass by Value In pass by value, the value of the actual parameter is copied into the formal parameter. Pass by value is the default method by which data is moved into a function for primitive types, structured types and object types. Changes to the formal parameter cannot affect the actual parameter. .center[]
+Pass by Reference In pass by reference, no copy is made.</description>
     </item>
     
     <item>
@@ -220,7 +210,8 @@ In Object-Oriented programming, a function may also be referred to as a method. 
       <description>Recursion Gaddis Ch. 6 &amp;amp; 19
 Recursion A function is said to be recursive if it contains a call to itself.
 Recursive definitions are often more &amp;ldquo;natural&amp;rdquo;. Embodies a &amp;ldquo;divide-and-conquer&amp;rdquo; strategy void countDown(int timer) { if (timer == 0) { std::cout &amp;lt;&amp;lt; &amp;#34;Blastoff!&amp;#34;; } else{ std::cout &amp;lt;&amp;lt; timer &amp;lt;&amp;lt; &amp;#34;...\n&amp;#34;; countDown(timer-1); // recursive call } } Tracing a Recursive Call
-Purpose Recursion is an alternative way to achieve repetition. Sometimes the iterative approach (loop) isn&amp;rsquo;t obvious.</description>
+.small-80[
+void countDown(int timer) { if (timer == 0) { std::cout &amp;lt;&amp;lt; &amp;#34;Blastoff!</description>
     </item>
     
     <item>
@@ -288,7 +279,7 @@ Example double price = 100.0 / 3.0; // 33.3333333... std::cout &amp;lt;&amp;lt; 
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-2_cmath_epsilon_comparison/</guid>
       <description>Epsilon Comparison Gaddis Ch. 4 Supplement Mathematical Functions There are many mathematical functions that do not have an operator in C++. The &amp;lt;cmath&amp;gt; library provides definitions for these. Some examples are:
-Example #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; int main(){ double a = 3.0; double b = 4.0; double c = sqrt( pow(a, 2) + pow(b, 2) ); // Pythagorean Theorem std::cout &amp;lt;&amp;lt; &amp;#34;The hypotenuse is: &amp;#34; &amp;lt;&amp;lt; c &amp;lt;&amp;lt; &amp;#34;.\n&amp;#34;; return 0; } Numerical Inaccuracy Computers use binary (base-2) numbers internally.</description>
+Function Name Description -------------------------------------------------------- pow(base, exp) Returns base raised to power of exp sqrt(x) Returns square root of x floor(x) Returns the mathematical floor of x ceil(x) Returns the mathematical ceiling of x fabs(x) Returns the absolute value of x sin(theta) Returns the mathematical sine of theta (other trig functions available also; measure in radians) Example #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; int main(){ double a = 3.</description>
     </item>
     
     <item>
@@ -322,12 +313,13 @@ Allows the programmer to specify mnemonic literals. Low-level, not very flexible
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
       <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/22_operator_overloading/</guid>
-      <description>OperatorOverloading Gaddis Ch. 14.5 Operators as Functions Operators in C++ are actually just symbolic shorthand for function calls.
+      <description>OperatorOverloading Gaddis Ch. 14.5 Operators as Functions .small-90[
+Operators in C++ are actually just symbolic shorthand for function calls.
 Example Expression:
 area = pi * r * r; Consider just the first operator that will be applied:
 pi * r This expression will actually result in the following function call:
 operator* (pi, r) The entire expression could be written as:
-operator= ( operator*( operator*( pi, r ), r )); Overloading Operators Since operators are really just function calls in disguise, if we know the right prototypes for the function calls, we can overload them.</description>
+operator= ( operator*( operator*( pi, r ), r )); ]</description>
     </item>
     
     <item>

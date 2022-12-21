@@ -1,5 +1,5 @@
 ---
-title: '37: Decision Trees'
+title: '36: Decision Trees'
 subtitle: 'Drozdek, Ch. 9.2'
 author: Jason L Causey
 date: 2022-11-13

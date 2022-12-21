@@ -75,7 +75,7 @@ It is convention (not strictly a requirement) that heaps "fill in" at the leaf l
 + The tree is balanced.
 + Leaves are added at level $h$ from left-to-right.
 
-.center[![:scale Complete Binary Max Heap, 50%](../images/HeapSort/complete_binary_max_heap.png)]
+.center[![:height Complete Binary Max Heap, 10em](../images/HeapSort/complete_binary_max_heap.png)]
 
 ---
 

@@ -130,27 +130,31 @@ std::cin.getline(name, SIZE);
 
 ## C-String Functions
 
+.small-90[
 The `&lt;cstring&gt;` header file contains functions that are useful for dealing with c-style strings:
 
+        Function                    Description 
+        ------------------------------------------------------------
+        strlen(str)                 Returns length of `str`
 
-&lt;pre&gt;
- Function                   Description 
-------------------------------------------------------------
-strlen(str)                 Returns length of `str`
-strcmp(str1, str2)          Compares `str1` to `str2` 
-                            &#34;alphabetically&#34;
-strcpy(dst, src)            Copies `src` into `dst` 
-                            (no bounds check) 
-strncpy(dst, src, count)    Copies up to `count` 
-                            characters from `src` into 
-                            `dst` (no null-terminator added)
-strcat(dst, src)            Concatenates `src` to the end 
-                            of `dst` (no bounds check)  
-strncat(dst, src, count)    Concatenates up to `count` 
-                            characters from `src` to end 
-                            of `dst`, plus the 
-                            null-terminator  
-&lt;/pre&gt;
+        strcmp(str1, str2)          Compares `str1` to `str2` 
+                                    &#34;alphabetically&#34;
+
+        strcpy(dst, src)            Copies `src` into `dst` 
+                                    (no bounds check) 
+
+        strncpy(dst, src, count)    Copies up to `count` 
+                                    characters from `src` into 
+                                    `dst` (no null-terminator added)
+
+        strcat(dst, src)            Concatenates `src` to the end 
+                                    of `dst` (no bounds check)  
+
+        strncat(dst, src, count)    Concatenates up to `count` 
+                                    characters from `src` to end 
+                                    of `dst`, plus the 
+                                    null-terminator  
+]
 
 ---
 
@@ -329,13 +333,11 @@ std::cout &lt;&lt; destination &lt;&lt; &#34;\n&#34;;  // What prints?
 
 Require `&lt;cstdlib&gt;`
 
-&lt;pre&gt;
- Function                   Description 
-------------------------------------------------------------
-atoi(str)                   Converts c-string to an int
-atol(str)                   Converts c-string to a long
-atof(str)                   Converts c-string to a double
-&lt;/pre&gt;
+        Function                   Description 
+        ------------------------------------------------------------
+        atoi(str)                   Converts c-string to an int
+        atol(str)                   Converts c-string to a long
+        atof(str)                   Converts c-string to a double
 
 
 ---

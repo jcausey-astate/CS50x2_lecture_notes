@@ -267,18 +267,18 @@ virtual void y() = 0;
 
 Here is what it looks like in a class diagram:
 
-.center[![:scale Multiple Inheritance Class Diagram, 80%](../images/virtual_Polymorphism/multiple_inheritance_diagram.svg)]
+.center[![:scale Multiple Inheritance Class Diagram, 75%](../images/virtual_Polymorphism/multiple_inheritance_diagram.svg)]
 
 ---
 
 ## Example:  Students and faculty.
 
 ```cpp
-class Student{                 | class Faculty{                                     
+class Student{                 | class Faculty{ 
 public:                        | public:
-    std::string   name;        |    std::string name;              
-    unsigned long id;          |    double      salary;                            
-};                             | };         
+    std::string   name;        |    std::string name;
+    unsigned long id;          |    double      salary;
+};                             | };
 ```
 
 Notice the overlap - both classes need a `name` (and maybe other things as well).
@@ -295,10 +295,10 @@ public:
     std::string name;
 };
 
-class Student : public Person{ | class Faculty : public Person{                                     
+class Student : public Person{ | class Faculty : public Person{
 public:                        | public:              
-    unsigned long id;          |    double salary;                            
-};                             | };         
+    unsigned long id;          |    double salary;
+};                             | };
 ```
 
 Now, we have the common code collected in a base class `Person`.  .green[Good!]
@@ -323,10 +323,10 @@ public:
     std::string name;
 };
 
-class Student : public Person{ | class Faculty : public Person{                                     
+class Student : public Person{ | class Faculty : public Person{ 
 public:                        | public:              
-    unsigned long id;          |    double salary;                            
-};                             | };         
+    unsigned long id;          |    double salary; 
+};                             | };
 
 class GA : public Student, public Faculty {
 public:
@@ -379,10 +379,10 @@ public:
     std::string name;
 };
 
-class Student : public Person{ | class Faculty : public Person{                                     
+class Student : public Person{ | class Faculty : public Person{
 public:                        | public:              
-    unsigned long id;          |    double salary;                            
-};                             | };         
+    unsigned long id;          |    double salary;    
+};                             | };        
 
 class GA : public Student, public Faculty {
 public:
@@ -403,12 +403,12 @@ public:
     std::string name;
 };
 
-class Student : public Person{ | class Faculty : public Person{                                     
+class Student : public Person{ | class Faculty : public Person{
 public:                        | public:              
-    unsigned long id;          |    double salary;                            
-};                             | };         
+    unsigned long id;          |    double salary;
+};                             | }; 
 
-class GA : public Student, public Faculty {
+class GA : public Student, public Faculty 
 public:
     std::vector<std::string> labs;
 };
@@ -428,10 +428,10 @@ class Person{
 public:
     std::string name;
 };
-class Student : public Person{ | class Faculty : public Person{                                     
-public:                        | public:              
-    unsigned long id;          |    double salary;                            
-};                             | };         
+class Student : public Person{ | class Faculty : public Person{
+public:                        | public:             
+    unsigned long id;          |    double salary;  
+};                             | };       
 
 class GA : public Student, public Faculty {
 public:
@@ -458,9 +458,9 @@ class Person{
 public:
     std::string name;
 };
-class Student : public Person{ | class Faculty : public Person{                                     
+class Student : public Person{ | class Faculty : public Person{
 public:                        | public:              
-    unsigned long id;          |    double salary;                            
+    unsigned long id;          |    double salary;
 };                             | };         
 
 class GA : public Student, public Faculty {
@@ -490,11 +490,11 @@ public:
     std::string name;
 };
 
-class Student                  | class Faculty                                     
+class Student                  | class Faculty  
 *: virtual public Person{       | : virtual public Person{
 public:                        | public:              
-    unsigned long id;          |    double salary;                            
-};                             | };         
+    unsigned long id;          |    double salary; 
+};                             | };   
 
 class GA : public Student, public Faculty {
 public:

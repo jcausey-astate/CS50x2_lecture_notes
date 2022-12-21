@@ -192,7 +192,7 @@ std::cout << std::is_trivially_copyable<A>::value << '\n';
 
 ---
 
-<small>
+.small-60[
 
 ```cpp
 #include <iostream>
@@ -239,8 +239,7 @@ int main(){
     return 0;
 }
 ```
-
-</small>
+]
 
 ---
 

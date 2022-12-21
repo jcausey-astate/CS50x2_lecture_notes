@@ -313,6 +313,8 @@ double    temperatures[]{78.8, 80.2, 92.4, 87.5, 95.3, 95.1, 92.8};
 
 ## `const` methods
 
+.small-90[
+
 * In classes / structures, a method can "promise" not to modify the *state* of the object.
     - meaning, values of attributes will not be modified
 * accomplished by marking methods as `const`:
@@ -333,3 +335,4 @@ private:
 * This protection is often added to accessors, and *should* be added whenever possible.
     - Mutators cannot be `const` methods, since they need to change the state of the object.
 
+]

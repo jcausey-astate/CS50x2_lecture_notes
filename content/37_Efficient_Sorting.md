@@ -1,5 +1,5 @@
 ---
-title: '38: Efficient Sorting'
+title: '37: Efficient Sorting'
 subtitle: 'Drozdek, Ch. 9.1 and 9.3'
 author: Jason L Causey, Hung-Chi Su
 date: 2022-11-13
@@ -114,7 +114,7 @@ More specifically
 
 **Insertion Sort - First two iterations illustrated.**
 
-.center[![:height Insertion sort - first two steps, 21em](../images/efficient_sorting/insertion_sort_2-steps.svg)]
+.center[![:height Insertion sort - first two steps, 20em](../images/efficient_sorting/insertion_sort_2-steps.svg)]
 
 ---
 
@@ -266,12 +266,13 @@ class: algorithm
 
 --
 
+.small-90[
 Let's look at the complexity:
 
 You must take exactly enough "forward" steps to fill the output array, which is size $N$...  So $O(N)$.
 
 Although in practice we often aren't merging the _whole array_ - we are merging sub-arrays whose size $n << N$. .small[Most merge steps are much faster!]
-
+]
 ---
 
 #### Merge Sort Summary
@@ -528,11 +529,12 @@ class: algorithm
 
 Let $N$ represent the size of the array.
 
+.small-90[
 * The outer loop is limited by the number of possible digits $d$, which we may assume is very small with respect to the size of the array.  Usually $d << N$.
     * The first inner loop is $O(N)$ (_linear_ time).
     * The second inner loop runs `radix` times (we can also assume this is a very small number, so assume $O(1)$ (constant time)).
         * The loop inside the second inner loop runs an unknown number of times, but it must necessarily be less than $N$ (worst case is all elements are in the same pile).
-
+]
 So, radix sort's complexity is $O( N\cdot d )$.   .small[Assuming $d << N$, performance characteristics approach constant time as $N \rightarrow \infty$.]
 
 **Overall complexity:  $O(N \cdot d )$**

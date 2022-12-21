@@ -84,16 +84,17 @@ Elements are identified by an integer _index_, starting from 0.
 
 ## Initial Values
 
-Array elements start out _uninitialized_ if their base types do (primitive types, for example).
+.small-80[Array elements start out _uninitialized_ if their base types do (primitive types, for example).]
 
 ![Array elements are uninitialized.](../images/shared/integer_array_uninitialized.svg)
 
+.small-80[
 Use the element's _index number_ and _array index syntax_ to access individual elements:
 
 ``` cpp
 tests[0] = 88;
 ```
-
+]
 ![Array with first value initialized.](../images/shared/integer_array_first_element_initialized.svg)
 
 ---
@@ -146,6 +147,7 @@ for(int i = 0; i < 100; i++){   // Initialize all elements to 0
     - You **cannot** use a variable as a size declarator.
         + No, you really can't!
             + _**Seriously, you can't.**_
+
 * C++ provides **no bounds checking** for indices!
     - You must be careful not to access out-of-bounds.
     - Never trust a user-entered value for calculating an index!  Check it first.
@@ -231,9 +233,14 @@ void print_tests(int tests[], int size){
 ## 1-D Arrays Key Points Summary
 
 * Size declarator must be a literal or constant.
+
 * C++ provides no bounds-checking for indices.
+
 * Array elements start out uninitialized if their base types do.
   * They are _default constructed_ if the base type is a structured or object type.
+
 * Arrays cannot be directly assigned.
+
 * Arrays are always passed by reference to functions.
+
 * Arrays do not "know" their own size.

@@ -12,17 +12,17 @@ draft: false
 
 There are many mathematical functions that do not have an operator in C++.  The `<cmath>` library provides definitions for these.  Some examples are:
 
-<pre>
-Function Name      Description
---------------------------------------------------------
-pow(base, exp)     Returns base raised to power of exp
-sqrt(x)            Returns square root of x
-floor(x)           Returns the mathematical floor of x
-ceil(x)            Returns the mathematical ceiling of x
-fabs(x)            Returns the absolute value of x
-sin(theta)         Returns the mathematical sine of theta
-(other trig functions available also; measure in radians)
-</pre>
+
+        Function Name      Description
+        --------------------------------------------------------
+        pow(base, exp)     Returns base raised to power of exp
+        sqrt(x)            Returns square root of x
+        floor(x)           Returns the mathematical floor of x
+        ceil(x)            Returns the mathematical ceiling of x
+        fabs(x)            Returns the absolute value of x
+        sin(theta)         Returns the mathematical sine of theta
+        (other trig functions available also; measure in radians)
+
 
 ---
 
@@ -91,8 +91,10 @@ else{
 }
 ```
 This will _likely_ produce the output:
-<pre>An error occurred: 3.14159 != 3.14159!</pre>
-<p>Also, the `<<` operator _rounds_ the output, so you cannot see the rounding error at all!</p>
+
+`An error occurred: 3.14159 != 3.14159!`
+
+Also, the `<<` operator _rounds_ the output, so you cannot see the rounding error at all!
 
 ---
 
@@ -112,7 +114,8 @@ else{
 }
 ```
 The output now might look like:
-<pre>An ERROR occurred: 3.1415926535897931 != 3.1415926535897927!</pre>
+
+`An ERROR occurred: 3.1415926535897931 != 3.1415926535897927!`
 
 ---
 
@@ -122,7 +125,7 @@ The values 3.1415926535897931 and 3.1415926535897927 are _very nearly equal_.
 
 In most disciplines, a difference in the 15<sup>th</sup> decimal position would not be unacceptable.
 
-The problem is that the `==` operator is often _too strict a test_.  What we really want to know is whether the values are "equal" to _within an acceptable tolerance_.
+The problem is that the `==` operator is often .red[_too strict a test_].  What we really want to know is whether the values are "equal" to _within an acceptable tolerance_.
 
 ---
 
@@ -158,7 +161,8 @@ else{
 }
 ```
 (Likely) Result:
-<pre>OK, 3.1415926535897931 ~= 3.1415926535897927!</pre>
+
+`OK, 3.1415926535897931 ~= 3.1415926535897927!`
 
 ---
 
@@ -170,7 +174,9 @@ else{
 * The value of _epsilon_ may vary depending on your application.
     - How much precision do you really _need_?
     - How many mathematical calculations are being performed before the test for "equality"?
-* For more information on this topic, see:
-    - <small>http://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/ </small>
-    - <small>http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/ </small>
-    - <small>http://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/ </small>
+* For more information on this topic, see: 
+.small-75[
+- http://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/ 
+- http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/ 
+- http://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/ 
+]

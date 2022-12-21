@@ -85,10 +85,10 @@ But we would lose the ability to quickly find info on a "per-user" basis...
 ---
 
 **What if we do both?**     
-If we use two 1-D arrays, one for "Movies" and one for "Users", we could quickly find info from either point-of-view.  
+.small-90[If we use two 1-D arrays, one for "Movies" and one for "Users", we could quickly find info from either point-of-view.  
 
 * The node would need to know about the Movie, the User, and the Rating.
-
+]
 .center[![:scale Sparse table as linked lists., 80%](../images/sparse_table/linked_list_dual-indexed.svg)]
 
 ---

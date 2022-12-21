@@ -126,18 +126,18 @@ Knowing the address of where something is stored gives a programmer low-level ac
 **Example: Using a Pointer**
 
 ``` cpp
-int x = 75;                  // just a normal integer
-
-// [...]          
-
-int* xPtr;                   // declare a pointer to an int
-xPtr = &x;                   // point xPtr to x
-
-// [...]          
-
-*xPtr = 100;                 // use xPtr, change value in x
-std::cout << *xPtr << "\n";  // prints 100
-std::cout << x     << "\n";  // x is also 100 now.
+ int x = 75;                  // just a normal integer
+ 
+ // [...]          
+ 
+ int* xPtr;                   // declare a pointer to an int
+ xPtr = &x;                   // point xPtr to x
+ 
+ // [...]          
+ 
+ *xPtr = 100;                 // use xPtr, change value in x
+ std::cout << *xPtr << "\n";  // prints 100
+ std::cout << x     << "\n";  // x is also 100 now.
 ```
 
 ---

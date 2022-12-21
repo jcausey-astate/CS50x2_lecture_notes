@@ -82,7 +82,7 @@ for (int i = static_cast<int>(WorkDayAbr::mon);
 
 * `enum` values do not implicitly cast to `int` - you have to `static_cast`.
 * You can define your own operators (like `++`) to make it easier to work with these...
-* Core Guidelines: <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-enum>
+* Core Guidelines: .small-60[ <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#S-enum> ]
 
 ---
 

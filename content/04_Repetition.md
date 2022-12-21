@@ -39,23 +39,23 @@ Operator Example    Equivalent
 
 To make it even easier to add or subtract one from a variable, C++ offers a set of two _increment_ (add one) and two _decrement_ (subtract one) operators:
 
-<pre>
-Operator Example Description
--------------------------------------------------------
-  ++     ++x;     Prefix increment operator. Increments
-                  x then evaluates to the updated value.
+        Operator Example Description
+        -------------------------------------------------------
+        ++        ++x;   Prefix increment operator. Increments
+                         x then evaluates to the updated value.
 
-  ++     x++;     Postfix increment operator. Evaluates
-                  to the original value of x, then 
-                  increments x.
+        ++        x++;   Postfix increment operator. Evaluates
+                         to the original value of x, then 
+                         increments x.
 
-  --     --x;     Prefix decrement operator. Decrements
-                  x then evaluates to the updated value.
+        --        --x;   Prefix decrement operator. Decrements
+                         x then evaluates to the updated value.
 
-  --     x--;     Postfix decrement operator. Evaluates
-                  to the original value of x, then 
-                  decrements x.
-</pre>
+        --        x--;   Postfix decrement operator. Evaluates
+                         to the original value of x, then 
+                         decrements x.
+
+
 
 ---
 

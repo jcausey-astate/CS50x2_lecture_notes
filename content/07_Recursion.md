@@ -32,8 +32,9 @@ void countDown(int timer) {
 
 **Tracing a Recursive Call**
 
-<pre style="font-size: 0.55em;">
-<code>void countDown(int timer) {   
+.small-80[
+```cpp
+void countDown(int timer) {   
     if (timer == 0) {
        std::cout << "Blastoff!";
     }
@@ -41,11 +42,12 @@ void countDown(int timer) {
         std::cout << timer << "...\n";
         countDown(timer-1); // recursive call
     }
-}</code></pre>
-
-<br />
-<p style="font-size: smaller;">Assuming the function is called as in **`countDown(2);`**:</p>
-<pre style="font-size: 0.55em;">
+}
+```
+]
+.small-80[Assuming the function is called as in **`countDown(2);`**:]
+<pre>
+.small-70[
 <b>countdown(2):</b>
     Generates output "2..."
     Calls `countdown(1)`
@@ -57,7 +59,7 @@ void countDown(int timer) {
                     returns
             returns
     returns
-</pre>
+]</pre>
 
 ---
 
@@ -301,7 +303,9 @@ void towers(int n, char start='A', char goal='C', char temp='B'){
 **Interesting observations about the "Towers of Hanoi" solution:**
 
 * The base condition implies we literally "do nothing".  This is an ideal base condition if it exists for your problem; it reduces the code to just a single `if` (not counting any error handling code you may need).
+
 * There are _two_ recursive calls here.  Not all recursive functions only have one call.
+
 * The output statement is the "left-over work", and in this case you can see how it does everything that is of interest to the end user (printing all of the moves).
   * Without the output statement, the problem would be purely recursive and it would still make all of the same calls &mdash; we just wouldn't be able to observe what it was doing (at least not without attaching a debugger and tracing the code).
 

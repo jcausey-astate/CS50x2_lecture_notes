@@ -182,20 +182,20 @@ together.
 
 Two types of folding:  .term[shift folding] and .term[boundary folding]
 
-.example[
+.small-90[.example[
 **Example:**  SSN   `123-45-6789`
 
 You could split into 123, 456, 789 and add them (1368), then mod by
 ${TSize}$.
 
 This is shift-folding
-]
-.example[
+]]
+.small-90[.example[
 You could take the same 3 parts: 123, 456, 789, and reverse every other
 part:  123, 654, 789.  Then add (1566), and mod by ${TSize}$.  
 
 This is boundary-folding.
-]
+]]
 Folding is fast (especially in binary).  Shift-folding is just an `XOR`.
 
 ---

@@ -10,6 +10,8 @@ draft: false
 
 ## Operators as Functions
 
+.small-90[
+
 Operators in C++ are actually just symbolic shorthand for function calls.
 
 **Example Expression:**
@@ -34,6 +36,7 @@ The entire expression could be written as:
 ``` cpp
 operator= ( operator*( operator*( pi, r ), r ));
 ```
+]
 
 ---
 

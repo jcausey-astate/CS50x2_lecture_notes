@@ -303,14 +303,14 @@ std::cin  >> x;                          // read x
 
 ## C++ Mathematical Operators
 
-    Operator    Meaning                 Expression  Result
-    -----------------------------------------------------
-    +           Addition                 3 + 4      7
-    -           Subtraction              4 - 6      -2
-    -           Negation (unary -)      -3 + 1      -2
-    *           Multiplication           3 * 5      15
-    /           Division                 8 / 2      4
-    %           Modulus (remainder)      7 % 4      3
+     Operator    Meaning               Expression  Result
+    ------------------------------------------------------
+     +           Addition                 3 + 4      7
+     -           Subtraction              4 - 6      -2
+     -           Negation (unary -)      -3 + 1      -2
+     *           Multiplication           3 * 5      15
+     /           Division                 8 / 2      4
+     %           Modulus (remainder)      7 % 4      3
 
 Beware of the division operator!
 
@@ -325,12 +325,12 @@ Beware of the division operator!
 
 Shown from highest to lowest:
 
-    Operator(s)   Associativity
-    --------------------------
-    - (unary)     right-to-left
-    *, /, %       left-to-right
-    +, -          left-to-right
-    =             right-to-left
+     Operator(s)   Associativity
+    -----------------------------
+     - (unary)     right-to-left
+     *, /, %       left-to-right
+     +, -          left-to-right
+     =             right-to-left
 
 * Math operators have the same precedence rules as in algebra.
 * Assignment has a very low precedence (it tends to happen last).

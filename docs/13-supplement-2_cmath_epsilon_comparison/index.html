@@ -23,17 +23,17 @@
 
 There are many mathematical functions that do not have an operator in C&#43;&#43;.  The `&lt;cmath&gt;` library provides definitions for these.  Some examples are:
 
-&lt;pre&gt;
-Function Name      Description
---------------------------------------------------------
-pow(base, exp)     Returns base raised to power of exp
-sqrt(x)            Returns square root of x
-floor(x)           Returns the mathematical floor of x
-ceil(x)            Returns the mathematical ceiling of x
-fabs(x)            Returns the absolute value of x
-sin(theta)         Returns the mathematical sine of theta
-(other trig functions available also; measure in radians)
-&lt;/pre&gt;
+
+        Function Name      Description
+        --------------------------------------------------------
+        pow(base, exp)     Returns base raised to power of exp
+        sqrt(x)            Returns square root of x
+        floor(x)           Returns the mathematical floor of x
+        ceil(x)            Returns the mathematical ceiling of x
+        fabs(x)            Returns the absolute value of x
+        sin(theta)         Returns the mathematical sine of theta
+        (other trig functions available also; measure in radians)
+
 
 ---
 
@@ -102,8 +102,10 @@ else{
 }
 ```
 This will _likely_ produce the output:
-&lt;pre&gt;An error occurred: 3.14159 != 3.14159!&lt;/pre&gt;
-&lt;p&gt;Also, the `&lt;&lt;` operator _rounds_ the output, so you cannot see the rounding error at all!&lt;/p&gt;
+
+`An error occurred: 3.14159 != 3.14159!`
+
+Also, the `&lt;&lt;` operator _rounds_ the output, so you cannot see the rounding error at all!
 
 ---
 
@@ -123,7 +125,8 @@ else{
 }
 ```
 The output now might look like:
-&lt;pre&gt;An ERROR occurred: 3.1415926535897931 != 3.1415926535897927!&lt;/pre&gt;
+
+`An ERROR occurred: 3.1415926535897931 != 3.1415926535897927!`
 
 ---
 
@@ -133,7 +136,7 @@ The values 3.1415926535897931 and 3.1415926535897927 are _very nearly equal_.
 
 In most disciplines, a difference in the 15&lt;sup&gt;th&lt;/sup&gt; decimal position would not be unacceptable.
 
-The problem is that the `==` operator is often _too strict a test_.  What we really want to know is whether the values are &#34;equal&#34; to _within an acceptable tolerance_.
+The problem is that the `==` operator is often .red[_too strict a test_].  What we really want to know is whether the values are &#34;equal&#34; to _within an acceptable tolerance_.
 
 ---
 
@@ -169,7 +172,8 @@ else{
 }
 ```
 (Likely) Result:
-&lt;pre&gt;OK, 3.1415926535897931 ~= 3.1415926535897927!&lt;/pre&gt;
+
+`OK, 3.1415926535897931 ~= 3.1415926535897927!`
 
 ---
 
@@ -181,10 +185,12 @@ else{
 * The value of _epsilon_ may vary depending on your application.
     - How much precision do you really _need_?
     - How many mathematical calculations are being performed before the test for &#34;equality&#34;?
-* For more information on this topic, see:
-    - &lt;small&gt;http://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/ &lt;/small&gt;
-    - &lt;small&gt;http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/ &lt;/small&gt;
-    - &lt;small&gt;http://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/ &lt;/small&gt;
+* For more information on this topic, see: 
+.small-75[
+- http://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/ 
+- http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/ 
+- http://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/ 
+]
 
 
 </textarea>
