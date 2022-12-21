@@ -52,6 +52,18 @@ Every node has either zero or two children. i.e. they are strict binary trees. N
     </item>
     
     <item>
+      <title>27 a,b: Efficient Sorting</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/27a-b_efficient_sorting/</link>
+      <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/27a-b_efficient_sorting/</guid>
+      <description>Efficient Sorting Drozdek Chapter 9.3 First - Simple sorting (may be review) We will look at (or review) the following &amp;ldquo;simple&amp;rdquo; sorting algorithms:
+Bubble Sort Selection Sort Insertion Sort class: algorithm
+Bubble Sort To get an array A into ascending order:
+bubble_sort(A[], size): do the following until the array is sorted: for each pair of elements in the array: compare the pair to see if they are in order: if not, swap the values and make note that the array still isn&amp;rsquo;t fully sorted;</description>
+    </item>
+    
+    <item>
       <title>23b: Multiway Trees</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/24_multiway_trees/</link>
       <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>

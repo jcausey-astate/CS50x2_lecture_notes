@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/favicon.ico">
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/remark.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/slides-additional.css" />
+	<link rel="stylesheet" href="https://jcausey-astate.github.io/CS50x2_lecture_notes/css/prog-courses.css" />
+    <base target="_blank" />
+</head>
+
+
+<body>
+    <textarea id="source" class="three-col">
+
+
+# Efficient Sorting
+
+## Drozdek Chapter 9.3
+
+---
+
+## First - Simple sorting (may be review)
+
+We will look at (or review) the following &#34;simple&#34; sorting algorithms:
+
+* Bubble Sort
+* Selection Sort
+* Insertion Sort
+
+---
+
+class: algorithm
+
+### Bubble Sort
+
+To get an array `A` into ascending order:
+
+&gt; bubble\_sort(`A[]`, `size`):
+&gt;   do the following until the array is sorted:
+&gt;       for each pair of elements in the array:
+&gt;           compare the pair to see if they are in order:
+&gt;               if not, swap the values and make note
+&gt;               that the array still isn&#39;t fully sorted;
+
+---
+
+#### Complexity
+
+Let $N$ represent the size of the array.
+
+* The outer loop in will run at most $N-1$ times.
+  * The inner loop (without any optimizations) will run $N-1$ times.
+
+--
+      * Thus, there will be at most $(N-1) \times (N-1) \approx N^2$ swaps.
+
+**Overall complexity:  $O(N^2)$**
+
+.small[Note: The inner loop can be optimized to run one less comparison for each iteration of the outer loop.  This doesn&#39;t change the overall complexity though.  The _outer_ loop contains an &#34;early-out&#34; option in case the array is determined to be sorted at any step, so it is possible the outer loop could run only once (if the array were already sorted).   This, in the best case, you can get linear time $O(N)$ performance.  This early-out option can be useful if there is a pre-processing step that often leaves the array either sorted or nearly-sorted.  .green[**_Know your data._**]
+]
+
+.footnote[See Drozdek Ch. 9.1 for more thorough analysis.]
+
+
+---
+
+class: algorithm
+
+### Selection Sort
+
+To get an array `A` into ascending order:
+
+
+&gt; selection\_sort(`A[]`, `size`):
+&gt;   for `i` = 0 to `size`-1:
+&gt;       Find the index of the smallest element
+&gt;       in the rest of `A` (the sub-array from
+&gt;       `A[i&#43;1]` through `A[size-1])`; call it `min`;
+&gt;   swap `A[i]` with `A[min]`;
+
+---
+
+#### Complexity
+
+Let $N$ represent the size of the array.
+
+* The outer loop in will run at most $N-1$ times.
+  * The inner loop runs one fewer times each time the outer loop iterates.  So, the inner loop&#39;s total iterations is the series  $\lbrace N-1, N-2, \dots, 2, 1 \rbrace$
+
+--
+      * Thus, there will be about $\frac{m(m&#43;1)}{2}$ swaps, where $m=(N-1)$.  Getting rid of the constant factors, we can see that the largest contribution is approximated by $N^2$.
+
+**Overall complexity:  $O(N^2)$**
+
+.footnote[See Drozdek Ch. 9.1 for more thorough analysis.]
+
+---
+
+class: algorithm
+
+### Insertion Sort
+
+&gt; insertion\_sort(`A[]`, `size`):
+&gt;   for `i` = 1 to `size`-1:
+&gt; 	    move all elements `data[j]` greater than
+&gt; 		    `data[i]` right by one position;
+&gt; 	    place `data[i]` in its proper position;
+
+--
+
+More specifically
+
+&gt; insertion\_sort(`A[]`, `size`):
+&gt;   for `i` = 1 to `size`-1:
+&gt;         `tmp` = `data[i]`;
+&gt;         for `j` = `i`, counting backward until 0, and while `tmp` &lt; `data[j-1]`:
+&gt;             `data[j]` = `data[j – 1]`;
+&gt;         `data[j]` = `tmp`;  
+
+---
+
+**Insertion Sort - First two iterations illustrated.**
+
+.center[![Insertion sort - first two steps](../images/efficient_sorting/insertion_sort_2-steps.svg)]
+
+---
+
+#### Complexity
+
+Let $N$ represent the size of the array.
+
+* The outer loop in will run exactly $N-1$ times.
+  * The inner loop&#39;s run time depends on the order of the values, but can be roughly approximated by a constant factor of $N$.
+
+--
+      * Thus, the whole thing can be summarized as $O(N^2)$.
+
+**Overall complexity:  $O(N^2)$**
+
+.footnote[See Drozdek Ch. 9.1 for more thorough analysis.]
+
+---
+
+## More efficient algorithms
+
+Now, let&#39;s consider the following more efficient sorting algorithms:
+
+* Heap sort
+* Quick sort
+* Merge sort
+* Radix sort
+
+---
+
+class: algorithm
+
+### Heap Sort
+
+&gt; heap\_sort(A[], size):
+&gt;   make A into a max-heap, usually with the bottom-up _make-heap_ algorithm;
+&gt;   for i = 0 to size-1:
+&gt;       heap_remove(A, size); // size is reduced by 1 each time
+
+Expanding the `heap_remove` function inline, we get:
+
+&gt; heap\_sort(`A[]`, `size`):
+&gt;   make `A` into a max-heap, usually with the bottom-up _make-heap_ algorithm;
+&gt;   for `i` = 0 to `size`-1:
+&gt;       swap `A[0]` with `A[size]`;
+&gt;       `size--`;
+&gt;       _sift-down_ `A` starting at index `0` to restore the heap property;
+
+---
+
+class: algorithm
+
+#### Make Max-Heap algorithm:
+
+&gt; // bottom-up version
+&gt; make\_max\_heap(`A[]`, `size`):
+&gt;   `current` = `size-1`;
+&gt;   while `current` &gt; 0:
+&gt;       `parent` = index of parent of `A[current]`;
+&gt;       _sift-down_ `A` starting at index `parent`;
+&gt;       `current` = `parent`;
+
+---
+
+class: algorithm
+
+#### Sift-down algorithm
+
+&gt; sift\_down(`A[]`, `start_index`, `size`):
+&gt;   `current` = `start_index`;
+&gt;   while `left_child(current)` &lt; `size`:
+&gt;       `i_max` = index of child with maximum value;
+&gt;       if `A[i_max]` &gt; `A[current]`:
+&gt;           swap `A[i_max]` with `A[current]`;
+&gt;           `current` = `i_max`;
+
+---
+
+#### Complexity
+
+Let $N$ represent the size of the array.
+
+* The bottom-up make heap algorithm has $O(N)$ asymtotic complexity.
+* The loop runs $N-1$ times.
+  * for each iteration of the loop, the _heap remove_ algorithm needs to perform a swap and a _sift-down_.  The complexity of _sift-down_ is $O(\lg(N))$.
+
+--
+     * Thus, overall complexity is $O(N) &#43; N \cdot \lg(N)$ steps, which is dominated by the $N\cdot \lg(N)$ term.
+
+**Overall complexity:  $O(N\cdot \lg(N))$**
+
+
+.footnote[See Drozdek Ch. 9.3 for more thorough analysis.]
+
+---
+
+### Merge Sort
+
+.term[Merge Sort] is a classic _divide-and-conquer_ approach.  We first saw this approach with the _binary search_ algorithm, and we saw how it led to a much improved search time.  Let&#39;s see how it helps with the problem of sorting.
+
+In Merge Sort, we will split the array into two halves, then recursively sort those halves and merge the resulting arrays back together.
+
+Takes advantage of divide-and-conquer, and the fact that sorting fewer elements is &#34;easier&#34; than sorting many.
+
+---
+
+class: algorithm
+
+#### Merge Sort Algorithm
+
+&gt; merge\_sort(A[]):
+&gt;    if `A[]` contains at least two elements:
+&gt;       merge\_sort(_left half of `A[]`_);
+&gt;       merge\_sort(_right half of `A[]`_);
+&gt;       merge(both halves);
+
+.vertical-center[
+.right-column[
+![Merge Sort](../images/efficient_sorting/merge_sort.svg)
+]]
+
+.footnote[Drozdek, Figure 9.14]
+
+---
+
+**Merge Sort**
+
+.middle[
+![:scale Merge Sort, 80%](../images/efficient_sorting/merge_sort.svg)
+]
+
+.footnote[Drozdek, Figure 9.14]
+
+---
+
+class: algorithm
+
+#### Merge algorithm
+
+&gt; merge(`A_out[]`, `A_in_1[]`, `A_in_2[]`):
+&gt;   let `i1`, `i2` be properly initialized indices for `A_in_1` and `A_in_2`;
+&gt;   let `i_out` be a properly initialized index for `A_out`;
+&gt;   while both `A_in_1` and `A_in_2` contain elements
+&gt;       if `A_in_1[i1] &lt; A_in_2[i2]`:
+&gt;           `A_out[i_out&#43;&#43;] = A_in_1[i1&#43;&#43;]`;
+&gt;       else `A_out[i_out&#43;&#43;] = A_in_2[i2&#43;&#43;]`;
+&gt;   copy into `A_out` the remaining elements of 
+&gt;     either `A_in_1` or `A_in_2` (whichever isn&#39;t empty);
+
+--
+
+Let&#39;s look at the complexity:
+
+You must take exactly enough &#34;forward&#34; steps to fill the output array, which is size $N$...  So $O(N)$.
+
+Although in practice we often aren&#39;t merging the _whole array_ - we are merging sub-arrays whose size $n &lt;&lt; N$. .small[Most merge steps are much faster!]
+
+---
+
+#### Merge Sort Summary
+
+.footnote[Drozdek, Figure 9.14]
+
+.left-column[
+* To sort $N$ numbers
+    * if $N=1$ done!
+    * recursively sort 2 lists of numbers with $\lceil N/2 \rceil$ and $\lfloor N/2 \rfloor$ elements.
+    * merge 2 sorted lists in $O(N)$ time
+
+&lt;br&gt;
+
+.algorithm[
+&gt; merge\_sort(A[]):
+&gt;    if `A[]` contains at least two elements:
+&gt;       merge\_sort(_left half of `A[]`_);
+&gt;       merge\_sort(_right half of `A[]`_);
+&gt;       merge(both halves);
+]
+]
+
+.vertical-center[
+.right-column[
+![Merge Sort](../images/efficient_sorting/merge_sort.svg)
+]]
+
+---
+
+#### Complexity
+
+* To sort $N$ numbers
+    * if $N=1$ done!  ($O(1)$)
+    * recursively sort 2 lists of numbers with $\lceil N/2 \rceil$ and $\lfloor N/2 \rfloor$ elements.
+        * How many times can we split?
+    * merge 2 sorted lists in $O(N)$ time $O(N)$
+        * But how many times must we merge (same number as the number of splits)? 
+
+.small-80[If we split an array of $N$ items in &#34;half&#34; - how many times can we do this?  How many times can you divide an integer by 2 (integer arithmetic) before it becomes 1?]
+
+--
+
+.small-80[This is the base-2 logarithm.  You can split an array of $N$ elements in half $\lg(N)$ times before it becomes trivially small.]
+
+---
+
+
+#### Complexity
+
+* To sort $N$ numbers
+    * if $N=1$ done!  ($O(1)$)
+    * recursively sort 2 lists of numbers with $\lceil N/2 \rceil$ and $\lfloor N/2 \rfloor$ elements.
+.blue[
+        * Must happen $lg(N)$ times...
+]
+    * merge 2 sorted lists in $O(N)$ time $O(N)$
+.blue[
+        * Must happen $lg(N)$ times...
+]
+
+
+**Overall complexity:  $O(N \cdot \lg(N) )$**
+
+.footnote[See Drozdek Ch. 9.3 for more thorough analysis.]
+
+---
+
+### Quick Sort
+
+Quick Sort (or QuickSort; some authors make it one word) divides the array into two halves, and sorts those halves recursively.
+
+A .term[pivot] element is chosen, then all elements greater than the pivot are moved to its right, and all elements less than the pivot are moved to its left.
+
+The left and right sub-arrays are then sorted recursively.
+
+---
+
+class: algorithm
+
+#### Algorithm
+
+&gt; quick\_sort(`A[]`, `left_index`, `right_index`):
+&gt;     if the array between `left_index` and `right_index` is not empty:
+&gt;         let `pivot` := _choose index of pivot element_;
+&gt;         Partition `A` about the value at `A[pivot]`, storing the final 
+&gt;           location of `A[pivot]` in the variable `split`;
+&gt;         Recursively quick\_sort the left sub-array from `left_index` to `split`-1.
+&gt;         Recursively quick\_sort the right sub-array from `split`&#43;1 to `right_index`.
+
+---
+
+class: algorithm
+
+#### Algorithm (more detailed)
+
+&gt; // a &#34;starter&#34; function to give the expected function interface:
+&gt; quick\_sort(`A[]`, `size`):
+&gt;     quick\_sort\_helper (`A`, 0, `size`-1);
+
+&gt; // and a &#34;helper&#34; to do the recursive sorting:
+&gt; quick\_sort\_helper(`A[]`, `left_index`, `right_index`):
+&gt;     if `left_index` &lt;= `right_index`:
+&gt;         let `pivot` := _choose index of pivot element_;
+&gt;         Partition `A` about the value at `A[pivot]`, storing the final 
+&gt;           location of `A[pivot]` in the variable `split_index`;
+&gt;         quick\_sort\_helper (`A`, `left_index`, `split_index`-1);  // sort left partition
+&gt;         quick\_sort\_helper (`A`, `split_index`&#43;1, `right_index`); // sort right partition
+
+---
+
+class: algorithm
+
+#### In-place Partitioning
+
+&gt; // left is the index of the leftmost element of the array
+&gt; // right is the index of the rightmost element of the array (inclusive)
+&gt; partition(`A[]`, `left_index`, `right_index`, `pivot_index`):
+&gt;    `pivot_value` = `A[pivot_index]`;
+&gt;    swap `A[pivot_index]` with `A[right]`;  // Move pivot to end
+&gt;    `split_index` = `left`;
+&gt;    for `i` = `left` to `right` - 1:
+&gt;        if `A[i]` &lt; `pivot_value`:
+&gt;            swap `A[i]` with `A[split_index]`;
+&gt;            `split_index` = `split_index` &#43; 1;
+&gt;    swap `A[split_index]` with `A[right]`;  // Move pivot to its final place
+&gt;    return split_index;
+
+.footnote[
+There are other correct ways to write the in-place partitioning algorithm.  The Drozdek book uses a method in which markers move from both ends of the array toward the middle, swapping elements when they are found to be in the wrong order relative to each other and the pivot.  .blue[Choose the method that you understand best!]
+]
+
+---
+
+.center[**In-place Partitioning**]
+
+.center[![:scale Partitioning, 58%](../images/Quicksort/partitioning.svg)]
+
+.footnote[
+This figure shows the first element being chosen for _pivot_ for simplicity.  We will see in later slides that this might not be a good choice.
+]
+
+---
+
+class: algorithm
+
+#### In-place Quicksort (detailed with comments)
+
+&gt; quick\_sort(`A[]`, `size`):
+&gt;     quick\_sort\_helper (`A`, 0, `size`-1);
+
+&gt; quick\_sort\_helper(`A[]`, `left_index`, `right_index`):
+&gt;     .green[// If the array has 1 or more items]
+&gt;     if `left_index` &lt;= `right_index`:
+&gt;         .green[// Choose a pivot (how you do this may vary):]
+&gt;         `pivot_index` = choose any $i$ such that `left_index` $\leq i \leq$ `right_index`;
+&gt;         .green[// Get subarrays and final position of pivot]
+&gt;         split_index := partition(`A`, `left_index`, `right_index`, `pivot_index`);
+&gt;         .green[// Recursively sort elements smaller than the pivot]
+&gt;         quick_sort_helper(`A`, `left_index`, split_index - 1);
+&gt;         .green[// Recursively sort elements at least as big as the pivot]
+&gt;         quick_sort_helper(`A`, split_index &#43; 1, `right_index`);
+
+---
+
+#### Complexity of Quick Sort
+
+.small-80[
+The complexity of Quick Sort depends on how well `partition` manages to split the array &#34;in half&#34;.  Let the array size be given by $N$.
+
+In the ideal case, if the partitions always manage to split the array perfectly in halves, that action can only take place $\lg(N)$ times before the sub-arrays dwindle to a single element (or zero).  Thus, the recursive steps would only occur $\lg(N)$ times.
+
+.small-90[
+* For each of the recursive steps, you have to consider the time taken to partition the array.  The partition agorithm makes a single pass through the array, so it is a linear time algorithm ($O(N)$).
+]
+
+Putting it all together, the sort can take place in $O(N \cdot \lg(N))$ steps, in the optimal case.
+
+However, if the worst case happens and the partition always manages to isolate only one element (the pivot), with all other elements falling into one partition (and the other partition being empty)...  You can split an array by that method $N-1$ times before running out of elements in the largest sub-array.  That gives a complexity of $O(N^2)$!
+]
+
+**Complexity:  $O(N \cdot lg(N))$ (average)   .red[$O(N^2)$ (worst)]**
+
+
+.footnote[See Drozdek Ch. 9.3 for more thorough analysis.]
+
+---
+
+#### Choosing the Pivot
+
+.small-85[
+The partition step needs to perform well, and that depends mostly on the choice of the _pivot_ element.
+
+**Bad strategy:**  Avoid choosing the first or last element as the pivot.  If the array is already sorted, this will give the worst-case performance.  .green[.tiny[Try it on paper to see why...]]
+
+**Good strategy:**  Pick an element that is unlikely to depend on the order of the elements, or is likely to be near the median if the elements are already ordered.  Some possibilities:
+
+* Randomly choose an element. (Be sure to use a $O(1)$ random number generator!)  No guarantees, but statistically likely not to perform at the worst-case.
+* .term[Median-of-Three] method:
+  * Given the indices of the first, middle, and last elements, determine which one holds the median (middle) value.  This can be done in constant time (an initialization and two conditional checks).  It will (almost always) guarantee that you won&#39;t see the worst-case performance.
+]
+
+---
+
+class: algorithm
+
+### Radix Sort
+
+&gt; radix\_sort(A[], size):
+&gt;   for `d` = 1 to the position of the leftmost digit of the longest number:
+&gt;       distribute all numbers among piles 0 through 9 according to the `d`th digit (from right);
+&gt;   put all numbers into one list;
+
+---
+
+The idea is to maintain 10 &#34;piles&#34; (for base-10 numbers, use $k$ piles for base-$k$).
+
+Each &#34;pile&#34; is usually implemented as a _queue_.
+
+So, this algorithm requires an _array of piles_ as a secondary data structure to help with the sort.
+
+---
+
+**Radix Sort - Illustrated.**
+
+.center[![Radix sort](../images/efficient_sorting/radix_sort.svg)]
+
+
+---
+
+class: algorithm
+
+#### Radix Sort - More precise algorithm
+
+&gt; void radixsort (`A[]`, `size`):
+&gt;     `radix` = 10;  // for base-10 (adjust for other bases)
+&gt;     `digits` = 10; // the maximum number of digits possible (10 for `int`)
+&gt;     let `piles` := Array of Queues with `radix` elements;
+&gt;     `d` = 0;
+&gt;     `factor` = 1;
+&gt;     while  `d &lt; digits`:
+&gt;         for `j` = 0 to `size-1`:
+&gt;             _enqueue_ `A[j]` into `piles[ (A[j] / factor) % radix ]`;
+&gt;         `k` = 0;
+&gt;         for `j` = 0 to `radix`:
+&gt;             while piles[j] is not empty:
+&gt;                 `A[k&#43;&#43;]` = _dequeue_ next value from piles[j];
+&gt;         `factor *= radix`;
+&gt;         `d&#43;&#43;`;
+
+---
+
+#### Complexity
+
+Let $N$ represent the size of the array.
+
+* The outer loop is limited by the number of possible digits $d$, which we may assume is very small with respect to the size of the array.  Usually $d &lt;&lt; N$.
+    * The first inner loop is $O(N)$ (_linear_ time).
+    * The second inner loop runs `radix` times (we can also assume this is a very small number, so assume $O(1)$ (constant time)).
+        * The loop inside the second inner loop runs an unknown number of times, but it must necessarily be less than $N$ (worst case is all elements are in the same pile).
+
+So, radix sort&#39;s complexity is $O( N\cdot d )$.   .small[Assuming $d &lt;&lt; N$, performance characteristics approach constant time as $N \rightarrow \infty$.]
+
+**Overall complexity:  $O(N \cdot d )$**
+
+How did we get better than $O(N \cdot \lg(N))$? &lt;br&gt;  .red[We allowed the algorithm to consume significant additional _space_.]
+
+.footnote[See Drozdek Ch. 9.3 for more thorough analysis.]
+
+
+</textarea>
+    <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
+<script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-macros.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg-full.js"></script>
+<script>
+	var slideshow = remark.create({
+		highlightStyle: "github",
+		highlightLines: true,
+  		highlightSpans: true
+	});
+
+	
+	window.MathJax = {
+		tex: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			displayMath: [             
+      			['$$', '$$'],
+      			['\\[', '\\]']
+    		],
+		}
+	};
+</script>
+</body>
+
+</html>
