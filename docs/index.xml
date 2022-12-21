@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://jcausey-astate.github.io/CS50x2_lecture_notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>29a,b: Hashing</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/29a-b_hashing/</link>
+      <title>39: Hashing</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/39_hashing/</link>
       <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/29a-b_hashing/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/39_hashing/</guid>
       <description>Hashing Drozdek, Chapter 10 What is Hashing? Searching often involves looking for a .term[key], which is a way of uniquely identifying a record.
 If the key is known, a .term[hash table] can be created using the value of the key as the only indication of position.
 Searching is then a $O(1)$ operation&amp;hellip;
@@ -20,43 +20,43 @@ In practice, we can never perfectly achieve this, but we can get close.</descrip
     </item>
     
     <item>
-      <title>25a,b: Graphs</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/25a-b_graphs/</link>
+      <title>35: Graphs</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/35_graphs/</link>
       <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/25a-b_graphs/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/35_graphs/</guid>
       <description>background-image: url(&amp;rsquo;../images/graphs/directed_graph_with_6_nodes.svg&amp;rsquo;) background-size: 45%
 Graphs Drozdek, Ch. 8 Definition and Terminology A .term[graph] is a data structure containing nodes and connections between them (much like a tree), but with no requirement for hierarchical ordering. We often call the nodes .term[vertices], and the connections between them .term[edges]. A .term[simple graph], then is the non-empty set of vertices and edges $G=(V,E)$. .center[ ]
 Terminology A .term[directed graph] (or &amp;ldquo;digraph&amp;rdquo;) is the non-empty set of vertices and edges $G=(V,E)$ where the edges $E={v_i, v_j}$ have a direction associated with them.</description>
     </item>
     
     <item>
-      <title>26: Breadth-First Traversals on Graphs</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/26_breadth-first_traversals_on_graphs/</link>
+      <title>36: Breadth-First Traversals on Graphs</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/36_breadth-first_traversals_on_graphs/</link>
       <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/26_breadth-first_traversals_on_graphs/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/36_breadth-first_traversals_on_graphs/</guid>
       <description>Graphs: Breadth-First Traversals Drozdek, Ch. 8.2 Breadth-First Traversals We have discussed Depth-First traversals, where the traversal choose one path and &amp;ldquo;follows&amp;rdquo; it as far as possible before returning to try other paths.
 The .term[Breadth-First Traversal] instead focuses on visiting all neighboring vertices before proceeding to other vertices.
 In a tree-like structure, we could visualize this as working across each level of the tree before proceeding further &amp;ldquo;down&amp;rdquo; toward the leaves.</description>
     </item>
     
     <item>
-      <title>26b: Decision Trees</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/26b_decision_trees/</link>
+      <title>37: Decision Trees</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/37_decision_trees/</link>
       <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/26b_decision_trees/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/37_decision_trees/</guid>
       <description>Decision Trees Drozdek Chapter 9.2 Decision Trees A .term[decision tree] is a special form of tree with the following properties:
 Every node has either zero or two children. i.e. they are strict binary trees. Nodes represent a .term[decision], which is a condition or query on some value in a dataset of interest. The decision must evaluate to a Boolean result. Edges represent the value of the result from the originating node: either True or False.</description>
     </item>
     
     <item>
-      <title>27 a,b: Efficient Sorting</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/27a-b_efficient_sorting/</link>
+      <title>38: Efficient Sorting</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/38_efficient_sorting/</link>
       <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/27a-b_efficient_sorting/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/38_efficient_sorting/</guid>
       <description>Efficient Sorting Drozdek Chapter 9.3 First - Simple sorting (may be review) We will look at (or review) the following &amp;ldquo;simple&amp;rdquo; sorting algorithms:
 Bubble Sort Selection Sort Insertion Sort class: algorithm
 Bubble Sort To get an array A into ascending order:
@@ -64,33 +64,33 @@ bubble_sort(A[], size): do the following until the array is sorted: for each pai
     </item>
     
     <item>
-      <title>23b: Multiway Trees</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/24_multiway_trees/</link>
+      <title>34: Multiway Trees</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/34_multiway_trees/</link>
       <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/24_multiway_trees/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/34_multiway_trees/</guid>
       <description>Multiway Trees (m-Trees) Drozdek Ch. 7 Definition A .term[multiway tree] of order $m$ is a generalized tree in which each node may have up to $m$ children (each of which may also be trees).
 A .term[multiway search tree] of order $m$ is a multiway tree in which:
 Each node has $m$ children and $m-1$ keys. The keys in each node are in ascending order The keys in the first $i$ children are less than the $i$th key.</description>
     </item>
     
     <item>
-      <title>17a: Inheritance</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/17a_inheritance/</link>
+      <title>26: Inheritance</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/26_inheritance/</link>
       <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/17a_inheritance/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/26_inheritance/</guid>
       <description>Inheritance Gaddis Ch. 15 Inheritance Establishes an &amp;ldquo;is-a&amp;rdquo; relationship:
 A flower is a plant. An ale is a beer. A lager is a beer. A truck is a vehicle. A dump truck is a truck. A mammal is a(n) animal. A dog is a mammal. A poodle is a dog. &amp;hellip; Infinite examples: The real world works this way!
 Terminology and Notation Base class (or parent): the more general class&amp;hellip; the &amp;ldquo;starting point&amp;rdquo;.</description>
     </item>
     
     <item>
-      <title>18: virtual and Polymorphism</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/18_virtual_and_polymorphism/</link>
+      <title>27: virtual and Polymorphism</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/27_virtual_and_polymorphism/</link>
       <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/18_virtual_and_polymorphism/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/27_virtual_and_polymorphism/</guid>
       <description>Virtual Methods &amp;amp; Polymorphism Gaddis Ch. 15.4 Redefining Base Class Methods A method is said to be .term[redefined] in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
 This is not the same thing as overloading. Base class objects use the base class method&amp;hellip; derived class objects use the derived class method.
 Problem with Redefining Consider this situation:
@@ -98,22 +98,22 @@ Class .</description>
     </item>
     
     <item>
-      <title>19a: Sparse Tables</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/19a_sparse_tables/</link>
+      <title>28: Sparse Tables</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/28_sparse_tables/</link>
       <pubDate>Mon, 17 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/19a_sparse_tables/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/28_sparse_tables/</guid>
       <description>Sparse Tables Drozdeck Ch. 3.6 &amp;ldquo;Tables&amp;rdquo; are a natural way to express information for many real-world applications.
 Think of spreadsheets&amp;hellip; Imagine storing ratings for movies.
 &amp;ldquo;Makes sense&amp;rdquo; as a table with one row per user and one column per movie&amp;hellip; Every movie may be reviewed on a &amp;ldquo;5-star&amp;rdquo; scale. Every user may rate any movie they want&amp;hellip; or may not. Let&amp;rsquo;s say we have 8000 users and 500 movies. Table size is $8000 \times 500 = 4,000,000$ cells.</description>
     </item>
     
     <item>
-      <title>19b: Skip Lists</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/19b_skip_lists/</link>
+      <title>29: Skip Lists</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/29_skip_lists/</link>
       <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/19b_skip_lists/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/29_skip_lists/</guid>
       <description>Skip Lists Drozdek - Ch. 3 Linked List Efficiency How efficient is a linked list?
 &amp;ndash;
 Adding/removing items
@@ -126,11 +126,11 @@ A special kind of linked list that allows just such a search is called a skip li
     </item>
     
     <item>
-      <title>20: Self-Organizing Lists</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/20_self_organizing_lists/</link>
+      <title>30: Self-Organizing Lists</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/30_self_organizing_lists/</link>
       <pubDate>Fri, 14 Oct 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/20_self_organizing_lists/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/30_self_organizing_lists/</guid>
       <description>Self-Organizing Lists Drozdek Ch. 3.5 Skip lists were introduced to make searching more efficient ( $O(\textrm{lg}(N))$ ), but require significant pointer overhead.
 Searching in a singly-linked or doubly-linked list requires $O(N)$ time.
 But what if the value you are searching for is at (or near) the &amp;ldquo;front&amp;rdquo; of the list?
@@ -141,50 +141,50 @@ Re-organize the values over time!
     </item>
     
     <item>
-      <title>05b2_Parallel_&amp;_Multi-Dimensional_Arrays</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b2_parallel_and_multi-dimensional_arrays/</link>
+      <title>10: Parallel &amp; Multi-Dimensional Arrays</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/10_parallel_and_multi-dimensional_arrays/</link>
       <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b2_parallel_and_multi-dimensional_arrays/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/10_parallel_and_multi-dimensional_arrays/</guid>
       <description>Parallel &amp;amp;Multi-DimensionalArrays Gaddis Ch. 7 Parallel Arrays Parallel Arrays: Two or more arrays containing related data such that the elements at corresponding indexes are related. All elements at index i the parallel arrays make up a single record i. Example
 const int N_CONTESTANTS = 5; std::string names[N_CONTESTANTS]; int votes[N_CONTESTANTS]; // Each contestant has a name and a vote count. for(int i = 0; i &amp;lt; N_CONTESTANTS; i++){ std::cout &amp;lt;&amp;lt; &amp;#34;Contestant &amp;#34; &amp;lt;&amp;lt; (i+1) &amp;lt;&amp;lt; &amp;#34; name: &amp;#34;; std::cin &amp;gt;&amp;gt; names[i]; std::cout &amp;lt;&amp;lt; &amp;#34;# of votes for &amp;#34; &amp;lt;&amp;lt; names[i] &amp;lt;&amp;lt; &amp;#34;: &amp;#34;; std::cin &amp;gt;&amp;gt; votes[i]; } Parallel Arrays Since the parallel arrays are separate, they may be of mixed type.</description>
     </item>
     
     <item>
-      <title>01a: Structured Programming Basics</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/01a_sp_basics/</link>
+      <title>01: Structured Programming Basics</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/01_sp_basics/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/01a_sp_basics/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/01_sp_basics/</guid>
       <description>StructuredProgrammingBasics Gaddis (Ch. 1, 2) First Principles computer - a programmable machine designed to follow instructions Computers are able to perform mathematical and logical operations at great speed. algorithm - a precise, step-by-step plan for solving a problem program - a set of instructions expressed in a programming language that a computer follows to perform a task programmer - a person who writes a computer program programming language - any language designed specifically for use in creating computer programs A computer is simply a re-configurable mechanical tool.</description>
     </item>
     
     <item>
-      <title>01b: Variables, Operators, Common Errors</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/01b_variables_operators_errors/</link>
+      <title>02: Variables, Operators, Common Errors</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/02_variables_operators_errors/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/01b_variables_operators_errors/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/02_variables_operators_errors/</guid>
       <description>Variables Operators Common Errors Gaddis (Ch. 2) The Big Picture All programming languages must provide certain functionality:
 Temporary data storage and retrieval. How is data stored in RAM? Operators that can be applied to the data. What can I do to manipulate the data, and how? Input and Output Where does the data come from, and how? Control Structures Conditional execution and repetition. To learn a language, figure these things out first.</description>
     </item>
     
     <item>
-      <title>02a: Selection</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/02a_selection/</link>
+      <title>03: Selection</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/03_selection/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/02a_selection/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/03_selection/</guid>
       <description>Selection Gaddis (Ch. 4) Making Decisions One of the things computers are &amp;ldquo;good at&amp;rdquo; is determining the result of logic-based (Boolean) expressions, and using those results to make decisions quickly.
 Choose to whether or not to perform an operation. If it is raining outside, take an umbrella. Choose between possible outcomes. If you are taller than 38&amp;quot;, proceed to the ride, otherwise leave the line. Select from a variety of possible choices.</description>
     </item>
     
     <item>
-      <title>02b: Repetition</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/02b_repetition/</link>
+      <title>04: Repetition</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/04_repetition/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/02b_repetition/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/04_repetition/</guid>
       <description>Repetition Gaddis (Ch. 5) First, some helpful new operators&amp;hellip; Shortcut Assignment Operators Make modifying an existing value easy. Increment and Decrement Operators Make counting up and down easy. Shortcut Assignment Operators
 A more general set of shortcut operators are provided for modifying a variable by applying one of the 5 basic mathematical operations.
 Increment and Decrement Operators
@@ -192,31 +192,31 @@ To make it even easier to add or subtract one from a variable, C++ offers a set 
     </item>
     
     <item>
-      <title>03a: Functions and Value Parameters</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/03a_functions_value_parameters/</link>
+      <title>05: Functions and Value Parameters</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05_functions_value_parameters/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/03a_functions_value_parameters/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/05_functions_value_parameters/</guid>
       <description>Functions and Value Parameters Gaddis (Ch. 6) Modular Programming Modular programming refers to the practice of designing a program so that it is broken up into small, manageable pieces called functions or modules.
 In C++, a function is a collection of related statements that perform a single logical task.
 In Object-Oriented programming, a function may also be referred to as a method. For example, in cin.ignore(), the ignore() function is actually a method owned by the cin object.</description>
     </item>
     
     <item>
-      <title>03b: Functions and Reference Parameters</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/03b_functions_reference_parameters/</link>
+      <title>06: Functions and Reference Parameters</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/06_functions_reference_parameters/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/03b_functions_reference_parameters/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/06_functions_reference_parameters/</guid>
       <description>Functions &amp;amp; Reference Parameters Gaddis (Ch. 6) Review: Pass by Value In pass by value, the value of the actual parameter is copied into the formal parameter. Pass by value is the default method by which data is moved into a function for primitive types, structured types and object types. Changes to the formal parameter cannot affect the actual parameter. Pass by Reference In pass by reference, no copy is made.</description>
     </item>
     
     <item>
-      <title>04: Recursion</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/04_recursion/</link>
+      <title>07: Recursion</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07_recursion/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/04_recursion/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07_recursion/</guid>
       <description>Recursion Gaddis Ch. 6 &amp;amp; 19
 Recursion A function is said to be recursive if it contains a call to itself.
 Recursive definitions are often more &amp;ldquo;natural&amp;rdquo;. Embodies a &amp;ldquo;divide-and-conquer&amp;rdquo; strategy void countDown(int timer) { if (timer == 0) { std::cout &amp;lt;&amp;lt; &amp;#34;Blastoff!&amp;#34;; } else{ std::cout &amp;lt;&amp;lt; timer &amp;lt;&amp;lt; &amp;#34;...\n&amp;#34;; countDown(timer-1); // recursive call } } Tracing a Recursive Call
@@ -224,11 +224,11 @@ Purpose Recursion is an alternative way to achieve repetition. Sometimes the ite
     </item>
     
     <item>
-      <title>05b: C-Style Strings</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b_c-strings/</link>
+      <title>09: C-Style Strings</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/09_c-strings/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/05b_c-strings/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/09_c-strings/</guid>
       <description>Characters &amp;amp;C-Style Strings Gaddis Ch. 10 ASCII Encoding Internally, all characters must be encoded into a numeric representation.
 There is more than one way to do it&amp;hellip; But C++ (by default) type char uses the ASCII encoding scheme.
 background-image: url(../images/shared/ascii_table.svg)
@@ -239,22 +239,22 @@ toupper(char c): if c is a lowercase letter, return uppercase equivalent; otherw
     </item>
     
     <item>
-      <title>06: Pointers</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/06_pointers/</link>
+      <title>11: Pointers</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/11_pointers/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/06_pointers/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/11_pointers/</guid>
       <description>Pointers Gaddis Ch. 9 Addresses and Data Every variable in a program is stored at a unique memory address.
 The unary &amp;amp; is the address operator; the address operator retrieves the address of its operand:
 int x = 42; // Print out the address at which x is stored: std::cout &amp;lt;&amp;lt; &amp;amp;x &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; Pointers A pointer is a variable that stores a memory address. Declare by adding the pointer type modifier ( * ) to a variable declaration.</description>
     </item>
     
     <item>
-      <title>07a: Vectors</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07a_vector/</link>
+      <title>12: Vectors</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/12_vector/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07a_vector/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/12_vector/</guid>
       <description>STL and std::vector Gaddis Ch. 16.5 background-image: url(../images/STL/circle_template.jpg)
 STL The C++ Standard Template Library The Standard Template Library What is STL? Why use STL? Overview of STL Features and Concepts Containers Iterators Algorithms References for more information on STL What is STL? &amp;ldquo;The Standard Template Library provides a set of well structured generic C++ components that work together in a seamless way.&amp;rdquo;
 - Alexander Stepanov &amp;amp; Meng Lee,
@@ -262,41 +262,41 @@ The Standard Template Library</description>
     </item>
     
     <item>
-      <title>07b: Input and Output</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b_input_and_output/</link>
+      <title>13: Input and Output</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/13_input_and_output/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b_input_and_output/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13_input_and_output/</guid>
       <description>Input and Output Gaddis Ch. 3, 5.11 Review: Output Streams Recall that a stream is a one-way flow of information. Output streams are streams that take information from the running program and move it to the outside world.
 The standard output stream is named std::cout Often shortened to cout (add using std::cout; after the include) We will refer to the standard output stream as cout in discussion. Output streams work together with the stream insertion operator ( &amp;lt;&amp;lt; ).</description>
     </item>
     
     <item>
-      <title>07b2 Supplement 1: `get`, `getline`, and Formatted Output</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-1_formatted_output_getline/</link>
+      <title>13b Supplement 1: get, getline, and Formatted Output</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-1_formatted_output_getline/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-1_formatted_output_getline/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-1_formatted_output_getline/</guid>
       <description>Formatted Output,getline(), &amp;lt;cmath&amp;gt; Gaddis Ch. 2, 3 Supplement Formatted Output The &amp;lt;iomanip&amp;gt; library supplies a set of stream manipulators that may be used in conjunction with the stream insertion operator to format output.
 Example double price = 100.0 / 3.0; // 33.3333333... std::cout &amp;lt;&amp;lt; std::setprecision(2) &amp;lt;&amp;lt; std::fixed; std::cout &amp;lt;&amp;lt; &amp;#34;Total price: $&amp;#34; &amp;lt;&amp;lt; std::setw(8) &amp;lt;&amp;lt; price &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; std::cout &amp;lt;&amp;lt; &amp;#34;100 items: $&amp;#34; &amp;lt;&amp;lt; std::setw(8) &amp;lt;&amp;lt; 100 * price &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; Output:</description>
     </item>
     
     <item>
-      <title>07b3 Supplement 2: cmath and Epsilon Comparison</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-2_cmath_epsilon_comparison/</link>
+      <title>13c Supplement 2: cmath and Epsilon Comparison</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-2_cmath_epsilon_comparison/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/07b-supplement-2_cmath_epsilon_comparison/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-2_cmath_epsilon_comparison/</guid>
       <description>Epsilon Comparison Gaddis Ch. 4 Supplement Mathematical Functions There are many mathematical functions that do not have an operator in C++. The &amp;lt;cmath&amp;gt; library provides definitions for these. Some examples are:
 Example #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; int main(){ double a = 3.0; double b = 4.0; double c = sqrt( pow(a, 2) + pow(b, 2) ); // Pythagorean Theorem std::cout &amp;lt;&amp;lt; &amp;#34;The hypotenuse is: &amp;#34; &amp;lt;&amp;lt; c &amp;lt;&amp;lt; &amp;#34;.\n&amp;#34;; return 0; } Numerical Inaccuracy Computers use binary (base-2) numbers internally.</description>
     </item>
     
     <item>
-      <title>08: Searching and Sorting</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/08_searching_sorting/</link>
+      <title>14: Searching and Sorting</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/14_searching_sorting/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/08_searching_sorting/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/14_searching_sorting/</guid>
       <description>Search &amp;amp;SortAlgorithms Gaddis Ch. 8 Search Problem: Given an array filled with data, you want to determine if a particular value is in the array.
 Is the value present? If so, where is it located? Does this array contain the value 85? If so, where?
 What about 72?
@@ -306,22 +306,22 @@ Linear Search Discussion Advantages Simple to understand Always finds the target
     </item>
     
     <item>
-      <title>09a: Structures</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/09a_structures/</link>
+      <title>15: Structures</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/15_structures/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/09a_structures/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/15_structures/</guid>
       <description>Abstract Data Types Gaddis, Chapter 11 Abstract Data Types When a built-in data type just isn’t enough&amp;hellip;
 Abstract Data Types are user-defined. Can represent new &amp;ldquo;things&amp;rdquo; from the real world better than built-in types. Essentially &amp;ldquo;extend&amp;rdquo; the language. Three mechanisms for creating ADTs in C++: enum struct class enum Enumerated Type
 Allows the programmer to specify mnemonic literals. Low-level, not very flexible. Example: enum WorkDayAbr = {mon, tue, wed, thr, fri}; //.</description>
     </item>
     
     <item>
-      <title>13b: Operator Overloading</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/13b_operator_overloading/</link>
+      <title>22: Operator Overloading</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/22_operator_overloading/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13b_operator_overloading/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/22_operator_overloading/</guid>
       <description>OperatorOverloading Gaddis Ch. 14.5 Operators as Functions Operators in C++ are actually just symbolic shorthand for function calls.
 Example Expression:
 area = pi * r * r; Consider just the first operator that will be applied:
@@ -331,62 +331,62 @@ operator= ( operator*( operator*( pi, r ), r )); Overloading Operators Since ope
     </item>
     
     <item>
-      <title>09b: Binary Files &amp; Random Access</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/09b_random_access/</link>
+      <title>16: Binary Files &amp; Random Access</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/16_random_access/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/09b_random_access/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/16_random_access/</guid>
       <description>Binary Files &amp;amp; Random Access (Ch. 12) Files – Review File: a set of data stored on a computer; often on secondary storage such as a disk drive.
 Used to abstract the concept of &amp;ldquo;a blob of data&amp;rdquo; in a well-understood and system-wide way. Can be read and/or written (depending on permissions). Files – Review Requires the fstream header file. ifstream objects are specialized for input ofstream object are specialized for output fstream objects are more general – can do both input and output.</description>
     </item>
     
     <item>
-      <title>11b: Exceptions</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/11b_exceptions/</link>
+      <title>18: Exceptions</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/18_exceptions/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/11b_exceptions/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/18_exceptions/</guid>
       <description>Exceptions (When Everything Goes Wrong) Gaddis Ch. 16 Exceptions Used to communicate that something unexpected has occurred. Allows the programmer to deal with unexpected situations in a controlled manner. May be as simple or as complex as desired (depending on usage in the program) In C++, any data value can be used as an exception! Key Words throw - Used to generate an exception and “throw” it up the call stack.</description>
     </item>
     
     <item>
-      <title>15b: Stack, Queue, Circular List</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/15b_stack_queue_circularlist/</link>
+      <title>24: Stack, Queue, Circular List</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/24_stack_queue_circularlist/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/15b_stack_queue_circularlist/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/24_stack_queue_circularlist/</guid>
       <description>Stacks, Queues, and Circular Lists Stacks A stack is a data structure optimized for addition and removal only at one end. It focuses on the last-in, first-out access pattern.
 Stack Operations: Primary stack operations are:
 push : Add a value at the &amp;ldquo;top&amp;rdquo; of the stack. pop : Remove the value at the &amp;ldquo;top&amp;rdquo; of the stack. top : Access the value at the &amp;ldquo;top&amp;rdquo; of the stack, but do not remove it.</description>
     </item>
     
     <item>
-      <title>16: Templates and Generic Programming</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/16_class_template/</link>
+      <title>25: Templates and Generic Programming</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/25_class_template/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/16_class_template/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/25_class_template/</guid>
       <description>Templates and Generic Programming Gaddis Ch. 16, 19 Function Templates Function templates provide a pattern for a function that can work with many types of data.
 When written, the data type specifiers are replaced with type parameters. When called, the compiler generates a function with actual data types that match those provided in the call. Example
 template&amp;lt;typename Numeric&amp;gt; Numeric times10(Numeric num){ return 10 * num; } Numeric is the type parameter (it can be any valid identifier, but is usually capitalized (UpperCamelCase or sometimes ALL_CAPS) by convention.</description>
     </item>
     
     <item>
-      <title>21a: Trees - Binary Search Trees</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/21a_binary_search_trees/</link>
+      <title>31: Trees - Binary Search Trees</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/31_binary_search_trees/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/21a_binary_search_trees/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/31_binary_search_trees/</guid>
       <description>The Binary Search Tree Gaddis Ch. 21 Trees In the computer science sense, .term[trees] are simply non-linear linked structures where each node may link to two or more other nodes, in a hierarchical fashion.
 The entry point into a tree is called the .term[root]. Trees are (usually) drawn &amp;ldquo;upside down&amp;rdquo;, with the root at the top. Normally, we don’t draw the null pointers when we draw a tree&amp;hellip; but we must remember that they are there.</description>
     </item>
     
     <item>
-      <title>21b: Balancing Trees - AVL Trees</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/21b_avl_trees/</link>
+      <title>32: Balancing Trees - AVL Trees</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/32_avl_trees/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/21b_avl_trees/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/32_avl_trees/</guid>
       <description>AVL-Trees Drozdek Ch. 6.7 Keep your Balance An AVL Tree is a tree where the height of the left and right subtrees always differ by at most one.
 Each node has an associated balance factor
 balance = height(right) - height(left) The AVL property states that the balance factor at all nodes must be in the range $[-1,1]$.
@@ -394,21 +394,21 @@ Balance If the magnitude of any node&amp;rsquo;s balance factor becomes $&amp;gt
     </item>
     
     <item>
-      <title>23a,b: Heaps and HeapSort</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/23a-b_heaps_and_heapsort/</link>
+      <title>33: Heaps and HeapSort</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/33_heaps_and_heapsort/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:16 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/23a-b_heaps_and_heapsort/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/33_heaps_and_heapsort/</guid>
       <description>Heaps and Heapsort Drozdek Ch. 6.9 Heaps A .term[heap] is a kind of (usually binary) tree. They normally come in two varieties:
 .term[Min-Heaps] always maintain the smallest value at the root. .term[Max-Heaps] always maintain the largest value at the root. &amp;ndash; There is also a more exotic heap called a &amp;ldquo;.term[min-max-heap]&amp;rdquo; that allows you to find the smallest and largest values in constant time, but we won&amp;rsquo;t consider that variation here.</description>
     </item>
     
     <item>
-      <title>05a_Arrays</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/05a_arrays/</link>
+      <title>08: Arrays</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/08_arrays/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/05a_arrays/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/08_arrays/</guid>
       <description>Arrays Gaddis Ch. 7 The C++ Array Arrays allow programmers to store multiple related values of the same type.
 Values are stored sequentially in memory. Declaration syntax: type arrayname[ size_declarator ]; Example Declarations
 int a[100]; // Declares an array of 100 integers. double b[50]; // Declares an array of 50 doubles. Array Memory Layout The declaration:
@@ -417,42 +417,42 @@ Arrays are a reference type. The array variable does not refer to the array as a
     </item>
     
     <item>
-      <title>11a: Dynamic Memory</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/11a_dynamic_memory/</link>
+      <title>17: Dynamic Memory</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/17_dynamic_memory/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/11a_dynamic_memory/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/17_dynamic_memory/</guid>
       <description>Dynamic Memory Allocation Gaddis Chapter 9.8 Creating Memory at Runtime New memory can be allocated for individual data values or arrays at runtime.
 new operator allocates new memory. returns a pointer to the allocated space. Places responsibility on the programmer to &amp;ldquo;clean up&amp;rdquo; the memory later. delete operator de-allocates memory that was allocated with new. Failure to de-allocate memory creates a memory leak. Both operators come in two forms; one for a single data item and one for an array.</description>
     </item>
     
     <item>
-      <title>12: Classes and Objects</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/12_classes_and_objects/</link>
+      <title>19: Classes and Objects</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/19_classes_and_objects/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/12_classes_and_objects/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/19_classes_and_objects/</guid>
       <description>Classes and Objects Gaddis Ch. 13 Introduction Procedural (structured) Programming Concerned with processes (actions) that occur in a program. Basic unit of modularity is the function. Object-Oriented Programming (OOP) Focuses on the data (things) and the functions that operate on it. Basic unit of modularity is the class (or structure). OOP Central Concepts Encapsulation
 Bundling Data / Implementation Hiding Principle of least privilege. Public Interface Class Hierarchies (Inheritance)
 Factoring out common data/behavior.</description>
     </item>
     
     <item>
-      <title>13a.1: Aggregation</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/13a.1_aggregation_of_objects/</link>
+      <title>20: Aggregation</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/20_aggregation_of_objects/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13a.1_aggregation_of_objects/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/20_aggregation_of_objects/</guid>
       <description>Aggregation of Objects Gaddis Ch. 14.7 Aggregation Aggregation: an object of one class is used as an attribute in another class Often called composition Creates the &amp;ldquo;has a&amp;rdquo; relationship. Large book example in Chapter 14
 Instructor Textbook Course Example class Tool{ public: [...] // interface not shown for brevity private: std::string name; double weight; }; class ToolBox{ public: [...] // interface not shown for brevity private: Tool inventory[1024]; // aggregation of &amp;#34;Tool&amp;#34; objects }; </description>
     </item>
     
     <item>
-      <title>13a.2: Assignment, Copy Constructor</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/13a.2_copy_constructor/</link>
+      <title>21: Assignment, Copy Constructor</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/21_copy_constructor/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13a.2_copy_constructor/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/21_copy_constructor/</guid>
       <description>Copy Constructors Gaddis Ch. 14.3 - 14.4 Memberwise Assignment Given:
 class Rectangle { public: Rectangle (int l, int w) : length{l}, width{w} {} int length = 0; int width = 0; }; What happens when you do:
 Rectangle r1{3, 4}; Rectangle r2{2, 3}; r2 = r1; // what happens here? What happens when you do:
@@ -460,11 +460,11 @@ Rectangle r1{3, 4}; Rectangle r2{2, 3}; r2 = r1; // what happens here? Each attr
     </item>
     
     <item>
-      <title>14: Linked Lists</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/14_linked_lists/</link>
+      <title>23: Linked Lists</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/23_linked_lists/</link>
       <pubDate>Fri, 02 Oct 2020 12:30:15 -0500</pubDate>
       
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/14_linked_lists/</guid>
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/23_linked_lists/</guid>
       <description>Linked Lists Gaddis Ch. 18 Drozdek Ch. 3 The Linked List ADT Linked list: set of data structures (nodes) that contain references to other data structures Relationship is linear: Each node references the next node (and sometimes the previous node). References may be addresses (pointers) or array indices Nodes can be located anywhere in memory. Data can be added/removed during execution. .center[]
 Singly-Linked Lists Can grow or shrink as needed (unlike arrays).</description>
     </item>
