@@ -263,26 +263,6 @@ The standard output stream is named std::cout Often shortened to cout (add using
     </item>
     
     <item>
-      <title>13b Supplement 1: get, getline, and Formatted Output</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-1_formatted_output_getline/</link>
-      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
-      
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-1_formatted_output_getline/</guid>
-      <description>Formatted Output,getline(), &amp;lt;cmath&amp;gt; Gaddis Ch. 2, 3 Supplement Formatted Output The &amp;lt;iomanip&amp;gt; library supplies a set of stream manipulators that may be used in conjunction with the stream insertion operator to format output.
-Example double price = 100.0 / 3.0; // 33.3333333... std::cout &amp;lt;&amp;lt; std::setprecision(2) &amp;lt;&amp;lt; std::fixed; std::cout &amp;lt;&amp;lt; &amp;#34;Total price: $&amp;#34; &amp;lt;&amp;lt; std::setw(8) &amp;lt;&amp;lt; price &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; std::cout &amp;lt;&amp;lt; &amp;#34;100 items: $&amp;#34; &amp;lt;&amp;lt; std::setw(8) &amp;lt;&amp;lt; 100 * price &amp;lt;&amp;lt; &amp;#34;\n&amp;#34;; Output:</description>
-    </item>
-    
-    <item>
-      <title>13c Supplement 2: cmath and Epsilon Comparison</title>
-      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-2_cmath_epsilon_comparison/</link>
-      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
-      
-      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/13-supplement-2_cmath_epsilon_comparison/</guid>
-      <description>Epsilon Comparison Gaddis Ch. 4 Supplement Mathematical Functions There are many mathematical functions that do not have an operator in C++. The &amp;lt;cmath&amp;gt; library provides definitions for these. Some examples are:
-Function Name Description -------------------------------------------------------- pow(base, exp) Returns base raised to power of exp sqrt(x) Returns square root of x floor(x) Returns the mathematical floor of x ceil(x) Returns the mathematical ceiling of x fabs(x) Returns the absolute value of x sin(theta) Returns the mathematical sine of theta (other trig functions available also; measure in radians) Example #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; int main(){ double a = 3.</description>
-    </item>
-    
-    <item>
       <title>14: Searching and Sorting</title>
       <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/14_searching_sorting/</link>
       <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
@@ -320,6 +300,16 @@ area = pi * r * r; Consider just the first operator that will be applied:
 pi * r This expression will actually result in the following function call:
 operator* (pi, r) The entire expression could be written as:
 operator= ( operator*( operator*( pi, r ), r )); ]</description>
+    </item>
+    
+    <item>
+      <title>S1: Supplement: cmath and Epsilon Comparison</title>
+      <link>https://jcausey-astate.github.io/CS50x2_lecture_notes/99_cmath_epsilon_comparison/</link>
+      <pubDate>Wed, 13 Jan 2021 12:00:00 -0500</pubDate>
+      
+      <guid>https://jcausey-astate.github.io/CS50x2_lecture_notes/99_cmath_epsilon_comparison/</guid>
+      <description>Epsilon Comparison Gaddis Ch. 4 Supplement Mathematical Functions There are many mathematical functions that do not have an operator in C++. The &amp;lt;cmath&amp;gt; library provides definitions for these. Some examples are:
+Function Name Description -------------------------------------------------------- pow(base, exp) Returns base raised to power of exp sqrt(x) Returns square root of x floor(x) Returns the mathematical floor of x ceil(x) Returns the mathematical ceiling of x fabs(x) Returns the absolute value of x sin(theta) Returns the mathematical sine of theta (other trig functions available also; measure in radians) Example #include &amp;lt;iostream&amp;gt; #include &amp;lt;cmath&amp;gt; int main(){ double a = 3.</description>
     </item>
     
     <item>

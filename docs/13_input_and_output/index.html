@@ -238,6 +238,116 @@ if( !fin.is_open() ){
 }
 ```
 
+---
+
+### Formatted Output
+
+The `&lt;iomanip&gt;` library supplies a set of _stream manipulators_ that may be used in conjunction with the stream insertion operator to format output.  
+&lt;pre style=&#39;font-size: .85em&#39;&gt;
+Manipulator            Description
+-----------------------------------------------------------
+std::setw( w )         set the width of the next item in the
+                       stream to &#39;w&#39;
+std::setprecision( p ) set number of significant figures in 
+                       output to &#39;p&#39;, or set the number of 
+                       decimal places to &#39;p&#39; if used in 
+                       conjunction with &#39;fixed&#39;.
+std::fixed             set numeric output to fixed-point 
+                       mode (use the number of decimal 
+                       places specified by &#39;setprecision&#39;; 
+                       no scientific notation)
+std::showpoint         always show the decimal point 
+std::left              set alignment to left-aligned
+std::right             set alignment to right-aligned
+&lt;/pre&gt;
+
+---
+
+### Example
+
+``` cpp
+double price = 100.0 / 3.0;  // 33.3333333...
+std::cout &lt;&lt; std::setprecision(2) &lt;&lt; std::fixed;
+std::cout &lt;&lt; &#34;Total price: $&#34; 
+          &lt;&lt; std::setw(8) &lt;&lt; price &lt;&lt; &#34;\n&#34;;
+std::cout &lt;&lt; &#34;100 items:   $&#34; 
+          &lt;&lt; std::setw(8) &lt;&lt; 100 * price &lt;&lt; &#34;\n&#34;;
+```
+Output:
+&lt;pre&gt;
+Total price: $   33.33
+100 items:   $ 3333.33
+&lt;/pre&gt;
+
+---
+
+## `getline()`
+
+In order to read a `std::string` that may contain whitespace from an input stream, the `getline()` function should be used:
+
+``` cpp
+std::string full_name;
+
+std::cout &lt;&lt; &#34;Enter your first and last name: &#34;;
+getline(std::cin, full_name);
+
+std::cout &lt;&lt; &#34;Hello, &#34; &lt;&lt; full_name &lt;&lt; &#34;!\n&#34;;
+```
+
+`getline()` will read an entire line of user input (until the `&lt;ENTER&gt;` key is pressed).  The _syntax_ is: &lt;br /&gt;
+&lt;tt&gt;getline( &lt;i&gt;source_stream&lt;/i&gt; , &lt;i&gt;destination_string&lt;/i&gt; )&lt;/tt&gt; &lt;br /&gt;
+
+&lt;small&gt;Where _`source stream`_ is any input stream and _`destination string`_ is a variable of type `std::string`.&lt;/small&gt;
+
+---
+
+### Mixing `getline()` and `&gt;&gt;`
+
+**Problem:** Stream extraction ( `&gt;&gt;` ) leaves the delimiting whitespace in the input stream (usually a `&#39;\n&#39;`).
+
+* `getline()` is _newline-delimited_ by default.  
+    - It will appear that the `getline()` was &#34;skipped&#34;.  Actually, it saw the `&#39;\n&#39;` and stopped.
+* To remove the `&#39;\n&#39;`, use: &lt;br /&gt; _`stream_name`_`.ignore()`
+    - Ex:  `std::cin.ignore();`
+    - Better:&lt;small style=&#34;font-size: 87%;&#34;&gt;
+ ``` cpp
+ std::cin.ignore(std::numeric_limits&lt;std::streamsize&gt;::max(), &#39;\n&#39;);
+ ```
+&lt;/small&gt;
+
+---
+
+## `cin.get()`
+
+The `cin.get()` function can be used to read a single character, which may be whitespace, from the standard input stream.
+
+**Example**
+``` cpp
+char ch;
+// Reading the &lt;ENTER&gt; key with `&gt;&gt;` alone is difficult... 
+// So, use `get()`:
+std::cout &lt;&lt; &#34;Press &lt;ENTER&gt; to continue...&#34;;
+std::cin.get(ch); // Will wait for the enter key, then continue.
+```
+
+The `get()` function also works with other streams, in general the syntax is: &lt;br /&gt;
+_`stream`_`.get(`*`character_var`*`)`
+
+
+---
+
+## In case the stream goes bad...
+
+If you are working with an open stream, several things can cause the stream to no longer be in the &#34;good&#34; state.  The most common are:
+
+* Failure of stream extraction operator to convert the apparent type it &#34;sees&#34; to the type requested on its right-hand side.
+* End-of-file (or end of stream) encountered during a &#34;read&#34; operation.
+
+In these cases you may be able to remedy the problem -- perhaps by removing unwanted characters from the stream with `ignore()`, or by moving the stream position &#34;earlier&#34; in the stream in case of EOF -- then resume operation.  The `clear()` method will help with this by clearing the stream&#39;s _state flags_:
+
+``` cpp
+std::cin.clear();  // clears the state flags on `cin`
+```
 
 </textarea>
     <script src="https://jcausey-astate.github.io/CS50x2_lecture_notes/js/remark-latest.min.js"></script>
