@@ -114,7 +114,7 @@ More specifically
 
 **Insertion Sort - First two iterations illustrated.**
 
-.center[![Insertion sort - first two steps](../images/efficient_sorting/insertion_sort_2-steps.svg)]
+.center[![:height Insertion sort - first two steps, 21em](../images/efficient_sorting/insertion_sort_2-steps.svg)]
 
 ---
 
@@ -408,7 +408,7 @@ There are other correct ways to write the in-place partitioning algorithm.  The 
 
 .center[**In-place Partitioning**]
 
-.center[![:scale Partitioning, 58%](../images/Quicksort/partitioning.svg)]
+.center[![:height Partitioning, 20em](../images/Quicksort/partitioning.svg)]
 
 .footnote[
 This figure shows the first element being chosen for _pivot_ for simplicity.  We will see in later slides that this might not be a good choice.

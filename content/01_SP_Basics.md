@@ -38,7 +38,7 @@ Computers execute code that is stored in _computer memory_ in a _binary_ form.
 
 Humans are not skilled at writing in machine language.
 
-![Confused Human](../images/SP_Basics/confused_brad.jpg) <!-- .element: class="fragment" data-fragment-index="1" -->
+![:height Confused Human, 10em](../images/SP_Basics/confused_brad.jpg) <!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 
