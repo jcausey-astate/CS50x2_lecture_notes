@@ -518,7 +518,7 @@ class: algorithm
 &gt; void radixsort (`A[]`, `size`):
 &gt;     `radix` = 10;  // for base-10 (adjust for other bases)
 &gt;     `digits` = 10; // the maximum number of digits possible (10 for `int`)
-&gt;     let `piles` := Array of Queues with `radix` elements;
+&gt;     let `piles[radix]` := Array of Queues with `radix` elements;
 &gt;     `d` = 0;
 &gt;     `factor` = 1;
 &gt;     while  `d &lt; digits`:
