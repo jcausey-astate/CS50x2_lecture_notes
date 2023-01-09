@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright (c) 2014 YOUR_NAME_HERE
+Copyright (c) 2014-2022 Sebastian Porto, 2020-2023 Jason Causey
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

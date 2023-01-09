@@ -4,4 +4,3 @@ slug: "{{ .Name | anchorize }}"
 date: {{ .Date }}
 draft: true
 ---
-

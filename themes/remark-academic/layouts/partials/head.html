@@ -1,9 +1,12 @@
 <head>
-	<title>{{ .Site.Params.inc.title }}</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="icon" type="image/vnd.microsoft.icon" sizes="32x32" href="{{ .Site.BaseURL}}/favicon.ico">
-	<link rel="stylesheet" href="{{ .Site.BaseURL}}/css/remark.css" />
-	<link rel="stylesheet" href="{{ .Site.BaseURL}}/css/slides-additional.css" />
-	<link rel="stylesheet" href="{{ .Site.BaseURL}}/css/prog-courses.css" />
-    <base target="_blank" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+
+  <link rel="stylesheet" href="{{ "css/remark.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/slides-additional.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/this-course-custom.css" | absURL }}" />
+  <!-- link other custom CSS files here -->
+  <base target="_blank" />
 </head>

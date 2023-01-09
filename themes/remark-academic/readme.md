@@ -1,6 +1,6 @@
-# Hugo Remark theme
+# Hugo Remark "Academic" theme
 
-This theme is based on the fantastic Hugo Remark theme by Sebastian Porto: https://github.com/sporto/hugo-remark
+This theme is based on the fantastic Hugo Remark theme by Sebastian Porto: https://github.com/sporto/hugo-remark. That one is probably a better choice for most use-cases; I maintain this fork to customize some things to better fit my online lecture notes use-case and preferences.
 
 The main change is an "index page" that supports multiple slideshows.  Each document in the "contents" directory is expected to be a single slideshow (separate slides with `---` as you would do in vanilla remark.js).  This makes it ideally suited to organizing and sharing course notes for a class.
 
@@ -14,7 +14,7 @@ What is **remark.js**?
 
 ## About this theme
 
-This theme creates a remark presentation using Hugo to concatenate and serve the files.
+This theme creates a set of Remark presentations using Hugo. Hugo generates slideshows from markdown content.
 
 ## Why use Hugo and not just remark.js?
 
@@ -23,25 +23,25 @@ Remark.js doesn't come with a way of serving files or reload them on changes. Al
 By using Hugo:
 
 - You can serve your slideshows on localhost easily
-- Hugo will watch for changes and reload immediatelly
+- Hugo will watch for changes and reload immediately
 - You can write your slides on different markdown files, Hugo will concatenate them
 
 ## Installation
 
-Follow the hugo [installation intructions](http://gohugo.io/). On mac simply do `brew install hugo`
+Follow the hugo [installation instructions](https://gohugo.io/getting-started/installing/).
 
 ## How to use
 
 ### Generating the site
 
 ```bash
-hugo new site /path/to/presentation
-cd /path/to/presentation
+hugo new site /path/to/presentations
+cd /path/to/presentations
 ```
 
 ### Install this theme
 
-Inside the presentation folder do:
+Inside the presentations folder do:
 
 ```bash
 git clone https://github.com/jcausey-astate/hugo-remark-academic themes/remark-academic
@@ -50,9 +50,9 @@ Add to config file
 ```
 theme = "remark-academic"
 ```
-### Generate new slides
+### Generate new slideshows
 
-Inside the presentation folder do:
+Inside the presentations folder do:
 
 ```bash
 hugo new 001_First_Day_Lecture.md
@@ -60,14 +60,24 @@ hugo new 001_First_Day_Lecture.md
 
 Note that this theme will just put slide decks in alphabetic order by their __title__ on the index page, so name them accordingly.
 
-e.g.
 ```
+## This is Slide 1
+
 ---
-title = "001 First Day Lecture"
+
+## This is Slide 2
+
 ---
+
+## This is Slide 3
+
+---
+
+...
+
 ```
 
-Slides will be created in the `./content` subfolder.
+Slideshows will be created in the `./content` subfolder.
 Edit the slides using markdown.
 
 ### Serve the slideshow
@@ -75,7 +85,7 @@ Edit the slides using markdown.
 To show your slides run:
 
 ```bash
-hugo server --buildDrafts
+hugo server --buildDrafts --watch
 ```
 
 And open the given url in a browser, e.g. `http://localhost:1313`
@@ -108,4 +118,5 @@ You can also add custom JS on the footer, this is loaded after the remark initia
 - Create a file `./layouts/partials/custom_footer.html`
 - Link `custom_footer.html` in `footer.html` by adding `{{ partial "custom_footer.html" }}` to where you want.
 - Add a JS script link there or just write the JS using `script` tags
+
 
