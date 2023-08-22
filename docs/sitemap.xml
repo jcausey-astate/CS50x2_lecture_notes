@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/07_Recursion.html</loc>
-    <lastmod>2023-08-21T22:48:42.849Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/05_Functions_Value_Parameters.html</loc>
-    <lastmod>2023-08-21T20:37:52.667Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/03_Selection.html</loc>
-    <lastmod>2023-08-17T00:32:31.630Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/01_SP_Basics.html</loc>
-    <lastmod>2023-08-16T22:43:09.403Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/index.html</loc>
-    <lastmod>2023-08-17T16:30:03.576Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/02_Variables_Operators_Errors.html</loc>
-    <lastmod>2023-08-16T22:30:38.307Z</lastmod>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/06_Functions_Reference_Parameters.html</loc>
+    <lastmod>2023-08-22T15:00:38.192Z</lastmod>
   </url>
   <url>
     <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/04_Repetition.html</loc>
-    <lastmod>2023-08-17T02:04:12.233Z</lastmod>
+    <lastmod>2023-08-22T15:00:38.191Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/06_Functions_Reference_Parameters.html</loc>
-    <lastmod>2023-08-21T21:02:18.736Z</lastmod>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/02_Variables_Operators_Errors.html</loc>
+    <lastmod>2023-08-22T15:00:38.191Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/index.html</loc>
+    <lastmod>2023-08-22T15:00:38.277Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/01_SP_Basics.html</loc>
+    <lastmod>2023-08-22T15:00:38.191Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/03_Selection.html</loc>
+    <lastmod>2023-08-22T15:00:38.191Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/05_Functions_Value_Parameters.html</loc>
+    <lastmod>2023-08-22T15:00:38.192Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/07_Recursion.html</loc>
+    <lastmod>2023-08-22T15:00:38.192Z</lastmod>
   </url>
 </urlset>
