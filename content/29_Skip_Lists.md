@@ -1,7 +1,7 @@
 ---
 title: "29: Skip Lists"
 date: 2022-10-14
-draft: false
+draft: true
 ---
 
 # Skip Lists

@@ -1,0 +1,328 @@
+---
+number: 4
+title: "Repetition"
+textbook: "Gaddis (Ch. 5)"
+# draft: true
+---
+
+
+## First, some helpful new operators...
+
+* Shortcut Assignment Operators
+  - Make modifying an existing value easy.
+* Increment and Decrement Operators
+  - Make counting up and down easy.
+
+---
+
+**Shortcut Assignment Operators**
+
+A more general set of shortcut operators are provided for modifying a variable by applying one of the 5 basic mathematical operations.
+
+::: {.clean}
+    Operator Example    Equivalent
+    -------------------------------------------------------
+       +=    x += y;    x = x + y;
+       -=    x -= y;    x = x - y;
+       *=    x *= y;    x = x * y;
+       /=    x /= y;    x = x / y;
+       %=    x %= y;    x = x % y;
+:::
+
+---
+
+**Increment and Decrement Operators**
+
+To make it even easier to add or subtract one from a variable, C++ offers a set of two __*increment*__ (add one) and two __*decrement*__ (subtract one) operators:
+
+::: {.clean .noscroll}
+        Operator Example Description
+        -------------------------------------------------------
+        ++        ++x;   Prefix increment operator. Increments
+                         x then evaluates to the updated value.
+
+        ++        x++;   Postfix increment operator. Evaluates
+                         to the original value of x, then 
+                         increments x.
+
+        --        --x;   Prefix decrement operator. Decrements
+                         x then evaluates to the updated value.
+
+        --        x--;   Postfix decrement operator. Evaluates
+                         to the original value of x, then 
+                         decrements x.
+:::
+
+
+---
+
+## Repetition (loops)
+
+Repeating code is accomplished with the help of a control structure called a _loop_.  C++ provides three loop constructs (four if you count the modern C++ _range-based_ version of `for`):
+
+* `while`
+* `for`
+    + Range-based `for`
+* `do`-`while`
+
+But before we get into the specifics of the code, let's examine some terms and theory related to looping in general.
+
+---
+
+## Terms
+
+* **_Loop Control Variable_** : a variable whose value is tested in order to determine whether the loop body should execute.
+* **_Loop Condition_** : a Boolean expression whose result determines whether the loop body will execute (`true` causes the loop to execute).
+* **_Update step_** : a modification that is made to the loop control variable within the scope of the loop body.
+
+---
+
+## Three Parts of a Loop
+\
+\
+
+* Set up the Loop Control Variable (LCV) in preparation for the loop.
+* A proper loop condition must be created to test the LCV.
+* The value of the LCV must be changed _within the body of the loop_.
+
+---
+
+### Example: Count to 10
+\
+\
+
+``` cpp
+int counter = 1;                    // set up LCV
+while ( counter <= 10 ) {           // loop condition
+    std::cout << counter << "\t";   // loop body
+    counter = counter + 1;          // update LCV
+}
+```
+Result:
+
+    1    2    3    4    5    6    7    8    9    10
+
+---
+
+## Types of Loops (by method of control)
+
+* **_Iterative Loop_** (AKA "Counting Loop") : a loop that repeats a specific number of times, or for a specific range of values.
+* **_Event-Controlled Loop_** : a loop that repeats until a specific event occurs.  3 sub-types:
+    - **_Sentinel Controlled Loop_** : a loop that repeats until a specified data value is encountered (this value is called the _sentinel_)
+    - **_Flag Controlled Loop_** : a loop that repeats until the truth value of a Boolean flag is flipped.
+    - **_End-Of-File Controlled Loop_** : a loop that repeats (based on a stream) until the End Of File marker is read.
+
+---
+
+## Types of Loops (by timing of the _test_)
+
+Loops can also be classified by the timing of when they test their _loop condition_:
+
+* **_pre-test loop_** : a loop that tests the loop condition _before loop entry_ (at the beginning of each loop)
+
+* **_post-test loop_** : a loop that tests the loop condition _at loop exit_ (at the end of each loop)
+
+---
+
+## The `while` Loop
+
+`while` is a pre-test loop.\
+\
+
+_**Syntax:**_
+
+::: {.syntax}
+while( [loop_condition]{.pseudo} )\
+&nbsp;&nbsp;&nbsp;&nbsp;[statement_to_repeat]{.pseudo};
+:::
+\
+_**Using a Block**_
+
+::: {.syntax}
+
+while( [loop_condition]{.pseudo} ) {\
+&nbsp;&nbsp;&nbsp;&nbsp;[statement_1]{.pseudo};\
+&nbsp;&nbsp;&nbsp;&nbsp;[\[...\]]{.pseudo}\
+&nbsp;&nbsp;&nbsp;&nbsp;[statement_n]{.pseudo};\
+}
+:::
+
+---
+
+**Example (iterative)**  
+
+``` cpp
+int counter = 10;                   // set up LCV
+while ( counter > 0 ) {             // loop condition
+    std::cout << counter << "\t";   // loop body
+    counter = counter - 1;          // update LCV
+}
+```
+\
+**Example (event controlled)**  
+
+``` cpp
+int value = 0;                      // set up LCV
+while( value <= 0 ){                // until LCV is positive
+    std::cout << "Enter a positive integer: ";
+    std::cin  >> value;             // update the LCV
+}
+```
+
+\
+_**Hint**: You can recognize an Event Controlled loop because you cannot look a the loop and tell how many times it will repeat!_
+
+---
+
+## The `for` Loop
+
+**`for`** is a pre-test loop.\
+\
+
+_**Syntax:**_
+
+::: {.syntax}
+for(  [initializer]{.pseudo}  ;  [test]{.pseudo}  ;  [update]{.pseudo}  )\
+&nbsp;&nbsp;&nbsp;&nbsp; [statement_to_repeat]{.pseudo};
+:::
+\
+_**Using a Block**_
+
+::: {.syntax}
+for(  [initializer]{.pseudo}  ;  [test]{.pseudo}  ;  [update]{.pseudo}  ) {\
+&nbsp;&nbsp;&nbsp;&nbsp; [statement_1]{.pseudo};\
+&nbsp;&nbsp;&nbsp;&nbsp; [\[...\]]{.pseudo}\
+&nbsp;&nbsp;&nbsp;&nbsp; [statement_n]{.pseudo};\
+}
+:::
+
+
+---
+
+**Example 1 (iterative)**
+``` cpp
+for( int counter = 1; counter <= 10; counter += 1 ) {
+    std::cout << counter << "\t";
+}
+```
+\
+
+**Example 2 (iterative)**
+``` cpp
+int counter;
+for( counter = 10; counter > 0; counter -= 1 ) {
+    std::cout << counter << "\t";
+}
+```
+\
+
+**Example 3 (event controlled)**
+``` cpp
+int value;
+for( value = 0; value <= 0; std::cin >> value ){
+    std::cout << "Enter a positive integer: ";
+}
+```
+
+---
+
+## The Range-Based `for` Loop
+
+C++11 added the ability for a `for` loop to iterate over all elements of a sequence container using a more concise syntax:
+
+**Syntax**
+
+:::{.syntax}
+for(  [item_declaration]{.pseudo}   :   [container]{.pseudo}   ) \
+&nbsp;&nbsp;&nbsp;&nbsp; [statement_to_repeat]{.pseudo};\
+:::
+
+_or more generally:_\
+\
+
+:::{.syntax}
+ for(  [item_declaration]{.pseudo}   :   [container]{.pseudo}   ) {\
+&nbsp;&nbsp;&nbsp;&nbsp; [statement_1]{.pseudo};\
+&nbsp;&nbsp;&nbsp;&nbsp; [\[...\]]{.pseudo}\
+&nbsp;&nbsp;&nbsp;&nbsp; [statement_n]{.pseudo};\
+`}`    
+:::
+
+---
+
+### Example
+
+The following example shows the range-based `for` loop being used to print the value of all elements of an vector of integers to the screen.  **Don't worry** that we haven't introduced _vectors_ yet---we will revisit this topic.\
+\
+
+```cpp
+// Create some values in a collection:
+std::vector<int> values{ 2, 4, 6, 8, 10 };
+// Print them to standard output using the 
+// range-based `for`:
+for( int item : values ) {
+    std::cout << item << "\n";
+}
+```
+
+---
+
+## The `do`-`while` Loop
+
+**`do`-`while`** is a post-test loop.\
+\
+_**Syntax:**_
+
+:::{.syntax}
+do {\
+&nbsp;&nbsp;&nbsp;&nbsp; [statement_1]{.pseudo}; \
+&nbsp;&nbsp;&nbsp;&nbsp; [\[...\]]{.pseudo} \
+&nbsp;&nbsp;&nbsp;&nbsp; [statement_n]{.pseudo}; \
+} while(  [loop_condition]{.pseudo}  );\
+:::
+
+\
+**Notice** the semicolon at the end!\
+[The do-while is the only C++ control structure that ends with a semicolon.]{.highlight .small-75}
+
+---
+
+**Example (iterative)**  
+
+``` cpp
+int counter = 1;                    // set up LCV
+do {                                // loop entry
+    std::cout << counter << "\t";   // loop body
+    counter = counter + 1;          // update LCV
+} while( counter <= 10 );           // loop condition
+```
+\
+
+**Example (event controlled)**  
+
+``` cpp
+int value;                          // declare LCV
+do {                                // loop entry
+    std::cout << "Enter a positive integer: ";
+    std::cin  >> value;             // read/update LCV
+} while( value <= 0 );              // until LCV is positive
+```
+\
+
+_Don't forget the semicolon!_
+
+---
+
+## Which Loop to Choose?
+
+* **`while`** 
+    - pre-test loop
+    - well suited to _Event Controlled Loops_
+* **`for`**
+    - pre-test loop
+    - well suited to _Iterative Loops_
+    - range-based `for` is great for containers
+* **`do`-`while`**
+    - post-test loop
+    - well suited to _Event Controlled Loops_ used for _validation_
+

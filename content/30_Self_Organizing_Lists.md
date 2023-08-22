@@ -1,7 +1,7 @@
 ---
 title: "30: Self-Organizing Lists"
 date: 2022-10-14
-draft: false
+draft: true
 ---
 
 # Self-Organizing Lists

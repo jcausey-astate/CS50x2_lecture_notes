@@ -1,0 +1,14 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/content/01_SP_Basics.html",
+      "/content/02_Variables_Operators_Errors.html",
+      "/content/03_Selection.html",
+      "/content/04_Repetition.html",
+      "/content/05_Functions_Value_Parameters.html",
+      "/content/06_Functions_Reference_Parameters.html",
+      "/content/07_Recursion.html"
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 ---
 title: "10: Parallel & Multi-Dimensional Arrays"
 date: 2021-09-08
-draft: false
+draft: true
 ---
 
 

@@ -3,7 +3,7 @@ title: '37: Efficient Sorting'
 subtitle: 'Drozdek, Ch. 9.1 and 9.3'
 author: Jason L Causey, Hung-Chi Su
 date: 2022-11-13
-draft: false
+draft: true
 ---
 
 # Efficient Sorting

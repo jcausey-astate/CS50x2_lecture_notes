@@ -13,3 +13,6 @@ topics.txt
 todo.txt
 .todo.done
 .todo.report
+/.quarto/
+
+/.luarc.json

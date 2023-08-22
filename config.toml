@@ -1,5 +1,0 @@
-baseURL = "https://jcausey-astate.github.io/CS50x2_lecture_notes"
-languageCode = "en-us"
-title = "CS50x2 Lecture Notes"
-theme = "remark-academic"
-publishDir = "docs"

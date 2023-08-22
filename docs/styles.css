@@ -1,0 +1,20 @@
+/* css styles */
+
+.navbar-dark {
+    background-image: url(images/astAte.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    background-color: #b7151d;
+    background-origin: content-box;
+    min-height: 60px;
+}
+
+.navbar-container {
+    margin-left: 160px;
+}
+
+.card-other-values > tr {
+    position: relative;
+    min-height: 100px;
+}

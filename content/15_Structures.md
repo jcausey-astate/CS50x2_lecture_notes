@@ -1,7 +1,7 @@
 ---
 title: "15: Structures"
 date: 2021-01-13T12:00:00-05:00
-draft: false
+draft: true
 ---
 
 # Abstract Data Types

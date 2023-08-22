@@ -1,7 +1,7 @@
 ---
 title: "17: Dynamic Memory"
 date: 2020-10-02T12:30:15-05:00
-draft: false
+draft: true
 ---
 
 # Dynamic Memory Allocation

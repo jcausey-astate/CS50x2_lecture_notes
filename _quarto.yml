@@ -1,0 +1,39 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "index.qmd"
+    - "content/*.qmd"
+
+execute:
+  freeze: auto  # re-render only when source changes
+
+website:
+  title: "CS 50x2 Slides"
+  site-url: "https://jcausey-astate.github.io/CS50x2_lecture_notes/"
+  favicon: favicon.ico
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+      # - href: https://wiki.cs.astate.edu
+      #   text: "CS Wiki"
+  page-footer: "Copyright &copy; 2023 Jason Causey, Arkansas State University"
+
+format:
+  astate-codeslides-revealjs:
+    footer: "{{< meta course >}}"
+    link-external-newwindow: true
+    slide-number: true
+    sc-sb-title: true
+    title-as-header: true
+    hide-from-titleSlide: text
+
+course: "CS 50x2 Accelerated Programming Series"
+
+date-meta: last-modified
+# date-format: "DD MMM, YYYY"
+
+fig-align: center
+

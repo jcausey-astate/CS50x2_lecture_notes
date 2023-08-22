@@ -1,7 +1,7 @@
 ---
 title: "16: Binary Files & Random Access"
 date: 2020-10-02T12:30:16-05:00
-draft: false
+draft: true
 ---
 
 # Binary Files & Random Access

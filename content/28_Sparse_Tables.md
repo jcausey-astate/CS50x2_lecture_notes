@@ -1,7 +1,7 @@
 ---
 title: "28: Sparse Tables"
 date: 2022-10-17
-draft: false
+draft: true
 ---
 
 # Sparse Tables

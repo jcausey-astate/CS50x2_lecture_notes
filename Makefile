@@ -1,18 +1,21 @@
 .PHONY: check-git-clean
 .PHONY: all
 .PHONY: preview
-.PHONY: drafts
 .PHONY: push
 .PHONY: build
+.PHONY: clean
 .PHONY: commit
 
 all: build
 
 build:
-	@hugo --cleanDestinationDir
+	quarto render
 
 preview:
-	@hugo serve --buildDrafts --cleanDestinationDir
+	quarto preview
+
+clean:
+	rm -rf docs/* docs/.* 2>/dev/null || true
 
 drafts:
 	@hugo list drafts
@@ -25,4 +28,5 @@ check-git-clean: build
 	@git diff --quiet || { echo; echo "Git tree not clean."; echo ; git status; echo; false; }
 
 commit:
-	@git add content static docs && git commit -a
+	@git add . images content docs && git commit -a
+

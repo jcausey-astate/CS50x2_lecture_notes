@@ -1,0 +1,31 @@
+---
+draft: false
+number: 0
+format:
+  html:
+      page-layout: full
+      theme: journal
+      css: styles.css
+      link-external-newwindow: true
+listing:
+  - id: slide-list
+    contents: "content/*.qmd"
+    type: grid
+    grid-columns: 4
+    page-size: 999
+    sort:
+    - "number"
+    - "filename asc"
+    - "title asc"
+    - "subtitle asc"
+    feed: false
+    sort-ui: false
+    filter-ui: false
+    fields: [title, subtitle]
+    field-links: [title]
+    field-display-names:
+      number: ' '
+---
+
+::: {#slide-list}
+:::

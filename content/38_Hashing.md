@@ -3,7 +3,7 @@ title: '38: Hashing'
 subtitle: 'Drozdek, Ch. 10'
 author: Jason L Causey
 date:  2022-12-05
-draft: false
+draft: true
 ---
 
 ## Hashing

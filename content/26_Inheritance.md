@@ -1,7 +1,7 @@
 ---
 title: "26: Inheritance"
 date: 2022-10-17
-draft: false
+draft: true
 ---
 
 # Inheritance
