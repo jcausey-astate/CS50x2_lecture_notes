@@ -2,10 +2,12 @@
 number: 08
 title: "Arrays"
 textbook: "Gaddis (Ch. 7)"
-draft: true
+# draft: true
 ---
 
 ## The C++ Array
+
+An **_array_** is a data structure consisting of multiple values of the same type stored contiguously in memory and accessed by an integer index representing the offset of the desired element from the beginning of the array.
 
 _Arrays_ allow programmers to store multiple related values of the same type.
 
@@ -46,7 +48,7 @@ In the declaration: <br />
 * `int` is the **data type** of _all_ elements in the array.
 * `tests` is the **name** of the array.
 * `5` (in `[5]`) is the **size declarator**.  It specifies the _number of elements_.
-    - The storage size of the array is <br /> _`NumberOfElements * SizeOfEachElement`_.
+    - The storage size of the array is $N \times S$ where $N$ is the number of elements and $S$ is the size (in bytes) of each element.
     - The size declarator **must** be either a _literal_ or _constant_.
 
 ---
@@ -56,23 +58,25 @@ In the declaration: <br />
 Named constants are often used as size declarators.
 
 ``` cpp
-const int CLASS_SIZE = 5;
-int       tests[CLASS_SIZE];
+const int class_size = 5;
+int       tests[class_size];
 ```
 
 * Makes maintenance easier if size needs to change.
 * Avoids creating "_magic numbers_".
-    - _magic numbers_ are literal numeric values that appear repeatedly for reasons that are non-obvious by the context.
+    - **_magic numbers_** are literal numeric values that appear repeatedly for reasons that are non-obvious by the context.
 
 ---
 
 ## Indexes and Elements
 
 Each individual data item in an array is referred to as an _array element_.
+\
 
 ![Array elements are contiguous boxes in memory.](images/shared/integer_array_no_indices.svg)
 
 Elements are identified by an integer _index_, starting from 0.
+\
 
 ![Array elements are identified by integer indices.](images/shared/integer_array_with_indices.svg)
 
@@ -80,17 +84,16 @@ Elements are identified by an integer _index_, starting from 0.
 
 ## Initial Values
 
-.small-80[Array elements start out _uninitialized_ if their base types do (primitive types, for example).]
+Array elements start out _uninitialized_ if their base types do (primitive types, for example).
 
 ![Array elements are uninitialized.](images/shared/integer_array_uninitialized.svg)
 
-.small-80[
 Use the element's _index number_ and _array index syntax_ to access individual elements:
 
 ``` cpp
 tests[0] = 88;
 ```
-]
+
 ![Array with first value initialized.](images/shared/integer_array_first_element_initialized.svg)
 
 ---
@@ -114,6 +117,8 @@ Produces:
 ## Generate Indices with a Loop
 
 The array index may be specified by a _literal_, _variable_, or _integer expression_.
+\
+\
 
 ``` cpp
 // Assume "tests" has been initialized as shown previously...
@@ -126,9 +131,10 @@ for(int i = 0; i < 5; i++){
 
 ---
 
-**Example: Initialize Array with Loop**
+### Example: Initialize Array with Loop
+\
 
-``` cpp
+```cpp
 int a[100];                     // Declare array of 100 integers.
 for(int i = 0; i < 100; i++){   // Initialize all elements to 0
     a[i] = 0;
@@ -138,42 +144,18 @@ for(int i = 0; i < 100; i++){   // Initialize all elements to 0
 ---
 
 ### Details: Declaration and Initialization
+\
 
-* Size declarators **must** be a _literal_ or _constant_.
-    - You **cannot** use a variable as a size declarator.
+* [Size declarators **must** be a _literal_ or _constant_.]{.highlight}
+    - [You **cannot** use a variable as a size declarator.]{.red}
         + No, you really can't!
             + _**Seriously, you can't.**_
+
+\
 
 * C++ provides **no bounds checking** for indices!
     - You must be careful not to access out-of-bounds.
     - Never trust a user-entered value for calculating an index!  Check it first.
-
----
-
-## Array Initializer Syntax
-
-Because it makes tests questions easy...
-
-``` cpp
-int tests[5] = { 88, 92, 76, 85, 63 };
-```
-
-Creates the same array we saw earlier:
-
-![Array with values.](images/shared/integer_array_with_values.svg)
-
----
-
-## Array Initializer Syntax
-
-``` cpp
-int tests[] = { 88, 92, 76, 85, 63 };
-```
-
-* Size declarator is _optional_ here, since the compiler can count.
-* This is _only_ useful if you know all of the values that will be stored at the time you are writing the program.
-    - That is rarely the case.
-* So, loops it is!
 
 ---
 
@@ -182,19 +164,37 @@ int tests[] = { 88, 92, 76, 85, 63 };
 ``` cpp
 int tests[] { 88, 92, 76, 85, 63 };
 ```
+[Produces:]{.small-90}
+![Array with values.](images/shared/integer_array_with_values.svg)
 
-* Like array initializer syntax, the size declarator is _optional_ here.
-* The only difference is the lack of the `=` operator.
+* Size declarator is _optional_ here, since the compiler can count.
+* This is _only_ useful if you know all of the values that will be stored at the time you are writing the program.
+    - That is rarely the case.
+* Loops are generally the best option.
+
+::: {.aside}
+The old way to do this was called "array initializer syntax".  It looks similar, but uses the assignment operator:
+```cpp
+int tests[] = { 88, 92, 76, 85, 63 };
+```
+We prefer the modern version using Uniform Initialization Syntax.
+:::
 
 ---
 
 ## Array Assignment
 
+\
+
+::: {.callout-important appearance="minimal"}
 You **cannot** directly _assign_ one array to another:
 
 ``` cpp
 copy_of_tests = tests;  // WILL NOT WORK!!!
 ```
+:::
+
+\
 
 **Correct way** - Assign element-by-element:
 
@@ -208,7 +208,36 @@ for(int i = 0; i < 5; i++){
 
 ## Arrays as Parameters
 
-* Arrays may be passed to functions:
+\
+
+Arrays may be passed to functions:
+
+```cpp
+void print_tests(int tests[], int size){
+    for(int i = 0; i < size; i++){
+        std::cout << tests[i] << "\n";
+    }
+}
+```
+::: {.fragment data-code-focus='1'}
+* Notice that the array's **size must also be passed**.
+    - Arrays do not "know their own size". 
+:::
+::: {.fragment data-code-focus='1'}
+* Notice the empty size declarator in the formal parameter.
+    - The first dimension does not require (or allow) a size declarator in a formal parameter declaration.
+:::
+::: {.fragment}
+* Arrays are **always** passed _by reference_.
+:::
+
+---
+
+#### Reminder: use `const` when you can!
+\
+
+Arrays are passed by reference---always.
+\
 
 ```cpp
 void print_tests(int tests[], int size){
@@ -218,11 +247,26 @@ void print_tests(int tests[], int size){
 }
 ```
 
-* Notice that the array's **size must also be passed**.
-    - Arrays do not "know their own size". 
-* Notice the empty size declarator in the formal parameter.
-    - First dimension does not require (or allow) a size declarator in a formal parameter declaration.
-* Arrays are **always** passed _by reference_.
+---
+
+#### Reminder: use `const` when you can!
+\
+
+Arrays are passed by reference---always.
+\
+
+```cpp {code-line-numbers="1"}
+void print_tests(const int tests[], int size){
+    for(int i = 0; i < size; i++){
+        std::cout << tests[i] << "\n";
+    }
+}
+```
+
+::: {.callout-tip appearance="minimal"}
+Use a `const` qualifier to _promise_ that the function will not 
+modify the array.
+:::
 
 ---
 

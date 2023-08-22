@@ -14,9 +14,9 @@ website:
   favicon: favicon.ico
   navbar:
     background: primary
-    left:
-      - href: index.qmd
-        text: Home
+    # left:
+    #   - href: index.qmd
+    #     text: Home
       # - href: https://wiki.cs.astate.edu
       #   text: "CS Wiki"
   page-footer: "Copyright &copy; 2023 Jason Causey, Arkansas State University"

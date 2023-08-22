@@ -28,5 +28,5 @@ check-git-clean: build
 	@git diff --quiet || { echo; echo "Git tree not clean."; echo ; git status; echo; false; }
 
 commit:
-	@git add . images content docs && git commit -a
+	@git add images content docs _freeze && git commit -a
 

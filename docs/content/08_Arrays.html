@@ -416,6 +416,7 @@
 </section>
 <section id="the-c-array" class="slide level2">
 <h2>The C++ Array</h2>
+<p>An <strong><em>array</em></strong> is a data structure consisting of multiple values of the same type stored contiguously in memory and accessed by an integer index representing the offset of the desired element from the beginning of the array.</p>
 <p><em>Arrays</em> allow programmers to store multiple related values of the same type.</p>
 <ul>
 <li>Values are stored sequentially in memory.</li>
@@ -446,7 +447,7 @@
 <li><code>tests</code> is the <strong>name</strong> of the array.</li>
 <li><code>5</code> (in <code>[5]</code>) is the <strong>size declarator</strong>. It specifies the <em>number of elements</em>.
 <ul>
-<li>The storage size of the array is <br> <em><code>NumberOfElements * SizeOfEachElement</code></em>.</li>
+<li>The storage size of the array is <span class="math inline">\(N \times S\)</span> where <span class="math inline">\(N\)</span> is the number of elements and <span class="math inline">\(S\)</span> is the size (in bytes) of each element.</li>
 <li>The size declarator <strong>must</strong> be either a <em>literal</em> or <em>constant</em>.</li>
 </ul></li>
 </ul>
@@ -454,26 +455,28 @@
 <section id="size-declarators" class="slide level2">
 <h2>Size Declarators</h2>
 <p>Named constants are often used as size declarators.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="at">const</span> <span class="dt">int</span> CLASS_SIZE <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="dt">int</span>       tests<span class="op">[</span>CLASS_SIZE<span class="op">];</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="at">const</span> <span class="dt">int</span> class_size <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="dt">int</span>       tests<span class="op">[</span>class_size<span class="op">];</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Makes maintenance easier if size needs to change.</li>
 <li>Avoids creating “<em>magic numbers</em>”.
 <ul>
-<li><em>magic numbers</em> are literal numeric values that appear repeatedly for reasons that are non-obvious by the context.</li>
+<li><strong><em>magic numbers</em></strong> are literal numeric values that appear repeatedly for reasons that are non-obvious by the context.</li>
 </ul></li>
 </ul>
 </section>
 <section id="indexes-and-elements" class="slide level2">
 <h2>Indexes and Elements</h2>
-<p>Each individual data item in an array is referred to as an <em>array element</em>.</p>
+<p>Each individual data item in an array is referred to as an <em>array element</em>.<br>
+</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/shared/integer_array_no_indices.svg"></p>
 <figcaption>Array elements are contiguous boxes in memory.</figcaption>
 </figure>
 </div>
-<p>Elements are identified by an integer <em>index</em>, starting from 0.</p>
+<p>Elements are identified by an integer <em>index</em>, starting from 0.<br>
+</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/shared/integer_array_with_indices.svg"></p>
@@ -483,16 +486,21 @@
 </section>
 <section id="initial-values" class="slide level2">
 <h2>Initial Values</h2>
-<p>.small-80[Array elements start out <em>uninitialized</em> if their base types do (primitive types, for example).]</p>
+<p>Array elements start out <em>uninitialized</em> if their base types do (primitive types, for example).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/shared/integer_array_uninitialized.svg"></p>
 <figcaption>Array elements are uninitialized.</figcaption>
 </figure>
 </div>
-<p>.small-80[ Use the element’s <em>index number</em> and <em>array index syntax</em> to access individual elements:</p>
+<p>Use the element’s <em>index number</em> and <em>array index syntax</em> to access individual elements:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a>tests<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>] <img data-src="images/shared/integer_array_first_element_initialized.svg" alt="Array with first value initialized."></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/shared/integer_array_first_element_initialized.svg"></p>
+<figcaption>Array with first value initialized.</figcaption>
+</figure>
+</div>
 </section>
 <section class="slide level2">
 
@@ -507,7 +515,9 @@
 <img data-src="images/shared/integer_array_with_values.svg" class="r-stretch quarto-figure-center"><p class="caption">Array with values.</p></section>
 <section id="generate-indices-with-a-loop" class="slide level2">
 <h2>Generate Indices with a Loop</h2>
-<p>The array index may be specified by a <em>literal</em>, <em>variable</em>, or <em>integer expression</em>.</p>
+<p>The array index may be specified by a <em>literal</em>, <em>variable</em>, or <em>integer expression</em>.<br>
+<br>
+</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">// Assume "tests" has been initialized as shown previously...</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co">// Display tests from tests array to standard output:</span></span>
@@ -517,7 +527,9 @@
 </section>
 <section class="slide level2">
 
-<p><strong>Example: Initialize Array with Loop</strong></p>
+<h3 id="example-initialize-array-with-loop">Example: Initialize Array with Loop</h3>
+<p><br>
+</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">int</span> a<span class="op">[</span><span class="dv">100</span><span class="op">];</span>                     <span class="co">// Declare array of 100 integers.</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">100</span><span class="op">;</span> i<span class="op">++){</span>   <span class="co">// Initialize all elements to 0</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>    a<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
@@ -526,10 +538,12 @@
 <section class="slide level2">
 
 <h3 id="details-declaration-and-initialization">Details: Declaration and Initialization</h3>
+<p><br>
+</p>
 <ul>
-<li>Size declarators <strong>must</strong> be a <em>literal</em> or <em>constant</em>.
+<li><span class="highlight">Size declarators <strong>must</strong> be a <em>literal</em> or <em>constant</em>.</span>
 <ul>
-<li>You <strong>cannot</strong> use a variable as a size declarator.
+<li><span class="red">You <strong>cannot</strong> use a variable as a size declarator.</span>
 <ul>
 <li>No, you really can’t!
 <ul>
@@ -537,6 +551,10 @@
 </ul></li>
 </ul></li>
 </ul></li>
+</ul>
+<p><br>
+</p>
+<ul>
 <li>C++ provides <strong>no bounds checking</strong> for indices!
 <ul>
 <li>You must be careful not to access out-of-bounds.</li>
@@ -544,63 +562,113 @@
 </ul></li>
 </ul>
 </section>
-<section id="array-initializer-syntax" class="slide level2">
-<h2>Array Initializer Syntax</h2>
-<p>Because it makes tests questions easy…</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">int</span> tests<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span> <span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">76</span><span class="op">,</span> <span class="dv">85</span><span class="op">,</span> <span class="dv">63</span> <span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Creates the same array we saw earlier:</p>
-
-<img data-src="images/shared/integer_array_with_values.svg" class="r-stretch quarto-figure-center"><p class="caption">Array with values.</p></section>
-<section id="array-initializer-syntax-1" class="slide level2">
-<h2>Array Initializer Syntax</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">int</span> tests<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span> <span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">76</span><span class="op">,</span> <span class="dv">85</span><span class="op">,</span> <span class="dv">63</span> <span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="uniform-initialization-syntax" class="slide level2">
+<h2>Uniform Initialization Syntax</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">int</span> tests<span class="op">[]</span> <span class="op">{</span> <span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">76</span><span class="op">,</span> <span class="dv">85</span><span class="op">,</span> <span class="dv">63</span> <span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="small-90">Produces:</span> <img data-src="images/shared/integer_array_with_values.svg" alt="Array with values."></p>
 <ul>
 <li>Size declarator is <em>optional</em> here, since the compiler can count.</li>
 <li>This is <em>only</em> useful if you know all of the values that will be stored at the time you are writing the program.
 <ul>
 <li>That is rarely the case.</li>
 </ul></li>
-<li>So, loops it is!</li>
+<li>Loops are generally the best option.</li>
 </ul>
-</section>
-<section id="uniform-initialization-syntax" class="slide level2">
-<h2>Uniform Initialization Syntax</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="dt">int</span> tests<span class="op">[]</span> <span class="op">{</span> <span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">76</span><span class="op">,</span> <span class="dv">85</span><span class="op">,</span> <span class="dv">63</span> <span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Like array initializer syntax, the size declarator is <em>optional</em> here.</li>
-<li>The only difference is the lack of the <code>=</code> operator.</li>
-</ul>
-</section>
+
+<aside><div>
+<p>The old way to do this was called “array initializer syntax”. It looks similar, but uses the assignment operator:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">int</span> tests<span class="op">[]</span> <span class="op">=</span> <span class="op">{</span> <span class="dv">88</span><span class="op">,</span> <span class="dv">92</span><span class="op">,</span> <span class="dv">76</span><span class="op">,</span> <span class="dv">85</span><span class="op">,</span> <span class="dv">63</span> <span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We prefer the modern version using Uniform Initialization Syntax.</p>
+</div></aside></section>
 <section id="array-assignment" class="slide level2">
 <h2>Array Assignment</h2>
+<p><br>
+</p>
+<div class="callout callout-important no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong></strong></p>
+</div>
+<div class="callout-content">
 <p>You <strong>cannot</strong> directly <em>assign</em> one array to another:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a>copy_of_tests <span class="op">=</span> tests<span class="op">;</span>  <span class="co">// WILL NOT WORK!!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a>copy_of_tests <span class="op">=</span> tests<span class="op">;</span>  <span class="co">// WILL NOT WORK!!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><br>
+</p>
 <p><strong>Correct way</strong> - Assign element-by-element:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++){</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>    copy_of_tests<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> tests<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">5</span><span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>    copy_of_tests<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> tests<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="arrays-as-parameters" class="slide level2">
 <h2>Arrays as Parameters</h2>
-<ul>
-<li>Arrays may be passed to functions:</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="dt">void</span> print_tests<span class="op">(</span><span class="dt">int</span> tests<span class="op">[],</span> <span class="dt">int</span> size<span class="op">){</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++){</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tests<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>    <span class="op">}</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+</p>
+<p>Arrays may be passed to functions:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="dt">void</span> print_tests<span class="op">(</span><span class="dt">int</span> tests<span class="op">[],</span> <span class="dt">int</span> size<span class="op">){</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tests<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>    <span class="op">}</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment" data-code-focus="1">
 <ul>
 <li>Notice that the array’s <strong>size must also be passed</strong>.
 <ul>
 <li>Arrays do not “know their own size”.</li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment" data-code-focus="1">
+<ul>
 <li>Notice the empty size declarator in the formal parameter.
 <ul>
-<li>First dimension does not require (or allow) a size declarator in a formal parameter declaration.</li>
+<li>The first dimension does not require (or allow) a size declarator in a formal parameter declaration.</li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li>Arrays are <strong>always</strong> passed <em>by reference</em>.</li>
 </ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h4 id="reminder-use-const-when-you-can">Reminder: use <code>const</code> when you can!</h4>
+<p><br>
+</p>
+<p>Arrays are passed by reference—always.<br>
+</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="dt">void</span> print_tests<span class="op">(</span><span class="dt">int</span> tests<span class="op">[],</span> <span class="dt">int</span> size<span class="op">){</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tests<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>    <span class="op">}</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<h4 id="reminder-use-const-when-you-can-1">Reminder: use <code>const</code> when you can!</h4>
+<p><br>
+</p>
+<p>Arrays are passed by reference—always.<br>
+</p>
+<div class="sourceCode" id="cb14" data-code-line-numbers="1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="dt">void</span> print_tests<span class="op">(</span><span class="at">const</span> <span class="dt">int</span> tests<span class="op">[],</span> <span class="dt">int</span> size<span class="op">){</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tests<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>    <span class="op">}</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong></strong></p>
+</div>
+<div class="callout-content">
+<p>Use a <code>const</code> qualifier to <em>promise</em> that the function will not modify the array.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="d-arrays-key-points-summary" class="slide level2">
 <h2>1-D Arrays Key Points Summary</h2>

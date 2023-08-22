@@ -1,5 +1,82 @@
 [
   {
+    "objectID": "content/08_Arrays.html#the-c-array",
+    "href": "content/08_Arrays.html#the-c-array",
+    "title": "Arrays",
+    "section": "The C++ Array",
+    "text": "The C++ Array\nAn array is a data structure consisting of multiple values of the same type stored contiguously in memory and accessed by an integer index representing the offset of the desired element from the beginning of the array.\nArrays allow programmers to store multiple related values of the same type.\n\nValues are stored sequentially in memory.\nDeclaration syntax:  type arrayname[ size_declarator ];\n\nExample Declarations\nint    a[100]; // Declares an array of 100 integers.\ndouble b[50];  // Declares an array of 50 doubles."
+  },
+  {
+    "objectID": "content/08_Arrays.html#array-memory-layout",
+    "href": "content/08_Arrays.html#array-memory-layout",
+    "title": "Arrays",
+    "section": "Array Memory Layout",
+    "text": "Array Memory Layout\nThe declaration:\nint tests[5];\nallocates the following memory:\n\nArray elements are contiguous boxes in memory.\nArrays are a reference type.\n\nThe array variable does not refer to the array as a whole, only to the location of the first element."
+  },
+  {
+    "objectID": "content/08_Arrays.html#terminology",
+    "href": "content/08_Arrays.html#terminology",
+    "title": "Arrays",
+    "section": "Terminology",
+    "text": "Terminology\nIn the declaration:  int tests[5];\n\nint is the data type of all elements in the array.\ntests is the name of the array.\n5 (in [5]) is the size declarator. It specifies the number of elements.\n\nThe storage size of the array is \\(N \\times S\\) where \\(N\\) is the number of elements and \\(S\\) is the size (in bytes) of each element.\nThe size declarator must be either a literal or constant."
+  },
+  {
+    "objectID": "content/08_Arrays.html#size-declarators",
+    "href": "content/08_Arrays.html#size-declarators",
+    "title": "Arrays",
+    "section": "Size Declarators",
+    "text": "Size Declarators\nNamed constants are often used as size declarators.\nconst int class_size = 5;\nint       tests[class_size];\n\nMakes maintenance easier if size needs to change.\nAvoids creating “magic numbers”.\n\nmagic numbers are literal numeric values that appear repeatedly for reasons that are non-obvious by the context."
+  },
+  {
+    "objectID": "content/08_Arrays.html#indexes-and-elements",
+    "href": "content/08_Arrays.html#indexes-and-elements",
+    "title": "Arrays",
+    "section": "Indexes and Elements",
+    "text": "Indexes and Elements\nEach individual data item in an array is referred to as an array element.\n\n\n\n\nArray elements are contiguous boxes in memory.\n\n\nElements are identified by an integer index, starting from 0.\n\n\n\n\nArray elements are identified by integer indices."
+  },
+  {
+    "objectID": "content/08_Arrays.html#initial-values",
+    "href": "content/08_Arrays.html#initial-values",
+    "title": "Arrays",
+    "section": "Initial Values",
+    "text": "Initial Values\nArray elements start out uninitialized if their base types do (primitive types, for example).\n\n\n\nArray elements are uninitialized.\n\n\nUse the element’s index number and array index syntax to access individual elements:\ntests[0] = 88;\n\n\n\nArray with first value initialized."
+  },
+  {
+    "objectID": "content/08_Arrays.html#generate-indices-with-a-loop",
+    "href": "content/08_Arrays.html#generate-indices-with-a-loop",
+    "title": "Arrays",
+    "section": "Generate Indices with a Loop",
+    "text": "Generate Indices with a Loop\nThe array index may be specified by a literal, variable, or integer expression.\n\n\n// Assume \"tests\" has been initialized as shown previously...\n\n// Display tests from tests array to standard output:\nfor(int i = 0; i &lt; 5; i++){\n    std::cout &lt;&lt; tests[i] &lt;&lt; \"\\n\";\n}"
+  },
+  {
+    "objectID": "content/08_Arrays.html#uniform-initialization-syntax",
+    "href": "content/08_Arrays.html#uniform-initialization-syntax",
+    "title": "Arrays",
+    "section": "Uniform Initialization Syntax",
+    "text": "Uniform Initialization Syntax\nint tests[] { 88, 92, 76, 85, 63 };\nProduces: \n\nSize declarator is optional here, since the compiler can count.\nThis is only useful if you know all of the values that will be stored at the time you are writing the program.\n\nThat is rarely the case.\n\nLoops are generally the best option.\n\n\n\nThe old way to do this was called “array initializer syntax”. It looks similar, but uses the assignment operator:\nint tests[] = { 88, 92, 76, 85, 63 };\nWe prefer the modern version using Uniform Initialization Syntax."
+  },
+  {
+    "objectID": "content/08_Arrays.html#array-assignment",
+    "href": "content/08_Arrays.html#array-assignment",
+    "title": "Arrays",
+    "section": "Array Assignment",
+    "text": "Array Assignment\n\n\n\n\n\n\n\n\nYou cannot directly assign one array to another:\ncopy_of_tests = tests;  // WILL NOT WORK!!!\n\n\n\n\n\nCorrect way - Assign element-by-element:\nfor(int i = 0; i &lt; 5; i++){\n    copy_of_tests[i] = tests[i];\n}"
+  },
+  {
+    "objectID": "content/08_Arrays.html#arrays-as-parameters",
+    "href": "content/08_Arrays.html#arrays-as-parameters",
+    "title": "Arrays",
+    "section": "Arrays as Parameters",
+    "text": "Arrays as Parameters\n\n\nArrays may be passed to functions:\nvoid print_tests(int tests[], int size){\n    for(int i = 0; i &lt; size; i++){\n        std::cout &lt;&lt; tests[i] &lt;&lt; \"\\n\";\n    }\n}\n\n\nNotice that the array’s size must also be passed.\n\nArrays do not “know their own size”.\n\n\n\n\n\nNotice the empty size declarator in the formal parameter.\n\nThe first dimension does not require (or allow) a size declarator in a formal parameter declaration.\n\n\n\n\n\nArrays are always passed by reference."
+  },
+  {
+    "objectID": "content/08_Arrays.html#d-arrays-key-points-summary",
+    "href": "content/08_Arrays.html#d-arrays-key-points-summary",
+    "title": "Arrays",
+    "section": "1-D Arrays Key Points Summary",
+    "text": "1-D Arrays Key Points Summary\n\nSize declarator must be a literal or constant.\nC++ provides no bounds-checking for indices.\nArray elements start out uninitialized if their base types do.\n\nThey are default constructed if the base type is a structured or object type.\n\nArrays cannot be directly assigned.\nArrays are always passed by reference to functions.\nArrays do not “know” their own size.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nArrays"
+  },
+  {
     "objectID": "content/06_Functions_Reference_Parameters.html#review-pass-by-value",
     "href": "content/06_Functions_Reference_Parameters.html#review-pass-by-value",
     "title": "Functions and Reference Parameters",
@@ -291,7 +368,7 @@
     "href": "index.html",
     "title": "CS 50x2 Slides",
     "section": "",
-    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/01_SP_Basics.html#first-principles",
