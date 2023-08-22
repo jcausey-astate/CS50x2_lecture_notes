@@ -1,5 +1,5 @@
 ---
-number: 07
+number: 7
 title: "Recursion"
 textbook: "Gaddis (Ch. 6, 19)"
 # draft: true

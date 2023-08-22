@@ -1,5 +1,5 @@
 ---
-number: 08
+number: 8
 title: "Arrays"
 textbook: "Gaddis (Ch. 7)"
 # draft: true

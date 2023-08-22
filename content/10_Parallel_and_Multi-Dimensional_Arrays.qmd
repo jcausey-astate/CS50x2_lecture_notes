@@ -1,14 +1,8 @@
 ---
-title: "10: Parallel & Multi-Dimensional Arrays"
-date: 2021-09-08
-draft: true
----
-
-
-## Parallel &<br />Multi-Dimensional<br/>Arrays
-
-### Gaddis Ch. 7
-
+number: 10
+title: "Parallel and Multi-Dimensional Arrays"
+textbook: "Gaddis (Ch. 7)"
+# draft: true
 ---
 
 ## Parallel Arrays
@@ -61,7 +55,7 @@ int votes[5][3]; // create array with 5 rows and 3 columns
 int votes[5][3]; // create array with 5 rows and 3 columns
 ```
 
-![2-D Array of integers.](../images/shared/2D_array_with_indices.svg)
+![2-D Array of integers.](images/shared/2D_array_with_indices.svg)
 
 ---
 
@@ -74,7 +68,7 @@ In reality, all physical memory is 1-dimensional.
 
 Rows are sequential!
 
-![2-D Array of integers.](../images/shared/2D_array_with_indices_physical_layout.svg)
+![2-D Array of integers.](images/shared/2D_array_with_indices_physical_layout.svg)
 
 ---
 
@@ -91,8 +85,9 @@ const int N_DAYS        = 3; // contest length
 int votes[N_CONTESTANTS][N_DAYS]; // table of contest votes
 ```
 
-<small>It can sometimes be useful to allow these constants to be _global_ in some cases (as we will see shortly).</small>
-
+::: {.callout-tip appearance="minimal"}
+It can sometimes be useful to allow these constants to be _global_ in some cases (as we will see shortly).
+:::
 
 ---
 
@@ -100,7 +95,7 @@ int votes[N_CONTESTANTS][N_DAYS]; // table of contest votes
 
 Almost all operations on 2-D arrays will require _nested loops_.
 
-_Think "for each row, for each column, do some operation"._
+_Think "[for each row]{.highlight-blue}, [for each column]{.highlight-green}, do some operation"._
 
 ``` cpp
 // Initialize "votes" array:
@@ -160,6 +155,8 @@ There is no (practical) limit on the number of dimensions an array can have.
 
 Higher-dimensional arrays **require substantial memory resources**.
 
+\
+
 **Example: 3-D Array**
 
 ``` cpp
@@ -177,6 +174,8 @@ Requires `8 * 8 * 100 * sizeof(int) => 25600` bytes (25 KB).
 ## Arrays of Higher Dimension
 
 Operations just require more nested loops (one for each dimension):
+
+\
 
 ``` cpp
 for(int move = 0; move < MOVES; move++){

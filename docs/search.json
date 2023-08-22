@@ -1,5 +1,82 @@
 [
   {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Parallel Arrays",
+    "text": "Parallel Arrays\n\nParallel Arrays: Two or more arrays containing related data such that the elements at corresponding indexes are related.\n\nAll elements at index i the parallel arrays make up a single record i.\n\n\nExample\nconst int   N_CONTESTANTS = 5;\nstd::string names[N_CONTESTANTS];\nint         votes[N_CONTESTANTS];\n// Each contestant has a name and a vote count.\nfor(int i = 0; i &lt; N_CONTESTANTS; i++){\n    std::cout &lt;&lt; \"Contestant \" &lt;&lt; (i+1) &lt;&lt; \" name: \";\n    std::cin  &gt;&gt; names[i];\n    std::cout &lt;&lt; \"# of votes for \" &lt;&lt; names[i] &lt;&lt; \": \";\n    std::cin  &gt;&gt; votes[i];\n}"
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays-1",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays-1",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Parallel Arrays",
+    "text": "Parallel Arrays\n\nSince the parallel arrays are separate, they may be of mixed type.\nAny operation that updates one of the parallel arrays must update all others to maintain the parallel property.\nAll arrays must be passed to functions separately (although one “size” parameter is usually sufficient)."
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#dimensional-arrays",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#dimensional-arrays",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "2-Dimensional Arrays",
+    "text": "2-Dimensional Arrays\nC++ allows multiple dimensions for arrays. This is achieved by simply adding additional size declarators:\nint votes[5][3]; // create array with 5 rows and 3 columns\n\nNotice that two sets of square brackets are needed for a 2-D array.\nSame rules apply for size declarators here. (constants or literals only)"
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-logical",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-logical",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Layout (Logical)",
+    "text": "Layout (Logical)\nint votes[5][3]; // create array with 5 rows and 3 columns\n\n2-D Array of integers."
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-physical",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-physical",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Layout (Physical)",
+    "text": "Layout (Physical)\nint votes[5][3]; // create array with 5 rows and 3 columns\nIn reality, all physical memory is 1-dimensional.\nRows are sequential!\n\n2-D Array of integers."
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#using-constants-for-size",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#using-constants-for-size",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Using Constants for Size",
+    "text": "Using Constants for Size\nAvoid “magic numbers” by using named constants for size declarators:\nconst int N_CONTESTANTS = 5; // # of contestants\nconst int N_DAYS        = 3; // contest length\n\n// [...]\n\nint votes[N_CONTESTANTS][N_DAYS]; // table of contest votes\n\n\n\n\n\n\nIt can sometimes be useful to allow these constants to be global in some cases (as we will see shortly)."
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#working-with-2-d-arrays",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#working-with-2-d-arrays",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Working with 2-D Arrays",
+    "text": "Working with 2-D Arrays\nAlmost all operations on 2-D arrays will require nested loops.\nThink “for each row, for each column, do some operation”.\n// Initialize \"votes\" array:\nfor(int i = 0; i &lt; N_CONTESTANTS; i++){\n    for(int j = 0; j &lt; N_DAYS; j++){\n        votes[i][j] = 0;\n    }\n}"
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "2-D Arrays as Formal Parameters",
+    "text": "2-D Arrays as Formal Parameters\nBecause of the reality of the physical (1-D) layout of the array, C++ requires that you specify a size declarator for every dimension except the first when listing arrays in formal parameter lists.\nvoid print_matrix( int matrix[][4], int n_rows ){\n    for(int i = 0; i &lt; n_rows; i++){\n        for(int j = 0; j &lt; 4; j++){\n            std::cout &lt;&lt; matrix[i][j] &lt;&lt; \"\\t\";\n        }\n        std::cout &lt;&lt; \"\\n\";\n    }\n}\nThe number of rows can still be a parameter, allowing it to vary."
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters-1",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters-1",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "2-D Arrays as Formal Parameters",
+    "text": "2-D Arrays as Formal Parameters\nAgain, to avoid “magic numbers”, we often set up global constants for the sizes of each dimension after the first:\nconst int N_COLS = 4; // GLOBAL constant, defined at top.\n\n// [ ... ]\n\nvoid print_matrix( int matrix[][N_COLS], int n_rows ){\n    for(int i = 0; i &lt; n_rows; i++){\n        for(int j = 0; j &lt; N_COLS; j++){\n            std::cout &lt;&lt; matrix[i][j] &lt;&lt; \"\\t\";\n        }\n        std::cout &lt;&lt; \"\\n\";\n    }\n}"
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Arrays of Higher Dimension",
+    "text": "Arrays of Higher Dimension\nThere is no (practical) limit on the number of dimensions an array can have.\nHigher-dimensional arrays require substantial memory resources.\n\n\nExample: 3-D Array\nconst int ROWS  = 8;\nconst int COLS  = 8;\nconst int MOVES = 100; // Number of replay steps\n// [...]\nint game_board_over_time[MOVES][ROWS][COLS];\nRequires 8 * 8 * 100 * sizeof(int) =&gt; 25600 bytes (25 KB)."
+  },
+  {
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension-1",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension-1",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Arrays of Higher Dimension",
+    "text": "Arrays of Higher Dimension\nOperations just require more nested loops (one for each dimension):\n\n\nfor(int move = 0; move &lt; MOVES; move++){\n    for(int r = 0; r &lt; ROWS; r++){\n        for(int c = 0; c &lt; COLUMNS; c++){\n            cout &lt;&lt; game_board_over_time[move][r][c]\n                 &lt;&lt; \"\\t\";\n        }\n        cout &lt;&lt; \"\\n\";\n    }\n}\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nParallel and Multi-Dimensional Arrays"
+  },
+  {
     "objectID": "content/08_Arrays.html#the-c-array",
     "href": "content/08_Arrays.html#the-c-array",
     "title": "Arrays",
@@ -368,7 +445,7 @@
     "href": "index.html",
     "title": "CS 50x2 Slides",
     "section": "",
-    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/01_SP_Basics.html#first-principles",
@@ -705,5 +782,75 @@
     "title": "Recursion",
     "section": "Towers of Hanoi",
     "text": "Towers of Hanoi\n\n\nAlgorithm\n\n\n\nMove \\(n-1\\) plates from start to temp (using goal for storage).\nMove the final plate from start to goal.\nMove \\(n-1\\) plates from temp to goal (using start for storage).\n\nSpoiler Alert!\nvoid towers(int n, char start='A', char goal='C', char temp='B'){\n    if(n &gt; 0){\n        towers(n-1, start, temp, goal);\n        cout &lt;&lt; \"Move plate from \" &lt;&lt; start &lt;&lt; \" to \" &lt;&lt; goal &lt;&lt; \".\\n\";\n        towers(n-1, temp, goal, start);\n    }\n}"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#ascii-encoding",
+    "href": "content/09_C-Strings.html#ascii-encoding",
+    "title": "Characters and C-Style Strings",
+    "section": "ASCII Encoding",
+    "text": "ASCII Encoding\nInternally, all characters must be encoded into a numeric representation.\nThere is more than one way to do it… But C++ (by default) type char uses the ASCII encoding scheme."
+  },
+  {
+    "objectID": "content/09_C-Strings.html#testing-characters",
+    "href": "content/09_C-Strings.html#testing-characters",
+    "title": "Characters and C-Style Strings",
+    "section": "Testing Characters",
+    "text": "Testing Characters\nThe following functions require the &lt;cctype&gt; header.\n\nCharacter testing functions."
+  },
+  {
+    "objectID": "content/09_C-Strings.html#case-conversion",
+    "href": "content/09_C-Strings.html#case-conversion",
+    "title": "Characters and C-Style Strings",
+    "section": "Case Conversion",
+    "text": "Case Conversion\nAlso require the &lt;cctype&gt; header.\nFunctions:\n\ntoupper(char c): if c is a lowercase letter, return uppercase equivalent; otherwise, return c unchanged.\ntolower(char c): if c is an uppercase letter, return lowercase equivalent; otherwise, return c unchanged."
+  },
+  {
+    "objectID": "content/09_C-Strings.html#case-conversion-example",
+    "href": "content/09_C-Strings.html#case-conversion-example",
+    "title": "Characters and C-Style Strings",
+    "section": "Case Conversion Example",
+    "text": "Case Conversion Example\nchar ch1 = 'H';\nchar ch2 = 'e';\nchar ch3 = '!';\n\ncout &lt;&lt; toupper(ch1);  // displays 'H’\ncout &lt;&lt; toupper(ch2);  // displays 'E’\ncout &lt;&lt; toupper(ch3);  // displays '!'\n\ncout &lt;&lt; tolower(ch1);  // displays 'h’\ncout &lt;&lt; tolower(ch2);  // displays 'e’\ncout &lt;&lt; tolower(ch3);  // displays '!'"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#c-style-strings",
+    "href": "content/09_C-Strings.html#c-style-strings",
+    "title": "Characters and C-Style Strings",
+    "section": "C-Style Strings",
+    "text": "C-Style Strings\nC++ provides support for a low-level representation of strings of characters as they were defined in the C language: as null-terminated arrays of type char. We refer to strings of this type as C-Style strings, or simply C-Strings.\n\nString literals such as \"SMITH\" are internally represented as c-strings by default.\nInternally, they look like the following:\n\n\n“SMITH” as seen in memory."
+  },
+  {
+    "objectID": "content/09_C-Strings.html#c-string-variables",
+    "href": "content/09_C-Strings.html#c-string-variables",
+    "title": "Characters and C-Style Strings",
+    "section": "C-String Variables",
+    "text": "C-String Variables\nVariables that store c-strings are just arrays of type char:\nchar name[6] = \"SMITH\";\nProduces:\n\n\n\n“SMITH” as seen in a C-style string.\n\n\nThe trailing '\\0' is added automatically during the initialization.\n\nIMPORTANT: The assignment operator only works with c-strings in an initialization statement! You cannot assign c-strings using =!"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#c-string-input",
+    "href": "content/09_C-Strings.html#c-string-input",
+    "title": "Characters and C-Style Strings",
+    "section": "C-String Input",
+    "text": "C-String Input\n\nYou can enter c-strings using &gt;&gt; (stream extraction).\n\nInput is whitespace-terminated.\nNo bounds-checking is performed!\n\nFor input containing whitespace, and to control the amount of input, use cin.getline():\n\nSyntax:  std::cin.getline(c_str_name,max_size)\nconst int SIZE = 64;\nchar      name[SIZE];\nstd::cout &lt;&lt; \"Enter your name: \";\nstd::cin.getline(name, SIZE);"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#what-c-strings-cannot-do",
+    "href": "content/09_C-Strings.html#what-c-strings-cannot-do",
+    "title": "Characters and C-Style Strings",
+    "section": "What C-Strings Cannot Do",
+    "text": "What C-Strings Cannot Do\n\nYou cannot directly assign c-strings.\n\nWhy? They are arrays!\n\nYou cannot directly compare c-strings.\n\nWhy? They are arrays!"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#c-string-functions",
+    "href": "content/09_C-Strings.html#c-string-functions",
+    "title": "Characters and C-Style Strings",
+    "section": "C-String Functions",
+    "text": "C-String Functions\nThe &lt;cstring&gt; header file contains functions that are useful for dealing with c-style strings:\n    Function                    Description \n    ------------------------------------------------------------\n    strlen(str)                 Returns length of `str`\n\n    strcmp(str1, str2)          Compares `str1` to `str2` \n                                \"alphabetically\"\n\n    strcpy(dst, src)            Copies `src` into `dst` \n                                (no bounds check) \n\n    strncpy(dst, src, count)    Copies up to `count` \n                                characters from `src` into \n                                `dst` (no null-terminator added)\n\n    strcat(dst, src)            Concatenates `src` to the end \n                                of `dst` (no bounds check)  \n\n    strncat(dst, src, count)    Concatenates up to `count` \n                                characters from `src` to end \n                                of `dst`, plus the \n                                null-terminator"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#conversion-functions",
+    "href": "content/09_C-Strings.html#conversion-functions",
+    "title": "Characters and C-Style Strings",
+    "section": "Conversion Functions",
+    "text": "Conversion Functions\nRequire &lt;cstdlib&gt;\n    Function                   Description \n    ------------------------------------------------------------\n    atoi(str)                   Converts c-string to an int\n    atol(str)                   Converts c-string to a long\n    atof(str)                   Converts c-string to a double"
   }
 ]

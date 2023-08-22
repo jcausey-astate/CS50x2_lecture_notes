@@ -1,15 +1,11 @@
 ---
-title: "09: C-Style Strings"
-date: 2021-01-13T12:00:00-05:00
-draft: true
+number: 9
+title: "Characters and C-Style Strings"
+textbook: "Gaddis (Ch. 10)"
+# draft: true
 ---
 
-# Characters &<br />C-Style Strings
-## Gaddis Ch. 10
-
----
-
-## ASCII Encoding
+## ASCII Encoding 
 
 Internally, all characters must be encoded into a numeric representation.
 
@@ -17,8 +13,7 @@ There is more than one way to do it... But C++ (by default) type `char` uses the
 
 ---
 
-background-image: url(../images/shared/ascii_table.svg)
-
+## {background-image="images/shared/ascii_table.svg" background-size="92%"}
 
 ---
 
@@ -26,7 +21,7 @@ background-image: url(../images/shared/ascii_table.svg)
 
 The following functions require the `<cctype>` header.
 
-![Character testing functions.](../images/c_strings/char_testing.png)
+![Character testing functions.](images/c_strings/char_testing.png)
 
 ---
 
@@ -62,12 +57,12 @@ cout << tolower(ch3);  // displays '!'
 
 ## C-Style Strings
 
-C++ provides support for a low-level representation of strings of characters as they were defined in the C language: as _null-terminated arrays of type **`char`**_.  We refer to strings of this type as _C-Style strings_, or simply _C-Strings_.
+C++ provides support for a low-level representation of strings of characters as they were defined in the C language: as _null-terminated arrays of type **`char`**_.  We refer to strings of this type as **_C-Style strings_**, or simply _C-Strings_.
 
 * String literals such as `"SMITH"` are internally represented as c-strings by default.
 * Internally, they look like the following:
 
-!["SMITH" as seen in memory.](../images/c_strings/c_string_literal_in_memory.svg)
+!["SMITH" as seen in memory.](images/c_strings/c_string_literal_in_memory.svg)
 
 ---
 
@@ -81,7 +76,11 @@ char name[6] = "SMITH";
 
 Produces:
 
-!["SMITH" as seen in a C-style string.](../images/c_strings/c_string_in_memory.svg)
+\
+
+!["SMITH" as seen in a C-style string.](images/c_strings/c_string_in_memory.svg)
+
+\
 
 * The trailing `'\0'` is added automatically during the initialization.
 
@@ -93,7 +92,7 @@ Produces:
 
 * You can enter c-strings using **`>>`** (stream extraction).
     - Input is whitespace-terminated.
-    - **No bounds-checking is performed!**
+    - [**No bounds-checking is performed!**]{.red}
 * For input containing whitespace, and to control the amount of input, use **`cin.getline()`**:
 
 **Syntax:** <br />
@@ -111,15 +110,14 @@ std::cin.getline(name, SIZE);
 ## What C-Strings **Cannot** Do
 
 * You **cannot** directly _assign_ c-strings.
-    - Why?  **They are _arrays_!**
+    - [Why?  **They are _arrays_!** ]{.highlight}
 * You **cannot** directly _compare_ c-strings.
-    - Why?  **They are _arrays_!**
+    - [Why?  **They are _arrays_!**]{.highlight}
 
 ---
 
 ## C-String Functions
 
-.small-90[
 The `<cstring>` header file contains functions that are useful for dealing with c-style strings:
 
         Function                    Description 
@@ -143,11 +141,10 @@ The `<cstring>` header file contains functions that are useful for dealing with 
                                     characters from `src` to end 
                                     of `dst`, plus the 
                                     null-terminator  
-]
+
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
 ### Example: `strlen()`
 
 ```cpp
@@ -173,8 +170,7 @@ std::cout << std::setw(width) << dessert2 << "$12.50\n";
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
-### Example: `strcmp()`
+### Example: `strcmp()`  
 
 ```cpp
 char dessert1[] = "Cheesecake";
@@ -191,7 +187,6 @@ else{ // dessert2 is first alphabetically...
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
 ### Example 2: `strcmp()`
 
 ```cpp
@@ -217,7 +212,7 @@ else{ // Passwords matched!  OK...
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
+
 ### Example: `strcpy()`
 
 ```cpp
@@ -238,7 +233,7 @@ else{ // Passwords matched!  OK...
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
+
 ### Example: `strncpy()`
 
 ```cpp
@@ -266,7 +261,7 @@ std::cout << destination << "\n";  // what prints?
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
+
 ### Example: `strcat()`
 
 ```cpp
@@ -287,7 +282,7 @@ std::cout << destination << "\n";  // what prints?
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
+
 ### Example: `strncat()`
 
 <small style="font-size: 90%;">
@@ -331,7 +326,7 @@ Require `<cstdlib>`
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
+
 ### Example: `atoi(), atof()`
 
 ```cpp

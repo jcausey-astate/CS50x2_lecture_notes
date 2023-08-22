@@ -1,4 +1,4 @@
-/* css styles */
+/* index page css styles */
 
 .navbar-dark {
     background-image: url(images/astAte.png);
@@ -17,4 +17,27 @@
 .card-other-values > tr {
     position: relative;
     min-height: 100px;
+}
+
+
+#listing-slide-list div.post-contents{
+    padding: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.7em;
+}
+
+#listing-slide-list > div {
+    counter-reset: ruler;
+}
+
+#listing-slide-list > div div .card-title.listing-title::before {
+    font-size: 0.667em;
+    display: block;
+    color: #777;
+    counter-increment: ruler;
+    content: counter( ruler , decimal-leading-zero) ' ';
+}
+
+#listing-slide-list > div div .card-title.listing-title {
+    font-size: 12pt;
 }
