@@ -1,276 +1,521 @@
 [
   {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "Parallel Arrays",
-    "text": "Parallel Arrays\n\nParallel Arrays: Two or more arrays containing related data such that the elements at corresponding indexes are related.\n\nAll elements at index i the parallel arrays make up a single record i.\n\n\nExample\nconst int   N_CONTESTANTS = 5;\nstd::string names[N_CONTESTANTS];\nint         votes[N_CONTESTANTS];\n// Each contestant has a name and a vote count.\nfor(int i = 0; i &lt; N_CONTESTANTS; i++){\n    std::cout &lt;&lt; \"Contestant \" &lt;&lt; (i+1) &lt;&lt; \" name: \";\n    std::cin  &gt;&gt; names[i];\n    std::cout &lt;&lt; \"# of votes for \" &lt;&lt; names[i] &lt;&lt; \": \";\n    std::cin  &gt;&gt; votes[i];\n}"
+    "objectID": "content/11_Pointers.html#addresses-and-data",
+    "href": "content/11_Pointers.html#addresses-and-data",
+    "title": "Pointers",
+    "section": "Addresses and Data",
+    "text": "Addresses and Data\nEvery variable in a program is stored at a unique memory address.\n\n\nThe unary & is the address operator; the address operator retrieves the address of its operand:\n\n\nint x = 42;\n// Print out the address at which x is stored:\nstd::cout &lt;&lt; &x &lt;&lt; \"\\n\";\n\n\nWe don’t usually care about the address ourselves, and our users wouldn’t care either. So, printing it to the screen is only useful as a learning exercise. But what we do care about is what we can do with the address of a variable. Read on…"
   },
   {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays-1",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays-1",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "Parallel Arrays",
-    "text": "Parallel Arrays\n\nSince the parallel arrays are separate, they may be of mixed type.\nAny operation that updates one of the parallel arrays must update all others to maintain the parallel property.\nAll arrays must be passed to functions separately (although one “size” parameter is usually sufficient)."
+    "objectID": "content/11_Pointers.html#pointers",
+    "href": "content/11_Pointers.html#pointers",
+    "title": "Pointers",
+    "section": "Pointers",
+    "text": "Pointers\n\nA pointer is a variable that stores a memory address.\n\nDeclare by adding the pointer type modifier ( * ) to a variable declaration.\n\nThe pointer will hold the address of a value of the specified type.\n\n\n\nExample: (pointer to an int)\nint x = 75;    // just a normal integer\n// [...]\nint* xPtr;     // declare a pointer to an int\nxPtr = &x;     // point xPtr to x"
   },
   {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#dimensional-arrays",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#dimensional-arrays",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "2-Dimensional Arrays",
-    "text": "2-Dimensional Arrays\nC++ allows multiple dimensions for arrays. This is achieved by simply adding additional size declarators:\nint votes[5][3]; // create array with 5 rows and 3 columns\n\nNotice that two sets of square brackets are needed for a 2-D array.\nSame rules apply for size declarators here. (constants or literals only)"
-  },
-  {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-logical",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-logical",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "Layout (Logical)",
-    "text": "Layout (Logical)\nint votes[5][3]; // create array with 5 rows and 3 columns\n\n2-D Array of integers."
-  },
-  {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-physical",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-physical",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "Layout (Physical)",
-    "text": "Layout (Physical)\nint votes[5][3]; // create array with 5 rows and 3 columns\nIn reality, all physical memory is 1-dimensional.\nRows are sequential!\n\n2-D Array of integers."
-  },
-  {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#using-constants-for-size",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#using-constants-for-size",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "Using Constants for Size",
-    "text": "Using Constants for Size\nAvoid “magic numbers” by using named constants for size declarators:\nconst int N_CONTESTANTS = 5; // # of contestants\nconst int N_DAYS        = 3; // contest length\n\n// [...]\n\nint votes[N_CONTESTANTS][N_DAYS]; // table of contest votes\n\n\n\n\n\n\nIt can sometimes be useful to allow these constants to be global in some cases (as we will see shortly)."
-  },
-  {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#working-with-2-d-arrays",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#working-with-2-d-arrays",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "Working with 2-D Arrays",
-    "text": "Working with 2-D Arrays\nAlmost all operations on 2-D arrays will require nested loops.\nThink “for each row, for each column, do some operation”.\n// Initialize \"votes\" array:\nfor(int i = 0; i &lt; N_CONTESTANTS; i++){\n    for(int j = 0; j &lt; N_DAYS; j++){\n        votes[i][j] = 0;\n    }\n}"
-  },
-  {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "2-D Arrays as Formal Parameters",
-    "text": "2-D Arrays as Formal Parameters\nBecause of the reality of the physical (1-D) layout of the array, C++ requires that you specify a size declarator for every dimension except the first when listing arrays in formal parameter lists.\nvoid print_matrix( int matrix[][4], int n_rows ){\n    for(int i = 0; i &lt; n_rows; i++){\n        for(int j = 0; j &lt; 4; j++){\n            std::cout &lt;&lt; matrix[i][j] &lt;&lt; \"\\t\";\n        }\n        std::cout &lt;&lt; \"\\n\";\n    }\n}\nThe number of rows can still be a parameter, allowing it to vary."
-  },
-  {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters-1",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters-1",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "2-D Arrays as Formal Parameters",
-    "text": "2-D Arrays as Formal Parameters\nAgain, to avoid “magic numbers”, we often set up global constants for the sizes of each dimension after the first:\nconst int N_COLS = 4; // GLOBAL constant, defined at top.\n\n// [ ... ]\n\nvoid print_matrix( int matrix[][N_COLS], int n_rows ){\n    for(int i = 0; i &lt; n_rows; i++){\n        for(int j = 0; j &lt; N_COLS; j++){\n            std::cout &lt;&lt; matrix[i][j] &lt;&lt; \"\\t\";\n        }\n        std::cout &lt;&lt; \"\\n\";\n    }\n}"
-  },
-  {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "Arrays of Higher Dimension",
-    "text": "Arrays of Higher Dimension\nThere is no (practical) limit on the number of dimensions an array can have.\nHigher-dimensional arrays require substantial memory resources.\n\n\nExample: 3-D Array\nconst int ROWS  = 8;\nconst int COLS  = 8;\nconst int MOVES = 100; // Number of replay steps\n// [...]\nint game_board_over_time[MOVES][ROWS][COLS];\nRequires 8 * 8 * 100 * sizeof(int) =&gt; 25600 bytes (25 KB)."
-  },
-  {
-    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension-1",
-    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension-1",
-    "title": "Parallel and Multi-Dimensional Arrays",
-    "section": "Arrays of Higher Dimension",
-    "text": "Arrays of Higher Dimension\nOperations just require more nested loops (one for each dimension):\n\n\nfor(int move = 0; move &lt; MOVES; move++){\n    for(int r = 0; r &lt; ROWS; r++){\n        for(int c = 0; c &lt; COLUMNS; c++){\n            cout &lt;&lt; game_board_over_time[move][r][c]\n                 &lt;&lt; \"\\t\";\n        }\n        cout &lt;&lt; \"\\n\";\n    }\n}\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nParallel and Multi-Dimensional Arrays"
-  },
-  {
-    "objectID": "content/08_Arrays.html#the-c-array",
-    "href": "content/08_Arrays.html#the-c-array",
-    "title": "Arrays",
-    "section": "The C++ Array",
-    "text": "The C++ Array\nAn array is a data structure consisting of multiple values of the same type stored contiguously in memory and accessed by an integer index representing the offset of the desired element from the beginning of the array.\nArrays allow programmers to store multiple related values of the same type.\n\nValues are stored sequentially in memory.\nDeclaration syntax:  type arrayname[ size_declarator ];\n\nExample Declarations\nint    a[100]; // Declares an array of 100 integers.\ndouble b[50];  // Declares an array of 50 doubles."
-  },
-  {
-    "objectID": "content/08_Arrays.html#array-memory-layout",
-    "href": "content/08_Arrays.html#array-memory-layout",
-    "title": "Arrays",
-    "section": "Array Memory Layout",
-    "text": "Array Memory Layout\nThe declaration:\nint tests[5];\nallocates the following memory:\n\nArray elements are contiguous boxes in memory.\nArrays are a reference type.\n\nThe array variable does not refer to the array as a whole, only to the location of the first element."
-  },
-  {
-    "objectID": "content/08_Arrays.html#terminology",
-    "href": "content/08_Arrays.html#terminology",
-    "title": "Arrays",
-    "section": "Terminology",
-    "text": "Terminology\nIn the declaration:  int tests[5];\n\nint is the data type of all elements in the array.\ntests is the name of the array.\n5 (in [5]) is the size declarator. It specifies the number of elements.\n\nThe storage size of the array is \\(N \\times S\\) where \\(N\\) is the number of elements and \\(S\\) is the size (in bytes) of each element.\nThe size declarator must be either a literal or constant."
-  },
-  {
-    "objectID": "content/08_Arrays.html#size-declarators",
-    "href": "content/08_Arrays.html#size-declarators",
-    "title": "Arrays",
-    "section": "Size Declarators",
-    "text": "Size Declarators\nNamed constants are often used as size declarators.\nconst int class_size = 5;\nint       tests[class_size];\n\nMakes maintenance easier if size needs to change.\nAvoids creating “magic numbers”.\n\nmagic numbers are literal numeric values that appear repeatedly for reasons that are non-obvious by the context."
-  },
-  {
-    "objectID": "content/08_Arrays.html#indexes-and-elements",
-    "href": "content/08_Arrays.html#indexes-and-elements",
-    "title": "Arrays",
-    "section": "Indexes and Elements",
-    "text": "Indexes and Elements\nEach individual data item in an array is referred to as an array element.\n\n\n\n\nArray elements are contiguous boxes in memory.\n\n\nElements are identified by an integer index, starting from 0.\n\n\n\n\nArray elements are identified by integer indices."
-  },
-  {
-    "objectID": "content/08_Arrays.html#initial-values",
-    "href": "content/08_Arrays.html#initial-values",
-    "title": "Arrays",
-    "section": "Initial Values",
-    "text": "Initial Values\nArray elements start out uninitialized if their base types do (primitive types, for example).\n\n\n\nArray elements are uninitialized.\n\n\nUse the element’s index number and array index syntax to access individual elements:\ntests[0] = 88;\n\n\n\nArray with first value initialized."
-  },
-  {
-    "objectID": "content/08_Arrays.html#generate-indices-with-a-loop",
-    "href": "content/08_Arrays.html#generate-indices-with-a-loop",
-    "title": "Arrays",
-    "section": "Generate Indices with a Loop",
-    "text": "Generate Indices with a Loop\nThe array index may be specified by a literal, variable, or integer expression.\n\n\n// Assume \"tests\" has been initialized as shown previously...\n\n// Display tests from tests array to standard output:\nfor(int i = 0; i &lt; 5; i++){\n    std::cout &lt;&lt; tests[i] &lt;&lt; \"\\n\";\n}"
-  },
-  {
-    "objectID": "content/08_Arrays.html#uniform-initialization-syntax",
-    "href": "content/08_Arrays.html#uniform-initialization-syntax",
-    "title": "Arrays",
-    "section": "Uniform Initialization Syntax",
-    "text": "Uniform Initialization Syntax\nint tests[] { 88, 92, 76, 85, 63 };\nProduces: \n\nSize declarator is optional here, since the compiler can count.\nThis is only useful if you know all of the values that will be stored at the time you are writing the program.\n\nThat is rarely the case.\n\nLoops are generally the best option.\n\n\n\nThe old way to do this was called “array initializer syntax”. It looks similar, but uses the assignment operator:\nint tests[] = { 88, 92, 76, 85, 63 };\nWe prefer the modern version using Uniform Initialization Syntax."
-  },
-  {
-    "objectID": "content/08_Arrays.html#array-assignment",
-    "href": "content/08_Arrays.html#array-assignment",
-    "title": "Arrays",
-    "section": "Array Assignment",
-    "text": "Array Assignment\n\n\n\n\n\n\n\n\nYou cannot directly assign one array to another:\ncopy_of_tests = tests;  // WILL NOT WORK!!!\n\n\n\n\n\nCorrect way - Assign element-by-element:\nfor(int i = 0; i &lt; 5; i++){\n    copy_of_tests[i] = tests[i];\n}"
-  },
-  {
-    "objectID": "content/08_Arrays.html#arrays-as-parameters",
-    "href": "content/08_Arrays.html#arrays-as-parameters",
-    "title": "Arrays",
-    "section": "Arrays as Parameters",
-    "text": "Arrays as Parameters\n\n\nArrays may be passed to functions:\nvoid print_tests(int tests[], int size){\n    for(int i = 0; i &lt; size; i++){\n        std::cout &lt;&lt; tests[i] &lt;&lt; \"\\n\";\n    }\n}\n\n\nNotice that the array’s size must also be passed.\n\nArrays do not “know their own size”.\n\n\n\n\n\nNotice the empty size declarator in the formal parameter.\n\nThe first dimension does not require (or allow) a size declarator in a formal parameter declaration.\n\n\n\n\n\nArrays are always passed by reference."
-  },
-  {
-    "objectID": "content/08_Arrays.html#d-arrays-key-points-summary",
-    "href": "content/08_Arrays.html#d-arrays-key-points-summary",
-    "title": "Arrays",
-    "section": "1-D Arrays Key Points Summary",
-    "text": "1-D Arrays Key Points Summary\n\nSize declarator must be a literal or constant.\nC++ provides no bounds-checking for indices.\nArray elements start out uninitialized if their base types do.\n\nThey are default constructed if the base type is a structured or object type.\n\nArrays cannot be directly assigned.\nArrays are always passed by reference to functions.\nArrays do not “know” their own size.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nArrays"
-  },
-  {
-    "objectID": "content/06_Functions_Reference_Parameters.html#review-pass-by-value",
-    "href": "content/06_Functions_Reference_Parameters.html#review-pass-by-value",
-    "title": "Functions and Reference Parameters",
-    "section": "Review: Pass by Value",
-    "text": "Review: Pass by Value\n\nIn pass by value, the value of the actual parameter is copied into the formal parameter.\nPass by value is the default method by which data is moved into a function for primitive types, structured types and object types.\n\nChanges to the formal parameter cannot affect the actual parameter."
-  },
-  {
-    "objectID": "content/06_Functions_Reference_Parameters.html#pass-by-reference",
-    "href": "content/06_Functions_Reference_Parameters.html#pass-by-reference",
-    "title": "Functions and Reference Parameters",
-    "section": "Pass by Reference",
-    "text": "Pass by Reference\n\nIn pass by reference, no copy is made.\nThe formal parameter simply becomes an alias for the actual parameter.\nAny changes made to the formal parameter inside the function will be reflected in the actual parameter following the call.\n\nDanger! You can damage the actual parameter!\n\nC++ arrays are passed by reference by default."
-  },
-  {
-    "objectID": "content/06_Functions_Reference_Parameters.html#passing-by-reference",
-    "href": "content/06_Functions_Reference_Parameters.html#passing-by-reference",
-    "title": "Functions and Reference Parameters",
-    "section": "Passing by Reference",
-    "text": "Passing by Reference\n\nA reference parameter is a formal parameter that is an alias for the actual parameter.\nCreated by adding the reference type modifier in the formal parameter declaration.\n\nThe reference type modifier is the ampersand (&):  void readXY( int& x, int& y );"
-  },
-  {
-    "objectID": "content/06_Functions_Reference_Parameters.html#why",
-    "href": "content/06_Functions_Reference_Parameters.html#why",
-    "title": "Functions and Reference Parameters",
+    "objectID": "content/11_Pointers.html#why",
+    "href": "content/11_Pointers.html#why",
+    "title": "Pointers",
     "section": "Why?",
-    "text": "Why?\n\nPassing by reference avoids making a copy.\n\nSmaller memory footprint.\n\nPassing by reference allows a function to make changes to the actual parameter (argument) directly.\n\nAllows the programmer to move multiple values out of a function.\nThis is a double-edged sword!\n\nYou can use const to prevent the argument from being modified.\n\n\n\n\n\nconst reference parameters\n\n\nThese can give you the “best of both worlds”. You can efficiently pass a parameter without the risk of the function changing it."
+    "text": "Why?\n\nLow-level access.\n\nTo provide explicit, direct access (no copy) in a similar way to what we do implicity with pass by reference.\n\nIteration\n\nPointer math makes array manipulation through pointers very convenient.\nAdvanced data structures may only allow iteration through pointers.\n\nDynamic Memory Allocation\n\nMemory generated at runtime is only identified to the program through its address."
   },
   {
-    "objectID": "content/06_Functions_Reference_Parameters.html#function-calls",
-    "href": "content/06_Functions_Reference_Parameters.html#function-calls",
-    "title": "Functions and Reference Parameters",
-    "section": "Function Calls",
-    "text": "Function Calls\n\nNo additional syntax is needed to call a function that uses reference parameters.\n\nThis is part of the reason that there is a danger!\n\nYou cannot pass literals or constants by reference unless the formal parameter is a const reference."
+    "objectID": "content/11_Pointers.html#why-simplified",
+    "href": "content/11_Pointers.html#why-simplified",
+    "title": "Pointers",
+    "section": "Why? (simplified)",
+    "text": "Why? (simplified)\n\nObservation and Modification\n\nObserving Pointers: Pointers can be used to observe the contents of memory, and potentially to modify the values under observation as well.\n\n\nOwnership\n\nOwning Pointers: Pointers can be used to maintain “ownership” of dynamically-allocated memory resources."
   },
   {
-    "objectID": "content/06_Functions_Reference_Parameters.html#function-overloading",
-    "href": "content/06_Functions_Reference_Parameters.html#function-overloading",
-    "title": "Functions and Reference Parameters",
-    "section": "Function Overloading",
-    "text": "Function Overloading\n\nTwo (or more) functions that have the same name but different parameter lists are said to be overloaded.\nThe correct function to call is determined by the compiler by matching the number and type of arguments to the formal parameter lists.\n\nThis happens at compile-time.\n\nParameter lists must be unique for each function.\n\nAmbiguities will be flagged as errors."
+    "objectID": "content/11_Pointers.html#physical-view",
+    "href": "content/11_Pointers.html#physical-view",
+    "title": "Pointers",
+    "section": "Physical View",
+    "text": "Physical View\nint x = 75;    // just a normal integer\n// [...]\nint* xPtr;     // declare a pointer to an int\nxPtr = &x;     // point xPtr to x\nThe following figure illustrates the physical view of what a pointer actually looks like in memory. The pointer xPtr contains the address of the location where x is stored:\n\nPhysical view of pointer in memory."
   },
   {
-    "objectID": "content/04_Repetition.html#first-some-helpful-new-operators",
-    "href": "content/04_Repetition.html#first-some-helpful-new-operators",
-    "title": "Repetition",
-    "section": "First, some helpful new operators…",
-    "text": "First, some helpful new operators…\n\nShortcut Assignment Operators\n\nMake modifying an existing value easy.\n\nIncrement and Decrement Operators\n\nMake counting up and down easy."
+    "objectID": "content/11_Pointers.html#logical-view",
+    "href": "content/11_Pointers.html#logical-view",
+    "title": "Pointers",
+    "section": "Logical View",
+    "text": "Logical View\nint x = 75;    // just a normal integer\n// [...]\nint* xPtr;     // declare a pointer to an int\nxPtr = &x;     // point xPtr to x\nThe following figure illustrates the logical view of what a pointer conceptually does. The pointer xPtr points to the the variable x:\n\nConceptual view of pointer in memory."
   },
   {
-    "objectID": "content/04_Repetition.html#repetition-loops",
-    "href": "content/04_Repetition.html#repetition-loops",
-    "title": "Repetition",
-    "section": "Repetition (loops)",
-    "text": "Repetition (loops)\nRepeating code is accomplished with the help of a control structure called a loop. C++ provides three loop constructs (four if you count the modern C++ range-based version of for):\n\nwhile\nfor\n\nRange-based for\n\ndo-while\n\nBut before we get into the specifics of the code, let’s examine some terms and theory related to looping in general."
+    "objectID": "content/11_Pointers.html#physical-and-logical-view",
+    "href": "content/11_Pointers.html#physical-and-logical-view",
+    "title": "Pointers",
+    "section": "Physical and Logical View",
+    "text": "Physical and Logical View\nint x = 75;    // just a normal integer\n// [...]\nint* xPtr;     // declare a pointer to an int\nxPtr = &x;     // point xPtr to x\n\n\n\nPhysical view of pointer in memory.\n\n\n\n\n\nConceptual view of pointer in memory."
   },
   {
-    "objectID": "content/04_Repetition.html#terms",
-    "href": "content/04_Repetition.html#terms",
-    "title": "Repetition",
-    "section": "Terms",
-    "text": "Terms\n\nLoop Control Variable : a variable whose value is tested in order to determine whether the loop body should execute.\nLoop Condition : a Boolean expression whose result determines whether the loop body will execute (true causes the loop to execute).\nUpdate step : a modification that is made to the loop control variable within the scope of the loop body."
+    "objectID": "content/11_Pointers.html#indirection",
+    "href": "content/11_Pointers.html#indirection",
+    "title": "Pointers",
+    "section": "Indirection",
+    "text": "Indirection\nKnowing the address of where something is stored gives a programmer low-level access to the data at that location.\n\nPointers store the addresses of other variables; they give us indirect control over the values in those variables.\nThe indirection operator (*) allows us to “follow” a pointer to the address it is storing, so that we may operate on the data stored there.\n\nThis is known as dereferencing the pointer.\nThe indirection operator is also sometimes called the dereference operator."
   },
   {
-    "objectID": "content/04_Repetition.html#three-parts-of-a-loop",
-    "href": "content/04_Repetition.html#three-parts-of-a-loop",
-    "title": "Repetition",
-    "section": "Three Parts of a Loop",
-    "text": "Three Parts of a Loop\n\n\n\n\nSet up the Loop Control Variable (LCV) in preparation for the loop.\nA proper loop condition must be created to test the LCV.\nThe value of the LCV must be changed within the body of the loop."
+    "objectID": "content/11_Pointers.html#null-pointers",
+    "href": "content/11_Pointers.html#null-pointers",
+    "title": "Pointers",
+    "section": "“Null” Pointers",
+    "text": "“Null” Pointers\nA pointer that doesn’t point to any (legal) memory address is referred to as a “null pointer”.\n\nC++11 added a keyword to represent the literal value of a null pointer: nullptr.\n\nint* x = nullptr; // declare and initialize to nullptr\n\nSetting a pointer to nullptr guarantees that it cannot be dereferenced.\n\n(Basically, you can’t use a null pointer for anything.)"
   },
   {
-    "objectID": "content/04_Repetition.html#types-of-loops-by-method-of-control",
-    "href": "content/04_Repetition.html#types-of-loops-by-method-of-control",
-    "title": "Repetition",
-    "section": "Types of Loops (by method of control)",
-    "text": "Types of Loops (by method of control)\n\nIterative Loop (AKA “Counting Loop”) : a loop that repeats a specific number of times, or for a specific range of values.\nEvent-Controlled Loop : a loop that repeats until a specific event occurs. 3 sub-types:\n\nSentinel Controlled Loop : a loop that repeats until a specified data value is encountered (this value is called the sentinel)\nFlag Controlled Loop : a loop that repeats until the truth value of a Boolean flag is flipped.\nEnd-Of-File Controlled Loop : a loop that repeats (based on a stream) until the End Of File marker is read."
+    "objectID": "content/11_Pointers.html#pointers-to-arrays",
+    "href": "content/11_Pointers.html#pointers-to-arrays",
+    "title": "Pointers",
+    "section": "Pointers to Arrays",
+    "text": "Pointers to Arrays\nint a[5] = { 1, 2, 3, 4, 5 };  // normal array\nPointers can be used to access elements of an array.\nint* aPtr = a; // no need for `&`: `a` degrades to a pointer\nPointer mathematics.\nThis is why the type is important for pointers.\nstd::cout &lt;&lt; *(aPtr + 2) &lt;&lt; \"\\n\"; // prints a[2]\nPointer and array notation is interchangeable.\nstd::cout &lt;&lt; aPtr[2] &lt;&lt; \"\\n\";  // easier than \"*(aPtr + 2)\""
   },
   {
-    "objectID": "content/04_Repetition.html#types-of-loops-by-timing-of-the-test",
-    "href": "content/04_Repetition.html#types-of-loops-by-timing-of-the-test",
-    "title": "Repetition",
-    "section": "Types of Loops (by timing of the test)",
-    "text": "Types of Loops (by timing of the test)\nLoops can also be classified by the timing of when they test their loop condition:\n\npre-test loop : a loop that tests the loop condition before loop entry (at the beginning of each loop)\npost-test loop : a loop that tests the loop condition at loop exit (at the end of each loop)"
+    "objectID": "content/11_Pointers.html#more-pointer-math",
+    "href": "content/11_Pointers.html#more-pointer-math",
+    "title": "Pointers",
+    "section": "More Pointer Math",
+    "text": "More Pointer Math\nPointers support the following mathematical operations:\nOperation           Example      Description\n----------------------------------------------------\n &lt;ptr&gt; + &lt;int&gt;      xPtr + 3     Add an offset\n &lt;ptr&gt; - &lt;int&gt;      xPtr - 2     Subtract an offset\n ++&lt;ptr&gt;            ++xPtr       (pre) increment\n &lt;ptr&gt;++            xPtr++       (post) increment\n --&lt;ptr&gt;            --xPtr       (pre) decrement\n &lt;ptr&gt;--            xPtr--       (post) decrement\n &lt;ptr&gt; - &lt;ptr&gt;      xPtr - yPtr  Offset distance \n                                 between two pointers"
   },
   {
-    "objectID": "content/04_Repetition.html#the-while-loop",
-    "href": "content/04_Repetition.html#the-while-loop",
-    "title": "Repetition",
-    "section": "The while Loop",
-    "text": "The while Loop\nwhile is a pre-test loop.\n\n\nSyntax:\n\nwhile( loop_condition )\n    statement_to_repeat;\n\n\nUsing a Block\n\nwhile( loop_condition ) {\n    statement_1;\n    […]\n    statement_n;\n}"
+    "objectID": "content/11_Pointers.html#pointers-as-iterators",
+    "href": "content/11_Pointers.html#pointers-as-iterators",
+    "title": "Pointers",
+    "section": "Pointers as “Iterators”",
+    "text": "Pointers as “Iterators”\nYou can use a pointer to “move around” in an array:\nint a[5] = { 1, 2, 3, 4, 5 };\n// [...]\nint* begin = a;               // start is first addr of a\nint* end   = a + 5;           // end is start + size\n\n// \"For each element in a\", using a pointer for movement:\nfor(int* current = begin; current != end; current++){\n    std::cout &lt;&lt; *current &lt;&lt; \"\\t\";\n}\nThis design pattern is very common in the C++ Standard Template Library."
   },
   {
-    "objectID": "content/04_Repetition.html#the-for-loop",
-    "href": "content/04_Repetition.html#the-for-loop",
-    "title": "Repetition",
-    "section": "The for Loop",
-    "text": "The for Loop\nfor is a pre-test loop.\n\n\nSyntax:\n\nfor( initializer ; test ; update )\n     statement_to_repeat;\n\n\nUsing a Block\n\nfor( initializer ; test ; update ) {\n     statement_1;\n     […]\n     statement_n;\n}"
+    "objectID": "content/11_Pointers.html#passing-pointers-to-functions",
+    "href": "content/11_Pointers.html#passing-pointers-to-functions",
+    "title": "Pointers",
+    "section": "Passing Pointers to Functions",
+    "text": "Passing Pointers to Functions\n\nA pointer may be used as an alternative syntax for passing a 1-D array to a function.\n\nPointer notation is commonly used for c-strings, for example.\n\nPointer values behave as a primitive type.\n\nThey are passed by value, like all other primitive types.\n\nPointers may also be passed by reference if the address in the pointer itself should be changed by the function.\n\nDoing so requires adding the reference type modifier (&)to the formal parameter, just like with any other primitive data."
   },
   {
-    "objectID": "content/04_Repetition.html#the-range-based-for-loop",
-    "href": "content/04_Repetition.html#the-range-based-for-loop",
-    "title": "Repetition",
-    "section": "The Range-Based for Loop",
-    "text": "The Range-Based for Loop\nC++11 added the ability for a for loop to iterate over all elements of a sequence container using a more concise syntax:\nSyntax\n\nfor( item_declaration : container )\n     statement_to_repeat;\n\n\nor more generally:\n\n\n\nfor( item_declaration : container ) {\n     statement_1;\n     […]\n     statement_n;\n}"
+    "objectID": "content/11_Pointers.html#common-design-pattern-range-based-operations-with-pointers-to-arrays",
+    "href": "content/11_Pointers.html#common-design-pattern-range-based-operations-with-pointers-to-arrays",
+    "title": "Pointers",
+    "section": "Common design pattern: “Range”-based operations with pointers to arrays",
+    "text": "Common design pattern: “Range”-based operations with pointers to arrays\n// Assume array `a` already declared as `int a[5];`\nint* begin = a;     // \"left\" edge of array\nint* end   = a + 5; // \"right\" edge of array\n\nPointers to range in array a.Notice that end physically points to the first memory address beyond the end of the array. For this reason, it would be an error to try to dereference end. We must be careful to ensure that never happens.\nThis pattern also applies to iterators to array-like data structures."
   },
   {
-    "objectID": "content/04_Repetition.html#the-do-while-loop",
-    "href": "content/04_Repetition.html#the-do-while-loop",
-    "title": "Repetition",
-    "section": "The do-while Loop",
-    "text": "The do-while Loop\ndo-while is a post-test loop.\n\nSyntax:\n\ndo {\n     statement_1;\n     […]\n     statement_n;\n} while( loop_condition );\n\n\n\nNotice the semicolon at the end!\nThe do-while is the only C++ control structure that ends with a semicolon."
+    "objectID": "content/11_Pointers.html#common-design-pattern-range-based-operations-with-pointers-to-sub-arrays",
+    "href": "content/11_Pointers.html#common-design-pattern-range-based-operations-with-pointers-to-sub-arrays",
+    "title": "Pointers",
+    "section": "Common design pattern: “Range”-based operations with pointers to sub-arrays",
+    "text": "Common design pattern: “Range”-based operations with pointers to sub-arrays\n// Assume array `a` already declared as `int a[5];`\nint* first = a + 1;  // \"left\" edge of subrange\nint* last  = a + 4;  // \"right\" edge of subrange\n\nPointers to range in array a.In this usage, we are bracketing a subrange of values within the larger array. Again, notice that the last pointer points to a value outside that subrange - it should not be dereferenced.\nThis pattern also applies to iterators to array-like data structures."
   },
   {
-    "objectID": "content/04_Repetition.html#which-loop-to-choose",
-    "href": "content/04_Repetition.html#which-loop-to-choose",
-    "title": "Repetition",
-    "section": "Which Loop to Choose?",
-    "text": "Which Loop to Choose?\n\nwhile\n\npre-test loop\nwell suited to Event Controlled Loops\n\nfor\n\npre-test loop\nwell suited to Iterative Loops\nrange-based for is great for containers\n\ndo-while\n\npost-test loop\nwell suited to Event Controlled Loops used for validation\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nRepetition"
+    "objectID": "content/09_C-Strings.html#ascii-encoding",
+    "href": "content/09_C-Strings.html#ascii-encoding",
+    "title": "Characters and C-Style Strings",
+    "section": "ASCII Encoding",
+    "text": "ASCII Encoding\nInternally, all characters must be encoded into a numeric representation.\nThere is more than one way to do it… But C++ (by default) type char uses the ASCII encoding scheme."
+  },
+  {
+    "objectID": "content/09_C-Strings.html#testing-characters",
+    "href": "content/09_C-Strings.html#testing-characters",
+    "title": "Characters and C-Style Strings",
+    "section": "Testing Characters",
+    "text": "Testing Characters\nThe following functions require the &lt;cctype&gt; header.\n\nCharacter testing functions."
+  },
+  {
+    "objectID": "content/09_C-Strings.html#case-conversion",
+    "href": "content/09_C-Strings.html#case-conversion",
+    "title": "Characters and C-Style Strings",
+    "section": "Case Conversion",
+    "text": "Case Conversion\nAlso require the &lt;cctype&gt; header.\nFunctions:\n\ntoupper(char c): if c is a lowercase letter, return uppercase equivalent; otherwise, return c unchanged.\ntolower(char c): if c is an uppercase letter, return lowercase equivalent; otherwise, return c unchanged."
+  },
+  {
+    "objectID": "content/09_C-Strings.html#case-conversion-example",
+    "href": "content/09_C-Strings.html#case-conversion-example",
+    "title": "Characters and C-Style Strings",
+    "section": "Case Conversion Example",
+    "text": "Case Conversion Example\nchar ch1 = 'H';\nchar ch2 = 'e';\nchar ch3 = '!';\n\ncout &lt;&lt; toupper(ch1);  // displays 'H’\ncout &lt;&lt; toupper(ch2);  // displays 'E’\ncout &lt;&lt; toupper(ch3);  // displays '!'\n\ncout &lt;&lt; tolower(ch1);  // displays 'h’\ncout &lt;&lt; tolower(ch2);  // displays 'e’\ncout &lt;&lt; tolower(ch3);  // displays '!'"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#c-style-strings",
+    "href": "content/09_C-Strings.html#c-style-strings",
+    "title": "Characters and C-Style Strings",
+    "section": "C-Style Strings",
+    "text": "C-Style Strings\nC++ provides support for a low-level representation of strings of characters as they were defined in the C language: as null-terminated arrays of type char. We refer to strings of this type as C-Style strings, or simply C-Strings.\n\nString literals such as \"SMITH\" are internally represented as c-strings by default.\nInternally, they look like the following:\n\n\n“SMITH” as seen in memory."
+  },
+  {
+    "objectID": "content/09_C-Strings.html#c-string-variables",
+    "href": "content/09_C-Strings.html#c-string-variables",
+    "title": "Characters and C-Style Strings",
+    "section": "C-String Variables",
+    "text": "C-String Variables\nVariables that store c-strings are just arrays of type char:\nchar name[6] = \"SMITH\";\nProduces:\n\n\n\n“SMITH” as seen in a C-style string.\n\n\nThe trailing '\\0' is added automatically during the initialization.\n\nIMPORTANT: The assignment operator only works with c-strings in an initialization statement! You cannot assign c-strings using =!"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#c-string-input",
+    "href": "content/09_C-Strings.html#c-string-input",
+    "title": "Characters and C-Style Strings",
+    "section": "C-String Input",
+    "text": "C-String Input\n\nYou can enter c-strings using &gt;&gt; (stream extraction).\n\nInput is whitespace-terminated.\nNo bounds-checking is performed!\n\nFor input containing whitespace, and to control the amount of input, use cin.getline():\n\nSyntax:  std::cin.getline(c_str_name,max_size)\nconst int SIZE = 64;\nchar      name[SIZE];\nstd::cout &lt;&lt; \"Enter your name: \";\nstd::cin.getline(name, SIZE);"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#what-c-strings-cannot-do",
+    "href": "content/09_C-Strings.html#what-c-strings-cannot-do",
+    "title": "Characters and C-Style Strings",
+    "section": "What C-Strings Cannot Do",
+    "text": "What C-Strings Cannot Do\n\nYou cannot directly assign c-strings.\n\nWhy? They are arrays!\n\nYou cannot directly compare c-strings.\n\nWhy? They are arrays!"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#c-string-functions",
+    "href": "content/09_C-Strings.html#c-string-functions",
+    "title": "Characters and C-Style Strings",
+    "section": "C-String Functions",
+    "text": "C-String Functions\nThe &lt;cstring&gt; header file contains functions that are useful for dealing with c-style strings:\n    Function                    Description \n    ------------------------------------------------------------\n    strlen(str)                 Returns length of `str`\n\n    strcmp(str1, str2)          Compares `str1` to `str2` \n                                \"alphabetically\"\n\n    strcpy(dst, src)            Copies `src` into `dst` \n                                (no bounds check) \n\n    strncpy(dst, src, count)    Copies up to `count` \n                                characters from `src` into \n                                `dst` (no null-terminator added)\n\n    strcat(dst, src)            Concatenates `src` to the end \n                                of `dst` (no bounds check)  \n\n    strncat(dst, src, count)    Concatenates up to `count` \n                                characters from `src` to end \n                                of `dst`, plus the \n                                null-terminator"
+  },
+  {
+    "objectID": "content/09_C-Strings.html#conversion-functions",
+    "href": "content/09_C-Strings.html#conversion-functions",
+    "title": "Characters and C-Style Strings",
+    "section": "Conversion Functions",
+    "text": "Conversion Functions\nRequire &lt;cstdlib&gt;\n    Function                   Description \n    ------------------------------------------------------------\n    atoi(str)                   Converts c-string to an int\n    atol(str)                   Converts c-string to a long\n    atof(str)                   Converts c-string to a double"
+  },
+  {
+    "objectID": "content/07_Recursion.html#recursion",
+    "href": "content/07_Recursion.html#recursion",
+    "title": "Recursion",
+    "section": "Recursion",
+    "text": "Recursion\nA function is said to be recursive if it contains a call to itself.\n\nRecursive definitions are often more “natural”.\n\nEmbodies a “divide-and-conquer” strategy\n\n\nvoid countDown(int timer) {   \n    if (timer == 0) {\n       std::cout &lt;&lt; \"Blastoff!\";\n    }\n    else{ \n        std::cout &lt;&lt; timer &lt;&lt; \"...\\n\";\n        countDown(timer-1); // recursive call\n    }\n}"
+  },
+  {
+    "objectID": "content/07_Recursion.html#purpose",
+    "href": "content/07_Recursion.html#purpose",
+    "title": "Recursion",
+    "section": "Purpose",
+    "text": "Purpose\n\nRecursion is an alternative way to achieve repetition.\n\nSometimes the iterative approach (loop) isn’t obvious.\n\nRecursion allows us to reduce a difficult problem to a simpler-to-solve problem.\n\nEventually, you hope to reach a (comparatively) trivial case (called the base case).\nRecursive calls stop when the base case is reached."
+  },
+  {
+    "objectID": "content/07_Recursion.html#two-steps-to-recursive-repetition",
+    "href": "content/07_Recursion.html#two-steps-to-recursive-repetition",
+    "title": "Recursion",
+    "section": "Two Steps to Recursive Repetition",
+    "text": "Two Steps to Recursive Repetition\nSimilarly to looping (the 3 parts of a loop), recursion has two important steps related to controlling the repetition:\n\n\n\nbase case: A trivial version of the problem in which the function can directly return a result (without calling itself).\n\n\n\n\nrecursive step: A version of the problem in which simplification through a recursive call is required. (No answer can be directly returned.)"
+  },
+  {
+    "objectID": "content/07_Recursion.html#creating-a-recursive-solution",
+    "href": "content/07_Recursion.html#creating-a-recursive-solution",
+    "title": "Recursion",
+    "section": "Creating a Recursive Solution",
+    "text": "Creating a Recursive Solution\n\nIdentify the base case and create a condition to test for it.\n\nthis becomes your base condition.\n\n\nIdentify a way to simplify the problem so that applying the simplification repeatedly will eventually lead to the base case.\n\nthis will become the recursive step."
+  },
+  {
+    "objectID": "content/07_Recursion.html#typical-approach",
+    "href": "content/07_Recursion.html#typical-approach",
+    "title": "Recursion",
+    "section": "Typical Approach",
+    "text": "Typical Approach\nWhen faced with a very complex problem, the following approach can be used to find a recursive solution:\n\nIdentify patterns in the problem.\n\nLook for a simpler problem that is still the same problem.\n\nThis shows how to simplify during the recursive step(s).\nSome work might be required when you simplify the problem. Pay attention to this “left-over work” - it is key to how the recursive solution performs its task.\n\n\nIdentify the simplest possible version of the (same) problem.\n\nThis is your base case; devise a base condition to test for it.\nIdeally, the base case is trivial, requiring little or no work to solve."
+  },
+  {
+    "objectID": "content/07_Recursion.html#the-base-condition",
+    "href": "content/07_Recursion.html#the-base-condition",
+    "title": "Recursion",
+    "section": "The Base Condition",
+    "text": "The Base Condition\n\nA recursive function must contain a test to determine if the base case has been reached.\nThe base condition can always return a result directly, without a recursive call.\nFailure of the recursive step to converge to the base case will result in infinite recursion, which is recursion that continues indefinitely.\n\nInfinite recursion will lead to a program and/or system crash."
+  },
+  {
+    "objectID": "content/07_Recursion.html#recursion-vs-iteration",
+    "href": "content/07_Recursion.html#recursion-vs-iteration",
+    "title": "Recursion",
+    "section": "Recursion VS Iteration",
+    "text": "Recursion VS Iteration\n\nFor every recursive function, an iterative solution can also be found.\n\nSometimes finding the iterative solution is difficult.\n\nRecursive solutions will always be less efficient.\nSometimes shorter development time is more important."
+  },
+  {
+    "objectID": "content/07_Recursion.html#towers-of-hanoi",
+    "href": "content/07_Recursion.html#towers-of-hanoi",
+    "title": "Recursion",
+    "section": "Towers of Hanoi",
+    "text": "Towers of Hanoi"
+  },
+  {
+    "objectID": "content/07_Recursion.html#towers-of-hanoi-1",
+    "href": "content/07_Recursion.html#towers-of-hanoi-1",
+    "title": "Recursion",
+    "section": "Towers of Hanoi",
+    "text": "Towers of Hanoi\n\n\nRules\n\n\n\n\nAll plates begin on one of three pegs, ordered from smallest to largest.\nThe goal is to move all plates to another of the pegs, likewise ordered.\nOnly one plate can be moved at a time.\nPlates not in motion must rest on one of the three pegs.\nA larger plate can never be placed atop a smaller plate."
+  },
+  {
+    "objectID": "content/07_Recursion.html#towers-of-hanoi-2",
+    "href": "content/07_Recursion.html#towers-of-hanoi-2",
+    "title": "Recursion",
+    "section": "Towers of Hanoi",
+    "text": "Towers of Hanoi\n\n\nAlgorithm\n\n\n\nMove \\(n-1\\) plates from start to temp (using goal for storage).\nMove the final plate from start to goal.\nMove \\(n-1\\) plates from temp to goal (using start for storage).\n\nSpoiler Alert!"
+  },
+  {
+    "objectID": "content/07_Recursion.html#towers-of-hanoi-3",
+    "href": "content/07_Recursion.html#towers-of-hanoi-3",
+    "title": "Recursion",
+    "section": "Towers of Hanoi",
+    "text": "Towers of Hanoi\n\n\nAlgorithm\n\n\n\nMove \\(n-1\\) plates from start to temp (using goal for storage).\nMove the final plate from start to goal.\nMove \\(n-1\\) plates from temp to goal (using start for storage).\n\nSpoiler Alert!\nvoid towers(int n, char start='A', char goal='C', char temp='B'){\n    if(n &gt; 0){\n        towers(n-1, start, temp, goal);\n        cout &lt;&lt; \"Move plate from \" &lt;&lt; start &lt;&lt; \" to \" &lt;&lt; goal &lt;&lt; \".\\n\";\n        towers(n-1, temp, goal, start);\n    }\n}"
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#modular-programming",
+    "href": "content/05_Functions_Value_Parameters.html#modular-programming",
+    "title": "Functions and Value Parameters",
+    "section": "Modular Programming",
+    "text": "Modular Programming\n\nModular programming refers to the practice of designing a program so that it is broken up into small, manageable pieces called functions or modules.\nIn C++, a function is a collection of related statements that perform a single logical task, and may produce a value.\nIn Object-Oriented programming, a function that is part of an object (and defined in a class) is referred to as a method. For example, in cin.ignore(), the ignore() function is actually a method owned by the cin object."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#motivation",
+    "href": "content/05_Functions_Value_Parameters.html#motivation",
+    "title": "Functions and Value Parameters",
+    "section": "Motivation",
+    "text": "Motivation\n\nModular programs are easier to read and understand.\n\nEach logical step has its own function definition that is easily examined separately from other code.\n\nModular programs are easier to maintain.\n\nChanging an algorithm to fix or improve it involves simply re-writing the function where it is implemented.\n\nModular programs promote code re-use.\n\nIt is much easier to re-use a neatly packaged function than to try to find all the code in a monolithic program that performs a particular action."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#calls-and-definitions",
+    "href": "content/05_Functions_Value_Parameters.html#calls-and-definitions",
+    "title": "Functions and Value Parameters",
+    "section": "Calls and Definitions",
+    "text": "Calls and Definitions\n\n\n\nA function call is an expression that causes a function to be executed.\n\nEx: pow(3, 6)\nFunction calls may or may not evaluate to a result. If it does, this result is referred to as a return value.\n\n\n\nA function definition is the code that defines the actions taken by the function when it is called.\n\nThe main() function we have been writing is an example."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#types-of-functions",
+    "href": "content/05_Functions_Value_Parameters.html#types-of-functions",
+    "title": "Functions and Value Parameters",
+    "section": "Types of Functions",
+    "text": "Types of Functions\nFunctions can be generally divided into two categories:\n\nFruitful functions (or value-producing functions) are functions whose purpose is to compute and return a value.\n\nMathematical functions are the best example of this.\n\nNon-fruitful functions (or void functions) are functions that do not directly return any result.\n\nThese functions usually produce some useful side-effect.\nAn example would be the close() method of a file stream.\nSome languages (and so some programmers) refer to these as procedures."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#calling-a-function",
+    "href": "content/05_Functions_Value_Parameters.html#calling-a-function",
+    "title": "Functions and Value Parameters",
+    "section": "Calling a Function",
+    "text": "Calling a Function\n\nAny expression can contain a function call.*\n\nNon-fruitful functions are often called as a stand-alone statement.\nFruitful functions are usually called as part of a larger expression.\n\nAny function can call any other function (including itself).\nLike a variable, a function must be “declared” before it is first called. The compiler must know:\n\nfunction name\nreturn type\nnumber and type of parameters required\n\n\n\n* Assuming the function’s return type is syntactically appropriate for the expression."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#defining-a-function",
+    "href": "content/05_Functions_Value_Parameters.html#defining-a-function",
+    "title": "Functions and Value Parameters",
+    "section": "Defining a function",
+    "text": "Defining a function\nThe function definition must define the function’s interface, as well as the statements that must be executed to perform the function’s action.\n\nThe function header defines the function’s interface.\n\nname, return type, list of parameters\n\nThe function body is the block of statements that are executed when the function is called."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#formal-and-actual-parameters",
+    "href": "content/05_Functions_Value_Parameters.html#formal-and-actual-parameters",
+    "title": "Functions and Value Parameters",
+    "section": "Formal and Actual Parameters",
+    "text": "Formal and Actual Parameters\n\nFormal parameters (or parameters): The temporary placeholders declared in the function header used to receive data provided by the caller.\nActual parameters (or arguments): The data values that are actually passed to the function during a call.\n\n\n\n\n\n\n\n\nUnfortunately, the terms “parameter” and “argument” are often used nearly interchangeably in conversation. This can lead to confusion. Please take care to make a distinction between the two."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#data-flow-pass-by-value",
+    "href": "content/05_Functions_Value_Parameters.html#data-flow-pass-by-value",
+    "title": "Functions and Value Parameters",
+    "section": "Data Flow: Pass by Value",
+    "text": "Data Flow: Pass by Value\n\nIn pass by value, the value of the actual parameter is copied into the formal parameter.\nPass by value is the default method by which data is moved into a function for primitive types, structured types and object types.\n\nChanges to the formal parameter cannot affect the actual parameter."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#returning-values-from-a-function",
+    "href": "content/05_Functions_Value_Parameters.html#returning-values-from-a-function",
+    "title": "Functions and Value Parameters",
+    "section": "Returning Values from a Function",
+    "text": "Returning Values from a Function\nFruitful functions produce a value by means of a return statement in the function definition.\n\nMust define the type of the return value in the function header.\nThe value returned must match the type specified in the header.\nWhen called, the function call is “replaced” by the value that it returns.\n\nWe often say the function evaluates to the resulting value."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#scope",
+    "href": "content/05_Functions_Value_Parameters.html#scope",
+    "title": "Functions and Value Parameters",
+    "section": "Scope",
+    "text": "Scope\n\n\n\n\n\n\nA function is a like a sealed box. The only way “in” is through the parameter list or global scope. The only direct way “out” is through a return.\n\n\n\n\nFormal parameters are locally-scoped within the function definition.\nVariables declared in a function will be locally-scoped within the function definition.\nGlobal variables declared before a function definition will be available in the function definition."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#static-local-variables",
+    "href": "content/05_Functions_Value_Parameters.html#static-local-variables",
+    "title": "Functions and Value Parameters",
+    "section": "static Local Variables",
+    "text": "static Local Variables\nA static variable displays a hybrid of local and global behavior. It is used to maintain state between calls.\nvoid foo(){\n    static int count = 1;\n    std::cout &lt;&lt; \"Call # \" &lt;&lt; count &lt;&lt; \"\\n\";\n    count++;\n}\n\nThe identifier is governed by local scoping rules\nThe value is governed by global scoping rules (it doesn’t go away between calls).\n\nProvides “sticky” values that are “remembered” between calls."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#function-prototypes",
+    "href": "content/05_Functions_Value_Parameters.html#function-prototypes",
+    "title": "Functions and Value Parameters",
+    "section": "Function Prototypes",
+    "text": "Function Prototypes\nWe would prefer to define the main() function first… But the compiler requires that all other function interfaces be specified before they can be called.\n\nfunction prototype: A declaration statement for a function, providing the function’s interface but not a body.\nPlaced at the top of a program so that the function definition can be placed after main(), in any order."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#default-parameter-values",
+    "href": "content/05_Functions_Value_Parameters.html#default-parameter-values",
+    "title": "Functions and Value Parameters",
+    "section": "Default Parameter Values",
+    "text": "Default Parameter Values\nOften a parameter will always be set to a common value; in these cases, a default value can be specified for the parameter. Doing so makes the parameter optional when calling the function.\n\nDefault parameters are specified in the function prototype (if used) or header by using initialization syntax:\n\ndouble divide( double dividend, double divisor = 2.0 );\n\nIf the actual parameter corresponding to the default parameter is omitted, the default value (2.0 in this case) will be used.\n\n\n\n\n\n\n\n\nThe default value must only be specified once. If you use a prototype, the default value is specified there. Only specify the default value in the header of the definition if no prototype is used. It is an error to specify it in both places.\nRemember it this way: Place the default value in the first place the compiler will encounter it."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#default-parameter-notes",
+    "href": "content/05_Functions_Value_Parameters.html#default-parameter-notes",
+    "title": "Functions and Value Parameters",
+    "section": "Default Parameter Notes",
+    "text": "Default Parameter Notes\n\nOrder is important!\n\nOnce you give one parameter a default, all parameters to its right must also have defaults.\nIn a call, once you omit an argument, you must also omit all arguments to its right.\n\nBest practice is to place the most often customized parameters further left, and the ones for which the default is usually OK to the right.\n\nThis isn’t a rule—it’s just a usability consideration."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#documentation",
+    "href": "content/05_Functions_Value_Parameters.html#documentation",
+    "title": "Functions and Value Parameters",
+    "section": "Documentation",
+    "text": "Documentation\nAll function definitions require documentation headers describing the function, its parameters, and return value. See course Grading Guidelines.\n/**\n * Divide `dividend` by `divisor` and return the result.\n * @param   dividend    Dividend for the division \n * @param   divisor     Divisor for the division \n *                      (defaults to 2.0)\n * @return  The result of `dividend` / `divisor` is returned.\n */\ndouble divide( double dividend, double divisor ){\n    return dividend / divisor;\n}\n\nDoxygen-style documentation headers begin with /** (two stars, not just one).\nThis allows Doxygen to tell them apart from “regular” block comments.\n\n\nIf a function’s purpose is simple, just list it at the beginning of the documentation header.\nMore complex functions can use the @brief and @detailed tags to provide a short and complete description (see documentation guidelines).\n\n\nThe @param directive lets you document parameters. Give the name, then some space, then a short description of what the parameter is used for.\n\n\nThe @return directive lets you provide a short description of the value that will be returned.\n\n\n\nYou only need to create the parameter and return value documentation if your function has parameters / return value. A void function does not need a @return documentation; a function with no parameters does not need @param documentation.\nDon’t write documentation that doesn’t provide any information.\nDO try to write concise, high-quality documentation."
+  },
+  {
+    "objectID": "content/05_Functions_Value_Parameters.html#stubs-and-drivers",
+    "href": "content/05_Functions_Value_Parameters.html#stubs-and-drivers",
+    "title": "Functions and Value Parameters",
+    "section": "Stubs and Drivers",
+    "text": "Stubs and Drivers\n\nNo need to define full functionality immediately.\n\n\n\n\n\n\n\nCompile Early, Compile Often\n\n\nLet the compiler be your helper, not your adversary.\n\n\n\n\nA valid* function body only needs an appropriate return statement.\n\nThe rest can be left “empty” until later.\n\nfunction stub: an empty function used for incremental development.\ndriver: a function used only for testing other functions by calling them.\n\n\n* “Valid” doesn’t imply correct—it just means you are syntactically valid and can compile (and maybe even run) the program to see if there are other errors."
+  },
+  {
+    "objectID": "content/03_Selection.html#making-decisions",
+    "href": "content/03_Selection.html#making-decisions",
+    "title": "Selection",
+    "section": "Making Decisions",
+    "text": "Making Decisions\nOne of the things computers are “good at” is determining the result of logic-based (Boolean) expressions, and using those results to make decisions quickly.\n\nChoose to whether or not to perform an operation.\n\nIf it is raining outside, take an umbrella.\n\nChoose between possible outcomes.\n\nIf you are taller than 38”, proceed to the ride, otherwise leave the line.\n\nSelect from a variety of possible choices.\n\nShow the user a menu with many options; respond to his/her choice appropriately."
+  },
+  {
+    "objectID": "content/03_Selection.html#first-some-operators",
+    "href": "content/03_Selection.html#first-some-operators",
+    "title": "Selection",
+    "section": "First, some operators…",
+    "text": "First, some operators…\nBefore we can make decisions based on the answers to logic questions, we need to learn what kinds of questions we can ask, and how to phrase the questions.\n\nAll decisions must be based on logical tests that evaluate to a clear true or false result. (Boolean expressions)\nC++ provides a full set of relational operators for making comparisons, and logical operators for combining these comparisons into complex expressions."
+  },
+  {
+    "objectID": "content/03_Selection.html#relational-operators",
+    "href": "content/03_Selection.html#relational-operators",
+    "title": "Selection",
+    "section": "Relational Operators",
+    "text": "Relational Operators\nRelational operators compare two values, and evaluate to a bool result based on the truthfulness of the comparison:\n\n\n\nOperator    Description     \n------------------------------------\n   &gt;        greater than    \n   &lt;        less than       \n   &gt;=       greater than or equal to\n   &lt;=       less than or equal to\n   ==       equal to \n   !=       not equal to"
+  },
+  {
+    "objectID": "content/03_Selection.html#logical-operators",
+    "href": "content/03_Selection.html#logical-operators",
+    "title": "Selection",
+    "section": "Logical Operators",
+    "text": "Logical Operators\nLogical (or Boolean) operators are used to combine relational expressions to create a more complex test condition:\n\n\n\nOperator    Description     \n----------------------\n   &&       and\n   ||       or\n   !        not (unary)"
+  },
+  {
+    "objectID": "content/03_Selection.html#control-structures",
+    "href": "content/03_Selection.html#control-structures",
+    "title": "Selection",
+    "section": "Control Structures",
+    "text": "Control Structures\nA control structure is a special language construct that allows a programmer to change the “natural” top-down execution order of the statements in a program.\nAlthough control structures (such as the if) are not actually statements, they are often passively referred to as such. Most do not end with a semicolon."
+  },
+  {
+    "objectID": "content/03_Selection.html#the-if-control-structure",
+    "href": "content/03_Selection.html#the-if-control-structure",
+    "title": "Selection",
+    "section": "The if Control Structure",
+    "text": "The if Control Structure\nThe most basic form of the C++ if control structure allows us to choose whether or not to take a specific action:\nSyntax\n\nif( conditional_expression )\n    statement_executed_if_true;\n\nExample\n// Assume x is an integer whose value was entered by the user.\n\nif( x &lt; 0 )   // Check for a negative value\n    std::cout &lt;&lt; \"You entered a negative value.\\n\";"
+  },
+  {
+    "objectID": "content/03_Selection.html#using-a-block",
+    "href": "content/03_Selection.html#using-a-block",
+    "title": "Selection",
+    "section": "Using a Block",
+    "text": "Using a Block\nSince a single statement isn’t enough to solve most problems, the body of an if may also be a block:\n// Assume x is an integer whose value was entered by the user.\n\nif( x &lt; 0 )  { // Check for a negative value\n    std::cout &lt;&lt; \"You entered a negative value.\\n\";\n    x = 0;     // Ensure that x is non-negative.\n}\nRecall that a block just means a set of statements contained within curly braces."
+  },
+  {
+    "objectID": "content/03_Selection.html#choose-between-two-outcomes",
+    "href": "content/03_Selection.html#choose-between-two-outcomes",
+    "title": "Selection",
+    "section": "Choose Between Two Outcomes",
+    "text": "Choose Between Two Outcomes\nThe if-else construct allows us to choose between two outcomes:\nSyntax\n\nif( conditional_expression )\n    statement_executed_if_true;\nelse\n    statement_executed_if_false;\n\nExample\n// Assume x is an integer whose value was entered by the user.\n\nif( x &lt; 0 )   // Check for a negative value\n    std::cout &lt;&lt; \"You entered a negative value.\\n\";\nelse\n    std::cout &lt;&lt; x &lt;&lt; \" is non-negative.\\n\";"
+  },
+  {
+    "objectID": "content/03_Selection.html#if-else-with-blocks",
+    "href": "content/03_Selection.html#if-else-with-blocks",
+    "title": "Selection",
+    "section": "if-else with Blocks",
+    "text": "if-else with Blocks\nThe body of both the if and else part may be blocks:\n// Assume x is an integer whose value was entered by the user,\n// and rt_x is a double that is already declared.\n\nif( x &lt; 0 )  { // Check for a negative value\n    std::cout &lt;&lt; \"You entered a negative value.\\n\";\n    x = 0;     // Ensure that x is non-negative.\n}\nelse {\n    std::cout &lt;&lt; \"Calculating root...\\n\";\n    rt_x = sqrt(x);\n}"
+  },
+  {
+    "objectID": "content/03_Selection.html#information",
+    "href": "content/03_Selection.html#information",
+    "title": "Selection",
+    "section": "Information",
+    "text": "Information\n\nThe else part is optional - only use it if you need it.\nIt is recommended to always use blocks for the body of the if and else.\n\nWill save time debugging if more code is added later.\n\nAlways indent the body of the if and else.\n\nIndentation shows ownership (for human programmer’s benefit)\n\nAny legal C++ statement may go in the body of the if/else, including nested if constructs."
+  },
+  {
+    "objectID": "content/03_Selection.html#selecting-from-multiple-options",
+    "href": "content/03_Selection.html#selecting-from-multiple-options",
+    "title": "Selection",
+    "section": "Selecting from Multiple Options",
+    "text": "Selecting from Multiple Options\nA clever application of nesting ifs inside elses is commonly used to select from multiple (more than 2) options. It is often referred to as the if-else chain:\n// Assume door is an integer containing 1, 2, or 3:\n\nstd::cout &lt;&lt; \"Behind door #\" &lt;&lt; door &lt;&lt; \", you see a \";\nif(door == 1) {         // door #1\n    std::cout &lt;&lt; \"trip to Hawaii!\\n\";\n}\nelse if(door == 2) {    // door #2\n    std::cout &lt;&lt; \"new car!\\n\";\n}\nelse {                  // door #3\n    std::cout &lt;&lt; \"goat!\\n\";\n}"
+  },
+  {
+    "objectID": "content/03_Selection.html#final-details",
+    "href": "content/03_Selection.html#final-details",
+    "title": "Selection",
+    "section": "Final Details",
+    "text": "Final Details\n\nC++ control structures do not strictly require conditions to be type bool.\n\nAny non-zero value will be considered equivalent to “true”.\nAny value that compares “equal to” zero is considered equivalent to “false”.\n\nBeware of the assignment operator! See example below:\n\n// This will print \"8 is 4!\" ... Why?\nint x = 8;\n// [...]\nstd::cout &lt;&lt; x;\nif( x = 4 ) {\n    std::cout &lt;&lt; \" is 4!\";\n}\n\nx is assigned 8. So far so good…\n\n\nWe print x, which is 8 right now. Still OK.\n\n\nThe expression x = 4 assigns the value 4 to x. Then, it evaluates to 4, which is not zero, so the if considers it to be equivalent to true…\nNow we have a problem.\n\n\nWe print the string \" is 4!\", since the if condition was “true-like”.\nThe exact output is:\nx is 4!\n\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nSelection"
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#first-principles",
+    "href": "content/01_SP_Basics.html#first-principles",
+    "title": "Structured Programming Basics",
+    "section": "First Principles",
+    "text": "First Principles\n\ncomputer - a programmable machine designed to follow instructions\n\nComputers are able to perform mathematical and logical operations at great speed.\n\nalgorithm - a precise, step-by-step plan for solving a problem\nprogram - a set of instructions expressed in a programming language that a computer follows to perform a task\nprogrammer - a person who writes a computer program\nprogramming language - any language designed specifically for use in creating computer programs"
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#computer-code",
+    "href": "content/01_SP_Basics.html#computer-code",
+    "title": "Structured Programming Basics",
+    "section": "Computer Code",
+    "text": "Computer Code\nComputers execute code that is stored in computer memory in a binary form.\n11000111 01000100 00100100 00000100 00011000 10000111 00000100\nHumans are not skilled at writing in machine language."
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#language-levels",
+    "href": "content/01_SP_Basics.html#language-levels",
+    "title": "Structured Programming Basics",
+    "section": "Language Levels",
+    "text": "Language Levels\n\nLow-Level\n\nMachine Language\n\nPure binary, but usually expressed as hexadecimal\n\nAssembly Language\n\nCorresponds more or less 1:1 with machine language (easy conversion)\nMore human-readable (for some definition of more)\n\n\nHigh-Level\n\nC, C++, Python, Swift, etc.\n\nDesigned to look like a human language\nMust be translated to machine language"
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#a-complete-c-program",
+    "href": "content/01_SP_Basics.html#a-complete-c-program",
+    "title": "Structured Programming Basics",
+    "section": "A Complete C++ Program:",
+    "text": "A Complete C++ Program:\n#include &lt;iostream&gt;\n\nint main(){\n    std::cout &lt;&lt; \"Hello, World!\\n\";\n    return 0;\n}\nNow, we will take a look at the parts of the program, and see what each part does."
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#a-complete-c-program-1",
+    "href": "content/01_SP_Basics.html#a-complete-c-program-1",
+    "title": "Structured Programming Basics",
+    "section": "A Complete C++ Program:",
+    "text": "A Complete C++ Program:\n#include &lt;iostream&gt;\n\nint main(){\n    std::cout &lt;&lt; \"Hello, World!\\n\";\n    return 0;\n}\n\n\nThis line is called a preprocessor directive.\nIt communicates with a phase of the C++ compiler called the preprocessor, telling it to include code from a file named “iostream”, which is a C++ library.\n\nThe iostream library contains code that is used for input and output activities.\n\n\n\n\nThis line is called a function header.\nIt begins the definition of a function called “main”.\nEvery C++ program must contain a main() function.\n\nThe main() function tells the computer where to begin executing.\nInstructions will be executed one at a time, starting with the first line of main.\n\n\n\n\n\nThe curly braces enclose a block of code in C++.\nblock - a set of related C++ statements that perform an action\nEvery opening curly brace must match with a closing brace.\n\nWe indent the code between the { and the }.\n\n\n\n\n\nThis statement sends the words “Hello, World” to the screen.\nstd::cout is the name of the standard output stream\n\nA stream is a one-way flow of data from the point of view of the program.\n\n&lt;&lt; is the stream insertion operator, used to place things into a stream.\n\"Hello, World!\\n\" is a string literal; a string is just a collection of characters that are treated as a single unit.\n\nString literals are always surrounded by double-quotes.\n\nliteral: A literal is a value that is typed directly into the source code, in a representation that the programming language recognizes as a value of a recognized type. Literal values must be formatted according to the syntax rules of the language.\n\n\n\n\nThis line terminates the program by causing the main() function to return the value 0 to the operating system.\n\nNo code following this line would ever be executed; this means that the return 0; line will always be the last line in main().\n\nThe operating system considers zero to be an indication that the program exited “normally”.\n\nOther values are possible, and we will use them later."
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#escape-characters",
+    "href": "content/01_SP_Basics.html#escape-characters",
+    "title": "Structured Programming Basics",
+    "section": "Escape Characters",
+    "text": "Escape Characters\n    std::cout &lt;&lt; \"Hello, World\\n\";\n\nWe often want to include control characters in our string literals, but we don’t have the ability to type these in directly. C++ allows the use of escape characters for this purpose.\n\n\nescape character - any character combination beginning with “\\”, used to represent a character that cannot otherwise be represented in a string literal.\n\nExamples:\nCode     Meaning\n-----------------\n \\n      newline (think of the &lt;ENTER&gt; key)\n \\t      tab character\n \\\"      allows a double-quote in a string literal\n \\\\      allows a backslash in a string literal\n \\r      carriage-return (used in Windows line endings: \"\\r\\n\")"
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#our-development-toolchain",
+    "href": "content/01_SP_Basics.html#our-development-toolchain",
+    "title": "Structured Programming Basics",
+    "section": "Our Development Toolchain",
+    "text": "Our Development Toolchain\n\n\nUser’s Side: Editing, running and testing.\nServer Side: Stores files, provides compiler and other tools."
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#some-linux-unix-terminal-basics",
+    "href": "content/01_SP_Basics.html#some-linux-unix-terminal-basics",
+    "title": "Structured Programming Basics",
+    "section": "Some Linux / UNIX terminal basics",
+    "text": "Some Linux / UNIX terminal basics\nhttps://towardsdatascience.com/basics-of-bash-for-beginners-92e53a4c117a\nhttps://www.educative.io/blog/bash-shell-command-cheat-sheet\nhttps://wiki.cs.astate.edu/index.php/Common_Linux_Commands (Requires VPN access.)"
+  },
+  {
+    "objectID": "content/01_SP_Basics.html#practice-developing-and-compiling",
+    "href": "content/01_SP_Basics.html#practice-developing-and-compiling",
+    "title": "Structured Programming Basics",
+    "section": "Practice Developing and Compiling",
+    "text": "Practice Developing and Compiling\n#include &lt;iostream&gt;\n\nint main(){\n    std::cout &lt;&lt; \"Hello, World!\\n\";\n    return 0;\n}\nMake modifications to the program so that it will print out your name, favorite food, and favorite TV series.\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nStructured Programming Basics"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CS 50x2 Slides",
+    "section": "",
+    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/02_Variables_Operators_Errors.html#variables-operators-common-errors",
@@ -441,416 +686,276 @@
     "text": "Tips and Tricks\n\nCompile early, compile often.\n\nWrite small amounts, then compile/test/continue.\n\nThe first error is the only one that matters!\n\nAlways fix the first error before moving on to other errors.\nRe-compile after fixing the error, then repeat the process.\n\nPay attention to line numbers.\n\nThe compiler will tell you which line it was examining when it found the error.\n\nThe line containing the error will either be that line or a line above that point in the program.\n\nStart with the flagged line, work your way upward a line at a time.\n\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nVariables, Operators, Common Errors"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CS 50x2 Slides",
-    "section": "",
-    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\nNo matching items"
+    "objectID": "content/04_Repetition.html#first-some-helpful-new-operators",
+    "href": "content/04_Repetition.html#first-some-helpful-new-operators",
+    "title": "Repetition",
+    "section": "First, some helpful new operators…",
+    "text": "First, some helpful new operators…\n\nShortcut Assignment Operators\n\nMake modifying an existing value easy.\n\nIncrement and Decrement Operators\n\nMake counting up and down easy."
   },
   {
-    "objectID": "content/01_SP_Basics.html#first-principles",
-    "href": "content/01_SP_Basics.html#first-principles",
-    "title": "Structured Programming Basics",
-    "section": "First Principles",
-    "text": "First Principles\n\ncomputer - a programmable machine designed to follow instructions\n\nComputers are able to perform mathematical and logical operations at great speed.\n\nalgorithm - a precise, step-by-step plan for solving a problem\nprogram - a set of instructions expressed in a programming language that a computer follows to perform a task\nprogrammer - a person who writes a computer program\nprogramming language - any language designed specifically for use in creating computer programs"
+    "objectID": "content/04_Repetition.html#repetition-loops",
+    "href": "content/04_Repetition.html#repetition-loops",
+    "title": "Repetition",
+    "section": "Repetition (loops)",
+    "text": "Repetition (loops)\nRepeating code is accomplished with the help of a control structure called a loop. C++ provides three loop constructs (four if you count the modern C++ range-based version of for):\n\nwhile\nfor\n\nRange-based for\n\ndo-while\n\nBut before we get into the specifics of the code, let’s examine some terms and theory related to looping in general."
   },
   {
-    "objectID": "content/01_SP_Basics.html#computer-code",
-    "href": "content/01_SP_Basics.html#computer-code",
-    "title": "Structured Programming Basics",
-    "section": "Computer Code",
-    "text": "Computer Code\nComputers execute code that is stored in computer memory in a binary form.\n11000111 01000100 00100100 00000100 00011000 10000111 00000100\nHumans are not skilled at writing in machine language."
+    "objectID": "content/04_Repetition.html#terms",
+    "href": "content/04_Repetition.html#terms",
+    "title": "Repetition",
+    "section": "Terms",
+    "text": "Terms\n\nLoop Control Variable : a variable whose value is tested in order to determine whether the loop body should execute.\nLoop Condition : a Boolean expression whose result determines whether the loop body will execute (true causes the loop to execute).\nUpdate step : a modification that is made to the loop control variable within the scope of the loop body."
   },
   {
-    "objectID": "content/01_SP_Basics.html#language-levels",
-    "href": "content/01_SP_Basics.html#language-levels",
-    "title": "Structured Programming Basics",
-    "section": "Language Levels",
-    "text": "Language Levels\n\nLow-Level\n\nMachine Language\n\nPure binary, but usually expressed as hexadecimal\n\nAssembly Language\n\nCorresponds more or less 1:1 with machine language (easy conversion)\nMore human-readable (for some definition of more)\n\n\nHigh-Level\n\nC, C++, Python, Swift, etc.\n\nDesigned to look like a human language\nMust be translated to machine language"
+    "objectID": "content/04_Repetition.html#three-parts-of-a-loop",
+    "href": "content/04_Repetition.html#three-parts-of-a-loop",
+    "title": "Repetition",
+    "section": "Three Parts of a Loop",
+    "text": "Three Parts of a Loop\n\n\n\n\nSet up the Loop Control Variable (LCV) in preparation for the loop.\nA proper loop condition must be created to test the LCV.\nThe value of the LCV must be changed within the body of the loop."
   },
   {
-    "objectID": "content/01_SP_Basics.html#a-complete-c-program",
-    "href": "content/01_SP_Basics.html#a-complete-c-program",
-    "title": "Structured Programming Basics",
-    "section": "A Complete C++ Program:",
-    "text": "A Complete C++ Program:\n#include &lt;iostream&gt;\n\nint main(){\n    std::cout &lt;&lt; \"Hello, World!\\n\";\n    return 0;\n}\nNow, we will take a look at the parts of the program, and see what each part does."
+    "objectID": "content/04_Repetition.html#types-of-loops-by-method-of-control",
+    "href": "content/04_Repetition.html#types-of-loops-by-method-of-control",
+    "title": "Repetition",
+    "section": "Types of Loops (by method of control)",
+    "text": "Types of Loops (by method of control)\n\nIterative Loop (AKA “Counting Loop”) : a loop that repeats a specific number of times, or for a specific range of values.\nEvent-Controlled Loop : a loop that repeats until a specific event occurs. 3 sub-types:\n\nSentinel Controlled Loop : a loop that repeats until a specified data value is encountered (this value is called the sentinel)\nFlag Controlled Loop : a loop that repeats until the truth value of a Boolean flag is flipped.\nEnd-Of-File Controlled Loop : a loop that repeats (based on a stream) until the End Of File marker is read."
   },
   {
-    "objectID": "content/01_SP_Basics.html#a-complete-c-program-1",
-    "href": "content/01_SP_Basics.html#a-complete-c-program-1",
-    "title": "Structured Programming Basics",
-    "section": "A Complete C++ Program:",
-    "text": "A Complete C++ Program:\n#include &lt;iostream&gt;\n\nint main(){\n    std::cout &lt;&lt; \"Hello, World!\\n\";\n    return 0;\n}\n\n\nThis line is called a preprocessor directive.\nIt communicates with a phase of the C++ compiler called the preprocessor, telling it to include code from a file named “iostream”, which is a C++ library.\n\nThe iostream library contains code that is used for input and output activities.\n\n\n\n\nThis line is called a function header.\nIt begins the definition of a function called “main”.\nEvery C++ program must contain a main() function.\n\nThe main() function tells the computer where to begin executing.\nInstructions will be executed one at a time, starting with the first line of main.\n\n\n\n\n\nThe curly braces enclose a block of code in C++.\nblock - a set of related C++ statements that perform an action\nEvery opening curly brace must match with a closing brace.\n\nWe indent the code between the { and the }.\n\n\n\n\n\nThis statement sends the words “Hello, World” to the screen.\nstd::cout is the name of the standard output stream\n\nA stream is a one-way flow of data from the point of view of the program.\n\n&lt;&lt; is the stream insertion operator, used to place things into a stream.\n\"Hello, World!\\n\" is a string literal; a string is just a collection of characters that are treated as a single unit.\n\nString literals are always surrounded by double-quotes.\n\nliteral: A literal is a value that is typed directly into the source code, in a representation that the programming language recognizes as a value of a recognized type. Literal values must be formatted according to the syntax rules of the language.\n\n\n\n\nThis line terminates the program by causing the main() function to return the value 0 to the operating system.\n\nNo code following this line would ever be executed; this means that the return 0; line will always be the last line in main().\n\nThe operating system considers zero to be an indication that the program exited “normally”.\n\nOther values are possible, and we will use them later."
+    "objectID": "content/04_Repetition.html#types-of-loops-by-timing-of-the-test",
+    "href": "content/04_Repetition.html#types-of-loops-by-timing-of-the-test",
+    "title": "Repetition",
+    "section": "Types of Loops (by timing of the test)",
+    "text": "Types of Loops (by timing of the test)\nLoops can also be classified by the timing of when they test their loop condition:\n\npre-test loop : a loop that tests the loop condition before loop entry (at the beginning of each loop)\npost-test loop : a loop that tests the loop condition at loop exit (at the end of each loop)"
   },
   {
-    "objectID": "content/01_SP_Basics.html#escape-characters",
-    "href": "content/01_SP_Basics.html#escape-characters",
-    "title": "Structured Programming Basics",
-    "section": "Escape Characters",
-    "text": "Escape Characters\n    std::cout &lt;&lt; \"Hello, World\\n\";\n\nWe often want to include control characters in our string literals, but we don’t have the ability to type these in directly. C++ allows the use of escape characters for this purpose.\n\n\nescape character - any character combination beginning with “\\”, used to represent a character that cannot otherwise be represented in a string literal.\n\nExamples:\nCode     Meaning\n-----------------\n \\n      newline (think of the &lt;ENTER&gt; key)\n \\t      tab character\n \\\"      allows a double-quote in a string literal\n \\\\      allows a backslash in a string literal\n \\r      carriage-return (used in Windows line endings: \"\\r\\n\")"
+    "objectID": "content/04_Repetition.html#the-while-loop",
+    "href": "content/04_Repetition.html#the-while-loop",
+    "title": "Repetition",
+    "section": "The while Loop",
+    "text": "The while Loop\nwhile is a pre-test loop.\n\n\nSyntax:\n\nwhile( loop_condition )\n    statement_to_repeat;\n\n\nUsing a Block\n\nwhile( loop_condition ) {\n    statement_1;\n    […]\n    statement_n;\n}"
   },
   {
-    "objectID": "content/01_SP_Basics.html#our-development-toolchain",
-    "href": "content/01_SP_Basics.html#our-development-toolchain",
-    "title": "Structured Programming Basics",
-    "section": "Our Development Toolchain",
-    "text": "Our Development Toolchain\n\n\nUser’s Side: Editing, running and testing.\nServer Side: Stores files, provides compiler and other tools."
+    "objectID": "content/04_Repetition.html#the-for-loop",
+    "href": "content/04_Repetition.html#the-for-loop",
+    "title": "Repetition",
+    "section": "The for Loop",
+    "text": "The for Loop\nfor is a pre-test loop.\n\n\nSyntax:\n\nfor( initializer ; test ; update )\n     statement_to_repeat;\n\n\nUsing a Block\n\nfor( initializer ; test ; update ) {\n     statement_1;\n     […]\n     statement_n;\n}"
   },
   {
-    "objectID": "content/01_SP_Basics.html#some-linux-unix-terminal-basics",
-    "href": "content/01_SP_Basics.html#some-linux-unix-terminal-basics",
-    "title": "Structured Programming Basics",
-    "section": "Some Linux / UNIX terminal basics",
-    "text": "Some Linux / UNIX terminal basics\nhttps://towardsdatascience.com/basics-of-bash-for-beginners-92e53a4c117a\nhttps://www.educative.io/blog/bash-shell-command-cheat-sheet\nhttps://wiki.cs.astate.edu/index.php/Common_Linux_Commands (Requires VPN access.)"
+    "objectID": "content/04_Repetition.html#the-range-based-for-loop",
+    "href": "content/04_Repetition.html#the-range-based-for-loop",
+    "title": "Repetition",
+    "section": "The Range-Based for Loop",
+    "text": "The Range-Based for Loop\nC++11 added the ability for a for loop to iterate over all elements of a sequence container using a more concise syntax:\nSyntax\n\nfor( item_declaration : container )\n     statement_to_repeat;\n\n\nor more generally:\n\n\n\nfor( item_declaration : container ) {\n     statement_1;\n     […]\n     statement_n;\n}"
   },
   {
-    "objectID": "content/01_SP_Basics.html#practice-developing-and-compiling",
-    "href": "content/01_SP_Basics.html#practice-developing-and-compiling",
-    "title": "Structured Programming Basics",
-    "section": "Practice Developing and Compiling",
-    "text": "Practice Developing and Compiling\n#include &lt;iostream&gt;\n\nint main(){\n    std::cout &lt;&lt; \"Hello, World!\\n\";\n    return 0;\n}\nMake modifications to the program so that it will print out your name, favorite food, and favorite TV series.\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nStructured Programming Basics"
+    "objectID": "content/04_Repetition.html#the-do-while-loop",
+    "href": "content/04_Repetition.html#the-do-while-loop",
+    "title": "Repetition",
+    "section": "The do-while Loop",
+    "text": "The do-while Loop\ndo-while is a post-test loop.\n\nSyntax:\n\ndo {\n     statement_1;\n     […]\n     statement_n;\n} while( loop_condition );\n\n\n\nNotice the semicolon at the end!\nThe do-while is the only C++ control structure that ends with a semicolon."
   },
   {
-    "objectID": "content/03_Selection.html#making-decisions",
-    "href": "content/03_Selection.html#making-decisions",
-    "title": "Selection",
-    "section": "Making Decisions",
-    "text": "Making Decisions\nOne of the things computers are “good at” is determining the result of logic-based (Boolean) expressions, and using those results to make decisions quickly.\n\nChoose to whether or not to perform an operation.\n\nIf it is raining outside, take an umbrella.\n\nChoose between possible outcomes.\n\nIf you are taller than 38”, proceed to the ride, otherwise leave the line.\n\nSelect from a variety of possible choices.\n\nShow the user a menu with many options; respond to his/her choice appropriately."
+    "objectID": "content/04_Repetition.html#which-loop-to-choose",
+    "href": "content/04_Repetition.html#which-loop-to-choose",
+    "title": "Repetition",
+    "section": "Which Loop to Choose?",
+    "text": "Which Loop to Choose?\n\nwhile\n\npre-test loop\nwell suited to Event Controlled Loops\n\nfor\n\npre-test loop\nwell suited to Iterative Loops\nrange-based for is great for containers\n\ndo-while\n\npost-test loop\nwell suited to Event Controlled Loops used for validation\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nRepetition"
   },
   {
-    "objectID": "content/03_Selection.html#first-some-operators",
-    "href": "content/03_Selection.html#first-some-operators",
-    "title": "Selection",
-    "section": "First, some operators…",
-    "text": "First, some operators…\nBefore we can make decisions based on the answers to logic questions, we need to learn what kinds of questions we can ask, and how to phrase the questions.\n\nAll decisions must be based on logical tests that evaluate to a clear true or false result. (Boolean expressions)\nC++ provides a full set of relational operators for making comparisons, and logical operators for combining these comparisons into complex expressions."
+    "objectID": "content/06_Functions_Reference_Parameters.html#review-pass-by-value",
+    "href": "content/06_Functions_Reference_Parameters.html#review-pass-by-value",
+    "title": "Functions and Reference Parameters",
+    "section": "Review: Pass by Value",
+    "text": "Review: Pass by Value\n\nIn pass by value, the value of the actual parameter is copied into the formal parameter.\nPass by value is the default method by which data is moved into a function for primitive types, structured types and object types.\n\nChanges to the formal parameter cannot affect the actual parameter."
   },
   {
-    "objectID": "content/03_Selection.html#relational-operators",
-    "href": "content/03_Selection.html#relational-operators",
-    "title": "Selection",
-    "section": "Relational Operators",
-    "text": "Relational Operators\nRelational operators compare two values, and evaluate to a bool result based on the truthfulness of the comparison:\n\n\n\nOperator    Description     \n------------------------------------\n   &gt;        greater than    \n   &lt;        less than       \n   &gt;=       greater than or equal to\n   &lt;=       less than or equal to\n   ==       equal to \n   !=       not equal to"
+    "objectID": "content/06_Functions_Reference_Parameters.html#pass-by-reference",
+    "href": "content/06_Functions_Reference_Parameters.html#pass-by-reference",
+    "title": "Functions and Reference Parameters",
+    "section": "Pass by Reference",
+    "text": "Pass by Reference\n\nIn pass by reference, no copy is made.\nThe formal parameter simply becomes an alias for the actual parameter.\nAny changes made to the formal parameter inside the function will be reflected in the actual parameter following the call.\n\nDanger! You can damage the actual parameter!\n\nC++ arrays are passed by reference by default."
   },
   {
-    "objectID": "content/03_Selection.html#logical-operators",
-    "href": "content/03_Selection.html#logical-operators",
-    "title": "Selection",
-    "section": "Logical Operators",
-    "text": "Logical Operators\nLogical (or Boolean) operators are used to combine relational expressions to create a more complex test condition:\n\n\n\nOperator    Description     \n----------------------\n   &&       and\n   ||       or\n   !        not (unary)"
+    "objectID": "content/06_Functions_Reference_Parameters.html#passing-by-reference",
+    "href": "content/06_Functions_Reference_Parameters.html#passing-by-reference",
+    "title": "Functions and Reference Parameters",
+    "section": "Passing by Reference",
+    "text": "Passing by Reference\n\nA reference parameter is a formal parameter that is an alias for the actual parameter.\nCreated by adding the reference type modifier in the formal parameter declaration.\n\nThe reference type modifier is the ampersand (&):  void readXY( int& x, int& y );"
   },
   {
-    "objectID": "content/03_Selection.html#control-structures",
-    "href": "content/03_Selection.html#control-structures",
-    "title": "Selection",
-    "section": "Control Structures",
-    "text": "Control Structures\nA control structure is a special language construct that allows a programmer to change the “natural” top-down execution order of the statements in a program.\nAlthough control structures (such as the if) are not actually statements, they are often passively referred to as such. Most do not end with a semicolon."
+    "objectID": "content/06_Functions_Reference_Parameters.html#why",
+    "href": "content/06_Functions_Reference_Parameters.html#why",
+    "title": "Functions and Reference Parameters",
+    "section": "Why?",
+    "text": "Why?\n\nPassing by reference avoids making a copy.\n\nSmaller memory footprint.\n\nPassing by reference allows a function to make changes to the actual parameter (argument) directly.\n\nAllows the programmer to move multiple values out of a function.\nThis is a double-edged sword!\n\nYou can use const to prevent the argument from being modified.\n\n\n\n\n\nconst reference parameters\n\n\nThese can give you the “best of both worlds”. You can efficiently pass a parameter without the risk of the function changing it."
   },
   {
-    "objectID": "content/03_Selection.html#the-if-control-structure",
-    "href": "content/03_Selection.html#the-if-control-structure",
-    "title": "Selection",
-    "section": "The if Control Structure",
-    "text": "The if Control Structure\nThe most basic form of the C++ if control structure allows us to choose whether or not to take a specific action:\nSyntax\n\nif( conditional_expression )\n    statement_executed_if_true;\n\nExample\n// Assume x is an integer whose value was entered by the user.\n\nif( x &lt; 0 )   // Check for a negative value\n    std::cout &lt;&lt; \"You entered a negative value.\\n\";"
+    "objectID": "content/06_Functions_Reference_Parameters.html#function-calls",
+    "href": "content/06_Functions_Reference_Parameters.html#function-calls",
+    "title": "Functions and Reference Parameters",
+    "section": "Function Calls",
+    "text": "Function Calls\n\nNo additional syntax is needed to call a function that uses reference parameters.\n\nThis is part of the reason that there is a danger!\n\nYou cannot pass literals or constants by reference unless the formal parameter is a const reference."
   },
   {
-    "objectID": "content/03_Selection.html#using-a-block",
-    "href": "content/03_Selection.html#using-a-block",
-    "title": "Selection",
-    "section": "Using a Block",
-    "text": "Using a Block\nSince a single statement isn’t enough to solve most problems, the body of an if may also be a block:\n// Assume x is an integer whose value was entered by the user.\n\nif( x &lt; 0 )  { // Check for a negative value\n    std::cout &lt;&lt; \"You entered a negative value.\\n\";\n    x = 0;     // Ensure that x is non-negative.\n}\nRecall that a block just means a set of statements contained within curly braces."
+    "objectID": "content/06_Functions_Reference_Parameters.html#function-overloading",
+    "href": "content/06_Functions_Reference_Parameters.html#function-overloading",
+    "title": "Functions and Reference Parameters",
+    "section": "Function Overloading",
+    "text": "Function Overloading\n\nTwo (or more) functions that have the same name but different parameter lists are said to be overloaded.\nThe correct function to call is determined by the compiler by matching the number and type of arguments to the formal parameter lists.\n\nThis happens at compile-time.\n\nParameter lists must be unique for each function.\n\nAmbiguities will be flagged as errors."
   },
   {
-    "objectID": "content/03_Selection.html#choose-between-two-outcomes",
-    "href": "content/03_Selection.html#choose-between-two-outcomes",
-    "title": "Selection",
-    "section": "Choose Between Two Outcomes",
-    "text": "Choose Between Two Outcomes\nThe if-else construct allows us to choose between two outcomes:\nSyntax\n\nif( conditional_expression )\n    statement_executed_if_true;\nelse\n    statement_executed_if_false;\n\nExample\n// Assume x is an integer whose value was entered by the user.\n\nif( x &lt; 0 )   // Check for a negative value\n    std::cout &lt;&lt; \"You entered a negative value.\\n\";\nelse\n    std::cout &lt;&lt; x &lt;&lt; \" is non-negative.\\n\";"
+    "objectID": "content/08_Arrays.html#the-c-array",
+    "href": "content/08_Arrays.html#the-c-array",
+    "title": "Arrays",
+    "section": "The C++ Array",
+    "text": "The C++ Array\nAn array is a data structure consisting of multiple values of the same type stored contiguously in memory and accessed by an integer index representing the offset of the desired element from the beginning of the array.\nArrays allow programmers to store multiple related values of the same type.\n\nValues are stored sequentially in memory.\nDeclaration syntax:  type arrayname[ size_declarator ];\n\nExample Declarations\nint    a[100]; // Declares an array of 100 integers.\ndouble b[50];  // Declares an array of 50 doubles."
   },
   {
-    "objectID": "content/03_Selection.html#if-else-with-blocks",
-    "href": "content/03_Selection.html#if-else-with-blocks",
-    "title": "Selection",
-    "section": "if-else with Blocks",
-    "text": "if-else with Blocks\nThe body of both the if and else part may be blocks:\n// Assume x is an integer whose value was entered by the user,\n// and rt_x is a double that is already declared.\n\nif( x &lt; 0 )  { // Check for a negative value\n    std::cout &lt;&lt; \"You entered a negative value.\\n\";\n    x = 0;     // Ensure that x is non-negative.\n}\nelse {\n    std::cout &lt;&lt; \"Calculating root...\\n\";\n    rt_x = sqrt(x);\n}"
+    "objectID": "content/08_Arrays.html#array-memory-layout",
+    "href": "content/08_Arrays.html#array-memory-layout",
+    "title": "Arrays",
+    "section": "Array Memory Layout",
+    "text": "Array Memory Layout\nThe declaration:\nint tests[5];\nallocates the following memory:\n\nArray elements are contiguous boxes in memory.\nArrays are a reference type.\n\nThe array variable does not refer to the array as a whole, only to the location of the first element."
   },
   {
-    "objectID": "content/03_Selection.html#information",
-    "href": "content/03_Selection.html#information",
-    "title": "Selection",
-    "section": "Information",
-    "text": "Information\n\nThe else part is optional - only use it if you need it.\nIt is recommended to always use blocks for the body of the if and else.\n\nWill save time debugging if more code is added later.\n\nAlways indent the body of the if and else.\n\nIndentation shows ownership (for human programmer’s benefit)\n\nAny legal C++ statement may go in the body of the if/else, including nested if constructs."
+    "objectID": "content/08_Arrays.html#terminology",
+    "href": "content/08_Arrays.html#terminology",
+    "title": "Arrays",
+    "section": "Terminology",
+    "text": "Terminology\nIn the declaration:  int tests[5];\n\nint is the data type of all elements in the array.\ntests is the name of the array.\n5 (in [5]) is the size declarator. It specifies the number of elements.\n\nThe storage size of the array is \\(N \\times S\\) where \\(N\\) is the number of elements and \\(S\\) is the size (in bytes) of each element.\nThe size declarator must be either a literal or constant."
   },
   {
-    "objectID": "content/03_Selection.html#selecting-from-multiple-options",
-    "href": "content/03_Selection.html#selecting-from-multiple-options",
-    "title": "Selection",
-    "section": "Selecting from Multiple Options",
-    "text": "Selecting from Multiple Options\nA clever application of nesting ifs inside elses is commonly used to select from multiple (more than 2) options. It is often referred to as the if-else chain:\n// Assume door is an integer containing 1, 2, or 3:\n\nstd::cout &lt;&lt; \"Behind door #\" &lt;&lt; door &lt;&lt; \", you see a \";\nif(door == 1) {         // door #1\n    std::cout &lt;&lt; \"trip to Hawaii!\\n\";\n}\nelse if(door == 2) {    // door #2\n    std::cout &lt;&lt; \"new car!\\n\";\n}\nelse {                  // door #3\n    std::cout &lt;&lt; \"goat!\\n\";\n}"
+    "objectID": "content/08_Arrays.html#size-declarators",
+    "href": "content/08_Arrays.html#size-declarators",
+    "title": "Arrays",
+    "section": "Size Declarators",
+    "text": "Size Declarators\nNamed constants are often used as size declarators.\nconst int class_size = 5;\nint       tests[class_size];\n\nMakes maintenance easier if size needs to change.\nAvoids creating “magic numbers”.\n\nmagic numbers are literal numeric values that appear repeatedly for reasons that are non-obvious by the context."
   },
   {
-    "objectID": "content/03_Selection.html#final-details",
-    "href": "content/03_Selection.html#final-details",
-    "title": "Selection",
-    "section": "Final Details",
-    "text": "Final Details\n\nC++ control structures do not strictly require conditions to be type bool.\n\nAny non-zero value will be considered equivalent to “true”.\nAny value that compares “equal to” zero is considered equivalent to “false”.\n\nBeware of the assignment operator! See example below:\n\n// This will print \"8 is 4!\" ... Why?\nint x = 8;\n// [...]\nstd::cout &lt;&lt; x;\nif( x = 4 ) {\n    std::cout &lt;&lt; \" is 4!\";\n}\n\nx is assigned 8. So far so good…\n\n\nWe print x, which is 8 right now. Still OK.\n\n\nThe expression x = 4 assigns the value 4 to x. Then, it evaluates to 4, which is not zero, so the if considers it to be equivalent to true…\nNow we have a problem.\n\n\nWe print the string \" is 4!\", since the if condition was “true-like”.\nThe exact output is:\nx is 4!\n\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nSelection"
+    "objectID": "content/08_Arrays.html#indexes-and-elements",
+    "href": "content/08_Arrays.html#indexes-and-elements",
+    "title": "Arrays",
+    "section": "Indexes and Elements",
+    "text": "Indexes and Elements\nEach individual data item in an array is referred to as an array element.\n\n\n\n\nArray elements are contiguous boxes in memory.\n\n\nElements are identified by an integer index, starting from 0.\n\n\n\n\nArray elements are identified by integer indices."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#modular-programming",
-    "href": "content/05_Functions_Value_Parameters.html#modular-programming",
-    "title": "Functions and Value Parameters",
-    "section": "Modular Programming",
-    "text": "Modular Programming\n\nModular programming refers to the practice of designing a program so that it is broken up into small, manageable pieces called functions or modules.\nIn C++, a function is a collection of related statements that perform a single logical task, and may produce a value.\nIn Object-Oriented programming, a function that is part of an object (and defined in a class) is referred to as a method. For example, in cin.ignore(), the ignore() function is actually a method owned by the cin object."
+    "objectID": "content/08_Arrays.html#initial-values",
+    "href": "content/08_Arrays.html#initial-values",
+    "title": "Arrays",
+    "section": "Initial Values",
+    "text": "Initial Values\nArray elements start out uninitialized if their base types do (primitive types, for example).\n\n\n\nArray elements are uninitialized.\n\n\nUse the element’s index number and array index syntax to access individual elements:\ntests[0] = 88;\n\n\n\nArray with first value initialized."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#motivation",
-    "href": "content/05_Functions_Value_Parameters.html#motivation",
-    "title": "Functions and Value Parameters",
-    "section": "Motivation",
-    "text": "Motivation\n\nModular programs are easier to read and understand.\n\nEach logical step has its own function definition that is easily examined separately from other code.\n\nModular programs are easier to maintain.\n\nChanging an algorithm to fix or improve it involves simply re-writing the function where it is implemented.\n\nModular programs promote code re-use.\n\nIt is much easier to re-use a neatly packaged function than to try to find all the code in a monolithic program that performs a particular action."
+    "objectID": "content/08_Arrays.html#generate-indices-with-a-loop",
+    "href": "content/08_Arrays.html#generate-indices-with-a-loop",
+    "title": "Arrays",
+    "section": "Generate Indices with a Loop",
+    "text": "Generate Indices with a Loop\nThe array index may be specified by a literal, variable, or integer expression.\n\n\n// Assume \"tests\" has been initialized as shown previously...\n\n// Display tests from tests array to standard output:\nfor(int i = 0; i &lt; 5; i++){\n    std::cout &lt;&lt; tests[i] &lt;&lt; \"\\n\";\n}"
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#calls-and-definitions",
-    "href": "content/05_Functions_Value_Parameters.html#calls-and-definitions",
-    "title": "Functions and Value Parameters",
-    "section": "Calls and Definitions",
-    "text": "Calls and Definitions\n\n\n\nA function call is an expression that causes a function to be executed.\n\nEx: pow(3, 6)\nFunction calls may or may not evaluate to a result. If it does, this result is referred to as a return value.\n\n\n\nA function definition is the code that defines the actions taken by the function when it is called.\n\nThe main() function we have been writing is an example."
+    "objectID": "content/08_Arrays.html#uniform-initialization-syntax",
+    "href": "content/08_Arrays.html#uniform-initialization-syntax",
+    "title": "Arrays",
+    "section": "Uniform Initialization Syntax",
+    "text": "Uniform Initialization Syntax\nint tests[] { 88, 92, 76, 85, 63 };\nProduces: \n\nSize declarator is optional here, since the compiler can count.\nThis is only useful if you know all of the values that will be stored at the time you are writing the program.\n\nThat is rarely the case.\n\nLoops are generally the best option.\n\n\n\nThe old way to do this was called “array initializer syntax”. It looks similar, but uses the assignment operator:\nint tests[] = { 88, 92, 76, 85, 63 };\nWe prefer the modern version using Uniform Initialization Syntax."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#types-of-functions",
-    "href": "content/05_Functions_Value_Parameters.html#types-of-functions",
-    "title": "Functions and Value Parameters",
-    "section": "Types of Functions",
-    "text": "Types of Functions\nFunctions can be generally divided into two categories:\n\nFruitful functions (or value-producing functions) are functions whose purpose is to compute and return a value.\n\nMathematical functions are the best example of this.\n\nNon-fruitful functions (or void functions) are functions that do not directly return any result.\n\nThese functions usually produce some useful side-effect.\nAn example would be the close() method of a file stream.\nSome languages (and so some programmers) refer to these as procedures."
+    "objectID": "content/08_Arrays.html#array-assignment",
+    "href": "content/08_Arrays.html#array-assignment",
+    "title": "Arrays",
+    "section": "Array Assignment",
+    "text": "Array Assignment\n\n\n\n\n\n\n\n\nYou cannot directly assign one array to another:\ncopy_of_tests = tests;  // WILL NOT WORK!!!\n\n\n\n\n\nCorrect way - Assign element-by-element:\nfor(int i = 0; i &lt; 5; i++){\n    copy_of_tests[i] = tests[i];\n}"
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#calling-a-function",
-    "href": "content/05_Functions_Value_Parameters.html#calling-a-function",
-    "title": "Functions and Value Parameters",
-    "section": "Calling a Function",
-    "text": "Calling a Function\n\nAny expression can contain a function call.*\n\nNon-fruitful functions are often called as a stand-alone statement.\nFruitful functions are usually called as part of a larger expression.\n\nAny function can call any other function (including itself).\nLike a variable, a function must be “declared” before it is first called. The compiler must know:\n\nfunction name\nreturn type\nnumber and type of parameters required\n\n\n\n* Assuming the function’s return type is syntactically appropriate for the expression."
+    "objectID": "content/08_Arrays.html#arrays-as-parameters",
+    "href": "content/08_Arrays.html#arrays-as-parameters",
+    "title": "Arrays",
+    "section": "Arrays as Parameters",
+    "text": "Arrays as Parameters\n\n\nArrays may be passed to functions:\nvoid print_tests(int tests[], int size){\n    for(int i = 0; i &lt; size; i++){\n        std::cout &lt;&lt; tests[i] &lt;&lt; \"\\n\";\n    }\n}\n\n\nNotice that the array’s size must also be passed.\n\nArrays do not “know their own size”.\n\n\n\n\n\nNotice the empty size declarator in the formal parameter.\n\nThe first dimension does not require (or allow) a size declarator in a formal parameter declaration.\n\n\n\n\n\nArrays are always passed by reference."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#defining-a-function",
-    "href": "content/05_Functions_Value_Parameters.html#defining-a-function",
-    "title": "Functions and Value Parameters",
-    "section": "Defining a function",
-    "text": "Defining a function\nThe function definition must define the function’s interface, as well as the statements that must be executed to perform the function’s action.\n\nThe function header defines the function’s interface.\n\nname, return type, list of parameters\n\nThe function body is the block of statements that are executed when the function is called."
+    "objectID": "content/08_Arrays.html#d-arrays-key-points-summary",
+    "href": "content/08_Arrays.html#d-arrays-key-points-summary",
+    "title": "Arrays",
+    "section": "1-D Arrays Key Points Summary",
+    "text": "1-D Arrays Key Points Summary\n\nSize declarator must be a literal or constant.\nC++ provides no bounds-checking for indices.\nArray elements start out uninitialized if their base types do.\n\nThey are default constructed if the base type is a structured or object type.\n\nArrays cannot be directly assigned.\nArrays are always passed by reference to functions.\nArrays do not “know” their own size.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nArrays"
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#formal-and-actual-parameters",
-    "href": "content/05_Functions_Value_Parameters.html#formal-and-actual-parameters",
-    "title": "Functions and Value Parameters",
-    "section": "Formal and Actual Parameters",
-    "text": "Formal and Actual Parameters\n\nFormal parameters (or parameters): The temporary placeholders declared in the function header used to receive data provided by the caller.\nActual parameters (or arguments): The data values that are actually passed to the function during a call.\n\n\n\n\n\n\n\n\nUnfortunately, the terms “parameter” and “argument” are often used nearly interchangeably in conversation. This can lead to confusion. Please take care to make a distinction between the two."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Parallel Arrays",
+    "text": "Parallel Arrays\n\nParallel Arrays: Two or more arrays containing related data such that the elements at corresponding indexes are related.\n\nAll elements at index i the parallel arrays make up a single record i.\n\n\nExample\nconst int   N_CONTESTANTS = 5;\nstd::string names[N_CONTESTANTS];\nint         votes[N_CONTESTANTS];\n// Each contestant has a name and a vote count.\nfor(int i = 0; i &lt; N_CONTESTANTS; i++){\n    std::cout &lt;&lt; \"Contestant \" &lt;&lt; (i+1) &lt;&lt; \" name: \";\n    std::cin  &gt;&gt; names[i];\n    std::cout &lt;&lt; \"# of votes for \" &lt;&lt; names[i] &lt;&lt; \": \";\n    std::cin  &gt;&gt; votes[i];\n}"
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#data-flow-pass-by-value",
-    "href": "content/05_Functions_Value_Parameters.html#data-flow-pass-by-value",
-    "title": "Functions and Value Parameters",
-    "section": "Data Flow: Pass by Value",
-    "text": "Data Flow: Pass by Value\n\nIn pass by value, the value of the actual parameter is copied into the formal parameter.\nPass by value is the default method by which data is moved into a function for primitive types, structured types and object types.\n\nChanges to the formal parameter cannot affect the actual parameter."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays-1",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays-1",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Parallel Arrays",
+    "text": "Parallel Arrays\n\nSince the parallel arrays are separate, they may be of mixed type.\nAny operation that updates one of the parallel arrays must update all others to maintain the parallel property.\nAll arrays must be passed to functions separately (although one “size” parameter is usually sufficient)."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#returning-values-from-a-function",
-    "href": "content/05_Functions_Value_Parameters.html#returning-values-from-a-function",
-    "title": "Functions and Value Parameters",
-    "section": "Returning Values from a Function",
-    "text": "Returning Values from a Function\nFruitful functions produce a value by means of a return statement in the function definition.\n\nMust define the type of the return value in the function header.\nThe value returned must match the type specified in the header.\nWhen called, the function call is “replaced” by the value that it returns.\n\nWe often say the function evaluates to the resulting value."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#dimensional-arrays",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#dimensional-arrays",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "2-Dimensional Arrays",
+    "text": "2-Dimensional Arrays\nC++ allows multiple dimensions for arrays. This is achieved by simply adding additional size declarators:\nint votes[5][3]; // create array with 5 rows and 3 columns\n\nNotice that two sets of square brackets are needed for a 2-D array.\nSame rules apply for size declarators here. (constants or literals only)"
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#scope",
-    "href": "content/05_Functions_Value_Parameters.html#scope",
-    "title": "Functions and Value Parameters",
-    "section": "Scope",
-    "text": "Scope\n\n\n\n\n\n\nA function is a like a sealed box. The only way “in” is through the parameter list or global scope. The only direct way “out” is through a return.\n\n\n\n\nFormal parameters are locally-scoped within the function definition.\nVariables declared in a function will be locally-scoped within the function definition.\nGlobal variables declared before a function definition will be available in the function definition."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-logical",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-logical",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Layout (Logical)",
+    "text": "Layout (Logical)\nint votes[5][3]; // create array with 5 rows and 3 columns\n\n2-D Array of integers."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#static-local-variables",
-    "href": "content/05_Functions_Value_Parameters.html#static-local-variables",
-    "title": "Functions and Value Parameters",
-    "section": "static Local Variables",
-    "text": "static Local Variables\nA static variable displays a hybrid of local and global behavior. It is used to maintain state between calls.\nvoid foo(){\n    static int count = 1;\n    std::cout &lt;&lt; \"Call # \" &lt;&lt; count &lt;&lt; \"\\n\";\n    count++;\n}\n\nThe identifier is governed by local scoping rules\nThe value is governed by global scoping rules (it doesn’t go away between calls).\n\nProvides “sticky” values that are “remembered” between calls."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-physical",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#layout-physical",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Layout (Physical)",
+    "text": "Layout (Physical)\nint votes[5][3]; // create array with 5 rows and 3 columns\nIn reality, all physical memory is 1-dimensional.\nRows are sequential!\n\n2-D Array of integers."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#function-prototypes",
-    "href": "content/05_Functions_Value_Parameters.html#function-prototypes",
-    "title": "Functions and Value Parameters",
-    "section": "Function Prototypes",
-    "text": "Function Prototypes\nWe would prefer to define the main() function first… But the compiler requires that all other function interfaces be specified before they can be called.\n\nfunction prototype: A declaration statement for a function, providing the function’s interface but not a body.\nPlaced at the top of a program so that the function definition can be placed after main(), in any order."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#using-constants-for-size",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#using-constants-for-size",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Using Constants for Size",
+    "text": "Using Constants for Size\nAvoid “magic numbers” by using named constants for size declarators:\nconst int N_CONTESTANTS = 5; // # of contestants\nconst int N_DAYS        = 3; // contest length\n\n// [...]\n\nint votes[N_CONTESTANTS][N_DAYS]; // table of contest votes\n\n\n\n\n\n\nIt can sometimes be useful to allow these constants to be global in some cases (as we will see shortly)."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#default-parameter-values",
-    "href": "content/05_Functions_Value_Parameters.html#default-parameter-values",
-    "title": "Functions and Value Parameters",
-    "section": "Default Parameter Values",
-    "text": "Default Parameter Values\nOften a parameter will always be set to a common value; in these cases, a default value can be specified for the parameter. Doing so makes the parameter optional when calling the function.\n\nDefault parameters are specified in the function prototype (if used) or header by using initialization syntax:\n\ndouble divide( double dividend, double divisor = 2.0 );\n\nIf the actual parameter corresponding to the default parameter is omitted, the default value (2.0 in this case) will be used.\n\n\n\n\n\n\n\n\nThe default value must only be specified once. If you use a prototype, the default value is specified there. Only specify the default value in the header of the definition if no prototype is used. It is an error to specify it in both places.\nRemember it this way: Place the default value in the first place the compiler will encounter it."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#working-with-2-d-arrays",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#working-with-2-d-arrays",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Working with 2-D Arrays",
+    "text": "Working with 2-D Arrays\nAlmost all operations on 2-D arrays will require nested loops.\nThink “for each row, for each column, do some operation”.\n// Initialize \"votes\" array:\nfor(int i = 0; i &lt; N_CONTESTANTS; i++){\n    for(int j = 0; j &lt; N_DAYS; j++){\n        votes[i][j] = 0;\n    }\n}"
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#default-parameter-notes",
-    "href": "content/05_Functions_Value_Parameters.html#default-parameter-notes",
-    "title": "Functions and Value Parameters",
-    "section": "Default Parameter Notes",
-    "text": "Default Parameter Notes\n\nOrder is important!\n\nOnce you give one parameter a default, all parameters to its right must also have defaults.\nIn a call, once you omit an argument, you must also omit all arguments to its right.\n\nBest practice is to place the most often customized parameters further left, and the ones for which the default is usually OK to the right.\n\nThis isn’t a rule—it’s just a usability consideration."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "2-D Arrays as Formal Parameters",
+    "text": "2-D Arrays as Formal Parameters\nBecause of the reality of the physical (1-D) layout of the array, C++ requires that you specify a size declarator for every dimension except the first when listing arrays in formal parameter lists.\nvoid print_matrix( int matrix[][4], int n_rows ){\n    for(int i = 0; i &lt; n_rows; i++){\n        for(int j = 0; j &lt; 4; j++){\n            std::cout &lt;&lt; matrix[i][j] &lt;&lt; \"\\t\";\n        }\n        std::cout &lt;&lt; \"\\n\";\n    }\n}\nThe number of rows can still be a parameter, allowing it to vary."
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#documentation",
-    "href": "content/05_Functions_Value_Parameters.html#documentation",
-    "title": "Functions and Value Parameters",
-    "section": "Documentation",
-    "text": "Documentation\nAll function definitions require documentation headers describing the function, its parameters, and return value. See course Grading Guidelines.\n/**\n * Divide `dividend` by `divisor` and return the result.\n * @param   dividend    Dividend for the division \n * @param   divisor     Divisor for the division \n *                      (defaults to 2.0)\n * @return  The result of `dividend` / `divisor` is returned.\n */\ndouble divide( double dividend, double divisor ){\n    return dividend / divisor;\n}\n\nDoxygen-style documentation headers begin with /** (two stars, not just one).\nThis allows Doxygen to tell them apart from “regular” block comments.\n\n\nIf a function’s purpose is simple, just list it at the beginning of the documentation header.\nMore complex functions can use the @brief and @detailed tags to provide a short and complete description (see documentation guidelines).\n\n\nThe @param directive lets you document parameters. Give the name, then some space, then a short description of what the parameter is used for.\n\n\nThe @return directive lets you provide a short description of the value that will be returned.\n\n\n\nYou only need to create the parameter and return value documentation if your function has parameters / return value. A void function does not need a @return documentation; a function with no parameters does not need @param documentation.\nDon’t write documentation that doesn’t provide any information.\nDO try to write concise, high-quality documentation."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters-1",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#d-arrays-as-formal-parameters-1",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "2-D Arrays as Formal Parameters",
+    "text": "2-D Arrays as Formal Parameters\nAgain, to avoid “magic numbers”, we often set up global constants for the sizes of each dimension after the first:\nconst int N_COLS = 4; // GLOBAL constant, defined at top.\n\n// [ ... ]\n\nvoid print_matrix( int matrix[][N_COLS], int n_rows ){\n    for(int i = 0; i &lt; n_rows; i++){\n        for(int j = 0; j &lt; N_COLS; j++){\n            std::cout &lt;&lt; matrix[i][j] &lt;&lt; \"\\t\";\n        }\n        std::cout &lt;&lt; \"\\n\";\n    }\n}"
   },
   {
-    "objectID": "content/05_Functions_Value_Parameters.html#stubs-and-drivers",
-    "href": "content/05_Functions_Value_Parameters.html#stubs-and-drivers",
-    "title": "Functions and Value Parameters",
-    "section": "Stubs and Drivers",
-    "text": "Stubs and Drivers\n\nNo need to define full functionality immediately.\n\n\n\n\n\n\n\nCompile Early, Compile Often\n\n\nLet the compiler be your helper, not your adversary.\n\n\n\n\nA valid* function body only needs an appropriate return statement.\n\nThe rest can be left “empty” until later.\n\nfunction stub: an empty function used for incremental development.\ndriver: a function used only for testing other functions by calling them.\n\n\n* “Valid” doesn’t imply correct—it just means you are syntactically valid and can compile (and maybe even run) the program to see if there are other errors."
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Arrays of Higher Dimension",
+    "text": "Arrays of Higher Dimension\nThere is no (practical) limit on the number of dimensions an array can have.\nHigher-dimensional arrays require substantial memory resources.\n\n\nExample: 3-D Array\nconst int ROWS  = 8;\nconst int COLS  = 8;\nconst int MOVES = 100; // Number of replay steps\n// [...]\nint game_board_over_time[MOVES][ROWS][COLS];\nRequires 8 * 8 * 100 * sizeof(int) =&gt; 25600 bytes (25 KB)."
   },
   {
-    "objectID": "content/07_Recursion.html#recursion",
-    "href": "content/07_Recursion.html#recursion",
-    "title": "Recursion",
-    "section": "Recursion",
-    "text": "Recursion\nA function is said to be recursive if it contains a call to itself.\n\nRecursive definitions are often more “natural”.\n\nEmbodies a “divide-and-conquer” strategy\n\n\nvoid countDown(int timer) {   \n    if (timer == 0) {\n       std::cout &lt;&lt; \"Blastoff!\";\n    }\n    else{ \n        std::cout &lt;&lt; timer &lt;&lt; \"...\\n\";\n        countDown(timer-1); // recursive call\n    }\n}"
-  },
-  {
-    "objectID": "content/07_Recursion.html#purpose",
-    "href": "content/07_Recursion.html#purpose",
-    "title": "Recursion",
-    "section": "Purpose",
-    "text": "Purpose\n\nRecursion is an alternative way to achieve repetition.\n\nSometimes the iterative approach (loop) isn’t obvious.\n\nRecursion allows us to reduce a difficult problem to a simpler-to-solve problem.\n\nEventually, you hope to reach a (comparatively) trivial case (called the base case).\nRecursive calls stop when the base case is reached."
-  },
-  {
-    "objectID": "content/07_Recursion.html#two-steps-to-recursive-repetition",
-    "href": "content/07_Recursion.html#two-steps-to-recursive-repetition",
-    "title": "Recursion",
-    "section": "Two Steps to Recursive Repetition",
-    "text": "Two Steps to Recursive Repetition\nSimilarly to looping (the 3 parts of a loop), recursion has two important steps related to controlling the repetition:\n\n\n\nbase case: A trivial version of the problem in which the function can directly return a result (without calling itself).\n\n\n\n\nrecursive step: A version of the problem in which simplification through a recursive call is required. (No answer can be directly returned.)"
-  },
-  {
-    "objectID": "content/07_Recursion.html#creating-a-recursive-solution",
-    "href": "content/07_Recursion.html#creating-a-recursive-solution",
-    "title": "Recursion",
-    "section": "Creating a Recursive Solution",
-    "text": "Creating a Recursive Solution\n\nIdentify the base case and create a condition to test for it.\n\nthis becomes your base condition.\n\n\nIdentify a way to simplify the problem so that applying the simplification repeatedly will eventually lead to the base case.\n\nthis will become the recursive step."
-  },
-  {
-    "objectID": "content/07_Recursion.html#typical-approach",
-    "href": "content/07_Recursion.html#typical-approach",
-    "title": "Recursion",
-    "section": "Typical Approach",
-    "text": "Typical Approach\nWhen faced with a very complex problem, the following approach can be used to find a recursive solution:\n\nIdentify patterns in the problem.\n\nLook for a simpler problem that is still the same problem.\n\nThis shows how to simplify during the recursive step(s).\nSome work might be required when you simplify the problem. Pay attention to this “left-over work” - it is key to how the recursive solution performs its task.\n\n\nIdentify the simplest possible version of the (same) problem.\n\nThis is your base case; devise a base condition to test for it.\nIdeally, the base case is trivial, requiring little or no work to solve."
-  },
-  {
-    "objectID": "content/07_Recursion.html#the-base-condition",
-    "href": "content/07_Recursion.html#the-base-condition",
-    "title": "Recursion",
-    "section": "The Base Condition",
-    "text": "The Base Condition\n\nA recursive function must contain a test to determine if the base case has been reached.\nThe base condition can always return a result directly, without a recursive call.\nFailure of the recursive step to converge to the base case will result in infinite recursion, which is recursion that continues indefinitely.\n\nInfinite recursion will lead to a program and/or system crash."
-  },
-  {
-    "objectID": "content/07_Recursion.html#recursion-vs-iteration",
-    "href": "content/07_Recursion.html#recursion-vs-iteration",
-    "title": "Recursion",
-    "section": "Recursion VS Iteration",
-    "text": "Recursion VS Iteration\n\nFor every recursive function, an iterative solution can also be found.\n\nSometimes finding the iterative solution is difficult.\n\nRecursive solutions will always be less efficient.\nSometimes shorter development time is more important."
-  },
-  {
-    "objectID": "content/07_Recursion.html#towers-of-hanoi",
-    "href": "content/07_Recursion.html#towers-of-hanoi",
-    "title": "Recursion",
-    "section": "Towers of Hanoi",
-    "text": "Towers of Hanoi"
-  },
-  {
-    "objectID": "content/07_Recursion.html#towers-of-hanoi-1",
-    "href": "content/07_Recursion.html#towers-of-hanoi-1",
-    "title": "Recursion",
-    "section": "Towers of Hanoi",
-    "text": "Towers of Hanoi\n\n\nRules\n\n\n\n\nAll plates begin on one of three pegs, ordered from smallest to largest.\nThe goal is to move all plates to another of the pegs, likewise ordered.\nOnly one plate can be moved at a time.\nPlates not in motion must rest on one of the three pegs.\nA larger plate can never be placed atop a smaller plate."
-  },
-  {
-    "objectID": "content/07_Recursion.html#towers-of-hanoi-2",
-    "href": "content/07_Recursion.html#towers-of-hanoi-2",
-    "title": "Recursion",
-    "section": "Towers of Hanoi",
-    "text": "Towers of Hanoi\n\n\nAlgorithm\n\n\n\nMove \\(n-1\\) plates from start to temp (using goal for storage).\nMove the final plate from start to goal.\nMove \\(n-1\\) plates from temp to goal (using start for storage).\n\nSpoiler Alert!"
-  },
-  {
-    "objectID": "content/07_Recursion.html#towers-of-hanoi-3",
-    "href": "content/07_Recursion.html#towers-of-hanoi-3",
-    "title": "Recursion",
-    "section": "Towers of Hanoi",
-    "text": "Towers of Hanoi\n\n\nAlgorithm\n\n\n\nMove \\(n-1\\) plates from start to temp (using goal for storage).\nMove the final plate from start to goal.\nMove \\(n-1\\) plates from temp to goal (using start for storage).\n\nSpoiler Alert!\nvoid towers(int n, char start='A', char goal='C', char temp='B'){\n    if(n &gt; 0){\n        towers(n-1, start, temp, goal);\n        cout &lt;&lt; \"Move plate from \" &lt;&lt; start &lt;&lt; \" to \" &lt;&lt; goal &lt;&lt; \".\\n\";\n        towers(n-1, temp, goal, start);\n    }\n}"
-  },
-  {
-    "objectID": "content/09_C-Strings.html#ascii-encoding",
-    "href": "content/09_C-Strings.html#ascii-encoding",
-    "title": "Characters and C-Style Strings",
-    "section": "ASCII Encoding",
-    "text": "ASCII Encoding\nInternally, all characters must be encoded into a numeric representation.\nThere is more than one way to do it… But C++ (by default) type char uses the ASCII encoding scheme."
-  },
-  {
-    "objectID": "content/09_C-Strings.html#testing-characters",
-    "href": "content/09_C-Strings.html#testing-characters",
-    "title": "Characters and C-Style Strings",
-    "section": "Testing Characters",
-    "text": "Testing Characters\nThe following functions require the &lt;cctype&gt; header.\n\nCharacter testing functions."
-  },
-  {
-    "objectID": "content/09_C-Strings.html#case-conversion",
-    "href": "content/09_C-Strings.html#case-conversion",
-    "title": "Characters and C-Style Strings",
-    "section": "Case Conversion",
-    "text": "Case Conversion\nAlso require the &lt;cctype&gt; header.\nFunctions:\n\ntoupper(char c): if c is a lowercase letter, return uppercase equivalent; otherwise, return c unchanged.\ntolower(char c): if c is an uppercase letter, return lowercase equivalent; otherwise, return c unchanged."
-  },
-  {
-    "objectID": "content/09_C-Strings.html#case-conversion-example",
-    "href": "content/09_C-Strings.html#case-conversion-example",
-    "title": "Characters and C-Style Strings",
-    "section": "Case Conversion Example",
-    "text": "Case Conversion Example\nchar ch1 = 'H';\nchar ch2 = 'e';\nchar ch3 = '!';\n\ncout &lt;&lt; toupper(ch1);  // displays 'H’\ncout &lt;&lt; toupper(ch2);  // displays 'E’\ncout &lt;&lt; toupper(ch3);  // displays '!'\n\ncout &lt;&lt; tolower(ch1);  // displays 'h’\ncout &lt;&lt; tolower(ch2);  // displays 'e’\ncout &lt;&lt; tolower(ch3);  // displays '!'"
-  },
-  {
-    "objectID": "content/09_C-Strings.html#c-style-strings",
-    "href": "content/09_C-Strings.html#c-style-strings",
-    "title": "Characters and C-Style Strings",
-    "section": "C-Style Strings",
-    "text": "C-Style Strings\nC++ provides support for a low-level representation of strings of characters as they were defined in the C language: as null-terminated arrays of type char. We refer to strings of this type as C-Style strings, or simply C-Strings.\n\nString literals such as \"SMITH\" are internally represented as c-strings by default.\nInternally, they look like the following:\n\n\n“SMITH” as seen in memory."
-  },
-  {
-    "objectID": "content/09_C-Strings.html#c-string-variables",
-    "href": "content/09_C-Strings.html#c-string-variables",
-    "title": "Characters and C-Style Strings",
-    "section": "C-String Variables",
-    "text": "C-String Variables\nVariables that store c-strings are just arrays of type char:\nchar name[6] = \"SMITH\";\nProduces:\n\n\n\n“SMITH” as seen in a C-style string.\n\n\nThe trailing '\\0' is added automatically during the initialization.\n\nIMPORTANT: The assignment operator only works with c-strings in an initialization statement! You cannot assign c-strings using =!"
-  },
-  {
-    "objectID": "content/09_C-Strings.html#c-string-input",
-    "href": "content/09_C-Strings.html#c-string-input",
-    "title": "Characters and C-Style Strings",
-    "section": "C-String Input",
-    "text": "C-String Input\n\nYou can enter c-strings using &gt;&gt; (stream extraction).\n\nInput is whitespace-terminated.\nNo bounds-checking is performed!\n\nFor input containing whitespace, and to control the amount of input, use cin.getline():\n\nSyntax:  std::cin.getline(c_str_name,max_size)\nconst int SIZE = 64;\nchar      name[SIZE];\nstd::cout &lt;&lt; \"Enter your name: \";\nstd::cin.getline(name, SIZE);"
-  },
-  {
-    "objectID": "content/09_C-Strings.html#what-c-strings-cannot-do",
-    "href": "content/09_C-Strings.html#what-c-strings-cannot-do",
-    "title": "Characters and C-Style Strings",
-    "section": "What C-Strings Cannot Do",
-    "text": "What C-Strings Cannot Do\n\nYou cannot directly assign c-strings.\n\nWhy? They are arrays!\n\nYou cannot directly compare c-strings.\n\nWhy? They are arrays!"
-  },
-  {
-    "objectID": "content/09_C-Strings.html#c-string-functions",
-    "href": "content/09_C-Strings.html#c-string-functions",
-    "title": "Characters and C-Style Strings",
-    "section": "C-String Functions",
-    "text": "C-String Functions\nThe &lt;cstring&gt; header file contains functions that are useful for dealing with c-style strings:\n    Function                    Description \n    ------------------------------------------------------------\n    strlen(str)                 Returns length of `str`\n\n    strcmp(str1, str2)          Compares `str1` to `str2` \n                                \"alphabetically\"\n\n    strcpy(dst, src)            Copies `src` into `dst` \n                                (no bounds check) \n\n    strncpy(dst, src, count)    Copies up to `count` \n                                characters from `src` into \n                                `dst` (no null-terminator added)\n\n    strcat(dst, src)            Concatenates `src` to the end \n                                of `dst` (no bounds check)  \n\n    strncat(dst, src, count)    Concatenates up to `count` \n                                characters from `src` to end \n                                of `dst`, plus the \n                                null-terminator"
-  },
-  {
-    "objectID": "content/09_C-Strings.html#conversion-functions",
-    "href": "content/09_C-Strings.html#conversion-functions",
-    "title": "Characters and C-Style Strings",
-    "section": "Conversion Functions",
-    "text": "Conversion Functions\nRequire &lt;cstdlib&gt;\n    Function                   Description \n    ------------------------------------------------------------\n    atoi(str)                   Converts c-string to an int\n    atol(str)                   Converts c-string to a long\n    atof(str)                   Converts c-string to a double"
+    "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension-1",
+    "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension-1",
+    "title": "Parallel and Multi-Dimensional Arrays",
+    "section": "Arrays of Higher Dimension",
+    "text": "Arrays of Higher Dimension\nOperations just require more nested loops (one for each dimension):\n\n\nfor(int move = 0; move &lt; MOVES; move++){\n    for(int r = 0; r &lt; ROWS; r++){\n        for(int c = 0; c &lt; COLUMNS; c++){\n            cout &lt;&lt; game_board_over_time[move][r][c]\n                 &lt;&lt; \"\\t\";\n        }\n        cout &lt;&lt; \"\\n\";\n    }\n}\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nParallel and Multi-Dimensional Arrays"
   }
 ]

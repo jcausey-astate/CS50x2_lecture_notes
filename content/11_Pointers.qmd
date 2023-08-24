@@ -1,24 +1,29 @@
 ---
-title: "11: Pointers"
-date: 2021-01-13T12:00:00-05:00
-draft: true
----
-# Pointers
-## Gaddis Ch. 9
-
+number: 11
+title: "Pointers"
+textbook: "Gaddis (Ch. 9)"
+# draft: true
 ---
 
 ## Addresses and Data
 
 Every variable in a program is stored at a unique memory address.
 
+\
+
 The unary **`&`** is the **_address operator_**; the address operator retrieves the address of its operand:
 
-``` cpp
+\
+
+``` cpp {code-line-numbers="3"}
 int x = 42;
 // Print out the address at which x is stored:
 std::cout << &x << "\n";
 ```
+
+::: {.aside}
+We don't usually care about the address ourselves, and our users wouldn't care either.  So, printing it to the screen is only useful as a learning exercise.  But what we **do** care about is what we can do with the address of a variable.  Read on...
+:::
 
 ---
 
@@ -30,7 +35,7 @@ std::cout << &x << "\n";
 
 **Example: (pointer to an `int`)**
 
-``` cpp
+``` cpp {code-line-numbers="3"}
 int x = 75;    // just a normal integer
 // [...]
 int* xPtr;     // declare a pointer to an int
@@ -41,12 +46,12 @@ xPtr = &x;     // point xPtr to x
 
 ## Why?
 
-* Low-level access.
+* **Low-level access.**
     - To provide explicit, direct access (no copy) in a similar way to what we do implicity with _pass by reference_.
-* Iteration
+* **Iteration**
     - Pointer math makes array manipulation through pointers very convenient.
     - Advanced data structures may only allow iteration through pointers.
-* Dynamic Memory Allocation
+* **Dynamic Memory Allocation**
     - Memory generated at runtime is only identified to the program through its address.
 
 ---
@@ -77,7 +82,7 @@ xPtr = &x;     // point xPtr to x
 
 The following figure illustrates the _physical view_ of what a pointer actually looks like in memory.  The pointer `xPtr` contains the _address_ of the location where `x` is stored:
 
-![Physical view of pointer in memory.](../images/shared/pointer_in_memory.svg)
+![Physical view of pointer in memory.](images/shared/pointer_in_memory.svg)
 
 ---
 
@@ -92,7 +97,7 @@ xPtr = &x;     // point xPtr to x
 
 The following figure illustrates the _logical view_ of what a pointer conceptually does.  The pointer `xPtr` _points to_ the the variable `x`:
 
-![Conceptual view of pointer in memory.](../images/shared/pointer_in_memory_conceptual.svg)
+![Conceptual view of pointer in memory.](images/shared/pointer_in_memory_conceptual.svg)
 
 ---
 
@@ -105,9 +110,9 @@ int* xPtr;     // declare a pointer to an int
 xPtr = &x;     // point xPtr to x
 ```
 
-![Physical view of pointer in memory.](../images/shared/pointer_in_memory.svg)
+![Physical view of pointer in memory.](images/shared/pointer_in_memory.svg)
 
-![Conceptual view of pointer in memory.](../images/shared/pointer_in_memory_conceptual.svg)
+![Conceptual view of pointer in memory.](images/shared/pointer_in_memory_conceptual.svg)
 
 ---
 
@@ -266,7 +271,7 @@ int* begin = a;     // "left" edge of array
 int* end   = a + 5; // "right" edge of array
 ```
 
-![Pointers to range in array `a`.](../images/shared/range_iterators_in_array.svg)
+![Pointers to range in array `a`.](images/shared/range_iterators_in_array.svg)
 
 Notice that `end` physically points to the first memory address _beyond_ the end of the
 array.  For this reason, i**t would be an error to try to dereference `end`**.  We must be
@@ -284,10 +289,16 @@ int* first = a + 1;  // "left" edge of subrange
 int* last  = a + 4;  // "right" edge of subrange
 ```
 
-![Pointers to range in array `a`.](../images/shared/range_iterators_to_subrange.svg)
+![Pointers to range in array `a`.](images/shared/range_iterators_to_subrange.svg)
 
 In this usage, we are bracketing a _subrange_ of values within the larger array.  Again,
 notice that the `last` pointer points to a value outside that subrange - it should not
 be dereferenced.
 
 **This pattern also applies to _iterators_ to array-like data structures.**
+
+---
+
+## {data-background-color="black" visibility="hidden"} 
+<!-- KLUDGE to make the image on the last slide render at full size.
+     No idea why it makes a difference ...  -->

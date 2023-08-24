@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/10_Parallel_and_Multi-Dimensional_Arrays.html</loc>
-    <lastmod>2023-08-22T23:59:02.026Z</lastmod>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/11_Pointers.html</loc>
+    <lastmod>2023-08-24T16:51:39.334Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/08_Arrays.html</loc>
-    <lastmod>2023-08-22T23:40:09.212Z</lastmod>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/09_C-Strings.html</loc>
+    <lastmod>2023-08-22T23:54:20.396Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/06_Functions_Reference_Parameters.html</loc>
-    <lastmod>2023-08-22T23:40:20.698Z</lastmod>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/07_Recursion.html</loc>
+    <lastmod>2023-08-22T23:40:15.345Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/04_Repetition.html</loc>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/05_Functions_Value_Parameters.html</loc>
+    <lastmod>2023-08-22T15:00:38.192Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/03_Selection.html</loc>
     <lastmod>2023-08-22T15:00:38.191Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/02_Variables_Operators_Errors.html</loc>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/01_SP_Basics.html</loc>
     <lastmod>2023-08-22T15:00:38.191Z</lastmod>
   </url>
   <url>
@@ -25,23 +29,23 @@
     <lastmod>2023-08-22T23:38:49.505Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/01_SP_Basics.html</loc>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/02_Variables_Operators_Errors.html</loc>
     <lastmod>2023-08-22T15:00:38.191Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/03_Selection.html</loc>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/04_Repetition.html</loc>
     <lastmod>2023-08-22T15:00:38.191Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/05_Functions_Value_Parameters.html</loc>
-    <lastmod>2023-08-22T15:00:38.192Z</lastmod>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/06_Functions_Reference_Parameters.html</loc>
+    <lastmod>2023-08-22T23:40:20.698Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/07_Recursion.html</loc>
-    <lastmod>2023-08-22T23:40:15.345Z</lastmod>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/08_Arrays.html</loc>
+    <lastmod>2023-08-22T23:40:09.212Z</lastmod>
   </url>
   <url>
-    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/09_C-Strings.html</loc>
-    <lastmod>2023-08-22T23:54:20.396Z</lastmod>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/10_Parallel_and_Multi-Dimensional_Arrays.html</loc>
+    <lastmod>2023-08-22T23:59:02.026Z</lastmod>
   </url>
 </urlset>
