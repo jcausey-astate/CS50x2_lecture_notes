@@ -515,7 +515,7 @@
     "href": "index.html",
     "title": "CS 50x2 Slides",
     "section": "",
-    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\n\n\n\nSTL and Vectors\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/02_Variables_Operators_Errors.html#variables-operators-common-errors",
@@ -957,5 +957,131 @@
     "title": "Parallel and Multi-Dimensional Arrays",
     "section": "Arrays of Higher Dimension",
     "text": "Arrays of Higher Dimension\nOperations just require more nested loops (one for each dimension):\n\n\nfor(int move = 0; move &lt; MOVES; move++){\n    for(int r = 0; r &lt; ROWS; r++){\n        for(int c = 0; c &lt; COLUMNS; c++){\n            cout &lt;&lt; game_board_over_time[move][r][c]\n                 &lt;&lt; \"\\t\";\n        }\n        cout &lt;&lt; \"\\n\";\n    }\n}\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nParallel and Multi-Dimensional Arrays"
+  },
+  {
+    "objectID": "content/12_vector.html#the-c-standard-template-library",
+    "href": "content/12_vector.html#the-c-standard-template-library",
+    "title": "STL and Vectors",
+    "section": "The C++ Standard Template Library",
+    "text": "The C++ Standard Template Library\n\nWhat is STL?\nWhy use STL?\nOverview of STL Features and Concepts\nContainers\nIterators\nAlgorithms\nReferences for more information on STL"
+  },
+  {
+    "objectID": "content/12_vector.html#the-standard-template-library",
+    "href": "content/12_vector.html#the-standard-template-library",
+    "title": "STL and Vectors",
+    "section": "The Standard Template Library",
+    "text": "The Standard Template Library\n\nWhat is STL?\nWhy use STL?\nOverview of STL Features and Concepts\nContainers\nIterators\nAlgorithms\nReferences for more information on STL"
+  },
+  {
+    "objectID": "content/12_vector.html#what-is-stl",
+    "href": "content/12_vector.html#what-is-stl",
+    "title": "STL and Vectors",
+    "section": "What is STL?",
+    "text": "What is STL?\n\n“The Standard Template Library provides a set of well structured generic C++ components that work together in a seamless way.”\n- Alexander Stepanov & Meng Lee, The Standard Template Library\n\n\nDesigned to provide a common, familiar interface.\nDesigned to meet specific performance/complexity goals.\nKeeps programmers from “re-inventing the wheel”."
+  },
+  {
+    "objectID": "content/12_vector.html#why-use-stl",
+    "href": "content/12_vector.html#why-use-stl",
+    "title": "STL and Vectors",
+    "section": "Why Use STL?",
+    "text": "Why Use STL?\n\nReuse: “Write less, do more”\n\nSTL hides complex, error-prone details.\nAllows you to focus on the problem.\nType-safe compatibility between components.\n\nFlexibility\n\nIterators decouple algorithms from containers.\nUnanticipated combinations easily supported.\n\nEfficiency\n\nTemplates avoid virtual function overhead.\nStrict attention to time and/or space complexity of algorithms."
+  },
+  {
+    "objectID": "content/12_vector.html#stl-features-and-concepts",
+    "href": "content/12_vector.html#stl-features-and-concepts",
+    "title": "STL and Vectors",
+    "section": "STL Features and Concepts",
+    "text": "STL Features and Concepts\n\nContainers\n\nSequence: vector, list, deque\nAssociative: set, multiset, map, multimap\n\nAdapters: stack, queue, priority_queue\nIterators\n\nUsed to access elements in containers\nInput, output, forward, bidirectional, & random access\nEach container declares a trait for the type of iterator it provides\n\nGeneric Algorithms\n\nMutating, non-mutating, sorting, numeric"
+  },
+  {
+    "objectID": "content/12_vector.html#stl-containers",
+    "href": "content/12_vector.html#stl-containers",
+    "title": "STL and Vectors",
+    "section": "STL Containers",
+    "text": "STL Containers\n\nSTL Containers are Abstract Data Types (ADTs)\nAll containers are parameterized by the type(s) they contain.\nAll declare traits :\n\ne.g. iterator, const_iterator, value_type, etc."
+  },
+  {
+    "objectID": "content/12_vector.html#container-types",
+    "href": "content/12_vector.html#container-types",
+    "title": "STL and Vectors",
+    "section": "Container Types",
+    "text": "Container Types\n\nSequence\n\nProvide efficient linear access to data\nElement order is not related to value\nThink arrays and linked lists\n\nAssociative\n\nProvide efficient access to data stored as a key/value pair\nKeys can be ordered by operator&lt;\nImplemented as balanced binary trees\n\nAdapters\n\nProvide alternative ways to access sequence and associative containers\ne.g. stack, queue, priority_queue"
+  },
+  {
+    "objectID": "content/12_vector.html#sequence-container-stdvector",
+    "href": "content/12_vector.html#sequence-container-stdvector",
+    "title": "STL and Vectors",
+    "section": "Sequence Container: std::vector",
+    "text": "Sequence Container: std::vector\nSTL’s std::vector is essentially a dynamic array.\n\nGrows and shrinks at the end.\nSupports push_back() and pop_back() sequential (end) access.\nOptimized for random access using array index operator. ([])\nSupports random access iterators\n\nAn iterator is an object used to access individual items in a container, or to move (i.e. “iterate”) through the container.\n\nvectors know their own size!"
+  },
+  {
+    "objectID": "content/12_vector.html#stdvector-example",
+    "href": "content/12_vector.html#stdvector-example",
+    "title": "STL and Vectors",
+    "section": "std::vector Example",
+    "text": "std::vector Example\nusing std::vector;\nusing std::string;\n// [...]\nvector&lt;string&gt; v;                   // create vector\n\nv.push_back(\"The number is 10\");    // push some values\nv.push_back(\"The number is 20\");    // into it...\nv.push_back(\"The number is 30\");\n\ncout &lt;&lt; \"Loop by index:\" &lt;&lt; endl;\n\nfor(vector&lt;string&gt;::size_type i=0;  // size type is unsigned\n    i &lt; v.size();                   // vector knows its size!\n    i++){                           // print values by\n   cout &lt;&lt; v[i] &lt;&lt; endl;            // indexing the\n}                                   // vector like an array\n\n\n\n\n\n\nHINT: Use v.at(i) instead of v[i] to enable bounds-checking!"
+  },
+  {
+    "objectID": "content/12_vector.html#stdvector-example-2",
+    "href": "content/12_vector.html#stdvector-example-2",
+    "title": "STL and Vectors",
+    "section": "std::vector Example 2",
+    "text": "std::vector Example 2\nstd::vector&lt;std::string&gt; v;         // create vector\n\nv.push_back(\"The number is 10\");    // push some values\nv.push_back(\"The number is 20\");    // into it...\nv.push_back(\"The number is 30\");\n\ncout &lt;&lt; \"Loop by range using iterators:\" &lt;&lt; endl;\n\nfor(auto it = v.begin();            // iterator\n    it != v.end();                  // runs from begin()\n    ++it)                           // to end(), one at a time\n{                                   // and is\n   cout &lt;&lt; *it &lt;&lt; endl;             // dereferenced to\n}                                   // print the value\n\nThink of an iterator as an arrow pointing to a value in the container.\nThe dereference operator (*) is used to “follow the arrow” to get the value an iterator is pointing to."
+  },
+  {
+    "objectID": "content/12_vector.html#stdvector-example-3",
+    "href": "content/12_vector.html#stdvector-example-3",
+    "title": "STL and Vectors",
+    "section": "std::vector Example 3",
+    "text": "std::vector Example 3\nstd::vector&lt;std::string&gt; v;         // create vector\n\nv.push_back(\"The number is 10\");    // push some values\nv.push_back(\"The number is 20\");    // into it...\nv.push_back(\"The number is 30\");\n\ncout &lt;&lt; \"Loop by range-based `for`:\" &lt;&lt; endl;\n\nfor( auto item : v ){               // for each item in v\n   cout &lt;&lt; item &lt;&lt; endl;            // print the item\n}"
+  },
+  {
+    "objectID": "content/12_vector.html#stdvector-example-4",
+    "href": "content/12_vector.html#stdvector-example-4",
+    "title": "STL and Vectors",
+    "section": "std::vector Example 4",
+    "text": "std::vector Example 4\nauto v = std::vector&lt;std::string&gt;{3};    // pre-size to 3\n\nint  n = 1;\nfor( auto& item : v){                    // each item (by ref.)\n    item = std::string{\"The number is \"} // generate message\n         + std::to_string(10 * n++);     // and store in item\n}\n\ncout &lt;&lt; \"Loop by range:\" &lt;&lt; endl;\n\nfor( auto item : v ){                    // for each item\n   cout &lt;&lt; item &lt;&lt; endl;                 // print the item\n}\nstd::to_string() is contained in &lt;std::string&gt;"
+  },
+  {
+    "objectID": "content/12_vector.html#iterators",
+    "href": "content/12_vector.html#iterators",
+    "title": "STL and Vectors",
+    "section": "Iterators",
+    "text": "Iterators\nIterators are a generalization of pointers.\n\nUsed to access information in containers, regardless of the internal layout\nFour types:\n\nForward (uses ++)\nBidirectional (uses ++ and --)\nRandom-access (behave like normal pointers)\nInput (can be used with input streams)\nOutput (can be used with output streams)"
+  },
+  {
+    "objectID": "content/12_vector.html#iterator-example",
+    "href": "content/12_vector.html#iterator-example",
+    "title": "STL and Vectors",
+    "section": "Iterator Example",
+    "text": "Iterator Example\nstd::vector&lt;int&gt; scores{3};  // pre-size to 3\n\nscores.at(0) = 88;\nscores.at(1) = 92;\nscores.at(2) = 76;\n\nfor(auto it = scores.begin(); it != grade_list.end(); it++){\n    std::cout &lt;&lt; *it &lt;&lt; '\\t';\n}\nstd::cout &lt;&lt; '\\n';"
+  },
+  {
+    "objectID": "content/12_vector.html#vector-modifiers",
+    "href": "content/12_vector.html#vector-modifiers",
+    "title": "STL and Vectors",
+    "section": "vector Modifiers",
+    "text": "vector Modifiers\nThese are algorithms that vectors know how to apply to themselves:\nclear()     : clears all contents (empties the container)\nerase()     : erase one element, given an iterator to it\ninsert()    : inserts element before a position (given an iterator)\npop_back()  : removes the last element\npush_back() : adds a new element at the end\nresize()    : changes the size of the vector\n[...] There are others not shown here"
+  },
+  {
+    "objectID": "content/12_vector.html#passing-vectors-to-functions",
+    "href": "content/12_vector.html#passing-vectors-to-functions",
+    "title": "STL and Vectors",
+    "section": "Passing vectors to functions",
+    "text": "Passing vectors to functions\nstd::vector is an object type, meaning that it is passed by value by default! This means that even though it “looks and feels” like an array, the argument-to-parameter communication mechanism is quite different.\nLet’s look at an example…"
+  },
+  {
+    "objectID": "content/12_vector.html#stl",
+    "href": "content/12_vector.html#stl",
+    "title": "STL and Vectors",
+    "section": "STL",
+    "text": "STL"
+  },
+  {
+    "objectID": "content/12_vector.html#stdvector-example-background-color-aliceblue",
+    "href": "content/12_vector.html#stdvector-example-background-color-aliceblue",
+    "title": "STL and Vectors",
+    "section": "std::vector Example {background-color-“aliceblue”}",
+    "text": "std::vector Example {background-color-“aliceblue”}\nusing std::vector;\nusing std::string;\n// [...]\nvector&lt;string&gt; v;                   // create vector\n\nv.push_back(\"The number is 10\");    // push some values\nv.push_back(\"The number is 20\");    // into it...\nv.push_back(\"The number is 30\");\n\ncout &lt;&lt; \"Loop by index:\" &lt;&lt; endl;\n\nfor(vector&lt;string&gt;::size_type i=0;  // size type is unsigned\n    i &lt; v.size();                   // vector knows its size!\n    i++){                           // print values by            \n   cout &lt;&lt; v[i] &lt;&lt; endl;            // indexing the\n}                                   // vector like an array\nHINT: Use v.at(i) instead of v[i] to enable bounds-checking!"
   }
 ]

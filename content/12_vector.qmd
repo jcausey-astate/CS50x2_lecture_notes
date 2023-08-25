@@ -1,23 +1,15 @@
 ---
-title: "12: Vectors"
-date: 2021-01-13T12:00:00-05:00
-draft: true
+number: 12
+title: "STL and Vectors"
+textbook: "Gaddis (Ch. 16.5)"
+# draft: true
 ---
 
-
-# STL and `std::vector`
-## Gaddis Ch. 16.5
-
-
----
-background-image: url(../images/STL/circle_template.jpg)
-
-#   STL
-##  The C++ <br> Standard Template Library
+#   STL {background-image="images/STL/circle_template.jpg"}
 
 ---
 
-## The Standard Template Library
+##  The C++ Standard Template Library
 
 - What is STL?
 - Why use STL?
@@ -31,13 +23,13 @@ background-image: url(../images/STL/circle_template.jpg)
 
 ##  What is STL?
 
-> "The Standard Template Library provides a set of well structured 
+> "The Standard Template Library provides a set of well structured
 > generic C++ components that work together in a seamless way."
 >
-> \- Alexander Stepanov & Meng Lee,  
->    _The Standard Template Library_ 
+> \- Alexander Stepanov & Meng Lee,
+>    _The Standard Template Library_
 
-- Designed to provide a common, familiar interface. 
+- Designed to provide a common, familiar interface.
 - Designed to meet specific performance/complexity goals.
 - Keeps programmers from "re-inventing the wheel".
 
@@ -86,11 +78,11 @@ background-image: url(../images/STL/circle_template.jpg)
 
 ## Container Types
 
-- Sequence 
+- Sequence
     - Provide efficient linear access to data
     - Element order is not related to value
     - Think arrays and linked lists
-- Associative     
+- Associative
     - Provide efficient access to data stored as a key/value pair
     - Keys can be ordered by `operator<`
     - Implemented as balanced binary trees
@@ -101,8 +93,7 @@ background-image: url(../images/STL/circle_template.jpg)
 
 ---
 
-
-## Sequence Container: `std::vector`
+# Sequence Container: `std::vector`
 
 STL’s `std::vector` is essentially a dynamic array.
 
@@ -110,16 +101,14 @@ STL’s `std::vector` is essentially a dynamic array.
 - Supports `push_back()` and `pop_back()` sequential (end) access.
 - Optimized for random access using array index operator. (`[]`)
 - Supports random access iterators
-    - An _iterator_ is an object used to access individual items in a container, or to move (i.e. "iterate") through the container. 
+    - An _iterator_ is an object used to access individual items in a container, or to move (i.e. "iterate") through the container.
 - `vector`s know their own size!
 
 
 ---
 
-<!-- .slide: data-transition="linear", data-background="aliceblue" -->
-
 ## `std::vector` Example
-    
+
 ``` cpp
 using std::vector;
 using std::string;
@@ -134,21 +123,19 @@ cout << "Loop by index:" << endl;
 
 for(vector<string>::size_type i=0;  // size type is unsigned
     i < v.size();                   // vector knows its size!
-    i++){                           // print values by            
+    i++){                           // print values by
    cout << v[i] << endl;            // indexing the
 }                                   // vector like an array
 ```
 
+::: {.callout-tip appearance="minimal"}
 **HINT:** Use `v.at(i)` instead of `v[i]` to enable bounds-checking!
+:::
 
 ---
 
-<!-- .slide: data-transition="linear", data-background="aliceblue" -->
-
-<small style="font-size: 90%;">
-
 ## `std::vector` Example 2
-    
+
 ``` cpp
 std::vector<std::string> v;         // create vector
 
@@ -161,22 +148,18 @@ cout << "Loop by range using iterators:" << endl;
 for(auto it = v.begin();            // iterator
     it != v.end();                  // runs from begin()
     ++it)                           // to end(), one at a time
-{                                   // and is 
+{                                   // and is
    cout << *it << endl;             // dereferenced to
 }                                   // print the value
 ```
-
-</small>
 
 * Think of an iterator as an arrow pointing to a value in the container.
 * The _dereference operator_ (`*`) is used to "follow the arrow" to get the value an iterator is pointing to.
 
 ---
 
-<!-- .slide: data-transition="linear", data-background="aliceblue" -->
-
 ## `std::vector` Example 3
-    
+
 ``` cpp
 std::vector<std::string> v;         // create vector
 
@@ -188,15 +171,13 @@ cout << "Loop by range-based `for`:" << endl;
 
 for( auto item : v ){               // for each item in v
    cout << item << endl;            // print the item
-}                                                  
+}
 ```
 
 ---
 
-<!-- .slide: data-transition="linear", data-background="aliceblue" -->
-
 ## `std::vector` Example 4
-    
+
 ``` cpp
 auto v = std::vector<std::string>{3};    // pre-size to 3
 
@@ -210,7 +191,7 @@ cout << "Loop by range:" << endl;
 
 for( auto item : v ){                    // for each item
    cout << item << endl;                 // print the item
-}                              
+}
 ```
 
 _`std::to_string()` is contained in `<std::string>`_
@@ -230,13 +211,10 @@ Iterators are a generalization of pointers.
     - Input (can be used with input streams)
     - Output (can be used with output streams)
 
-
 ---
 
 
 ## Iterator Example
-
-<!-- .slide: data-transition="none", data-background="aliceblue" -->
 
 ``` cpp
 std::vector<int> scores{3};  // pre-size to 3
@@ -257,13 +235,13 @@ std::cout << '\n';
 
 These are algorithms that `vector`s know how to apply to themselves:
 
-    clear()     : clears all contents (empties the container)          
-    erase()     : erase one element, given an iterator to it          
-    insert()    : inserts element before a position (given an iterator)         
-    pop_back()  : removes the last element              
-    push_back() : adds a new element at the end             
-    resize()    : changes the size of the vector          
-    [...] There are others not shown
+    clear()     : clears all contents (empties the container)
+    erase()     : erase one element, given an iterator to it
+    insert()    : inserts element before a position (given an iterator)
+    pop_back()  : removes the last element
+    push_back() : adds a new element at the end
+    resize()    : changes the size of the vector
+    [...] There are others not shown here
 
 ---
 
@@ -297,8 +275,8 @@ v.erase(target);  // erases the third element
 for( auto value : v ){
     std::cout << value << '\t';
 }
-// 4  8  16  23  42  108
 ```
+    4  8  16  23  42  108
 
 ---
 
@@ -317,8 +295,8 @@ v.insert(pos, 15); // insert before 16
 for( auto value : v ){
     std::cout << value << '\t';
 }
-// 4  8  15  16  23  42  108
 ```
+    4  8  15  16  23  42  108
 
 ---
 
@@ -334,8 +312,9 @@ v.pop_back();
 for( auto value : v ){
     std::cout << value << '\t';
 }
-// 4  8  15  16  23  42
+
 ```
+    4  8  15  16  23  42
 
 ---
 
@@ -351,8 +330,9 @@ v.push_back(108);
 for( auto value : v ){
     std::cout << value << '\t';
 }
-// 4  8  15  16  23  42  108
 ```
+    4  8  15  16  23  42  108
+
 
 ---
 
@@ -371,8 +351,8 @@ for(int i = 0; i < v.size(); ++i){
 for( auto value : v ){
     std::cout << value << '\t';
 }
-// 1  2  3  4  5  6  7  8  9  10
 ```
+    1  2  3  4  5  6  7  8  9  10
 
 ---
 
@@ -406,7 +386,7 @@ int main(){
 
     print_all(a, 5);
     print_all(v);
-    
+
     return 0;
 }
 ```
@@ -457,7 +437,7 @@ int main(){
 
     print_all(a, 5);
     print_all(v);
-    
+
     return 0;
 }
 ```
@@ -473,7 +453,7 @@ Here is the output:
 1	2	3	4	5
 ```
 
-Is that what you expected?    
+Is that what you expected?
 
 The `std::vector` is _passed by value_, so the elements are not modified in the caller (`main`) even though they were modified in the `example` function.
 
@@ -516,4 +496,6 @@ void print_all(const std::vector<int>& v){
 2	4	6	8	10
 ```
 
+::: {.callout-tip appearance="minimal"}
 **Hint:** Prefer to pass a `vector` (or other STL container) by `const` reference (or plain reference if you want to modify it in the function) unless there is a "good reason" to make a copy.
+:::
