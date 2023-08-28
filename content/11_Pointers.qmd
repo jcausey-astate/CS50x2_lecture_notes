@@ -127,8 +127,7 @@ Knowing the address of where something is stored gives a programmer low-level ac
 
 ---
 
-<!-- .slide: data-background="aliceblue" -->
-**Example: Using a Pointer**
+### Example: Using a Pointer
 
 ``` cpp
  int x = 75;                  // just a normal integer

@@ -1,15 +1,12 @@
 ---
-title: "13: Input and Output"
-date: 2021-01-13T12:00:00-05:00
-draft: true
+number: 13
+title: "Input and Output"
+textbook: "Gaddis (Ch. 3, 5.11)"
+# draft: true
 ---
 
-# Input and Output
-## Gaddis Ch. 3, 5.11
-
----
-
-## Review: Output Streams
+# Streams
+[**Review: Output Streams**]{.larger}
 
 Recall that a _stream_ is a one-way flow of information.  Output streams are streams that take information from the running program and move it to the outside world.
 
@@ -31,11 +28,11 @@ Recall that a _stream_ is a one-way flow of information.  Output streams are str
     std::cout << "From variable: " << x << "\n";
 ```
 
-<br />
+\
 
 The code shown above will produce the following output:
 
-<br />
+\
 
     Integer: 42, Real number: 3.14
     From variable: 88
@@ -65,9 +62,14 @@ An **_input stream_** brings information from the outside world _into_ the runni
     cin  >> rainfall;
 ```
 
+\
+
 The code shown above will read the temperature from the user (entered at the keyboard) as an integer value, storing it in `temperature`.  
 Then, the rainfall total is read as a Real-number value and stored in `rainfall`.   
+
+::: {.fragment data-code-focus="3,5"}
 **Notice** the necessity of _prompting_ the user before reading the values!
+:::
 
 ---
 
@@ -90,7 +92,79 @@ You have used the _standard input_ stream and the _standard output_ stream; C++ 
 
 ---
 
-## Files
+## `getline()`
+
+In order to read a `std::string` that may contain whitespace from an input stream, the `getline()` function should be used:
+
+``` cpp
+std::string full_name;
+
+std::cout << "Enter your first and last name: ";
+getline(std::cin, full_name);
+
+std::cout << "Hello, " << full_name << "!\n";
+```
+
+`getline()` will read an entire line of user input (until the `<ENTER>` key is pressed).  The _syntax_ is: <br />
+<tt>getline( <i>source_stream</i> , <i>destination_string</i> )</tt> <br />
+
+<small>Where _`source stream`_ is any input stream and _`destination string`_ is a variable of type `std::string`.</small>
+
+---
+
+### Mixing `getline()` and `>>`
+
+::: {.callout-caution appearance="minimal"}
+**Problem:** Stream extraction ( `>>` ) leaves the delimiting whitespace in the input stream (usually a `'\n'`).
+:::
+
+* `getline()` is _newline-delimited_ by default.  
+    - It will appear that the `getline()` was "skipped".  Actually, it saw the `'\n'` and stopped.
+* To remove the `'\n'`, use: <br /> _`stream_name`_`.ignore()`
+    - Ex:  `std::cin.ignore();`
+    - Better: 
+``` cpp
+std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+```
+
+---
+
+## `cin.get()`
+
+The `cin.get()` function can be used to read a single character, which may be whitespace, from the standard input stream.
+
+**Example**
+
+``` cpp
+char ch;
+// Reading the <ENTER> key with `>>` alone is difficult... 
+// So, use `get()`:
+std::cout << "Press <ENTER> to continue...";
+std::cin.get(ch); // Will wait for the enter key, then continue.
+```
+
+The `get()` function also works with other streams, in general the syntax is: <br />
+_`stream`_`.get(`*`character_var`*`)`
+
+
+---
+
+## In case the stream goes bad...
+
+If you are working with an open stream, several things can cause the stream to no longer be in the "good" state.  The most common are:
+
+* Failure of stream extraction operator to convert the apparent type it "sees" to the type requested on its right-hand side.
+* End-of-file (or end of stream) encountered during a "read" operation.
+
+In these cases you may be able to remedy the problem -- perhaps by removing unwanted characters from the stream with `ignore()`, or by moving the stream position "earlier" in the stream in case of EOF -- then resume operation.  The `clear()` method will help with this by clearing the stream's _state flags_:
+
+``` cpp
+std::cin.clear();  // clears the state flags on `cin`
+```
+
+<!--- --- --->
+
+# Files
 
 In the most general sense, a _file_ is an abstraction by which the operating system allows us to store a blob of related data on a device other than main memory.
 
@@ -130,8 +204,8 @@ double value1 = 4.4, value2 = 3.8;
 std::ofstream fout;             // declare a stream
 fout.open("my_input_file.txt"); // open the file
 fout << value1                  // insert values
-       << "\n"                    // separated on
-       << value2;                 // two lines
+     << "\n"                    // separated on
+     << value2;                 // two lines
 fout.close();                   // close the file
 ```
 
@@ -183,17 +257,21 @@ fp.open("my_file.txt", std::ios::out|std::ios::app); // append mode
 ---
 
 ## Open Modes
- 
-<pre>
-Open Mode       Description
----------------------------------------------
-std:: ios::in   Input mode (file must exist)
-std:: ios::out  Output mode (file will be 
-                created, if it exists, it will
-                be overwritten)
-std:: ios::app  Use with ios::out to append 
-                to the end of an output file.
-</pre>
+
+\
+
+::: {.noborder}
+    Open Mode       Description
+    ---------------------------------------------
+    std:: ios::in   Input mode (file must exist)
+    std:: ios::out  Output mode (file will be 
+                    created, if it exists, it will
+                    be overwritten)
+    std:: ios::app  Use with ios::out to append 
+                    to the end of an output file.
+:::
+
+\
 
 There are other modes as well, but they are not of interest to us at this time.
 
@@ -227,28 +305,27 @@ if( !fin.is_open() ){
 }
 ```
 
----
-
-### Formatted Output
+# Formatted Output
 
 The `<iomanip>` library supplies a set of _stream manipulators_ that may be used in conjunction with the stream insertion operator to format output.  
-<pre style='font-size: .85em'>
-Manipulator            Description
------------------------------------------------------------
-std::setw( w )         set the width of the next item in the
-                       stream to 'w'
-std::setprecision( p ) set number of significant figures in 
-                       output to 'p', or set the number of 
-                       decimal places to 'p' if used in 
-                       conjunction with 'fixed'.
-std::fixed             set numeric output to fixed-point 
-                       mode (use the number of decimal 
-                       places specified by 'setprecision'; 
-                       no scientific notation)
-std::showpoint         always show the decimal point 
-std::left              set alignment to left-aligned
-std::right             set alignment to right-aligned
-</pre>
+
+::: { .noscroll .noborder}
+    Manipulator            Description
+    -----------------------------------------------------------
+    std::setw( w )         set the width of the next item in the
+                        stream to 'w'
+    std::setprecision( p ) set number of significant figures in 
+                        output to 'p', or set the number of 
+                        decimal places to 'p' if used in 
+                        conjunction with 'fixed'.
+    std::fixed             set numeric output to fixed-point 
+                        mode (use the number of decimal 
+                        places specified by 'setprecision'; 
+                        no scientific notation)
+    std::showpoint         always show the decimal point 
+    std::left              set alignment to left-aligned
+    std::right             set alignment to right-aligned
+:::
 
 ---
 
@@ -263,77 +340,7 @@ std::cout << "100 items:   $"
           << std::setw(8) << 100 * price << "\n";
 ```
 Output:
-<pre>
-Total price: $   33.33
-100 items:   $ 3333.33
-</pre>
 
----
+    Total price: $   33.33
+    100 items:   $ 3333.33
 
-## `getline()`
-
-In order to read a `std::string` that may contain whitespace from an input stream, the `getline()` function should be used:
-
-``` cpp
-std::string full_name;
-
-std::cout << "Enter your first and last name: ";
-getline(std::cin, full_name);
-
-std::cout << "Hello, " << full_name << "!\n";
-```
-
-`getline()` will read an entire line of user input (until the `<ENTER>` key is pressed).  The _syntax_ is: <br />
-<tt>getline( <i>source_stream</i> , <i>destination_string</i> )</tt> <br />
-
-<small>Where _`source stream`_ is any input stream and _`destination string`_ is a variable of type `std::string`.</small>
-
----
-
-### Mixing `getline()` and `>>`
-
-**Problem:** Stream extraction ( `>>` ) leaves the delimiting whitespace in the input stream (usually a `'\n'`).
-
-* `getline()` is _newline-delimited_ by default.  
-    - It will appear that the `getline()` was "skipped".  Actually, it saw the `'\n'` and stopped.
-* To remove the `'\n'`, use: <br /> _`stream_name`_`.ignore()`
-    - Ex:  `std::cin.ignore();`
-    - Better:<small style="font-size: 87%;">
- ``` cpp
- std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
- ```
-</small>
-
----
-
-## `cin.get()`
-
-The `cin.get()` function can be used to read a single character, which may be whitespace, from the standard input stream.
-
-**Example**
-``` cpp
-char ch;
-// Reading the <ENTER> key with `>>` alone is difficult... 
-// So, use `get()`:
-std::cout << "Press <ENTER> to continue...";
-std::cin.get(ch); // Will wait for the enter key, then continue.
-```
-
-The `get()` function also works with other streams, in general the syntax is: <br />
-_`stream`_`.get(`*`character_var`*`)`
-
-
----
-
-## In case the stream goes bad...
-
-If you are working with an open stream, several things can cause the stream to no longer be in the "good" state.  The most common are:
-
-* Failure of stream extraction operator to convert the apparent type it "sees" to the type requested on its right-hand side.
-* End-of-file (or end of stream) encountered during a "read" operation.
-
-In these cases you may be able to remedy the problem -- perhaps by removing unwanted characters from the stream with `ignore()`, or by moving the stream position "earlier" in the stream in case of EOF -- then resume operation.  The `clear()` method will help with this by clearing the stream's _state flags_:
-
-``` cpp
-std::cin.clear();  // clears the state flags on `cin`
-```

@@ -110,8 +110,10 @@ There are 92 keywords in C++ (as of the C++20 standard).  C++98 had 74.
 ---
 
 ### C++ Keywords
+
 [(1): Extended operator synonyms\ (2): New in C++20]{.small}
 
+::: {.small-70 .noscroll .noborder}
      alignas         constinit (2)   int                 static_assert
      alignof         continue        long                static_cast  
      and (1)         co_await (2)    mutable             struct       
@@ -135,6 +137,7 @@ There are 92 keywords in C++ (as of the C++20 standard).  C++98 had 74.
      const_cast      goto            signed              while        
      consteval (2)   if              sizeof              xor (1)      
      constexpr       inline          static              xor_eq (1)   
+:::
 
 ::: {.footnotes}
 Ref: <https://learn.microsoft.com/en-us/cpp/cpp/keywords-cpp?view=msvc-170#standard-c-keywords>

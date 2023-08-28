@@ -515,7 +515,7 @@
     "href": "index.html",
     "title": "CS 50x2 Slides",
     "section": "",
-    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\n\n\n\nSTL and Vectors\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\n\n\n\nSTL and Vectors\n\n\n\n\n\n\n\n\n\n\nInput and Output\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/02_Variables_Operators_Errors.html#variables-operators-common-errors",
@@ -1083,5 +1083,117 @@
     "title": "STL and Vectors",
     "section": "std::vector Example {background-color-“aliceblue”}",
     "text": "std::vector Example {background-color-“aliceblue”}\nusing std::vector;\nusing std::string;\n// [...]\nvector&lt;string&gt; v;                   // create vector\n\nv.push_back(\"The number is 10\");    // push some values\nv.push_back(\"The number is 20\");    // into it...\nv.push_back(\"The number is 30\");\n\ncout &lt;&lt; \"Loop by index:\" &lt;&lt; endl;\n\nfor(vector&lt;string&gt;::size_type i=0;  // size type is unsigned\n    i &lt; v.size();                   // vector knows its size!\n    i++){                           // print values by            \n   cout &lt;&lt; v[i] &lt;&lt; endl;            // indexing the\n}                                   // vector like an array\nHINT: Use v.at(i) instead of v[i] to enable bounds-checking!"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#review-output-streams",
+    "href": "content/13_Input_and_Output.html#review-output-streams",
+    "title": "Input and Output",
+    "section": "Review: Output Streams",
+    "text": "Review: Output Streams\nRecall that a stream is a one-way flow of information. Output streams are streams that take information from the running program and move it to the outside world.\n\nThe standard output stream is named std::cout\n\nOften shortened to cout (add using std::cout; after the include)\nWe will refer to the standard output stream as cout in discussion.\n\nOutput streams work together with the stream insertion operator ( &lt;&lt; ).\n\n&lt;&lt; inserts items into the output stream listed to its left.\n(Almost) any type of data can be inserted into an output stream."
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#input-streams",
+    "href": "content/13_Input_and_Output.html#input-streams",
+    "title": "Input and Output",
+    "section": "Input Streams",
+    "text": "Input Streams\nAn input stream brings information from the outside world into the running program.\n\nThe standard input stream is named std::cin\n\nOften shortened to cin (add using std::cin after the include)\nWe will refer to the standard input stream as cin in discussion\n\nInput streams work together with the stream extraction operator ( &gt;&gt; ).\n\n&gt;&gt; extracts data from the stream (on its left) and stores the data in the variable on its right."
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#stream-extraction---details",
+    "href": "content/13_Input_and_Output.html#stream-extraction---details",
+    "title": "Input and Output",
+    "section": "Stream Extraction - details",
+    "text": "Stream Extraction - details\n\nThe type of the variable that is intended to store the data must match the type of the data being extracted.\n\nThe extraction may fail if this is not the case.\n\nThe stream extraction operator is whitespace delimited, meaning that it will read the next series of non-whitespace characters in the input stream and convert those to the required type.\n\nThis means you cannot read anything containing spaces using &gt;&gt;."
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#streams-plural",
+    "href": "content/13_Input_and_Output.html#streams-plural",
+    "title": "Input and Output",
+    "section": "Streams: Plural",
+    "text": "Streams: Plural\nYou have used the standard input stream and the standard output stream; C++ provides the opportunity to create other streams as well.\n\nAll input streams support the same operations.\nAll output streams support the same operations.\nSo, if you can use std::cin and std::cout, you can use any stream!"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#files-1",
+    "href": "content/13_Input_and_Output.html#files-1",
+    "title": "Input and Output",
+    "section": "Files",
+    "text": "Files\nTo work with files, start by including the &lt;fstream&gt; library.\n\nWe will be working with files in text mode, meaning the contents are encoded as plain ASCII text.\n\nOur interaction with the file will “feel” exactly the same as interacting with a user/screen.\n\nYou can also access a file in pure binary mode as well. (later)"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#file-operations",
+    "href": "content/13_Input_and_Output.html#file-operations",
+    "title": "Input and Output",
+    "section": "File Operations",
+    "text": "File Operations\nWorking with files will involve the following series of high-level steps:\n\nOpen the file\n\nThis associates the file name with the physical file, and initializes a stream to/from the file.\n\nRead or write data from/to the file\n\nThe file can be read/written as a stream - just like any other stream.\n\nClose the file\n\nThis allows the Operating System to release resources associated with the file, and flush buffers."
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#output-file-streams",
+    "href": "content/13_Input_and_Output.html#output-file-streams",
+    "title": "Input and Output",
+    "section": "Output File Streams",
+    "text": "Output File Streams\n\nCreate a std::ofstream file stream object and use it to open and manipulate the file:\n\ndouble value1 = 4.4, value2 = 3.8;       \nstd::ofstream fout;             // declare a stream\nfout.open(\"my_input_file.txt\"); // open the file\nfout &lt;&lt; value1                  // insert values\n     &lt;&lt; \"\\n\"                    // separated on\n     &lt;&lt; value2;                 // two lines\nfout.close();                   // close the file"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#input-file-streams",
+    "href": "content/13_Input_and_Output.html#input-file-streams",
+    "title": "Input and Output",
+    "section": "Input File Streams",
+    "text": "Input File Streams\n\nCreate a std::ifstream file stream object and use it to open and manipulate the file:\n\ndouble value1, value2;        \nstd::ifstream fin;             // declare a stream\nfin.open(\"my_input_file.txt\"); // open the file\nfin &gt;&gt; value1 &gt;&gt; value2;       // read some values\nfin.close();                   // close the file\nstd::cout &lt;&lt; value1 &lt;&lt; \", \" &lt;&lt; value2 &lt;&lt; \"\\n\";"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#alternatives",
+    "href": "content/13_Input_and_Output.html#alternatives",
+    "title": "Input and Output",
+    "section": "Alternatives",
+    "text": "Alternatives\n\nYou can also declare and open in one line:\n\nstd::ifstream fin(\"my_input_file.txt\");\n\nA std::fstream object can do either input or output – or both, but you must specify the open mode:\n\nstd::fstream fp;"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#open-modes",
+    "href": "content/13_Input_and_Output.html#open-modes",
+    "title": "Input and Output",
+    "section": "Open Modes",
+    "text": "Open Modes\n\n\n\nOpen Mode       Description\n---------------------------------------------\nstd:: ios::in   Input mode (file must exist)\nstd:: ios::out  Output mode (file will be \n                created, if it exists, it will\n                be overwritten)\nstd:: ios::app  Use with ios::out to append \n                to the end of an output file.\n\n\n\nThere are other modes as well, but they are not of interest to us at this time."
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#file-open-failures",
+    "href": "content/13_Input_and_Output.html#file-open-failures",
+    "title": "Input and Output",
+    "section": "File Open Failures",
+    "text": "File Open Failures\n\nOpening an input file may fail if:\n\nThe file does not exist, or is misnamed.\nYou do not have permission to read the file.\nAll OS file resources are in use.\n\nOpening an output file may fail if:\n\nThe file exists, but you do not have permission to overwrite it.\nYou do not have permission to write in the destination directory.\nAll OS file resources are in use."
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#testing-for-file-open-success",
+    "href": "content/13_Input_and_Output.html#testing-for-file-open-success",
+    "title": "Input and Output",
+    "section": "Testing for File Open Success",
+    "text": "Testing for File Open Success\nFile streams support a function called is_open() that will return true if the file was opened successfully. This function can be used to check for a failure to open.\nWe will cover if statements soon, but here is a sneak peek:\nstd::ifstream fin;                         \nfin.open(\"my_input_file.txt\");             \nif( !fin.is_open() ){                      \n    std::cout &lt;&lt; \"Failed to open file.\\n\"; \n    exit(1);                               \n}"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#getline",
+    "href": "content/13_Input_and_Output.html#getline",
+    "title": "Input and Output",
+    "section": "getline()",
+    "text": "getline()\nIn order to read a std::string that may contain whitespace from an input stream, the getline() function should be used:\nstd::string full_name;\n\nstd::cout &lt;&lt; \"Enter your first and last name: \";\ngetline(std::cin, full_name);\n\nstd::cout &lt;&lt; \"Hello, \" &lt;&lt; full_name &lt;&lt; \"!\\n\";\ngetline() will read an entire line of user input (until the &lt;ENTER&gt; key is pressed). The syntax is:  getline( source_stream , destination_string ) \nWhere source stream is any input stream and destination string is a variable of type std::string."
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#cin.get",
+    "href": "content/13_Input_and_Output.html#cin.get",
+    "title": "Input and Output",
+    "section": "cin.get()",
+    "text": "cin.get()\nThe cin.get() function can be used to read a single character, which may be whitespace, from the standard input stream.\nExample\nchar ch;\n// Reading the &lt;ENTER&gt; key with `&gt;&gt;` alone is difficult... \n// So, use `get()`:\nstd::cout &lt;&lt; \"Press &lt;ENTER&gt; to continue...\";\nstd::cin.get(ch); // Will wait for the enter key, then continue.\nThe get() function also works with other streams, in general the syntax is:  stream.get(character_var)"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#in-case-the-stream-goes-bad",
+    "href": "content/13_Input_and_Output.html#in-case-the-stream-goes-bad",
+    "title": "Input and Output",
+    "section": "In case the stream goes bad…",
+    "text": "In case the stream goes bad…\nIf you are working with an open stream, several things can cause the stream to no longer be in the “good” state. The most common are:\n\nFailure of stream extraction operator to convert the apparent type it “sees” to the type requested on its right-hand side.\nEnd-of-file (or end of stream) encountered during a “read” operation.\n\nIn these cases you may be able to remedy the problem – perhaps by removing unwanted characters from the stream with ignore(), or by moving the stream position “earlier” in the stream in case of EOF – then resume operation. The clear() method will help with this by clearing the stream’s state flags:\nstd::cin.clear();  // clears the state flags on `cin`"
+  },
+  {
+    "objectID": "content/13_Input_and_Output.html#streams",
+    "href": "content/13_Input_and_Output.html#streams",
+    "title": "Input and Output",
+    "section": "Streams",
+    "text": "Streams"
   }
 ]

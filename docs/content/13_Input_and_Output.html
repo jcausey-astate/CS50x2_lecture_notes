@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Variables, Operators, Common Errors</title>
+  <title>CS 50x2 Slides - Input and Output</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -411,481 +411,319 @@
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">Variables, Operators, Common Errors</h1>
-  <p class="textbook"><span class="textbook-intro">📚 </span>Gaddis (Ch. 2)</p>
+  <h1 class="title">Input and Output</h1>
+  <p class="textbook"><span class="textbook-intro">📚 </span>Gaddis (Ch. 3, 5.11)</p>
 </section>
-<section id="variables-operators-common-errors" class="slide level2">
-<h2>Variables, Operators, Common Errors</h2>
-<h3 id="gaddis-ch.-2">Gaddis (Ch. 2)</h3>
-</section>
-<section id="the-big-picture" class="slide level2">
-<h2>The Big Picture</h2>
-<p>All programming languages must provide certain functionality:</p>
+<section>
+<section id="streams" class="title-slide slide level1 center">
+<h1>Streams</h1>
+<p><span class="larger"><strong>Review: Output Streams</strong></span></p>
+<p>Recall that a <em>stream</em> is a one-way flow of information. Output streams are streams that take information from the running program and move it to the outside world.</p>
 <ul>
-<li>Temporary data storage and retrieval.
+<li>The standard output stream is named <code>std::cout</code>
 <ul>
-<li>How is data stored in RAM?</li>
+<li>Often shortened to <code>cout</code> (add <code>using std::cout;</code> after the include)</li>
+<li>We will refer to the standard output stream as <code>cout</code> in discussion.</li>
 </ul></li>
-<li>Operators that can be applied to the data.
+<li>Output streams work together with the <em>stream insertion operator</em> ( <code>&lt;&lt;</code> ).
 <ul>
-<li>What can I do to manipulate the data, and how?</li>
-</ul></li>
-<li>Input and Output
-<ul>
-<li>Where does the data come from, and how?</li>
-</ul></li>
-<li>Control Structures
-<ul>
-<li>Conditional execution and repetition.</li>
+<li><code>&lt;&lt;</code> inserts items into the output stream listed to its left.</li>
+<li>(Almost) any type of data can be inserted into an output stream.</li>
 </ul></li>
 </ul>
-<p>To learn a language, figure these things out first.</p>
-</section>
-<section id="where-to-start" class="slide level2">
-<h2>Where to Start?</h2>
-<p>We will begin by examining the way C++ provides for temporary data storage and retrieval.</p>
-<ul>
-<li>All non-trivial programs act by storing and manipulating data.</li>
-<li>Data is stored in the computer’s RAM (Random Access Memory) while a program is using it.
-<ul>
-<li>RAM is <em>volatile</em> (it only works when the machine is on).</li>
-</ul></li>
-</ul>
-</section>
-<section id="computer-memory" class="slide level2">
-<h2>Computer Memory</h2>
-<ul>
-<li>The smallest division of memory is a <em>byte</em> (8-bits). All storage sizes are specified in bytes.
-<ul>
-<li>Each byte of memory has a number associated with it, called its <em>memory address</em>.</li>
-<li>This address is what the machine uses to refer to data.</li>
-</ul></li>
-<li><em>Physical memory</em> is limited, but <em>logical memory</em> (our view of memory as programmers) is usually treated as if it were unlimited.</li>
-</ul>
-
-<img data-src="images/Variables_Operators_Errors/Logical_Memory.svg" class="r-stretch quarto-figure-center"><p class="caption">Logical Memory</p></section>
-<section id="variables" class="slide level2">
-<h2>Variables</h2>
-<p>Since humans are not good with numbers (like memory addresses), C++ provides us with a way to use names instead.</p>
-<ul>
-<li><strong>variable</strong> : a named storage location for data within a program</li>
-<li><strong>variable declaration</strong> : a statement used to tell the compiler that a new variable should be created; contains the identifier and type for the variable.</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">int</span> temperature<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The declaration statement above tells the compiler to create a variable named <code>temperature</code> that will store an integer.</p>
-</section>
-<section id="data-types" class="slide level2">
-<h2>Data Types</h2>
-<p>So what types of things can we store in variables?</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Type Name</th>
-<th>Description</th>
-<th style="text-align: center;">Literal Examples</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong><code>int</code></strong></td>
-<td>Integer value</td>
-<td style="text-align: center;"><code>96</code>, <code>-33</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong><code>double</code></strong></td>
-<td>Floating-point (Real number) value</td>
-<td style="text-align: center;"><code>3.14</code>, <code>-1.0</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong><code>char</code></strong></td>
-<td>Single character</td>
-<td style="text-align: center;"><code>'a'</code>, <code>'4'</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><strong><code>bool</code></strong></td>
-<td>Boolean value</td>
-<td style="text-align: center;"><code>true</code>, <code>false</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><strong><code>std::string</code></strong></td>
-<td>String value</td>
-<td style="text-align: center;"><code>"Hello"</code>, <code>"ocean"</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="identifiers" class="slide level2">
-<h2>Identifiers</h2>
-<p>An <em>identifier</em> is a name that is permissible for variables, classes, functions, etc. in C++.</p>
-<p><br></p>
-<p>You must obey the following <strong>3 Rules For Identifiers</strong>:</p>
-<ul>
-<li>Identifiers may <strong>not</strong> begin with a digit.</li>
-<li>Identifiers must consist <strong>only</strong> of letters, digits, and underscores.</li>
-<li>An identifier must <strong>not</strong> be a keyword.</li>
-</ul>
-<p><br><br> <small> <i>Additional Info:</i> Identifers (and everything else) in C++ are <i>case sensitive</i> </small></p>
-</section>
-<section id="keywords" class="slide level2">
-<h2>Keywords</h2>
-<p>A <em>keyword</em> is a word that has a specific, reserved meaning in a programming language. Also known as <em>reserved words</em> in some texts.</p>
-<p><br></p>
-<p>C++ Consists of all of the keywords from the C language, plus new ones that are related to C++’s object-oriented focus.</p>
-<p><br></p>
-<p>There are 92 keywords in C++ (as of the C++20 standard). C++98 had 74.</p>
-</section>
-<section class="slide level2">
-
-<h3 id="c-keywords">C++ Keywords</h3>
-<p><span class="small">(1): Extended operator synonyms&nbsp;(2): New in C++20</span></p>
-<div class="small-70 noscroll noborder">
-<pre><code> alignas         constinit (2)   int                 static_assert
- alignof         continue        long                static_cast  
- and (1)         co_await (2)    mutable             struct       
- and_eq (1)      co_return (2)   namespace           switch       
- asm             co_yield (2)    new                 template     
- auto            decltype        noexcept            this         
- bitand (1)      default         not (1)             thread_local 
- bitor (1)       delete          not_eq (1)          throw        
- bool            do              nullptr             true         
- break           double          operator            try          
- case            dynamic_cast    or (1)              typedef      
- catch           else            or_eq (1)           typeid       
- char            enum            private             typename     
- char8_t (2)     explicit        protected           union        
- char16_t        export (2)      public              unsigned     
- char32_t        extern          register            using        
- class           false           reinterpret_cast    virtual      
- compl (1)       float           requires (2)        void         
- concept (2)     for             return              volatile     
- const           friend          short               wchar_t      
- const_cast      goto            signed              while        
- consteval (2)   if              sizeof              xor (1)      
- constexpr       inline          static              xor_eq (1)   </code></pre>
-</div>
-<div class="footnotes">
-<p>Ref: <a href="https://learn.microsoft.com/en-us/cpp/cpp/keywords-cpp?view=msvc-170#standard-c-keywords" class="uri">https://learn.microsoft.com/en-us/cpp/cpp/keywords-cpp?view=msvc-170#standard-c-keywords</a></p>
-</div>
-</section>
-<section id="declaration" class="slide level2">
-<h2>Declaration</h2>
-<p>Declaring a variable allows the compiler to reserve memory for the data, as well as managing the association between the data’s memory address and the identifier chosen to represent the variable in the program.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">int</span> temperature<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The declaration above produces the situation in memory shown below:</p>
-
-<img data-src="images/Variables_Operators_Errors/int_temperature_memory.svg" class="r-stretch quarto-figure-center"><p class="caption">Variable Declaration</p></section>
-<section id="declaration-1" class="slide level2">
-<h2>Declaration</h2>
-<ul>
-<li>Declaring a variable tells the compiler the <em>name</em> and <em>type</em> of the data.
-<ul>
-<li>The compiler now also knows the amount of memory required.</li>
-<li>You can find out with the <code>sizeof()</code> operator:
-<ul>
-<li><code>cout &lt;&lt; sizeof(temperature);</code> Will produce “4”…</li>
-</ul></li>
-</ul></li>
-<li>Declaring a variable <em><strong>does not</strong></em> specify what value the variable will contain!
-<ul>
-<li>The variable will contain whatever value happened to be in that location in memory.
-<ul>
-<li>Memory is constantly recycled, so this is essentially garbage.</li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="initialization" class="slide level2">
-<h2>Initialization</h2>
-<p><strong>Initialization</strong> refers to storing a value in a variable for the first time.</p>
-<ul>
-<li>Variables always begin in an <em>uninitialized</em> state.</li>
-</ul>
-<p><strong>Example:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The statement above <em>declares</em> a variable named <code>temperature</code> <strong>and</strong> <em>initializes</em> <code>temperature</code> to contain the value <code>82</code>.</p>
 </section>
 <section class="slide level2">
 
 <h3 id="example">Example</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="op">{</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>    <span class="co">// Declare a variable to store the temperature:</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>    <span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a>    <span class="co">// Print its initial value to the screen:</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The temperature is: "</span> <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>    </span>
-<span id="cb5-10"><a href="#cb5-10"></a>    </span>
-<span id="cb5-11"><a href="#cb5-11"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Integer: "</span> <span class="op">&lt;&lt;</span> <span class="dv">42</span> <span class="op">&lt;&lt;</span> <span class="st">", Real number: "</span> <span class="op">&lt;&lt;</span> <span class="fl">3.14</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">88</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"From variable: "</span> <span class="op">&lt;&lt;</span> x <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+</p>
+<p>The code shown above will produce the following output:</p>
+<p><br>
+</p>
+<pre><code>Integer: 42, Real number: 3.14
+From variable: 88</code></pre>
 </section>
-<section id="the-auto-keyword" class="slide level2">
-<h2>The <code>auto</code> Keyword</h2>
+<section id="input-streams" class="slide level2">
+<h2>Input Streams</h2>
+<p>An <strong><em>input stream</em></strong> brings information from the outside world <em>into</em> the running program.</p>
 <ul>
-<li>C++11 added the ability for a variable declaration to get its type information <em>automatically</em> based on its initialization value.
+<li>The standard input stream is named <code>std::cin</code>
 <ul>
-<li>The <code>auto</code> keyword may be used in place of the variable’s type when this behavior is desired.</li>
+<li>Often shortened to <code>cin</code> (add <code>using std::cin</code> after the include)</li>
+<li>We will refer to the standard input stream as <code>cin</code> in discussion</li>
+</ul></li>
+<li>Input streams work together with the <em>stream extraction operator</em> ( <code>&gt;&gt;</code> ).
+<ul>
+<li><code>&gt;&gt;</code> extracts data from the stream (on its left) and stores the data in the variable on its right.</li>
 </ul></li>
 </ul>
+</section>
+<section class="slide level2">
+
+<h3 id="example-1">Example</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a>    <span class="dt">int</span>     temperature<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="dt">double</span>  rainfall<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter the temperature in degrees Fahrenheit: "</span><span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>    cin  <span class="op">&gt;&gt;</span> temperature<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter the day's rainfall total: "</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>    cin  <span class="op">&gt;&gt;</span> rainfall<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+</p>
+<p>The code shown above will read the temperature from the user (entered at the keyboard) as an integer value, storing it in <code>temperature</code>.<br>
+Then, the rainfall total is read as a Real-number value and stored in <code>rainfall</code>.</p>
+<div class="fragment" data-code-focus="3,5">
+<p><strong>Notice</strong> the necessity of <em>prompting</em> the user before reading the values!</p>
+</div>
+</section>
+<section id="stream-extraction---details" class="slide level2">
+<h2>Stream Extraction - details</h2>
+<ul>
+<li>The <em>type</em> of the variable that is intended to store the data must match the <em>type</em> of the data being extracted.
+<ul>
+<li>The extraction may fail if this is not the case.</li>
+</ul></li>
+<li>The stream extraction operator is <em>whitespace delimited</em>, meaning that it will read the next series of non-whitespace characters in the input stream and convert those to the required type.
+<ul>
+<li>This means you cannot read anything containing spaces using <code>&gt;&gt;</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="streams-plural" class="slide level2">
+<h2>Streams: Plural</h2>
+<p>You have used the <em>standard input</em> stream and the <em>standard output</em> stream; C++ provides the opportunity to create other streams as well.</p>
+<ul>
+<li>All input streams support the same operations.</li>
+<li>All output streams support the same operations.</li>
+<li>So, if you can use <code>std::cin</code> and <code>std::cout</code>, you can use any stream!</li>
+</ul>
+</section>
+<section id="getline" class="slide level2">
+<h2><code>getline()</code></h2>
+<p>In order to read a <code>std::string</code> that may contain whitespace from an input stream, the <code>getline()</code> function should be used:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">std::</span>string full_name<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your first and last name: "</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>getline<span class="op">(</span><span class="bu">std::</span>cin<span class="op">,</span> full_name<span class="op">);</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello, "</span> <span class="op">&lt;&lt;</span> full_name <span class="op">&lt;&lt;</span> <span class="st">"!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>getline()</code> will read an entire line of user input (until the <code>&lt;ENTER&gt;</code> key is pressed). The <em>syntax</em> is: <br> <tt>getline( <i>source_stream</i> , <i>destination_string</i> )</tt> <br></p>
+<p><small>Where <em><code>source stream</code></em> is any input stream and <em><code>destination string</code></em> is a variable of type <code>std::string</code>.</small></p>
+</section>
+<section class="slide level2">
+
+<h3 id="mixing-getline-and">Mixing <code>getline()</code> and <code>&gt;&gt;</code></h3>
+<div class="callout callout-caution no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong></strong></p>
+</div>
+<div class="callout-content">
+<p><strong>Problem:</strong> Stream extraction ( <code>&gt;&gt;</code> ) leaves the delimiting whitespace in the input stream (usually a <code>'\n'</code>).</p>
+</div>
+</div>
+</div>
+<ul>
+<li><code>getline()</code> is <em>newline-delimited</em> by default.
+<ul>
+<li>It will appear that the <code>getline()</code> was “skipped”. Actually, it saw the <code>'\n'</code> and stopped.</li>
+</ul></li>
+<li>To remove the <code>'\n'</code>, use: <br> <em><code>stream_name</code></em><code>.ignore()</code>
+<ul>
+<li>Ex: <code>std::cin.ignore();</code></li>
+<li>Better:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">std::</span>cin<span class="op">.</span>ignore<span class="op">(</span><span class="bu">std::</span>numeric_limits<span class="op">&lt;</span><span class="bu">std::</span>streamsize<span class="op">&gt;::</span>max<span class="op">(),</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="cin.get" class="slide level2">
+<h2><code>cin.get()</code></h2>
+<p>The <code>cin.get()</code> function can be used to read a single character, which may be whitespace, from the standard input stream.</p>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">auto</span> interestRate <span class="op">=</span> <span class="fl">12.75</span><span class="op">;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">auto</span> stockCode    <span class="op">=</span> <span class="ch">'C'</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Here, <code>interestRate</code> will be of type <code>double</code> and <code>stockCode</code> will be type <code>char</code> — the compiler can determine this by examining the type of the literals used to initialize the variables.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="dt">char</span> ch<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">// Reading the &lt;ENTER&gt; key with `&gt;&gt;` alone is difficult... </span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">// So, use `get()`:</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Press &lt;ENTER&gt; to continue..."</span><span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">std::</span>cin<span class="op">.</span>get<span class="op">(</span>ch<span class="op">);</span> <span class="co">// Will wait for the enter key, then continue.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>get()</code> function also works with other streams, in general the syntax is: <br> <em><code>stream</code></em><code>.get(</code><em><code>character_var</code></em><code>)</code></p>
 </section>
-<section id="when-to-use-auto" class="slide level2">
-<h2>When to use <code>auto</code></h2>
+<section id="in-case-the-stream-goes-bad" class="slide level2">
+<h2>In case the stream goes bad…</h2>
+<p>If you are working with an open stream, several things can cause the stream to no longer be in the “good” state. The most common are:</p>
 <ul>
-<li>The <code>auto</code> keyword is intended to simplify declaration of <em>intermediate variables</em> that have very complex types.
+<li>Failure of stream extraction operator to convert the apparent type it “sees” to the type requested on its right-hand side.</li>
+<li>End-of-file (or end of stream) encountered during a “read” operation.</li>
+</ul>
+<p>In these cases you may be able to remedy the problem – perhaps by removing unwanted characters from the stream with <code>ignore()</code>, or by moving the stream position “earlier” in the stream in case of EOF – then resume operation. The <code>clear()</code> method will help with this by clearing the stream’s <em>state flags</em>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">std::</span>cin<span class="op">.</span>clear<span class="op">();</span>  <span class="co">// clears the state flags on `cin`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!--- --- --->
+</section></section>
+<section>
+<section id="files" class="title-slide slide level1 center">
+<h1>Files</h1>
+<p>In the most general sense, a <em>file</em> is an abstraction by which the operating system allows us to store a blob of related data on a device other than main memory.</p>
 <ul>
-<li>In general, do not use <code>auto</code> to declare variables whose lifetime is more than a few lines.</li>
-<li>In general, do not use <code>auto</code> to declare variables whose type is “simple” (a built-in or <em>primitive</em> type).</li>
-</ul></li>
-<li><strong>Goal</strong>: Use <code>auto</code> whenever it <span class="highlight-green"><em>increases</em></span> the readability of the code, avoid it when it <span class="highlight-red"><em>decreases</em></span> the code’s readability.</li>
+<li><em><strong>file</strong></em> - a collection of related data stored on a device other than main memory and accessed by means of a <em>file name</em>.</li>
+<li><em><strong>file name</strong></em> - a string that uniquely identifies a single file on the system.</li>
 </ul>
 </section>
-<section id="variable-lifetime" class="slide level2">
-<h2>Variable Lifetime</h2>
-<p>Variable names (and all other names as well) have a “life span” within the context of the program code.</p>
-<div class="small-80 tight">
+<section id="files-1" class="slide level2">
+<h2>Files</h2>
+<p>To work with files, start by including the <code>&lt;fstream&gt;</code> library.</p>
 <ul>
-<li><strong><em>scope</em></strong> - an identifier’s <em>scope</em> refers to the section of the program in which the identifier is defined.</li>
-<li>C++ has six kinds of scope:
+<li>We will be working with files in <em>text mode</em>, meaning the contents are encoded as plain ASCII text.
 <ul>
-<li><strong><em>global scope</em></strong> - globally-scoped identifiers are known from the point at which they are declared until the end of the program.
-<ul>
-<li>These are defined outside any function (outside any block).</li>
+<li>Our interaction with the file will “feel” exactly the same as interacting with a user/screen.</li>
 </ul></li>
-<li><strong><em>local scope</em></strong> - locally-scoped identifiers are known from the point at which they are declared until the end of the <em>block</em> in which they are declared.
+<li>You can also access a file in pure <em>binary mode</em> as well. (later)</li>
+</ul>
+</section>
+<section id="file-operations" class="slide level2">
+<h2>File Operations</h2>
+<p>Working with files will involve the following series of high-level steps:</p>
+<ol type="1">
+<li>Open the file
 <ul>
-<li><span class="highlight">Almost all variables we use will be local.</span></li>
+<li>This associates the file name with the physical file, and initializes a stream to/from the file.</li>
 </ul></li>
-<li><strong><em>statement scope</em></strong> - Names declared in a for, if, while, or switch statement are visible until the end of the statement block.
+<li>Read or write data from/to the file
 <ul>
-<li>This behaves like a special case of local scope.</li>
+<li>The file can be read/written as a stream - just like any other stream.</li>
 </ul></li>
-<li><strong><em>class scope</em></strong> - Names of class members have class scope, which extends throughout the class definition regardless of the point of declaration. Class member accessibility is further controlled by the <code>public</code>, <code>private</code>, and <code>protected</code> keywords.</li>
-<li><strong><em>namespace scope</em></strong> - A name that is declared within a namespace, outside of any class or enum definition or function block, is visible from its point of declaration to the end of the namespace.</li>
-<li><strong><em>function scope</em></strong> - A <em>label</em> has function scope, which means it is visible throughout a function body even before its point of declaration.</li>
+<li>Close the file
+<ul>
+<li>This allows the Operating System to release resources associated with the file, and flush buffers.</li>
+</ul></li>
+</ol>
+</section>
+<section id="output-file-streams" class="slide level2">
+<h2>Output File Streams</h2>
+<ul>
+<li>Create a <code>std::ofstream</code> file stream object and use it to open and manipulate the file:</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">double</span> value1 <span class="op">=</span> <span class="fl">4.4</span><span class="op">,</span> value2 <span class="op">=</span> <span class="fl">3.8</span><span class="op">;</span>       </span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="bu">std::</span>ofstream fout<span class="op">;</span>             <span class="co">// declare a stream</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>fout<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span> <span class="co">// open the file</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>fout <span class="op">&lt;&lt;</span> value1                  <span class="co">// insert values</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>     <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>                    <span class="co">// separated on</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>     <span class="op">&lt;&lt;</span> value2<span class="op">;</span>                 <span class="co">// two lines</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>fout<span class="op">.</span>close<span class="op">();</span>                   <span class="co">// close the file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="input-file-streams" class="slide level2">
+<h2>Input File Streams</h2>
+<ul>
+<li>Create a <code>std::ifstream</code> file stream object and use it to open and manipulate the file:</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">double</span> value1<span class="op">,</span> value2<span class="op">;</span>        </span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="bu">std::</span>ifstream fin<span class="op">;</span>             <span class="co">// declare a stream</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>fin<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span> <span class="co">// open the file</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>fin <span class="op">&gt;&gt;</span> value1 <span class="op">&gt;&gt;</span> value2<span class="op">;</span>       <span class="co">// read some values</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>fin<span class="op">.</span>close<span class="op">();</span>                   <span class="co">// close the file</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> value1 <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> value2 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="alternatives" class="slide level2">
+<h2>Alternatives</h2>
+<ul>
+<li>You can also declare and open in one line:</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">std::</span>ifstream fin<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>A <code>std::fstream</code> object can do <em>either</em> input or output – or both, but you must specify the <em>open mode</em>:</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">std::</span>fstream fp<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="bu">std::</span>fstream fp<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you can open for input:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::in<span class="op">);</span> <span class="co">// open for input</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or for output:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::out<span class="op">);</span> <span class="co">// open for output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Or append to the end of the file:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::out<span class="op">|</span><span class="bu">std::</span>ios::app<span class="op">);</span> <span class="co">// append mode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="open-modes" class="slide level2">
+<h2>Open Modes</h2>
+<p><br>
+</p>
+<div class="noborder">
+<pre><code>Open Mode       Description
+---------------------------------------------
+std:: ios::in   Input mode (file must exist)
+std:: ios::out  Output mode (file will be 
+                created, if it exists, it will
+                be overwritten)
+std:: ios::app  Use with ios::out to append 
+                to the end of an output file.</code></pre>
+</div>
+<p><br>
+</p>
+<p>There are other modes as well, but they are not of interest to us at this time.</p>
+</section>
+<section id="file-open-failures" class="slide level2">
+<h2>File Open Failures</h2>
+<ul>
+<li>Opening an input file may <strong>fail</strong> if:
+<ul>
+<li>The file does not exist, or is misnamed.</li>
+<li>You do not have permission to read the file.</li>
+<li>All OS file resources are in use.</li>
+</ul></li>
+<li>Opening an output file may <strong>fail</strong> if:
+<ul>
+<li>The file exists, but you do not have permission to overwrite it.</li>
+<li>You do not have permission to write in the destination directory.</li>
+<li>All OS file resources are in use.</li>
 </ul></li>
 </ul>
+</section>
+<section id="testing-for-file-open-success" class="slide level2">
+<h2>Testing for File Open Success</h2>
+<p>File streams support a function called <code>is_open()</code> that will return <code>true</code> if the file was opened successfully. This function can be used to check for a failure to open.</p>
+<p>We will cover <code>if</code> statements soon, but here is a sneak peek:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1"></a><span class="bu">std::</span>ifstream fin<span class="op">;</span>                         </span>
+<span id="cb17-2"><a href="#cb17-2"></a>fin<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span>             </span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="cf">if</span><span class="op">(</span> <span class="op">!</span>fin<span class="op">.</span>is_open<span class="op">()</span> <span class="op">){</span>                      </span>
+<span id="cb17-4"><a href="#cb17-4"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Failed to open file.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> </span>
+<span id="cb17-5"><a href="#cb17-5"></a>    exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span>                               </span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="formatted-output" class="title-slide slide level1 center">
+<h1>Formatted Output</h1>
+<p>The <code>&lt;iomanip&gt;</code> library supplies a set of <em>stream manipulators</em> that may be used in conjunction with the stream insertion operator to format output.</p>
+<div class="noscroll noborder">
+<pre><code>Manipulator            Description
+-----------------------------------------------------------
+std::setw( w )         set the width of the next item in the
+                    stream to 'w'
+std::setprecision( p ) set number of significant figures in 
+                    output to 'p', or set the number of 
+                    decimal places to 'p' if used in 
+                    conjunction with 'fixed'.
+std::fixed             set numeric output to fixed-point 
+                    mode (use the number of decimal 
+                    places specified by 'setprecision'; 
+                    no scientific notation)
+std::showpoint         always show the decimal point 
+std::left              set alignment to left-aligned
+std::right             set alignment to right-aligned</code></pre>
 </div>
 </section>
-<section id="assignment" class="slide level2">
-<h2>Assignment</h2>
-<ul>
-<li>Variables may be re-used by changing their value.</li>
-<li>The C++ <strong><em>assignment operator</em></strong> is <strong><code>=</code></strong>
-<ul>
-<li>It should always be read as “assigned” or “is assigned”.</li>
-<li>It should <strong><em>never</em></strong> be read as “equals”!</li>
-</ul></li>
-</ul>
-<p><strong>Example</strong>:</p>
-<div class="sourceCode" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Initial temperature: "</span> <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>temperature <span class="op">=</span> <span class="dv">75</span><span class="op">;</span> <span class="co">// change the value of temperature to 75</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Temperature now: "</span>     <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The third line should be read as “<code>temperature</code> is assigned 75”.</p>
-</section>
 <section class="slide level2">
 
-<h3 id="type-compatibility-and-coercion">Type Compatibility and Coercion</h3>
-<ul>
-<li>The <em>type</em> of a variable must always match the <em>type</em> of the data you are storing in it.
-<ul>
-<li>Failure to match the type can lead to errors.</li>
-</ul></li>
-<li>Some type conversion is possible, and some will take place automatically.
-<ul>
-<li>A less-precise type can usually be automatically converted to a more-precise type for storage.
-<ul>
-<li>This is called <em>type coercion</em>.</li>
-<li>It does not work the other way!</li>
-</ul></li>
-<li>You can manually convert a value to a different type by <em>casting</em>:
-<ul>
-<li><code>static_cast&lt;int&gt;(3.14)</code> &nbsp;&nbsp;&nbsp; Produces the value <code>3</code></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="operators" class="slide level2">
-<h2>Operators</h2>
-<ul>
-<li>C++ Operators can be divided into the following families:
-<ul>
-<li>Assignment Operators</li>
-<li>Mathematical Operators</li>
-<li>Relational Operators</li>
-<li>Logical Operators</li>
-<li>Stream Operators</li>
-<li>Other Operators</li>
-</ul></li>
-<li>We have seen the basic assignment operator (<code>=</code>) and the stream insertion operator (<code>&lt;&lt;</code>).</li>
-<li>Now, let’s look at the stream extraction operator…</li>
-</ul>
-</section>
-<section id="stream-extraction" class="slide level2">
-<h2>Stream Extraction</h2>
-<ul>
-<li>The <code>&gt;&gt;</code> operator is the C++ <em>stream extraction operator</em>.</li>
-<li>It takes a value from the stream on the left (often we use <code>std::cin</code>) and places it into the variable on the right:</li>
-</ul>
-<div class="sourceCode" id="cb8" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">int</span> x<span class="op">;</span>                                   <span class="co">// declare x</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter an integer value: "</span><span class="op">;</span> <span class="co">// prompt</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> x<span class="op">;</span>                          <span class="co">// read x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Notice that the stream extraction operation works like assignment, except that the new value comes from a stream.</li>
-<li><code>std::cin</code> is the <em>standard input stream</em> (usually attached to the keyboard)</li>
-<li>Now let’s visit the mathematical operators…</li>
-</ul>
-</section>
-<section id="c-mathematical-operators" class="slide level2">
-<h2>C++ Mathematical Operators</h2>
-<pre><code> Operator    Meaning               Expression  Result
-------------------------------------------------------
- +           Addition                 3 + 4      7
- -           Subtraction              4 - 6      -2
- -           Negation (unary -)      -3 + 1      -2
- *           Multiplication           3 * 5      15
- /           Division                 8 / 2      4
- %           Modulus (remainder)      7 % 4      3</code></pre>
-<p>Beware of the division operator!</p>
-<ul>
-<li><code>3 / 4</code> evaluates to <code>0</code>!
-<ul>
-<li><span class="highlight-red">If <code>/</code> is operating on integers, it performs <em>integer division</em>.</span></li>
-</ul></li>
-<li><code>3.0 / 4.0</code> yields <code>0.75</code>, as expected.
-<ul>
-<li><span class="highlight-green">If <strong>either</strong> the dividend or divisor is a floating-point type, the answer will be as well.</span></li>
-</ul></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="operator-precedence-associativity">Operator Precedence <br>&amp; Associativity:</h3>
-<p>Shown from highest to lowest:</p>
-<pre><code> Operator(s)   Associativity
------------------------------
- - (unary)     right-to-left
- *, /, %       left-to-right
- +, -          left-to-right
- =             right-to-left</code></pre>
-<ul>
-<li>Math operators have the same precedence rules as in algebra.</li>
-<li>Assignment has a very low precedence (it tends to happen last).</li>
-<li>Parentheses may be used to force precedence (just like in algebra).</li>
-</ul>
-</section>
-<section id="expressions" class="slide level2">
-<h2>Expressions</h2>
-<p>An expression may consist of one or more operations on data, and will evaluate to a result whose type is the most precise type involved in the expression.<br> <small><i>(This is highly simplified… but is true most of the time.)</i></small></p>
-<p><strong>Example:</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">7</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// produces 36</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> x <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> y <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>             <span class="co">// produces 7</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="dt">double</span> z <span class="op">=</span> <span class="fl">4.0</span><span class="op">;</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> y <span class="op">/</span> z <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>         <span class="co">// produces 1.75</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="the-const-modifier" class="slide level2">
-<h2>The <code>const</code> Modifier</h2>
-<p>A <em>type modifier</em> is a C++ keyword that is used in conjunction with a type name to change that type’s properties in some way.</p>
-<p>The <code>const</code> type modifier changes a declaration statement from a variable declaration to a <em>constant</em> declaration.</p>
-<p>The value of a <em>constant</em> can never be changed once it has been initialized.</p>
-</section>
-<section class="slide level2">
-
-<h3 id="const-example"><code>const Example</code></h3>
-<ul>
-<li>Constants are useful for things like mathematical constants.</li>
-<li>In these cases, it is OK to define them globally.
-<ul>
-<li><strong>Avoid</strong> defining non-<code>const</code> variables globally!</li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb12" data-code-line-numbers="4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="co">// PI should be known everywhere, global </span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="co">// constants are OK for this purpose</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="at">const</span> <span class="dt">double</span> PI <span class="op">=</span> <span class="fl">3.14159</span><span class="op">;</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>    <span class="dt">int</span>    radius <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>    <span class="dt">double</span> area   <span class="op">=</span> PI <span class="op">*</span> <span class="op">(</span>radius <span class="op">*</span> radius<span class="op">);</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The area of a circle with radius "</span> </span>
-<span id="cb12-10"><a href="#cb12-10"></a>              <span class="op">&lt;&lt;</span> radius <span class="op">&lt;&lt;</span> <span class="st">" is: "</span> <span class="op">&lt;&lt;</span> area <span class="op">&lt;&lt;</span> <span class="st">".</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="comments" class="slide level2">
-<h2>Comments</h2>
-<ul>
-<li>Most of a developer’s time is spent <em>maintaining or improving code</em>.
-<ul>
-<li>You cannot maintain or improve code that you can’t read and understand!</li>
-</ul></li>
-</ul>
-<p><br></p>
-<p>Any line beginning with <strong><code>//</code></strong> is a <em>single-line comment</em> in C++. The compiler will simply ignore the <code>//</code> and any code following it until the end of the line.</p>
-<p><br></p>
-<p><strong><code>/*</code></strong> and <strong><code>*/</code></strong> create <em>block comments</em> in C++. Anything between a <code>/*</code> and its corresponding <code>*/</code> will be ignored. Block comments may span multiple lines.</p>
-</section>
-<section id="documentation" class="slide level2">
-<h2>Documentation</h2>
-<p>In addition to comments in the code, the program itself should have documentation to explain the “big picture”.</p>
-<p><br></p>
-<p>Each development team/company will have its own standards for documentation. We have developed a set of standards that are similar to industry practice.</p>
-<p><br> See the documentation guidelines that your code must meet on the course website.</p>
-</section>
-<section id="programming-errors" class="slide level2">
-<h2>Programming Errors</h2>
-<p>Programmers are human. <sup><span class="small">[citation needed]</span></sup><br>
-<span class="small">Errors are unavoidable. Learning to expect, detect, and fix those errors is a key component of learning to program.</span></p>
-<div class="tight">
-<ul>
-<li>Types of Errors
-<ul>
-<li><strong><em>Syntax Errors</em></strong>
-<ul>
-<li>Caused by incorrect <strong><em>syntax</em></strong>: rules of spelling, grammar, and punctuation for a language.</li>
-<li>the compiler often detects these easily.</li>
-</ul></li>
-<li><strong><em>Semantic Errors</em></strong>
-<ul>
-<li><em>Semantic errors</em> caused by mis-using the language in some way; these are not caught by the compiler, and must be detected at runtime.</li>
-</ul></li>
-<li><strong><em>Logical Errors</em></strong>
-<ul>
-<li><em>Logical errors</em> like semantic errors, but error is in the <strong>logic</strong>, not the <strong>implementation</strong>.</li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="tips-and-tricks" class="slide level2">
-<h2>Tips and Tricks</h2>
-<ul>
-<li>Compile early, compile often.
-<ul>
-<li>Write small amounts, then compile/test/continue.</li>
-</ul></li>
-<li>The <strong>first</strong> error is the only one that matters!
-<ul>
-<li>Always fix the <strong>first</strong> error before moving on to other errors.</li>
-<li>Re-compile after fixing the error, then repeat the process.</li>
-</ul></li>
-<li>Pay attention to line numbers.
-<ul>
-<li>The compiler will tell you which line it was examining <em>when it found the error</em>.
-<ul>
-<li>The line containing the error will either be that line or a line <em>above</em> that point in the program.
-<ul>
-<li>Start with the flagged line, work your way upward a line at a time.</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+<h3 id="example-2">Example</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1"></a><span class="dt">double</span> price <span class="op">=</span> <span class="fl">100.0</span> <span class="op">/</span> <span class="fl">3.0</span><span class="op">;</span>  <span class="co">// 33.3333333...</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setprecision<span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>fixed<span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Total price: $"</span> </span>
+<span id="cb19-4"><a href="#cb19-4"></a>          <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span><span class="dv">8</span><span class="op">)</span> <span class="op">&lt;&lt;</span> price <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"100 items:   $"</span> </span>
+<span id="cb19-6"><a href="#cb19-6"></a>          <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span><span class="dv">8</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="dv">100</span> <span class="op">*</span> price <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>Total price: $   33.33
+100 items:   $ 3333.33</code></pre>
 
 <p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">
@@ -899,13 +737,13 @@
 <p> </p>
 </div>
 <div class="header-text title-text" data-hide-from-titleslide="true">
-<p>Variables, Operators, Common Errors</p>
+<p>Input and Output</p>
 </div>
 <div class="sb-title">
 <p> </p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
