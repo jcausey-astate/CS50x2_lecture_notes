@@ -1,16 +1,13 @@
 ---
-title: "17: Dynamic Memory"
-date: 2020-10-02T12:30:15-05:00
-draft: true
+number: 17
+title: "Dynamic Memory"
+textbook: "Gaddis (Ch. 9.8)"
+# draft: true
 ---
 
 # Dynamic Memory Allocation
 
-## Gaddis Chapter 9.8
-
----
-
-## Creating Memory at Runtime
+[**Creating Memory at Runtime**]{.large}
 
 New memory can be allocated for individual data values or arrays at runtime.
 
@@ -40,31 +37,37 @@ delete rPtr;        // delete doesn't change `rPtr`'s value...
 rPtr = nullptr;     // null the pointer to safely disable it.
 ```
 
-![One double allocated dynamically.](../images/shared/dynamic_memory_double.svg)
+![One double allocated dynamically.](images/shared/dynamic_memory_double.svg)
 
 ---
 
 ## Dynamic Memory Notes
 
+::: {.tight}
 * `new` allocates memory from a pool of free memory known as the _free store_ (or more commonly,  "heap").
     - The heap is a limited resource.
 * The pointer returned from the `new` operation is the _only_ "link" you have to the heap-allocated memory.  
     - The "owner" of this pointer has the _responsibility_ to make sure the memory is eventually `delete`d.  
     - If you lose the pointer, you've leaked the memory!
     - You may transfer ownership to another part of the program by passing the pointer.
+:::
 
-![Conceptual memory layout with stack and heap.](../images/shared/memory-diagram-stack-heap.svg)
+![Conceptual memory layout with stack and heap.](images/shared/memory-diagram-stack-heap.svg)
 
 ---
 
 ## Dynamic Arrays
 
+::: {.callout-caution appearance="minimal"}
 Normal C++ arrays cannot be sized at runtime.  This is a severe limitation.
+:::
 
 * Either we over-allocate, which wastes space...
 * Or we place a strict limit on the ability of the program's data to "grow".
 
 With dynamic memory allocation, a variable _can_ be used to determine the size of an array at runtime.
+
+\
 
 This gives us the ability to write programs that "adapt" to the size of the data.
 
@@ -87,15 +90,19 @@ for(int i = 0; i < n_scores; i++){
 
 // [...]    Use the data for something interesting...
 
-delete [] scores;                      // de-allocate space
-scores = nullptr;                      // disable the ptr
+delete [] scores;                       // de-allocate space
+scores = nullptr;                       // disable the ptr
 ```
 
 ---
 
 ## Dynamic Array Notes
 
-* Note the different `new` and `delete` operators for arrays:
+\
+
+Note the different `new` and `delete` operators for arrays:
+
+\
 
 ``` cpp
 int size = 10;
@@ -104,16 +111,20 @@ int* a = new int[size];   // new array
 delete [] a;              // delete array
 a = nullptr;
 ```
+\
 
-**`new` Array Syntax**<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`new `&nbsp;&nbsp;_`type`_`[`_`size`_`]`
+**`new` Array Syntax**
+: `new `&nbsp;&nbsp;_`type`_`[`_`size`_`]`
 
-**`delete` Array Syntax**<br />
-&nbsp;&nbsp;&nbsp;&nbsp;`delete [] `&nbsp;&nbsp;_` ptr`_
+\
+
+**`delete` Array Syntax**
+: `delete [] `&nbsp;&nbsp;_` ptr`_
 
 ---
 
 ## What if something goes wrong?
+
 * An exception is thrown and the program will terminate if there is not enough free memory to complete the request.
 
 * Or, you can use the (`std::nothrow`) version:
@@ -122,13 +133,17 @@ a = nullptr;
 int *xPtr = new(std::nothrow) int;
 ```
 
+\
+
 In this case, test that the address returned isn’t nullptr (nullptr will indicate failure). 
 
-__Ex:__  `if(xPtr == nullptr)   // failed`    
+\
+
+__Ex:__ \ \ `if(xPtr == nullptr)   // failed`    
 
 ---
 
-## Dynamic Memory Summary
+## Dynamic Memory Summary {.morespace}
 
 * If you "`new`" it, you "`delete`" it!
 
@@ -146,10 +161,14 @@ __Ex:__  `if(xPtr == nullptr)   // failed`
 
 C++11 introduced "smart pointers", which are really _objects_ that are used to wrap a raw pointer and provide more automatic management of resources "owned" by the pointer.
 
+\
+
 * Three kinds of smart pointer in C++11:
     - **`unique_ptr`** - used for _exclusive ownership_
     - **`shared_ptr`** - used for _shared ownership_
     - **`weak_ptr`** - a non-owning reference to a `shared_ptr` that can be upgraded to a `shared_ptr`.
+\
+\
 * Requires the header **`<memory>`**
 
 ---
@@ -157,8 +176,10 @@ C++11 introduced "smart pointers", which are really _objects_ that are used to w
 ## `unique_ptr`
 
 A `unique_ptr` retains sole ownership of an object, and destroys the object when the `unique_ptr` goes out of scope.
-
+\
+\
 **Example**
+
 ``` cpp
 int main(){   
    unique_ptr<int> ptr{ new int }; // allocate & take ownership
@@ -167,12 +188,11 @@ int main(){
    return 0;                       // frees memory as ptr leaves
 }                                  // its local scope
 ```
-<small>
 
 * You must tell the `unique_ptr` what _type_ of data it will point to.
     - The part in the angle-brackets is called a _template type argument_
 * You must initialize the `unique_ptr` to contain a pointer to a dynamically-allocated object.
-</small>
+
 
 ---
 
@@ -195,6 +215,7 @@ int main(){
     return 0;   // scores gets de-allocated automatically
 }
 ```
+\
 Pay attention to the _type argument_ **`<double[]>`** : Type `<double*>` will not work here.
 
 ---
@@ -202,7 +223,8 @@ Pay attention to the _type argument_ **`<double[]>`** : Type `<double*>` will no
 ## Alternative: Construct with `make_unique()`:
 
 Modern C++ idioms seem to be pushing toward using the `make_unique()` function (and `make_shared()` for `shared_ptr`):
-
+\
+\
 ```cpp
 int main(){
     unique_ptr<int> ptr{ std::make_unique(99) }; // allocate and init
@@ -227,7 +249,8 @@ int main(){
 ---
 
 ## Putting it together with `auto`:
-
+\
+\
 ```cpp
 int main(){
     auto ptr{ std::make_unique(99) };         // allocate and init
@@ -248,5 +271,5 @@ int main(){
     return 0;   // scores and ptr are de-allocated automatically
 }
 ```
-
-It is up to you which version you think is easier to understand.
+\
+[Choose the version you think is easier to understand.]{.green}

@@ -1,26 +1,23 @@
 ---
-title: "20: Aggregation"
-date: 2020-10-02T12:30:15-05:00
-draft: true
+number: 20
+title: "Aggregation"
+textbook: "Gaddis (Ch. 14.7)"
+# draft: true
 ---
 
-# Aggregation of Objects
-
-## Gaddis Ch. 14.7
-
----
-
-## Aggregation
+# Aggregation of Objects {.morespace}
 
 * _Aggregation_: an object of one class is used as an attribute in another class
 * Often called **_composition_**
-* Creates the _**"has a"** relationship_.
+* Creates the _**"has a"** relationship_
 
-Large book example in Chapter 14
+Large example in Chapter 14 of the Gaddis textbook.
 
-    Instructor
-    Textbook
-    Course
+::: {.noborder}
+        Instructor
+        Textbook
+        Course
+:::
 
 ---
 

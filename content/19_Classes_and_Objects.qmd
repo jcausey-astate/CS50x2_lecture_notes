@@ -1,16 +1,11 @@
 ---
-title: "19: Classes and Objects"
-date: 2020-10-02T12:30:15-05:00
-draft: true
+number: 19
+title: "Classes and Objects"
+textbook: "Gaddis (Ch. 13)"
+# draft: true
 ---
 
-# Classes and Objects
-
-## Gaddis Ch. 13
-
----
-
-## Introduction
+## Introduction {.morespace}
 
 * Procedural (structured) Programming
     - Concerned with processes (_actions_) that occur in a program.
@@ -21,7 +16,7 @@ draft: true
 
 ---
 
-## OOP Central Concepts
+## OOP Central Concepts {.morespace}
 
 * Encapsulation
     - Bundling
@@ -37,46 +32,54 @@ draft: true
 
 ## OOP Terminology
 
-_**Class**_ - basically like a _structure_.  Encapsulates data and functions that are related.
+\
+
+**_Class_** - Encapsulates data and functions that are related, essentially like a structure. Creates a new _type_.
 
 * The class is the _blueprint_ describing the new type of thing.
 
-_**Object**_ - an instance of a class.
+**_Object_** - an instance of a class.
 
 * The object is the real thing that is built by following the blueprint.
 
-_**Attributes**_ - a class's _member data_
+**_Attributes_** - a class's _member data_
 
-_**Methods**_ - a class's _member functions_
+**_Methods_** - a class's _member functions_
 
-<span style="color: crimson;">We will use `class` and `struct` somewhat interchangeably.</span>
+\
+
+[We will use `class` and `struct` somewhat interchangeably.]{.red}
 
 ---
 
 ## Format of a Class
+\
 
 ```cpp
-class ClassName 
-{
+class ClassName {
     declaration;
     declaration;
 };
 ```
 
+\
+
 **Example**
 
 ```
-struct Rectangle {  |   class Rectangle {
-    double length;  |       public:
-    double width;   |           double length;
-    double area;    |           double width;
-};                  |           double area();
-                    |   };
+struct Rectangle {   |   class Rectangle {
+    double length;   |       public:
+    double width;    |           double length;
+    double area;     |           double width;
+};                   |           double area();
+                     |   };
 ```
 
 ---
 
 ## Access Specifiers
+
+\
 
 **`public`** - Available both inside and _outside_ the class definition.
 
@@ -84,7 +87,7 @@ struct Rectangle {  |   class Rectangle {
 
 **`protected`** - Similar to `private` (we'll see this later).
 
-<br>
+\
 
 * Order doesn't matter.
 
@@ -93,7 +96,7 @@ struct Rectangle {  |   class Rectangle {
 
 ---
 
-## Methods
+## Methods {.morespace}
 
 * Prototype in _class declaration_
 * Definition usually in separate _implementation file_.
@@ -104,7 +107,7 @@ struct Rectangle {  |   class Rectangle {
 
 ---
 
-## Separating *Specification* and *Implementation*
+## Separating *Specification* and *Implementation* {.morespace}
 
 * Header files ( _`MyClass`_`.h` ) – place class specification (declaration) here
 * Implementation file ( _`MyClass`_`.cpp` ) – implement methods here
@@ -115,7 +118,7 @@ struct Rectangle {  |   class Rectangle {
 
 ---
 
-## Accessors and Mutators
+## Accessors and Mutators {.morespace}
 
 * Provides a way to safely access data members.
 * Principle of _least privilege_.
@@ -124,7 +127,7 @@ struct Rectangle {  |   class Rectangle {
 
 ---
 
-## Constructors
+## Constructors {.morespace}
 
 * Allow an object to be _instantiated_ (created) in an already-working state.
     - Contrast this with the _uninitialized_ state that regular data and `struct`s begin with.
@@ -137,7 +140,7 @@ struct Rectangle {  |   class Rectangle {
 
 ---
 
-## Constructors
+## Constructors {.morespace}
 
 * Allow an object to be _instantiated_ (created) in an already-working state.
     - Contrast this with the _uninitialized_ state that regular data and `struct`s begin with.
@@ -151,23 +154,29 @@ struct Rectangle {  |   class Rectangle {
 
 ## Constructors (c-tors)
 
+\
+
 A constructor's job is to initialize attributes of the class:
-``` cpp
+
+\
+
+``` cpp {code-line-numbers="3-6"}
 class Rectangle {
     public:
         Rectangle (int l, int w){
             length = l;
             width  = w;
         }
-        int length = 0;
-        int width  = 0;
+        int length;
+        int width;
 };
 ```
 
 ---
 
-## c-tor initialization lists
+## c-tor initialization lists {.morespace}
 
+\
 But... there is another way to do it:  **_Constructor initialization list_**
 
 * Compact syntax for placing values into attributes in a constructor implementation.
@@ -176,10 +185,10 @@ But... there is another way to do it:  **_Constructor initialization list_**
 
 ---
 
-**Example: c-tor initialization list**
+### Example: c-tor initialization list
 
 
-``` cpp
+``` cpp {code-line-numbers="3"}
 class Rectangle {
     public:
         Rectangle (int l, int w) : length{l}, width{w} {}
@@ -187,6 +196,7 @@ class Rectangle {
         int width  = 0;
 };
 ```
+\
 
 This:
 
@@ -196,11 +206,15 @@ This:
 
 Is the _constructor initialization list_.  It is followed in this case by an _empty_ method body `{}`, which is OK since there is nothing more for this constructor to do.
 
-* The initialization list takes effect _before_ the body of the c-tor method begins to execute!
+\
+
+* The initialization list takes effect _**before**_ the body of the c-tor method begins to execute!
 
 ---
 
-**No scope resolution ambiguity!**
+### No scope resolution ambiguity!
+
+\
 
 ``` cpp
 class Rectangle {
@@ -211,15 +225,16 @@ class Rectangle {
         int width  = 0;
 };
 ```
+\
 
 * Constructor initialization lists can only contain initializations for attributes and constructor delegation to base classes (we will see later).
     * So, there cannot be ambiguity with respect to attribute versus parameter names.
 
 ---
 
-## Destructors
+## Destructors {.morespace}
 
-* Called when object is destroyed
+* Called automatically when object is destroyed
     * Either by being deleted or going out of scope
 * Named same as class, but begins with `~`
 * No return value, no parameters
@@ -228,7 +243,7 @@ class Rectangle {
 
 ---
 
-## Inline Methods
+## Inline Methods {.morespace}
 
 * Implemented directly in class specification.
 * Substituted during compilation.
@@ -239,7 +254,8 @@ class Rectangle {
 
 ---
 
-## Overloading
+## Overloading {.morespace}
+
 * Constructors may be overloaded
     - Remember that there are consequences for default constructor
 * Methods may be overloaded
@@ -247,7 +263,7 @@ class Rectangle {
 
 ---
 
-## Pointers to Objects
+## Pointers to Objects {.morespace}
 
 * Uses same pointer notation
 * “dot-notation” becomes “arrow-notation”:
@@ -256,7 +272,7 @@ class Rectangle {
 
 ---
 
-**`this` keyword**
+### `this` keyword  {.morespace}
 
 * `this` is a keyword representing a *pointer to* the current object.
 * Used to disambiguate naming within method bodies.
@@ -275,23 +291,29 @@ private:
     int width;
 };
 ```
+\
 
-<small>
-[CPP Core Guideline: Use a class if any member is non-public.](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c8-use-class-rather-than-struct-if-any-member-is-non-public)
-</small>
+[CPP Core Guideline: Use a class if any member is non-public.](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c8-use-class-rather-than-struct-if-any-member-is-non-public){.small}
+
 
 ---
 
-**Uniform Initialization Syntax**
+## Uniform Initialization Syntax
+
+\
 
 * Added in C++11
 * Allows initialization of all types of variables with the same syntax.
 * The "old" syntax for each type still works, but consider using uniform syntax.
 
-**Syntax:**
+
+**Syntax:**\
 `variableType  variableName{argument1, argument2};`
 
+\
+
 **Example:**
+
 ```cpp
 int       age{23};
 Rectangle classroom{24, 30};
@@ -301,7 +323,7 @@ double    temperatures[]{78.8, 80.2, 92.4, 87.5, 95.3, 95.1, 92.8};
 
 ---
 
-## Other Details
+## Other Details {.morespace}
 
 * Timing of constructors, destructors
 * Arrays of objects
@@ -311,9 +333,7 @@ double    temperatures[]{78.8, 80.2, 92.4, 87.5, 95.3, 95.1, 92.8};
 
 ---
 
-## `const` methods
-
-.small-90[
+## `const` methods {.tight}
 
 * In classes / structures, a method can "promise" not to modify the *state* of the object.
     - meaning, values of attributes will not be modified
@@ -325,14 +345,12 @@ public:
     int get_length() const;  // const method
     //[... other code not shown ...]
 private:
-    int length;
-    int width;
+    int length = 0;
+    int width  = 0;
 };
 ```
 
 `get_length()` *cannot* modify the attributes (`length` and `width`).
 
-* This protection is often added to accessors, and *should* be added whenever possible.
+* This protection is often added to accessors, and [*should* be added whenever possible]{.highlight}.
     - Mutators cannot be `const` methods, since they need to change the state of the object.
-
-]

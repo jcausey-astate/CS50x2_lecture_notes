@@ -16,7 +16,12 @@
       "/content/12_vector.html",
       "/content/13_Input_and_Output.html",
       "/content/14_Searching_Sorting.html",
-      "/content/15_Structures.html"
+      "/content/15_Structures.html",
+      "/content/16_random_access.html",
+      "/content/17_Dynamic_Memory.html",
+      "/content/18_Exceptions.html",
+      "/content/19_Classes_and_Objects.html",
+      "/content/20_Aggregation_of_Objects.html"
     ]
   }
 ]

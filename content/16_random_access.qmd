@@ -1,16 +1,11 @@
 ---
-title: "16: Binary Files & Random Access"
-date: 2020-10-02T12:30:16-05:00
-draft: true
+number: 16
+title: "Binary Files and Random Access"
+textbook: "Gaddis (Ch. 12)"
+# draft: true
 ---
 
-# Binary Files & Random Access
-
-## (Ch. 12)
-
----
-
-## Files – Review
+# Files – Review
 
 _**File**_: a set of data stored on a computer; often on secondary storage such as a disk drive.
 
@@ -43,11 +38,11 @@ _**File**_: a set of data stored on a computer; often on secondary storage such 
 
 ---
 
-**File modes**
+### File modes
 
-<small>
+::: {.small-85}
 
-| `ios::openmode` | Meaning                                                                                                                                             |
+| [`ios::openmode`]{.large} | [Meaning]{.large}                                                                                                                                             |
 |:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ios::app `     | Append mode.  If the file exists, all output is written to the end of the file. Create the file if it does not exist.                               |
 | `ios::ate`      | If the file exists, the initial position markers are moved to the end of it.                                                                        |
@@ -56,12 +51,11 @@ _**File**_: a set of data stored on a computer; often on secondary storage such 
 | `ios::out`      | Output mode.  Data will be written to the file. By default, the file's contents will be deleted if it already exists; it will be created otherwise. |
 | `ios::trunc `   | If the file already exists, its contents will be deleted (truncated).  This is the default mode used by `ios::out`.                                 |
 
-</small>
+:::
 
+<!--- --- --->
 
----
-
-## Binary Files
+# Binary Files
 
 * The default open mode is "text mode"
     - ASCII – encoded text
@@ -70,6 +64,7 @@ _**File**_: a set of data stored on a computer; often on secondary storage such 
     - Use `read()` and `write()` methods instead of `>>` and `<<`.
 
 **Example**
+
 ``` cpp
 fstream fin{"my_file", ios::in|ios::binary};
 char ch;
@@ -84,9 +79,15 @@ To read/write non-character data, you must cast using:
 ``` cpp
 reinterpret_cast<char*>( address_of_object )
 ```
+\
 
-_**Reason:**_  The `read()` and `write()` methods are designed to input/output raw _bytes_ of data.  `char` is a convenient "package" for raw bytes.      
+_**Reason:**_  The `read()` and `write()` methods are designed to input/output raw _bytes_ of data.  `char` is a convenient "package" for raw bytes.
+
+\
+
 `reinterpret_cast` forces the compiler to treat a pointer/address of one type as if it were another.
+
+\
 
 Here are the prototypes for `read()` and `write()`:
 ``` cpp
@@ -98,7 +99,11 @@ ostream& write (char* s, streamsize n);
 
 ### More realistic example:
 
-* Reading / writing any value that isn't type `char` requires casting the pointer (first argument) to type `char*`:
+\
+
+Reading / writing any value that isn't type `char` requires casting the pointer (first argument) to type `char*`:
+
+\
 
 ``` cpp
 fstream fin{"my_file", ios::in|ios::binary};
@@ -126,9 +131,13 @@ The idea is to create an "array-in-a-file" that can be accessed at any arbitrary
 * Open file in binary mode
     - ASCII-encoding would be undesirable
 * Move to desired location (_seek_)
-    - You can seek the read and write position independently.
+    - You can seek the read and write position independently.^\*^
 * Read or write a record (or records).
     - Must be done as a series of bytes (`char`s).
+
+::: {.footnotes}
+^\*^ In theory, anyway.  In reality, this is OS dependent.
+:::
 
 ---
 
@@ -141,8 +150,9 @@ The idea is to create an "array-in-a-file" that can be accessed at any arbitrary
 * Can be used to go to any location in a file.
 * Math similar to pointer-based array access is used.
 
-**Syntax:**    
-_`stream`_`.seekg(`_`offset`_`, `_`mode`_`)`       
+**Syntax:**
+
+_`stream`_`.seekg(`_`offset`_`, `_`mode`_`)`\
 _`stream`_`.seekp(`_`offset`_`, `_`mode`_`)`
 
 Where _stream_ is the file stream, offset_ is distance to seek (bytes), _mode_ is where to start from (mathematically).
@@ -155,6 +165,8 @@ fin.seekg(25L, ios::beg);
 ---
 
 ## Useful `ios` Methods
+
+\
 
 **_`stream`_`.seekg()`** : seek "get" to an offset in _`stream`_
 
@@ -178,7 +190,7 @@ Every record in a (simple) random-access file needs to be the same _size_ (in by
 
 * Avoid using any attributes that are pointers.
 * Avoid using any attribute type that is not _trivially copyable_:
-    * http://en.cppreference.com/w/cpp/types/is_trivially_copyable 
+    * <http://en.cppreference.com/w/cpp/types/is_trivially_copyable>
 
 ```cpp
 #include <iostream>
@@ -192,8 +204,8 @@ std::cout << std::is_trivially_copyable<A>::value << '\n';
 
 ---
 
-.small-60[
 
+::: {.small-70 .noborder}
 ```cpp
 #include <iostream>
 #include <string>
@@ -239,7 +251,8 @@ int main(){
     return 0;
 }
 ```
-]
+:::
+
 
 ---
 
@@ -253,6 +266,8 @@ For security, it is often desirable to clear _all_ bytes associated with an obje
 
 **Syntax:**      
 `memset(`_`start`_`, `_`value`_`, `_`size`_`)`
+
+\
 
 ``` cpp
 // zero all bytes contained in `myObj`:
