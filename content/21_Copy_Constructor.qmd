@@ -2,7 +2,7 @@
 number: 21
 title: "Assignment, Copy Constructor"
 textbook: "Gaddis 14.3--14.4"
-draft: true
+# draft: true
 ---
 
 # Memberwise Assignment

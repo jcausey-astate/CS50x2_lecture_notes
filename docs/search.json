@@ -1,5 +1,47 @@
 [
   {
+    "objectID": "content/22_Operator_Overloading.html#operators-are-functions",
+    "href": "content/22_Operator_Overloading.html#operators-are-functions",
+    "title": "Operator Overloading",
+    "section": "Operators are Functions",
+    "text": "Operators are Functions\nOperators in C++ are actually just symbolic shorthand for function calls.\n\n\nExample Expression:\narea = pi * r * r;\n\nConsider just the first operator that will be applied:\npi * r\n\n\nThis expression will actually result in the following function call:\noperator* (pi, r)\n\n\nThe entire expression could be written as:\noperator= ( operator*( operator*( pi, r ), r ));"
+  },
+  {
+    "objectID": "content/22_Operator_Overloading.html#overloading-operators",
+    "href": "content/22_Operator_Overloading.html#overloading-operators",
+    "title": "Operator Overloading",
+    "section": "Overloading Operators",
+    "text": "Overloading Operators\nSince operators are really just function calls in disguise, if we know the right prototypes for the function calls, we can overload them.\n\nMost operators in C++ can be overloaded.*\nCorresponding functions are always named operator followed by the symbol for the operator.\n\n\n* The ones that cannot are:     ?:,    ::,    .,    .*,   sizeof,    typeid"
+  },
+  {
+    "objectID": "content/22_Operator_Overloading.html#operator-prototypes",
+    "href": "content/22_Operator_Overloading.html#operator-prototypes",
+    "title": "Operator Overloading",
+    "section": "Operator Prototypes",
+    "text": "Operator Prototypes\nOperator function prototypes follow the following patterns, depending on the number of operands:\n\n\n\nBinary operators (2 operands):\n\nreturntype  operator &lt;SYMBOL&gt;(left_operand, right_operand)\n\n\n\n\n\nUnary operators (1 operand):\n\nreturntype  operator &lt;SYMBOL&gt;(right_operand)"
+  },
+  {
+    "objectID": "content/22_Operator_Overloading.html#multiple-overloads-needed",
+    "href": "content/22_Operator_Overloading.html#multiple-overloads-needed",
+    "title": "Operator Overloading",
+    "section": "Multiple Overloads Needed",
+    "text": "Multiple Overloads Needed\nFraction operator* (const Fraction& lhs, const Fraction& rhs);\n\nThis prototype only covers a Fraction * Fraction expression.\n\nConsider int * Fraction, ** Fraction * int** , etc…\n\nMore overloaded functions are needed to support all desirable interfaces.\n\nOverload only when the operator makes sense for the new type being created!"
+  },
+  {
+    "objectID": "content/22_Operator_Overloading.html#stream-operators-and",
+    "href": "content/22_Operator_Overloading.html#stream-operators-and",
+    "title": "Operator Overloading",
+    "section": "Stream Operators << and >>",
+    "text": "Stream Operators &lt;&lt; and &gt;&gt;\n\nBinary operators\nLeft-hand operand is the stream, and should be passed by reference.\n\n(Don’t make copies of streams.)\n\nRight-hand operand is the “thing” you are reading/writing.\nReturn type should be the stream, by reference.\n\nExample\nstd::ostream& operator&lt;&lt; (std::ostream&   strm, const Fraction& rhs);"
+  },
+  {
+    "objectID": "content/22_Operator_Overloading.html#and---",
+    "href": "content/22_Operator_Overloading.html#and---",
+    "title": "Operator Overloading",
+    "section": "++ and --",
+    "text": "++ and --\n\n\nPrefix (++x or --x) \ntype& operator++ (type& rhs);\ntype& operator-- (type& rhs);\n\n\nPostfix (x++ or x--) \ntype operator++(type& lhs, int);\ntype operator--(type& lhs, int);\n\nNotice the “phantom” int second parameter — this is used only so that the compiler can tell the prefix and postfix versions apart.\nAlso note that a copy of lhs (with its previous value) is returned.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nOperator Overloading"
+  },
+  {
     "objectID": "content/18_Exceptions.html#exceptions",
     "href": "content/18_Exceptions.html#exceptions",
     "title": "Exceptions",
@@ -760,7 +802,7 @@
     "href": "index.html",
     "title": "CS 50x2 Slides",
     "section": "",
-    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\n\n\n\nSTL and Vectors\n\n\n\n\n\n\n\n\n\n\nInput and Output\n\n\n\n\n\n\n\n\n\n\nSearching and Sorting\n\n\n\n\n\n\n\n\n\n\nStructures\n\n\n\n\n\n\n\n\n\n\nBinary Files and Random Access\n\n\n\n\n\n\n\n\n\n\nDynamic Memory\n\n\n\n\n\n\n\n\n\n\nExceptions\n\n\n\n\n\n\n\n\n\n\nClasses and Objects\n\n\n\n\n\n\n\n\n\n\nAggregation\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\n\n\n\nSTL and Vectors\n\n\n\n\n\n\n\n\n\n\nInput and Output\n\n\n\n\n\n\n\n\n\n\nSearching and Sorting\n\n\n\n\n\n\n\n\n\n\nStructures\n\n\n\n\n\n\n\n\n\n\nBinary Files and Random Access\n\n\n\n\n\n\n\n\n\n\nDynamic Memory\n\n\n\n\n\n\n\n\n\n\nExceptions\n\n\n\n\n\n\n\n\n\n\nClasses and Objects\n\n\n\n\n\n\n\n\n\n\nAggregation\n\n\n\n\n\n\n\n\n\n\nAssignment, Copy Constructor\n\n\n\n\n\n\n\n\n\n\nOperator Overloading\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/01_SP_Basics.html#first-principles",
@@ -1629,5 +1671,68 @@
     "title": "Classes and Objects",
     "section": "const methods",
     "text": "const methods\n\nIn classes / structures, a method can “promise” not to modify the state of the object.\n\nmeaning, values of attributes will not be modified\n\naccomplished by marking methods as const:\n\nclass Rectangle{\npublic:\n    int get_length() const;  // const method\n    //[... other code not shown ...]\nprivate:\n    int length = 0;\n    int width  = 0;\n};\nget_length() cannot modify the attributes (length and width).\n\nThis protection is often added to accessors, and should be added whenever possible.\n\nMutators cannot be const methods, since they need to change the state of the object.\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nClasses and Objects"
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#memberwise-assignment-in-initialization",
+    "href": "content/21_Copy_Constructor.html#memberwise-assignment-in-initialization",
+    "title": "Assignment, Copy Constructor",
+    "section": "Memberwise Assignment in Initialization",
+    "text": "Memberwise Assignment in Initialization\nWhat happens when you do:\nRectangle r1{3, 4};\nRectangle r2 = r1;  // what happens here?"
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#memberwise-assignment-in-initialization-1",
+    "href": "content/21_Copy_Constructor.html#memberwise-assignment-in-initialization-1",
+    "title": "Assignment, Copy Constructor",
+    "section": "Memberwise Assignment in Initialization",
+    "text": "Memberwise Assignment in Initialization\nWhat happens when you do:\nRectangle r1{3, 4};\nRectangle r2 = r1;  // This is _initialization_, not assignment!\nEach attribute in r2 receives a copy of the corresponding attribute in r1.\nBut, this time it isn’t actually assignment, even though it “looks like assignment”. It is actually initialization during construction, the same as:\nRectangle r2{r1};\nWhen can this be a problem???"
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#memberwise-assignment-1",
+    "href": "content/21_Copy_Constructor.html#memberwise-assignment-1",
+    "title": "Assignment, Copy Constructor",
+    "section": "Memberwise Assignment",
+    "text": "Memberwise Assignment\nWhen can this be a problem???\n\nPointers pointing outside the physical object are a problem.\nSystem resources (streams, etc.) are a problem.\nThe solution has two parts:\n\nOverloaded assignment operator\nCopy Constructor"
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#overloaded-assignment-operator-1",
+    "href": "content/21_Copy_Constructor.html#overloaded-assignment-operator-1",
+    "title": "Assignment, Copy Constructor",
+    "section": "Overloaded Assignment Operator",
+    "text": "Overloaded Assignment Operator\nMost operators in C++ can be overloaded to work with custom object types. The assignment operator is one of them.\nC++ operators are actually implemented as special operator functions (or methods). The symbols are just “syntactic sugar” to make our code easier to read. For example:\nx = y;  // Assume x and y are object types.\nThe statement above is converted to function notation by the compiler to the following equivalent statement:\nx.operator=(y);  // Assume x and y are object types."
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#overloaded-assignment-operator-2",
+    "href": "content/21_Copy_Constructor.html#overloaded-assignment-operator-2",
+    "title": "Assignment, Copy Constructor",
+    "section": "Overloaded Assignment Operator",
+    "text": "Overloaded Assignment Operator\nIf we create a method matching the prototype for the assignment operator, we can take control of how assignment happens for our object. This is necessary whenever the physical object and logical object differ. Here is the general prototype pattern:\nObjTypeName & operator=( const ObjTypeName& source );"
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#overloaded-assignment-operator-3",
+    "href": "content/21_Copy_Constructor.html#overloaded-assignment-operator-3",
+    "title": "Assignment, Copy Constructor",
+    "section": "Overloaded Assignment Operator",
+    "text": "Overloaded Assignment Operator\nExample with MyClass:\nMyClass{\n    public:\n    [...]\n        MyClass& operator=(const MyClass& source); // assignment op\n    [...]\n};\nThe implementation would just need to do whatever is necessary to make the current object a complete, independent copy of the source object. The current object is always the left-hand operand from the assignment statement. (Which means the current object is always the destination of the assignment.)"
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#copy-constructor-1",
+    "href": "content/21_Copy_Constructor.html#copy-constructor-1",
+    "title": "Assignment, Copy Constructor",
+    "section": "Copy Constructor",
+    "text": "Copy Constructor\n\nCommonly takes a const reference to an object of the same class as a parameter.\nMust take a reference, but might not always be const.\n\nMyClass{\n    public:\n        MyClass(const MyClass& orig); // copy c-tor\n    [...]\n};"
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#copy-constructor-2",
+    "href": "content/21_Copy_Constructor.html#copy-constructor-2",
+    "title": "Assignment, Copy Constructor",
+    "section": "Copy Constructor",
+    "text": "Copy Constructor\nMyClass{\n    public:\n        MyClass(const MyClass& orig); // copy c-tor\n    [...]\n};\n// - - - -\n// Implementation\nMyClass::MyClass(const MyClass& orig){\n    // Do whatever is necessary to make the current\n    // object a complete, independent copy of the \n    // `orig` object.\n}"
+  },
+  {
+    "objectID": "content/21_Copy_Constructor.html#copy-constructor-dry-principle",
+    "href": "content/21_Copy_Constructor.html#copy-constructor-dry-principle",
+    "title": "Assignment, Copy Constructor",
+    "section": "Copy Constructor: DRY Principle",
+    "text": "Copy Constructor: DRY Principle\n\n“Don’t Repeat Yourself”\n\nThe copy constructor and the assignment operator perform nearly the same operation (both make an independent copy of the source object). It is common to see the copy c-tor implemented in terms of the assignment operator:\nMyClass{\n    public:\n        MyClass(const MyClass& orig);              // copy c-tor\n        MyClass& operator=(const MyClass& source); // assignment op\n    [...]\n};\n// - - - -\n// Copy c-tor Implementation\nMyClass::MyClass(const MyClass& orig){\n    *this = orig;\n}\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nAssignment, Copy Constructor\n\n\n \n\n\n\nThe DRY Principle states: “Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”."
   }
 ]

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/22_Operator_Overloading.html</loc>
+    <lastmod>2023-09-08T15:01:42.616Z</lastmod>
+  </url>
+  <url>
     <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/20_Aggregation_of_Objects.html</loc>
     <lastmod>2023-08-30T01:19:35.232Z</lastmod>
   </url>
@@ -83,5 +87,9 @@
   <url>
     <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/19_Classes_and_Objects.html</loc>
     <lastmod>2023-08-30T01:19:35.232Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/21_Copy_Constructor.html</loc>
+    <lastmod>2023-09-08T14:46:57.521Z</lastmod>
   </url>
 </urlset>

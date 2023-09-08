@@ -21,7 +21,9 @@
       "/content/17_Dynamic_Memory.html",
       "/content/18_Exceptions.html",
       "/content/19_Classes_and_Objects.html",
-      "/content/20_Aggregation_of_Objects.html"
+      "/content/20_Aggregation_of_Objects.html",
+      "/content/21_Copy_Constructor.html",
+      "/content/22_Operator_Overloading.html"
     ]
   }
 ]
