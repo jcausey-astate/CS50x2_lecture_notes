@@ -1,18 +1,17 @@
 ---
-title: "21: Assignment, Copy Constructor"
-date: 2020-10-02T12:30:15-05:00
+number: 21
+title: "Assignment, Copy Constructor"
+textbook: "Gaddis 14.3--14.4"
 draft: true
 ---
 
-# Copy Constructors 
+# Memberwise Assignment
 
-## Gaddis Ch. 14.3 - 14.4
-
----
-
-## Memberwise Assignment
+\
+\
 
 Given:
+
 ``` cpp
 class Rectangle {
     public:
@@ -24,7 +23,7 @@ class Rectangle {
 
 What happens when you do:
 
-``` cpp
+``` cpp {code-line-numbers="3"}
 Rectangle r1{3, 4};
 Rectangle r2{2, 3};
 r2 = r1;            // what happens here?
@@ -34,7 +33,7 @@ r2 = r1;            // what happens here?
 
 What happens when you do:
 
-``` cpp
+``` cpp {code-line-numbers="3"}
 Rectangle r1{3, 4};
 Rectangle r2{2, 3};
 r2 = r1;            // what happens here?
@@ -50,7 +49,7 @@ When can this be a problem???  (Let's look at a similar case...)
 
 What happens when you do:
 
-``` cpp
+``` cpp {code-line-numbers="2"}
 Rectangle r1{3, 4};
 Rectangle r2 = r1;  // what happens here?
 ```
@@ -61,7 +60,7 @@ Rectangle r2 = r1;  // what happens here?
 
 What happens when you do:
 
-``` cpp
+``` cpp {code-line-numbers="2"}
 Rectangle r1{3, 4};
 Rectangle r2 = r1;  // This is _initialization_, not assignment!
 ```
@@ -90,9 +89,9 @@ When can this be a problem???
     - Overloaded assignment operator
     - Copy Constructor
 
----
+<!-- --- -->
 
-## Overloaded Assignment Operator
+# Overloaded Assignment Operator
 
 * Pointers pointing outside the _physical object_ are a problem.
 * System resources (streams, etc.) are a problem.
@@ -145,9 +144,9 @@ MyClass{
 
 The implementation would just need to do whatever is necessary to make the current object a complete, independent copy of the `source` object.  The current object is always the _left-hand operand_ from the assignment statement. (Which means the current object is always the _destination_ of the assignment.)
 
----
+<!-- --- -->
 
-## Copy Constructor
+# Copy Constructor
 
 The _Copy Constructor_ is called in cases where a copy of an object is being created on-the-fly. 
 
@@ -201,7 +200,7 @@ MyClass::MyClass(const MyClass& orig){
 
 ## Copy Constructor: DRY Principle
 
-> "Don't Repeat Yourself"
+> __"Don't Repeat Yourself"__
 
 The copy constructor and the assignment operator perform nearly the same operation (both make an independent copy of the source object).  It is common to see the copy c-tor implemented in terms of the assignment operator:
 
@@ -218,3 +217,7 @@ MyClass::MyClass(const MyClass& orig){
     *this = orig;
 }
 ```
+
+::: {.aside}
+The **_DRY Principle_** states: "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system".
+:::
