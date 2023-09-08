@@ -2,8 +2,8 @@
 number: 24
 title: "Stacks, Queues, and Circular Lists"
 textbook: |
-    Gaddis Ch. 19\
-    Drozdek Ch. 4
+    Gaddis (Ch. 19)\
+    Drozdek (Ch. 4)
 # draft: true
 ---
 

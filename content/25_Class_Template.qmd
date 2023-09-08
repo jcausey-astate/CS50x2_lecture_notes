@@ -1,13 +1,8 @@
 ---
-title: "25: Templates and Generic Programming"
-date: 2020-10-02T12:30:16-05:00
-draft: true
----
-
-# Templates and Generic Programming
-
-## Gaddis Ch. 16, 19
-
+number: 25
+title: "Templates and Generic Programming"
+textbook: "Gaddis (Ch. 16, 19)"
+# draft: true
 ---
 
 ## Function Templates
@@ -26,7 +21,9 @@ Numeric times10(Numeric num){
 }
 ```
 
+::: {.callout-note appearance="minimal"}
 `Numeric` is the _type parameter_ (it can be any valid identifier, but is usually capitalized (`UpperCamelCase` or sometimes `ALL_CAPS`) by convention.
+:::
 
 ---
 
@@ -37,21 +34,33 @@ Numeric times10(Numeric num){
 }
 ```
 
+::: {.callout-note appearance="minimal"}
 `Numeric` is the _type parameter_ (it can be any valid identifier, but is usually capitalized (`UpperCamelCase` or sometimes `ALL_CAPS`) by convention.
+:::
 
-<i><b>Tip</b>:  Write the function for a normal data type first, then convert to a function template!</i>
+::: {.callout-tip appearance="simple"}
+### Tip
+Write the function for a normal data type first, then convert to a function template!</i>
+:::
 
 ---
 
 ## Function Template Notes
 
+\
+
 * Multiple type parameters can be defined.
     - All type parameters specified in template prefix must be used in the definition.
+
+\
+
 * Function templates can be overloaded (as long as each overload has a unique signature).
 
 ---
 
 **Multiple type parameters can be defined.**
+
+\
 
 ```cpp
 template<typename Type1, typename Type2>
@@ -60,11 +69,15 @@ void print_pair(const Type1& v1, const Type2& v2){
 }
 ```
 
-**All type parameters specified in template prefix must be used in the definition.**
+::: {.callout-important appearance="minimal"}
+All type parameters specified in template prefix must be used in the definition.
+:::
 
 ---
 
 **Function templates can be overloaded (as long as each overload has a unique signature).**
+
+\
 
 ```cpp
 template<typename ValueType>
@@ -98,7 +111,10 @@ C++ _class templates_ are used to create _generic classes_ and _abstract data ty
 
 ---
 
-**Example**
+###  Example
+
+\
+
 ```cpp
 template<typename GradeType>
 class Grade{
@@ -113,7 +129,10 @@ class Grade{
 
 ---
 
-**Example (implementation)**
+###  Example (implementation)
+
+\
+
 ```cpp
 template<typename GradeType>
 Grade<GradeType>::Grade(const GradeType& newgrade) {
@@ -150,10 +169,12 @@ Remember that templates provide a _pattern_ from which the compiler will generat
 
 ---
 
-## Example
+### Example
 
 A linked list node just joins a "payload" value to a pointer to the next node...  We don't really care about what _type_ the payload is...
 
+\
+
 ```cpp
 // This node only holds integers...
 class Node{
@@ -184,11 +205,15 @@ private:
 };
 ```
 
+\
+
 We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload...
 
 ---
 
 We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload...
+
+\
 
 ```cpp
 *template <typename PayloadType>
@@ -198,6 +223,8 @@ class Node{
 ---
 
 Now, we _carefully_ replace any reference to the _type_ that was associated with the payload with the parameterized `PayloadType`.  That means we will be replacing `int` with `PayloadType` whenever the `int` referred to the type of the payload (beware of loop counters, etc.).
+
+\
 
 ```cpp
 template <typename PayloadType>
@@ -216,6 +243,8 @@ private:
 ---
 
 Now, we _carefully_ replace any reference to the _type_ that was associated with the payload with the parameterized `PayloadType`.  That means we will be replacing `int` with `PayloadType` whenever the `int` referred to the type of the payload (beware of loop counters, etc.).
+
+\
 
 ```cpp
 template <typename PayloadType>
@@ -247,6 +276,8 @@ private:
 };
 ```
 
+\
+
 Next, we replace any instance of the class name `Node` that is being used as a typename, so that we add the template parameterization list to it...
 
 ---
@@ -264,6 +295,8 @@ private:
     `Node<PayloadType>`* next = nullptr;
 };
 ```
+
+\
 
 Now, we have a fully templated class definition.
 
@@ -283,13 +316,19 @@ private:
 };
 ```
 
+\
+
 Here are two example method implementations:
+
+\
 
 ```cpp
 template <typename PayloadType>
 Node<PayloadType>* Node<PayloadType>::get_next() const{
     return next;
 }
+
+\
 
 template <typename PayloadType>
 void Node<PayloadType>::set_next(Node<PayloadType>* n){

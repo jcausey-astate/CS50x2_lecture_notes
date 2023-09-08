@@ -2,8 +2,8 @@
 number: 23
 title: "Linked Lists"
 textbook: |
-    Gaddis Ch. 18\
-    Drozdek Ch. 3
+    Gaddis (Ch. 18)\
+    Drozdek (Ch. 3)
 # draft: true
 ---
 
