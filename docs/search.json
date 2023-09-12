@@ -550,7 +550,7 @@
     "href": "content/11_Pointers.html#pointers-to-arrays",
     "title": "Pointers",
     "section": "Pointers to Arrays",
-    "text": "Pointers to Arrays\nint a[5] = { 1, 2, 3, 4, 5 };  // normal array\nPointers can be used to access elements of an array.\nint* aPtr = a; // no need for `&`: `a` degrades to a pointer\nPointer mathematics.\nThis is why the type is important for pointers.\nstd::cout &lt;&lt; *(aPtr + 2) &lt;&lt; \"\\n\"; // prints a[2]\nPointer and array notation is interchangeable.\nstd::cout &lt;&lt; aPtr[2] &lt;&lt; \"\\n\";  // easier than \"*(aPtr + 2)\""
+    "text": "Pointers to Arrays\nint a[5]{ 1, 3, 5, 7, 9 };  // normal array\nPointers can be used to access elements of an array.\nint* aPtr = a; // no need for `&`: `a` degrades to a pointer\nPointer mathematics.\nThis is why the type is important for pointers.\nstd::cout &lt;&lt; *(aPtr + 2) &lt;&lt; \"\\n\"; // prints a[2]\nPointer and array notation is interchangeable.\nstd::cout &lt;&lt; aPtr[2] &lt;&lt; \"\\n\";  // easier than \"*(aPtr + 2)\""
   },
   {
     "objectID": "content/11_Pointers.html#more-pointer-math",
@@ -564,7 +564,7 @@
     "href": "content/11_Pointers.html#pointers-as-iterators",
     "title": "Pointers",
     "section": "Pointers as “Iterators”",
-    "text": "Pointers as “Iterators”\nYou can use a pointer to “move around” in an array:\nint a[5] = { 1, 2, 3, 4, 5 };\n// [...]\nint* begin = a;               // start is first addr of a\nint* end   = a + 5;           // end is start + size\n\n// \"For each element in a\", using a pointer for movement:\nfor(int* current = begin; current != end; current++){\n    std::cout &lt;&lt; *current &lt;&lt; \"\\t\";\n}\nThis design pattern is very common in the C++ Standard Template Library."
+    "text": "Pointers as “Iterators”\nYou can use a pointer to “move around” in an array:\nint a[5] = { 1, 3, 5, 7, 9 };\n// [...]\nint* begin = a;               // start is first addr of a\nint* end   = a + 5;           // end is start + size\n\n// \"For each element in a\", using a pointer for movement:\nfor(int* current = begin; current != end; current++){\n    std::cout &lt;&lt; *current &lt;&lt; \"\\t\";\n}\nThis design pattern is very common in the C++ Standard Template Library."
   },
   {
     "objectID": "content/11_Pointers.html#passing-pointers-to-functions",

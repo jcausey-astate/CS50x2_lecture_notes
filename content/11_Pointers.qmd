@@ -174,7 +174,7 @@ int* x = nullptr; // declare and initialize to nullptr
 ## Pointers to Arrays
 
 ``` cpp
-int a[5] = { 1, 2, 3, 4, 5 };  // normal array
+int a[5]{ 1, 3, 5, 7, 9 };  // normal array
 ```
 
 **Pointers can be used to access elements of an array.**
@@ -222,7 +222,7 @@ Operation           Example      Description
 You can use a pointer to "move around" in an array:
 
 ``` cpp
-int a[5] = { 1, 2, 3, 4, 5 };
+int a[5] = { 1, 3, 5, 7, 9 };
 // [...]
 int* begin = a;               // start is first addr of a
 int* end   = a + 5;           // end is start + size
