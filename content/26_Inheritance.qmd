@@ -1,13 +1,8 @@
 ---
-title: "26: Inheritance"
-date: 2022-10-17
-draft: true
----
-
-# Inheritance
-
-## Gaddis Ch. 15
-
+number: 26
+title: "Inheritance"
+textbook: "Gaddis (Ch. 15)"
+draft: false
 ---
 
 ## Inheritance
@@ -30,26 +25,28 @@ _... Infinite examples:  The real world works this way!_
 ## Terminology and Notation
 
 * _Base class_ (or _parent_): the more general class... the "starting point".
+
 * _Derived class_ (or _child_): more specialized, derived from base class.
+
 * Notation:
 
-![Base and derived class headers.](../images/Inheritance/base_and_derived_class_headers.png )
+![Base and derived class headers.](images/Inheritance/base_and_derived_class_headers.png )
 
 
 ---
 
 ## How "is-a" Works
 
-.blue[The derived class object "**is a**(n)" object of the base class.]
+[The derived class object "**is a**(n)" object of the base class.]{.blue}
 
---
+\
 
 * Has all characteristics of base class!
 
     - All members defined in base class.
     - Plus all members defined in derived class.
 
---
+\
 
 * Derived class objects can "use" (access):
 
@@ -60,40 +57,42 @@ _... Infinite examples:  The real world works this way!_
 
 ## How "is-a" Works
 
-.center[![:scale Base and derived class., 80%](../images/Inheritance/base_and_derived_class_diagram.svg )]
+![Base and derived class.](images/Inheritance/base_and_derived_class_diagram.svg )
 
-The _physical object_ for a derived class object includes .blue[_all parts_] of the base class, even though the `private` base class members are not directly accessible to derived class methods.
+The **_physical object_** for a derived class object includes [_all parts_]{.blue} of the base class, even though the `private` base class members are not directly accessible to derived class methods.
+
+:::{.aside}
+We define the **_logical object_** as the object as we perceive it to be, which may be different from the physical object.  In particular, the logical object may rely on resources that are external to the physical object, but we perceive them as being a part of the "thing" we are interacting with.  
+
+An example of this is the `std::string`, in which the contents of the string itself is _not_ a part of the physical object, even though we think of it as being a part of the "string" we are interacting with.
+:::
 
 ---
-
 
 ## Wait... `protected`?
 
 * `protected` : _access specifier_, similar to `private`
-  * Except:  `protected` members .blue[_can_] be accessed by derived classes!
+  * Except:  `protected` members [_can_]{.blue} be accessed by derived classes!
   * Useful when you know you are writing a base class.
 
-* `private` data from base class is part of derived class, but _cannot be accessed_.
+\
 
----
+* `private` data from base class is part of derived class, but _cannot be accessed_.
 
 ## Class Access Specifiers
 
 You may also inherit with a selected maximum level of access:
---
 
-- **.blue[`public`]**
+- **[`public`]{.blue}**
     + True "is-a" relationship.
     + Does not change any member's downstream access level.
+\
 
---
-
-- **.orange[`protected`]**
+- **[`protected`]{.orange}**
     + `public` items from base class become `protected` in derived class.
+\
 
---
-
-- **.red[`private`]**
+- **[`private`]{.red}**
     + `public` and `protected` items from base class become `private` in derived class.
     + Derived class object _cannot_ be treated as an object of the base class.
 
@@ -101,14 +100,16 @@ You may also inherit with a selected maximum level of access:
 
 ## Class Access Specifiers
 
-.center[![Diagram of effect of access specifiers.](../images/Inheritance/Inheritance_Access_Levels.svg)]
+![Diagram of effect of access specifiers.](images/Inheritance/Inheritance_Access_Levels.svg)
 
 ---
 
 ## Building and Tearing-Down
 
 * Base class must be constructed before derived class.
+
 * Derived class must be destructed before the base class.
+
 * Derived class may pass arguments to base class constructor:
 
 ```cpp
@@ -120,9 +121,14 @@ You _must_ use the constructor's _member initialization list_ for this.
 ---
 
 **Detailed Example:** A Square by inheriting from a Rectangle
-> A Square is just a rectangle with the additional constraint that the 
+
+\
+
+> A Square is just a rectangle with the additional constraint that the
 > width and height are identical.
 
+\
+
 ```cpp
 class Rectangle{
 public:
@@ -164,7 +170,7 @@ public:
 };
 ```
 
-.green[Simple!]  But, it leads to an issue.
+[Simple!]{.green}  [But, it leads to an issue.]{.highlight-red}
 
 ---
 
@@ -175,26 +181,28 @@ public:
 };
 ```
 
-.green[Simple!]  But, it leads to an issue.
+\
 
-.left-column[
+:::: {.columns}
+::: {.column}
+[Simple!]{.green}  But, it leads to an issue.
+
 ```cpp
 Square s1{3}; // 3x3 square
 s1.print();   // "w=3, h=3"
 s1.set_width(4);
 s1.print();   // "w=4, h=3" ERROR
 ```
-]
+:::
 
-.right-column[.small[
+::: {.column}
 We inherited by `public` from `Rectangle`, so we can use any `Rectangle` method.
 
-Bad news - this lets us make a .red[mistake] by setting width/height _independently_.
-]]
+Bad news - this lets us make a [mistake]{.red} by setting width/height _independently_.
+:::
+::::
 
 How can we fix this problem?
-
-
 
 ---
 
@@ -211,6 +219,7 @@ public:
 };
 ```
 
+\
 
 ```cpp
 Square s1{3}; // 3x3 square
@@ -234,6 +243,7 @@ public:
 };
 ```
 
+\
 
 ```cpp
 Square s1{3}; // 3x3 square
@@ -244,7 +254,9 @@ s1.print();   // "w=4, h=4" Better...
 *s1.print();   // "w=5, h=4" ERROR STILL!
 ```
 
-The new method .green[allows us] to do the right thing, but it does not .red[prevent us] from doing the wrong thing.  We can do better...
+\
+
+The new method [allows us]{.green} to do the right thing, but it does not [prevent us]{.red} from doing the wrong thing.  We can do better...
 
 ---
 
@@ -260,6 +272,7 @@ public:
 };
 ```
 
+\
 
 ```cpp
 Square s1{3}; // 3x3 square
@@ -270,7 +283,9 @@ s1.print();   // "w=4, h=4" Better...
 *s1.print();   // "w=5, h=5" FIXED!
 ```
 
-Now, we are .blue[able] to interact with the object in any way we expect, but it will .green[always do the "right" thing].  It prevents us from ending up in an inconsistent state.
+\
+
+Now, we are [able]{.blue} to interact with the object in any way we expect, but it will [always do the "right" thing]{.green}.  It prevents us from ending up in an inconsistent state.
 
 ---
 
@@ -284,9 +299,15 @@ public:
 };
 ```
 
+\
+
 What are the benefits / problems of this solution?
 
+\
+
 What about _aggregation_?
+
+\
 
 What about `protected` inheritance?
 
@@ -294,25 +315,28 @@ What about `protected` inheritance?
 
 What about `protected` inheritance?
 
-```cpp
+\
+
+```cpp {code-line-numbers="4-6"}
 class Square : protected Rectangle{
 public:
     Square(int s) : Rectangle{s, s} {}
-*   int  get_side_length() const { return get_width(); }
-*   int  get_area()        const { return Rectangle::get_area(); }
-*   void print()           const { Rectangle::print(); }
+    int  get_side_length() const { return get_width(); }
+    int  get_area()        const { return Rectangle::get_area(); }
+    void print()           const { Rectangle::print(); }
     void set_side_length(int s) { 
         set_width(s); 
         set_height(s); 
     }
 };
 ```
+\
 
-Forces us to redefine any methods we want in our public interface...
+* Forces us to redefine any methods we want in our public interface...
 
-But if the overlap isn't too large, that might not be too many.
+* But if the overlap isn't too large, that should not be too many.
 
-Also, the redefined methods are mostly simple "_pass-through_" methods.
+* Also, the redefined methods are mostly simple "_pass-through_" methods.
 
 ---
 
@@ -329,7 +353,7 @@ public:
 
 Are there any remaining problems?
 
---
+\
 
 Maybe `print()` needs to be customized:
 
@@ -339,8 +363,10 @@ void Square::print() const{
 }
 ```
 
---
+\
 
-.blue[There might still be a monster lurking in the bushes...  
+::: {.blue}
+There might still be a monster lurking in the bushes...
 
-But we'll see more about that soon...]
+But we'll see more about that soon...
+:::

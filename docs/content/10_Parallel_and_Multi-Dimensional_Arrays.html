@@ -472,11 +472,8 @@
 <span id="cb5-4"><a href="#cb5-4"></a><span class="co">// [...]</span></span>
 <span id="cb5-5"><a href="#cb5-5"></a></span>
 <span id="cb5-6"><a href="#cb5-6"></a><span class="dt">int</span> votes<span class="op">[</span>N_CONTESTANTS<span class="op">][</span>N_DAYS<span class="op">];</span> <span class="co">// table of contest votes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout callout-tip no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<p><strong></strong></p>
-</div>
 <div class="callout-content">
 <p>It can sometimes be useful to allow these constants to be <em>global</em> in some cases (as we will see shortly).</p>
 </div>
@@ -940,7 +937,7 @@
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

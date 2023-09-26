@@ -554,11 +554,8 @@
 <span id="cb1-14"><a href="#cb1-14"></a>    i<span class="op">++){</span>                           <span class="co">// print values by</span></span>
 <span id="cb1-15"><a href="#cb1-15"></a>   cout <span class="op">&lt;&lt;</span> v<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span>            <span class="co">// indexing the</span></span>
 <span id="cb1-16"><a href="#cb1-16"></a><span class="op">}</span>                                   <span class="co">// vector like an array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout callout-tip no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<p><strong></strong></p>
-</div>
 <div class="callout-content">
 <p><strong>HINT:</strong> Use <code>v.at(i)</code> instead of <code>v[i]</code> to enable bounds-checking!</p>
 </div>
@@ -856,11 +853,8 @@ resize()    : changes the size of the vector
 <p><strong>Now, the output - without changing <code>main()</code> at all:</strong></p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a href="#cb23-1"></a>2   4   6   8   10</span>
 <span id="cb23-2"><a href="#cb23-2"></a>2   4   6   8   10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout callout-tip no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<p><strong></strong></p>
-</div>
 <div class="callout-content">
 <p><strong>Hint:</strong> Prefer to pass a <code>vector</code> (or other STL container) by <code>const</code> reference (or plain reference if you want to modify it in the function) unless there is a “good reason” to make a copy.</p>
 </div>
@@ -1255,7 +1249,7 @@ resize()    : changes the size of the vector
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

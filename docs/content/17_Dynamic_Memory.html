@@ -469,11 +469,8 @@
 <img data-src="images/shared/memory-diagram-stack-heap.svg" class="r-stretch quarto-figure-center"><p class="caption">Conceptual memory layout with stack and heap.</p></section>
 <section id="dynamic-arrays" class="slide level2">
 <h2>Dynamic Arrays</h2>
-<div class="callout callout-caution no-icon callout-titled callout-style-simple">
+<div class="callout callout-caution no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<p><strong></strong></p>
-</div>
 <div class="callout-content">
 <p>Normal C++ arrays cannot be sized at runtime. This is a severe limitation.</p>
 </div>
@@ -1060,7 +1057,7 @@ Pay attention to the <em>type argument</em> <strong><code>&lt;double[]&gt;</code
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

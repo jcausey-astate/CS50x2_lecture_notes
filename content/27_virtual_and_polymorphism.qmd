@@ -1,18 +1,13 @@
 ---
-title: "27: virtual and Polymorphism"
-date: 2022-10-17
-draft: true
----
-
-# Virtual Methods & Polymorphism
-
-## Gaddis Ch. 15.4
-
+number: 27
+title: "Virtual Methods and Polymorphism"
+textbook: "Gaddis (Ch. 15.4)"
+draft: false
 ---
 
 ## Redefining Base Class Methods
 
-* A method is said to be .term[_redefined_] in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
+* A method is said to be [_redefined_]{.term} in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
   * This is not the same thing as _overloading_.
 
 * Base class objects use the base class method... derived class objects use the derived class method.
@@ -23,24 +18,22 @@ draft: true
 
 Consider this situation:
 
-* Class .highlight-orange[`BaseClass`] defines methods `x()` and `y()`.<br />   `x()` calls `y()`. 
+* Class [`BaseClass`]{.highlight-orange} defines methods `x()` and `y()`.<br />   `x()` calls `y()`.
 
-* Class .highlight-blue[`DerivedClass`] inherits from .highlight-orange[`BaseClass`] and redefines method `y()`.
+* Class [`DerivedClass`]{.highlight-blue} inherits from [`BaseClass`]{.highlight-orange} and redefines method `y()`.
 
-* An object `D` of class .highlight-blue[`DerivedClass`] is created and method `x()` is called.
+* An object `D` of class [`DerivedClass`]{.highlight-blue} is created and method `x()` is called.
 
-* When `x()` is called, which `y()` is used; the one defined in .highlight-orange[`BaseClass`] or the the redefined one in .highlight-blue[`DerivedClass`]?
+* When `x()` is called, which `y()` is used; the one defined in [`BaseClass`]{.highlight-orange} or the the redefined one in [`DerivedClass`]{.highlight-blue}?
 
 ---
 
-<small style="font-size: 80%;">
-
 ```cpp
 #include <iostream>
-    
+
 class BaseClass{
   public:
-    void x() { 
+    void x() {
         std::cout << "BaseClass::x()\n";
         y();
     }
@@ -63,30 +56,28 @@ int main() {
 }
 ```
 
-</small>
-
 ---
 
 ## Problem with Redefining
 
 Answer to the riddle:
 
-* The .highlight-orange[BASE] class’s `y()` method is called!
-  
-  * This isn’t what you .highlight-red[_want_]...
-  *  but it should be what you .highlight[_expect_]...
+* The [BASE]{.highlight-orange} class’s `y()` method is called!
 
---
+  * This isn’t what you [_want_]{.highlight-red}...
+  *  but it should be what you [_expect_]{.highlight}...
+
+\
 
 * From `x()` in the base class’s point-of-view (at compile time), the only available `y()` is its own.
 
---
+\
 
 * Compiler binds the method call in `x()` to the base class `y()` at compile time... Once it’s done, it’s done.
 
---
+\
 
-* This is called .term[_static binding_]
+* This is called [_static binding_]{.term}
 
 ---
 
@@ -100,84 +91,77 @@ Answer to the riddle:
 
 ## Virtual Methods
 
-.term[_**Virtual Method**_]: a method in a base class that _expects_ to be redefined in derived classes.
+[_**Virtual Method**_]{.term}: a method in a base class that _expects_ to be redefined in derived classes.
 
 * Defined with keyword   `    virtual   `
 ```cpp
 virtual void y();
 ```
-* Allows .term[_dynamic binding_] – method name bound _at runtime_ to the corresponding code. ( as opposed to static binding )
+* Allows [_dynamic binding_]{.term} – method name bound _at runtime_ to the corresponding code. ( as opposed to static binding )
     - Dynamic binding is based on the _type_ of the object actually initiating the call at runtime.
 
 ---
 
-<small style="font-size: 80%;">
-
-```cpp
+```cpp {code-line-numbers="9,23"}
 #include <iostream>
-    
+
 class BaseClass{
   public:
-    void x() { 
+    void x() {
         std::cout << "BaseClass::x()\n";
         y();
     }
-    `virtual` void y() { // NOTE: virtual method
+    virtual void y() {      // NOTE: virtual method
         std::cout << "BaseClass::y()\n";
     }
 };
 
 class DerivedClass : public BaseClass {
   public:
-    virtual void y() { // virtual because BaseClass::y() is...
+    virtual void y() {      // virtual because BaseClass::y() is...
         std::cout << "DerivedClass::y()\n";
     }
 };
 
 int main() {
     DerivedClass d1;
-*   d1.x();  // will work as desired now.
+    d1.x();                // will work as desired now.
     return 0;
 }
 ```
-
-</small>
 
 ---
 
 ## Polymorphism
 
-A pointer of the .highlight-orange[base-class type] may be "pointed" to a .highlight-blue[derived class object].
+A pointer of the [base-class type]{.highlight-orange} may be "pointed" to a [derived class object]{.highlight-blue}.
 
 * Remember the "is-a" relationship...
 
   * Base-class pointers can only access members defined in the base class.
   * This won’t work in reverse!
 
---
 
-* When the base class uses dynamic binding... 
+* When the base class uses dynamic binding...
   * Base class pointer to derived class object behaves appropriately for the derived class.
-  * This is called .term[_polymorphism_].
+  * This is called [_polymorphism_]{.term}.
 
---
-
-* Polymorphism requires a pointer or reference.
+::: {.callout-tip appearance="minimal"}
+Polymorphism requires a pointer or reference.
+:::
 
 ---
 
-<small style="font-size: 75%;">
-
-```cpp
+```cpp {code-line-numbers="9,23"}
 #include <iostream>
-    
+
 class BaseClass{
   public:
-    void x() { 
+    void x() {
         std::cout << "BaseClass::x()\n";
         y();
     }
-    `virtual` void y() {
+    virtual void y() {
         std::cout << "BaseClass::y()\n";
     }
 };
@@ -191,13 +175,11 @@ class DerivedClass : public BaseClass {
 
 int main() {
     BaseClass* d2 = new DerivedClass;
-*   d2->x();   // will behave as DerivedClass
+    d2->x();        // will behave as DerivedClass
     delete d2;
     return 0;
 }
 ```
-
-</small>
 
 ---
 
@@ -209,9 +191,9 @@ _**Overriding**_: refers to dynamically-bound methods.
 
 <br>
 
-* Redefined methods .red[_**do not**_] exhibit polymorphic behavior
+* Redefined methods [_**do not**_]{.red} exhibit polymorphic behavior
 
-* Overridden methods .green[_**do**_] exhibit polymorphic behavior.
+* Overridden methods [_**do**_]{.green} exhibit polymorphic behavior.
 
 ---
 
@@ -229,7 +211,7 @@ Whenever you think a derived class might want to override a method!
 
 ## Pure `virtual` Methods
 
-.term[_**Pure `virtual` method**_]: a method that is not implemented (at all) in the base class, and is thus _required_ to be overridden in derived classes.
+[_**Pure `virtual` method**_]{.term}: a method that is not implemented (at all) in the base class, and is thus _required_ to be overridden in derived classes.
 
 * Created by using "assignment"-style syntax:
 
@@ -243,10 +225,10 @@ virtual void y() = 0;
 
 ## Abstract Base Classes
 
-.term[_**Abstract base class**_]: a base class that contains at least one pure virtual method.
+[_**Abstract base class**_]{.term}: a base class that contains at least one pure virtual method.
 
 * Useful for factoring out common behavior from a _family_ of objects.
-  
+
   * For specifying a _required common interface_.
 
 * You _cannot_ instantiate an object from an abstract base class.
@@ -261,20 +243,20 @@ virtual void y() = 0;
 * Inherit from all base classes (may result in multiple attributes/methods with same name)
 * Scope resolution will be required.
 
-.center[![:scale Multiple Inheritance, 70%](../images/virtual_Polymorphism/multi_inherit.png )]
+![Multiple Inheritance](images/virtual_Polymorphism/multi_inherit.png )
 
 ---
 
 Here is what it looks like in a class diagram:
 
-.center[![:scale Multiple Inheritance Class Diagram, 75%](../images/virtual_Polymorphism/multiple_inheritance_diagram.svg)]
+![Multiple Inheritance Class Diagram](images/virtual_Polymorphism/multiple_inheritance_diagram.svg)
 
 ---
 
 ## Example:  Students and faculty.
 
 ```cpp
-class Student{                 | class Faculty{ 
+class Student{                 | class Faculty{
 public:                        | public:
     std::string   name;        |    std::string name;
     unsigned long id;          |    double      salary;
@@ -283,7 +265,7 @@ public:                        | public:
 
 Notice the overlap - both classes need a `name` (and maybe other things as well).
 
-.blue[Good programming practice would say we should "factor out" the common code...]
+[Good programming practice would say we should "factor out" the common code...]{.blue}
 
 ---
 
@@ -296,26 +278,24 @@ public:
 };
 
 class Student : public Person{ | class Faculty : public Person{
-public:                        | public:              
+public:                        | public:
     unsigned long id;          |    double salary;
 };                             | };
 ```
 
-Now, we have the common code collected in a base class `Person`.  .green[Good!]
+Now, we have the common code collected in a base class `Person`.  [Good!]{.green}
 
---
+\
 
 But what if we want to add graduate assistants (_GA's_)?
 
---
+\
 
-A GA is a student who also has some responsibilities similar to faculty.  .blue[Could we use multiple inheritance?]
+A GA is a student who also has some responsibilities similar to faculty.  [Could we use multiple inheritance?]{.blue}
 
 ---
 
 ## Example:  Students and faculty.
-
-
 
 ``` cpp
 class Person{
@@ -323,9 +303,9 @@ public:
     std::string name;
 };
 
-class Student : public Person{ | class Faculty : public Person{ 
-public:                        | public:              
-    unsigned long id;          |    double salary; 
+class Student : public Person{ | class Faculty : public Person{
+public:                        | public:
+    unsigned long id;          |    double salary;
 };                             | };
 
 class GA : public Student, public Faculty {
@@ -334,12 +314,12 @@ public:
 };
 ```
 
---
+\
 
-```cpp
+```cpp {code-line-numbers="3"}
 int main() {
     GA ga1;
-*   ga1.name = "Alice";  // Error!
+    ga1.name = "Alice";  // Error!
 }
 ```
 
@@ -349,73 +329,73 @@ Let's look at the class diagram for this situation...
 
 We started with a simple class hierarchy:
 
-.center[![:scale Person, Student, Faculty, 80%](../images/virtual_Polymorphism/inheritance_person_student_faculty.svg)]
+![Person, Student, Faculty](images/virtual_Polymorphism/inheritance_person_student_faculty.svg)
 
 ---
 
 Then we changed it so that a `GA` inherited from both `Student` and `Faculty` (which makes sense on some level).
 
-.center[![:scale Person, Student, Faculty, 80%](../images/virtual_Polymorphism/multiple_inheritance_diamond_of_death.svg)]
+![Person, Student, Faculty](images/virtual_Polymorphism/multiple_inheritance_diamond_of_death.svg)
 
---
+\
 
-Notice the "diamond" shape this created, with `Person` as a _common ancestor_ of both parent classes. 
+Notice the "diamond" shape this created, with `Person` as a _common ancestor_ of both parent classes.
 
 ---
 
-Notice the "diamond" shape this created, with `Person` as a _common ancestor_ of both parent classes.  
+Notice the "diamond" shape this created, with `Person` as a _common ancestor_ of both parent classes.
 
-.center[![:scale Person, Student, Faculty, 80%](../images/virtual_Polymorphism/multiple_inheritance_diamond_of_death.svg)]
+![Person, Student, Faculty](images/virtual_Polymorphism/multiple_inheritance_diamond_of_death.svg)
 
-This situation creates several challenges, and is known in programming circles as the .term[.red[Diamond of Death]].
+This situation creates several challenges, and is known in programming circles as the [Diamond of Death]{.red .term}.
 
 ---
 
 **Back to the example...**
 
-``` cpp
+``` cpp {code-line-numbers="18"}
 class Person{
 public:
     std::string name;
 };
 
 class Student : public Person{ | class Faculty : public Person{
-public:                        | public:              
-    unsigned long id;          |    double salary;    
-};                             | };        
+public:                        | public:
+    unsigned long id;          |    double salary;
+};                             | };
 
 class GA : public Student, public Faculty {
 public:
     std::vector<std::string> labs;
 };
-    
+
 int main() {
     GA ga1;
-*   ga1.name = "Alice";  // Error!
+    ga1.name = "Alice";  // Error!
 }
 ```
 
 ---
 
-``` cpp
+``` cpp {code-line-numbers="18"}
 class Person{
 public:
     std::string name;
 };
 
 class Student : public Person{ | class Faculty : public Person{
-public:                        | public:              
+public:                        | public:
     unsigned long id;          |    double salary;
-};                             | }; 
+};                             | };
 
-class GA : public Student, public Faculty 
+class GA : public Student, public Faculty
 public:
     std::vector<std::string> labs;
 };
-    
+
 int main() {
     GA ga1;
-*   ga1.Student::name = "Alice";  // this works... but...
+    ga1.Student::name = "Alice";  // this works... but...
 }
 ```
 
@@ -423,87 +403,87 @@ We can use scope resolution... (but it is tedious, and doesn't solve the redunda
 
 ---
 
-``` cpp
+``` cpp {code-line-numbers="17-22"}
 class Person{
 public:
     std::string name;
 };
 class Student : public Person{ | class Faculty : public Person{
-public:                        | public:             
-    unsigned long id;          |    double salary;  
-};                             | };       
-
-class GA : public Student, public Faculty {
-public:
-    std::vector<std::string> labs;
-};
-    
-int main() {
-    GA ga1;
-*   ga1.Student::name = "Alice";  // this works... but...
-*   ga1.Faculty::name = "Bob";    // what about this?
-*   std::cout << "name is: " 
-*       << ga1.Student::name            
-*       << " - or is it - " 
-*       << ga1.Faculty::name << "?\n";  
-}
-```
-
-
-
----
-
-``` cpp
-class Person{
-public:
-    std::string name;
-};
-class Student : public Person{ | class Faculty : public Person{
-public:                        | public:              
+public:                        | public:
     unsigned long id;          |    double salary;
-};                             | };         
+};                             | };
 
 class GA : public Student, public Faculty {
 public:
     std::vector<std::string> labs;
 };
-    
+
 int main() {
     GA ga1;
     ga1.Student::name = "Alice";  // this works... but...
     ga1.Faculty::name = "Bob";    // what about this?
-    std::cout << "name is: " 
-*       << ga1.Student::name            // will be "Alice" 
-        << " - or is it - " 
-*       << ga1.Faculty::name << "?\n";  // will be "Bob"
+    std::cout << "name is: "
+        << ga1.Student::name
+        << " - or is it - "
+        << ga1.Faculty::name << "?\n";
 }
 ```
 
-.red[Ouch.]
-
 ---
-### The solution: .term[**Virtual Inheritance**].
 
-``` cpp
+``` cpp {code-line-numbers="20,22"}
 class Person{
 public:
     std::string name;
 };
-
-class Student                  | class Faculty  
-*: virtual public Person{       | : virtual public Person{
-public:                        | public:              
-    unsigned long id;          |    double salary; 
-};                             | };   
+class Student : public Person{ | class Faculty : public Person{
+public:                        | public:
+    unsigned long id;          |    double salary;
+};                             | };
 
 class GA : public Student, public Faculty {
 public:
     std::vector<std::string> labs;
 };
-    
+
 int main() {
     GA ga1;
-*   ga1.name = "Alice";  // now, we've really fixed it!
+    ga1.Student::name = "Alice";  // this works... but...
+    ga1.Faculty::name = "Bob";    // what about this?
+    std::cout << "name is: "
+        << ga1.Student::name            // will be "Alice"
+        << " - or is it - "
+        << ga1.Faculty::name << "?\n";  // will be "Bob"
+}
+```
+\
+
+[Ouch.]{.red}
+
+---
+
+### The solution: [**Virtual Inheritance**]{.term}.
+
+``` cpp {code-line-numbers="7,19"}
+class Person{
+public:
+    std::string name;
+};
+
+class Student                  | class Faculty
+: virtual public Person{       | : virtual public Person{
+public:                        | public:
+    unsigned long id;          |    double salary;
+};                             | };
+
+class GA : public Student, public Faculty {
+public:
+    std::vector<std::string> labs;
+};
+
+int main() {
+    GA ga1;
+    ga1.name = "Alice";  // now, we've really fixed it!
     std::cout << "Name is: " << ga1.name << ".\n";
 }
 ```
@@ -512,8 +492,9 @@ int main() {
 
 **Without `virtual` Inheritance:**
 
-.center[![:scale Diamond Problem in a Physical Object, 33%](../images/virtual_Polymorphism/ga_example_physical_object.svg)]
+![Diamond Problem in a Physical Object](images/virtual_Polymorphism/ga_example_physical_object.svg){height=7em}
 
 **With `virtual` Inheritance**
 
-.center[![:scale Diamond Problem in a Physical Object, 33%](../images/virtual_Polymorphism/ga_example_physical_object_virtual_inheritance.svg)]
+![Diamond Problem in a Physical Object](images/virtual_Polymorphism/ga_example_physical_object_virtual_inheritance.svg){height=7em}
+

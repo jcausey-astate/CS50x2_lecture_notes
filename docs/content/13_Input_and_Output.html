@@ -515,11 +515,8 @@ Then, the rainfall total is read as a Real-number value and stored in <code>rain
 <section class="slide level2">
 
 <h3 id="mixing-getline-and">Mixing <code>getline()</code> and <code>&gt;&gt;</code></h3>
-<div class="callout callout-caution no-icon callout-titled callout-style-simple">
+<div class="callout callout-caution no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<p><strong></strong></p>
-</div>
 <div class="callout-content">
 <p><strong>Problem:</strong> Stream extraction ( <code>&gt;&gt;</code> ) leaves the delimiting whitespace in the input stream (usually a <code>'\n'</code>).</p>
 </div>
@@ -1113,7 +1110,7 @@ std::right             set alignment to right-aligned</code></pre>
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

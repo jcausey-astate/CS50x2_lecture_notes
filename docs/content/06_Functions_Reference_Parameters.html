@@ -424,7 +424,7 @@
 </ul></li>
 </ul>
 
-<img data-src="images/shared/copy-stamp.jpg" class="r-stretch"></section>
+<img data-src="images/shared/copy-stamp.jpg" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="r-stretch quarto-figure-center"></section>
 <section id="pass-by-reference" class="slide level2">
 <h2>Pass by Reference</h2>
 <ul>
@@ -949,7 +949,7 @@
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

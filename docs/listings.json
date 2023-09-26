@@ -26,7 +26,12 @@
       "/content/22_Operator_Overloading.html",
       "/content/23_Linked_Lists.html",
       "/content/24_Stack_Queue_CircularList.html",
-      "/content/25_Class_Template.html"
+      "/content/25_Class_Template.html",
+      "/content/26_Inheritance.html",
+      "/content/27_virtual_and_polymorphism.html",
+      "/content/28_Sparse_Tables.html",
+      "/content/29_Skip_Lists.html",
+      "/content/30_Self_Organizing_Lists.html"
     ]
   }
 ]

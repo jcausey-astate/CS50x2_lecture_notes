@@ -589,7 +589,7 @@
 <section id="our-development-toolchain" class="slide level2">
 <h2>Our Development Toolchain</h2>
 
-<img data-src="images/SP_Basics/Our_Compiling_Toolchain.png" class="r-stretch"><ul>
+<img data-src="images/SP_Basics/Our_Compiling_Toolchain.png" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="r-stretch quarto-figure-center"><ul>
 <li>User’s Side: Editing, running and testing.</li>
 <li>Server Side: Stores files, provides compiler and other tools.</li>
 </ul>
@@ -998,7 +998,7 @@
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

@@ -539,11 +539,8 @@ It defines the function’s</p>
 <li><strong><em>Actual parameters</em></strong> (or <strong><em>arguments</em></strong>): The data values that are actually passed to the function during a call.</li>
 </ul>
 <div class="fragment">
-<div class="callout callout-warning no-icon callout-titled callout-style-simple">
+<div class="callout callout-warning no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<p><strong></strong></p>
-</div>
 <div class="callout-content">
 <p>Unfortunately, the terms “<em>parameter</em>” and “<em>argument</em>” are often used nearly interchangeably in conversation. This can lead to confusion. Please take care to make a distinction between the two.</p>
 </div>
@@ -603,11 +600,8 @@ It defines the function’s</p>
 </section>
 <section id="scope" class="slide level2">
 <h2>Scope</h2>
-<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout callout-tip no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<p><strong></strong></p>
-</div>
 <div class="callout-content">
 <p>A function is a like a sealed box. The only way “in” is through the parameter list or global scope. The only direct way “out” is through a <code>return</code>.</p>
 </div>
@@ -703,11 +697,8 @@ It defines the function’s</p>
 <li>If the actual parameter corresponding to the default parameter is omitted, the default value (2.0 in this case) will be used.</li>
 </ul>
 <div class="small-90">
-<div class="callout callout-warning no-icon callout-titled callout-style-simple">
+<div class="callout callout-warning no-icon callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
-<p><strong></strong></p>
-</div>
 <div class="callout-content">
 <p>The default value <strong>must</strong> only be specified <span class="red"><strong>once</strong></span>. If you use a prototype, the default value is specified there. Only specify the default value in the header of the definition if no prototype is used. It is an error to specify it in both places.</p>
 <p>Remember it this way: <span class="highlight-green">Place the default value in the <em>first place</em> the compiler will encounter it.</span></p>
@@ -1249,7 +1240,7 @@ More complex functions can use the <code>@brief</code> and <code>@detailed</code
             return filterRegex.test(href) || localhostRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
