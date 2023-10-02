@@ -66,14 +66,28 @@ class ClassName {
 
 **Example**
 
+::: {.columns}
+:::: {.column width=50%}
+```cpp
+struct Rectangle {
+    double length;
+    double width;
+    double area;
+};
+
 ```
-struct Rectangle {   |   class Rectangle {
-    double length;   |       public:
-    double width;    |           double length;
-    double area;     |           double width;
-};                   |           double area();
-                     |   };
+::::
+:::: {.column width=50%}
+```cpp
+class Rectangle {
+    public:
+        double length;
+        double width;
+        double area();
+};
 ```
+::::
+:::
 
 ---
 
@@ -114,6 +128,42 @@ struct Rectangle {   |   class Rectangle {
 * `#include` the header from the implementation file
 * Implementation ( `.cpp` ) files can be compiled; header files cannot.
 * **NEVER** `#include` a `.cpp` file!
+
+
+---
+
+#### Example: Separate specification and implementation.
+
+:::: {.columns}
+::: {.column width="50%"}
+_`Rectangle.h`_
+```cpp
+#ifndef RECTANGLE_H
+#define RECTANGLE_H
+
+class Rectangle {
+    public:
+        double length;
+        double width;
+        double area() const;
+};
+
+#endif
+```
+:::
+
+::: {.column width="50%"}
+_`Rectangle.cpp`_
+```cpp
+#include "Rectangle.h"
+
+double Rectangle::area() const{
+    return length * width;
+}
+```
+:::
+::::
+
 
 
 ---
@@ -219,7 +269,7 @@ Is the _constructor initialization list_.  It is followed in this case by an _em
 ``` cpp
 class Rectangle {
     public:
-        Rectangle (int length, int width) 
+        Rectangle (int length, int width)
             : length{length}, width{width} {}
         int length = 0;
         int width  = 0;

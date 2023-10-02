@@ -7,7 +7,7 @@ draft: false
 
 ## Redefining Base Class Methods
 
-* A method is said to be [_redefined_]{.term} in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
+* A method is said to be **__redefined__** in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
   * This is not the same thing as _overloading_.
 
 * Base class objects use the base class method... derived class objects use the derived class method.
@@ -77,7 +77,7 @@ Answer to the riddle:
 
 \
 
-* This is called [_static binding_]{.term}
+* This is called **__static binding__**
 
 ---
 
@@ -91,13 +91,13 @@ Answer to the riddle:
 
 ## Virtual Methods
 
-[_**Virtual Method**_]{.term}: a method in a base class that _expects_ to be redefined in derived classes.
+**__**Virtual Method**__**: a method in a base class that _expects_ to be redefined in derived classes.
 
 * Defined with keyword   `    virtual   `
 ```cpp
 virtual void y();
 ```
-* Allows [_dynamic binding_]{.term} – method name bound _at runtime_ to the corresponding code. ( as opposed to static binding )
+* Allows **__dynamic binding__** – method name bound _at runtime_ to the corresponding code. ( as opposed to static binding )
     - Dynamic binding is based on the _type_ of the object actually initiating the call at runtime.
 
 ---
@@ -144,7 +144,7 @@ A pointer of the [base-class type]{.highlight-orange} may be "pointed" to a [der
 
 * When the base class uses dynamic binding...
   * Base class pointer to derived class object behaves appropriately for the derived class.
-  * This is called [_polymorphism_]{.term}.
+  * This is called **__polymorphism__**.
 
 ::: {.callout-tip appearance="minimal"}
 Polymorphism requires a pointer or reference.
@@ -211,7 +211,7 @@ Whenever you think a derived class might want to override a method!
 
 ## Pure `virtual` Methods
 
-[_**Pure `virtual` method**_]{.term}: a method that is not implemented (at all) in the base class, and is thus _required_ to be overridden in derived classes.
+**__**Pure `virtual` method**__**: a method that is not implemented (at all) in the base class, and is thus _required_ to be overridden in derived classes.
 
 * Created by using "assignment"-style syntax:
 
@@ -225,7 +225,7 @@ virtual void y() = 0;
 
 ## Abstract Base Classes
 
-[_**Abstract base class**_]{.term}: a base class that contains at least one pure virtual method.
+**__**Abstract base class**__**: a base class that contains at least one pure virtual method.
 
 * Useful for factoring out common behavior from a _family_ of objects.
 
@@ -462,7 +462,7 @@ int main() {
 
 ---
 
-### The solution: [**Virtual Inheritance**]{.term}.
+### The solution: **_**Virtual Inheritance**_**.
 
 ``` cpp {code-line-numbers="7,19"}
 class Person{

@@ -1,12 +1,8 @@
 ---
-title: "32: Balancing Trees - AVL Trees"
-date: 2020-10-02T12:30:16-05:00
-draft: true
----
-
-# AVL-Trees
-## Drozdek Ch. 6.7
-
+number: 32
+title: "Balancing Trees - AVL Trees"
+textbook: "Drozdek (Ch. 6.7)"
+draft: false
 ---
 
 ## Keep your Balance
@@ -34,39 +30,44 @@ If the magnitude of any node's balance factor becomes $>1$, the tree must be bal
 
 ## Fixing the Balance
 
+\
+
 When the balance factor rule is broken, we must correct the balance.  That can be done
-by applying a transformation to the tree's shape called a .term[rotation].  The rotation
+by applying a transformation to the tree's shape called a **_rotation_**.  The rotation
 can be performed either in a clockwise (_right_) direction, or counter-clockwise 
 (_left_) direction.
 
+\
+
 A single rotation will have the effect of shifting some of the "weight" from one side 
-of the node about which we are rotating (we call this node the .term[pivot] node) to
+of the node about which we are rotating (we call this node the **_pivot_** node) to
 the other.
 
 ---
 
 ### Rotations
 
-.term[**Rotate Left**]
+**_**Rotate Left**_**
 
-.center[![:scale Rotate Left - $Q$ is the pivot node., 70%](../images/avl_tree/tree_rotate_left.svg "Rotate Left - $Q$ is the pivot node.")]
+![Rotate Left - $Q$ is the pivot node.](images/avl_tree/tree_rotate_left.svg "Rotate Left - $Q$ is the pivot node.")
 
-.tight[
+::: {.tight}
 (a) The tree is balanced w.r.t. node _P_
 
 (b) A value is added to the subtree on the right of _Q_, increasing its height by one. This causes the balance factor at _P_ to become +2, which is no longer considered balanced.
 
-(c) A single .term[left rotation] is performed at node _P_.  This results in _Q_ becoming the parent of _P_, and the tree is again balanced.  (Note that _Q_'s left subtree became _P_'s right subtree in the rotation.)
-]
+(c) A single **_left rotation_** is performed at node _P_.  This results in _Q_ becoming the parent of _P_, and the tree is again balanced.  (Note that _Q_'s left subtree became _P_'s right subtree in the rotation.)
+:::
+
 ---
 
 ### Rotations
 
 **Rotate Left**
 
-.center[![:scale Rotate Left - $Q$ is the pivot node., 60%](../images/avl_tree/tree_rotate_left.svg "Rotate Left - $Q$ is the pivot node.")]
+![Rotate Left - $Q$ is the pivot node.](images/avl_tree/tree_rotate_left.svg "Rotate Left - $Q$ is the pivot node.")
 
-.term[**Rotate Right**]
+**_**Rotate Right**_**
 
 * _Mirror image of above._
 
@@ -87,6 +88,8 @@ If the tree is "heavy" in the "inside" of a subtree (either the right-side of a 
 ---
 
 ## Visualizations
+
+\
 
 <https://www.cs.usfca.edu/~galles/visualization/AVLtree.html>
 

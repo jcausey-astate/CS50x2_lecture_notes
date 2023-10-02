@@ -333,7 +333,7 @@ Exceptions
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="18" data-listing-file-modified-sort="1693358375232" data-listing-reading-time-sort="8" data-listing-word-count-sort="1403" data-listing-title-sort="Classes and Objects">
+<div class="g-col-1" data-index="18" data-listing-file-modified-sort="1696207133351" data-listing-reading-time-sort="7" data-listing-word-count-sort="1390" data-listing-title-sort="Classes and Objects">
 <a href="./content/19_Classes_and_Objects.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -421,7 +421,7 @@ Inheritance
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="26" data-listing-file-modified-sort="1695690454774" data-listing-reading-time-sort="12" data-listing-word-count-sort="2277" data-listing-title-sort="Virtual Methods and Polymorphism">
+<div class="g-col-1" data-index="26" data-listing-file-modified-sort="1696187905586" data-listing-reading-time-sort="12" data-listing-word-count-sort="2277" data-listing-title-sort="Virtual Methods and Polymorphism">
 <a href="./content/27_virtual_and_polymorphism.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
@@ -454,12 +454,67 @@ Skip Lists
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="29" data-listing-file-modified-sort="1695695071264" data-listing-reading-time-sort="2" data-listing-word-count-sort="336" data-listing-title-sort="Self-Organizing Lists">
+<div class="g-col-1" data-index="29" data-listing-file-modified-sort="1696187870383" data-listing-reading-time-sort="2" data-listing-word-count-sort="336" data-listing-title-sort="Self-Organizing Lists">
 <a href="./content/30_Self_Organizing_Lists.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Self-Organizing Lists
+</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="30" data-listing-file-modified-sort="1696208955698" data-listing-reading-time-sort="6" data-listing-word-count-sort="1120" data-listing-title-sort="Trees - Binary Search Trees">
+<a href="./content/31_Binary_Search_Trees.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Trees - Binary Search Trees
+</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="31" data-listing-file-modified-sort="1696209756811" data-listing-reading-time-sort="3" data-listing-word-count-sort="426" data-listing-title-sort="Balancing Trees - AVL Trees">
+<a href="./content/32_AVL_Trees.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Balancing Trees - AVL Trees
+</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="32" data-listing-file-modified-sort="1696210355072" data-listing-reading-time-sort="6" data-listing-word-count-sort="1030" data-listing-title-sort="Heaps and HeapSort">
+<a href="./content/33_Heaps_and_Heapsort.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Heaps and HeapSort
+</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="33" data-listing-file-modified-sort="1696211142816" data-listing-reading-time-sort="6" data-listing-word-count-sort="1179" data-listing-title-sort="Multiway Trees (m-Trees)">
+<a href="./content/34_Multiway_Trees.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Multiway Trees (m-Trees)
+</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="34" data-listing-file-modified-sort="1696212928221" data-listing-reading-time-sort="20" data-listing-word-count-sort="3988" data-listing-title-sort="Graphs">
+<a href="./content/35_Graphs.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Graphs
 </h5>
 </div>
 </div>
@@ -603,15 +658,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
         for (let i = 0; i < 2; i++) {
           container.appendChild(note.children[i].cloneNode(true));
         }
+        typesetMath(container);
         return container.innerHTML
       } else {
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -620,6 +698,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
+      typesetMath(note);
       return note.innerHTML;
     }
   }
@@ -662,6 +741,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -817,9 +919,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
     var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
  	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');

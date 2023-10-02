@@ -417,7 +417,7 @@
 <section id="redefining-base-class-methods" class="slide level2">
 <h2>Redefining Base Class Methods</h2>
 <ul>
-<li>A method is said to be <span class="term"><em>redefined</em></span> in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
+<li>A method is said to be <strong><strong>redefined</strong></strong> in a derived class when it has the same name (and perhaps parameter list) as a method in the base class.
 <ul>
 <li>This is not the same thing as <em>overloading</em>.</li>
 </ul></li>
@@ -485,7 +485,7 @@
 <p><br>
 </p>
 <ul>
-<li>This is called <span class="term"><em>static binding</em></span></li>
+<li>This is called <strong><strong>static binding</strong></strong></li>
 </ul>
 </section>
 <section id="class-hierarchies" class="slide level2">
@@ -497,13 +497,13 @@
 </section>
 <section id="virtual-methods" class="slide level2">
 <h2>Virtual Methods</h2>
-<p><span class="term"><em><strong>Virtual Method</strong></em></span>: a method in a base class that <em>expects</em> to be redefined in derived classes.</p>
+<p><strong><strong><strong>Virtual Method</strong></strong></strong>: a method in a base class that <em>expects</em> to be redefined in derived classes.</p>
 <ul>
 <li>Defined with keyword <code>virtual</code></li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">virtual</span> <span class="dt">void</span> y<span class="op">();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Allows <span class="term"><em>dynamic binding</em></span> – method name bound <em>at runtime</em> to the corresponding code. ( as opposed to static binding )
+<li>Allows <strong><strong>dynamic binding</strong></strong> – method name bound <em>at runtime</em> to the corresponding code. ( as opposed to static binding )
 <ul>
 <li>Dynamic binding is based on the <em>type</em> of the object actually initiating the call at runtime.</li>
 </ul></li>
@@ -549,7 +549,7 @@
 <li><p>When the base class uses dynamic binding…</p>
 <ul>
 <li>Base class pointer to derived class object behaves appropriately for the derived class.</li>
-<li>This is called <span class="term"><em>polymorphism</em></span>.</li>
+<li>This is called <strong><strong>polymorphism</strong></strong>.</li>
 </ul></li>
 </ul>
 <div class="callout callout-tip no-icon callout-style-simple">
@@ -615,7 +615,7 @@
 </section>
 <section id="pure-virtual-methods" class="slide level2">
 <h2>Pure <code>virtual</code> Methods</h2>
-<p><span class="term"><em><strong>Pure <code>virtual</code> method</strong></em></span>: a method that is not implemented (at all) in the base class, and is thus <em>required</em> to be overridden in derived classes.</p>
+<p><strong><strong><strong>Pure <code>virtual</code> method</strong></strong></strong>: a method that is not implemented (at all) in the base class, and is thus <em>required</em> to be overridden in derived classes.</p>
 <ul>
 <li>Created by using “assignment”-style syntax:</li>
 </ul>
@@ -626,7 +626,7 @@
 </section>
 <section id="abstract-base-classes" class="slide level2">
 <h2>Abstract Base Classes</h2>
-<p><span class="term"><em><strong>Abstract base class</strong></em></span>: a base class that contains at least one pure virtual method.</p>
+<p><strong><strong><strong>Abstract base class</strong></strong></strong>: a base class that contains at least one pure virtual method.</p>
 <ul>
 <li><p>Useful for factoring out common behavior from a <em>family</em> of objects.</p>
 <ul>
@@ -825,7 +825,7 @@
 </section>
 <section class="slide level2">
 
-<h3 id="the-solution-virtual-inheritance.">The solution: <span class="term"><strong>Virtual Inheritance</strong></span>.</h3>
+<h3 id="the-solution-virtual-inheritance.">The solution: <strong><em><strong>Virtual Inheritance</strong></em></strong>.</h3>
 <div class="sourceCode" id="cb14" data-code-line-numbers="7,19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">class</span> Person<span class="op">{</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="kw">public</span><span class="op">:</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>    <span class="bu">std::</span>string name<span class="op">;</span></span>
@@ -1248,9 +1248,10 @@
         }
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
         var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
      	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');

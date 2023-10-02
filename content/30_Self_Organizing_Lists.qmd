@@ -31,28 +31,28 @@ OK, but how do we do that?
 
 **Re-organize** the values over time!
 
-[Self-Organizing Lists]{.term} change the order of the values they contain so the values that are deemed more likely to be searched will appear nearer to the beginning of the list.
+**_Self-Organizing Lists_** change the order of the values they contain so the values that are deemed more likely to be searched will appear nearer to the beginning of the list.
 
 There are different ways to re-organize the list according to which values are searched for (and located).  Here are the most common four:
 
-1. [Move-to-front method]{.term}.
+1. **_Move-to-front method_**.
 
-2. [Transpose method]{.term}.
+2. **_Transpose method_**.
 
-3. [Count method]{.term}.
+3. **_Count method_**.
 
-4. [Ordering method]{.term}.
+4. **_Ordering method_**.
 
 ---
 
 ::: {.small-70}
-1. [Move-to-front method]{.term}.  Each time an element is located, it is immediately moved to the front of the list.
+1. **_Move-to-front method_**.  Each time an element is located, it is immediately moved to the front of the list.
 
-2. [Transpose method]{.term}.  Each time an element is located, it is swapped with its immediate predecessor in the list (unless it is already at the front).
+2. **_Transpose method_**.  Each time an element is located, it is swapped with its immediate predecessor in the list (unless it is already at the front).
 
-3. [Count method]{.term}.  A _count_ is stored in each node, indicating the number of times the node has been targeted by a search.  The list is maintained in order by decreasing count; nodes are re-ordered after each successful search, which may require swapping the located node "forward" 1 or more times.
+3. **_Count method_**.  A _count_ is stored in each node, indicating the number of times the node has been targeted by a search.  The list is maintained in order by decreasing count; nodes are re-ordered after each successful search, which may require swapping the located node "forward" 1 or more times.
 
-4. [Ordering method]{.term}.  Order the list according to a criteria natural for the information being represented, so that values more likely to be searched would be stored nearer to the "front" of the list.
+4. **_Ordering method_**.  Order the list according to a criteria natural for the information being represented, so that values more likely to be searched would be stored nearer to the "front" of the list.
 
 :::
 

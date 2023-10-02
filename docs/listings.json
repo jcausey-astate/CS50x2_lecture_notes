@@ -31,7 +31,12 @@
       "/content/27_virtual_and_polymorphism.html",
       "/content/28_Sparse_Tables.html",
       "/content/29_Skip_Lists.html",
-      "/content/30_Self_Organizing_Lists.html"
+      "/content/30_Self_Organizing_Lists.html",
+      "/content/31_Binary_Search_Trees.html",
+      "/content/32_AVL_Trees.html",
+      "/content/33_Heaps_and_Heapsort.html",
+      "/content/34_Multiway_Trees.html",
+      "/content/35_Graphs.html"
     ]
   }
 ]

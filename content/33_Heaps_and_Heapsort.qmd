@@ -1,47 +1,37 @@
 ---
-title: "33: Heaps and HeapSort"
-date: 2020-10-02T12:30:16-05:00
-draft: true
+number: 33
+title: "Heaps and HeapSort"
+textbook: "Drozdek (Ch. 6.9)"
+draft: false
 ---
-
-# Heaps and Heapsort
-
-## Drozdek Ch. 6.9
-
----
-
 
 ## Heaps
 
-A .term[heap] is a kind of (usually binary) tree.  They normally come in two varieties:
+A **_heap_** is a kind of (usually binary) tree.  They normally^\*^ come in two varieties:
 
-* .term[Min-Heaps] always maintain the smallest value at the root.
-* .term[Max-Heaps] always maintain the largest value at the root.
+* **_Min-Heaps_** always maintain the smallest value at the root.
+* **_Max-Heaps_** always maintain the largest value at the root.
 
---
-<br/><br/><br/>
-_There is also a more exotic heap called a ".term[min-max-heap]" that allows you
+:::{.aside}
+^\*^ \ \ There is also a more exotic heap called a "**_min-max-heap_**" that allows you
 to find the smallest and largest values in constant time, but we won't consider
-that variation here._
-
+that variation here.
+:::
 
 ---
-
 
 ## Heaps
 
 In order to be a Heap, the following properties must hold (a _min heap_ is used as an example; for a _max heap_ just reverse the comparison operator).
 
 * The empty tree is a heap.
-* A non-empty tree is a heap if and only if the .term[heap property] is satisfied for all nodes in the tree.
-
+* A non-empty tree is a heap if and only if the **_heap property_** is satisfied for all nodes in the tree.
 
 ---
 
-
 ## The _Heap Property_
 
-The .term[heap property], for any node in a tree, states:
+The **_heap property_**, for any node in a tree, states:
 
 * A node with no children satisfies the heap property.
 * A node with one or more children satisfies the heap property if and only if: 
@@ -49,33 +39,17 @@ The .term[heap property], for any node in a tree, states:
     
     *  (for a _max-heap_) The subtree rooted at node $R$ is a max-heap if each of $R$'s child subtrees are max-heaps and the values of each of $R$'s direct descendants (if they exist) are less than or equal to the value at $R$. 
 
-
 ---
-
 
 ## Binary Max Heap
 
-.center[![:scale Complete Binary Max Heap, 80%](../images/HeapSort/complete_binary_max_heap.png)]
+![Complete Binary Max Heap](images/HeapSort/complete_binary_max_heap.png)
 
 ---
-
 
 ## Binary Min Heap
 
-.center[![:scale Complete Binary Min Heap, 80%](../images/HeapSort/incomplete_binary_min_heap.png)]
-
----
-
-
-## Heap Convention
-
-It is convention (not strictly a requirement) that heaps "fill in" at the leaf level from left-to-right, as shown in the image below.
-
-+ All leaves are on the tree at level $h$ or $h-1$ where $h$ is the tree height.
-+ The tree is balanced.
-+ Leaves are added at level $h$ from left-to-right.
-
-.center[![:height Complete Binary Max Heap, 10em](../images/HeapSort/complete_binary_max_heap.png)]
+![Complete Binary Min Heap](images/HeapSort/incomplete_binary_min_heap.png)
 
 ---
 
@@ -87,12 +61,37 @@ It is convention (not strictly a requirement) that heaps "fill in" at the leaf l
 + The tree is balanced.
 + Leaves are added at level $h$ from left-to-right.
 
-<table><tr>
-<td>.left[![:scale Complete Binary Max Heap, 100%](../images/HeapSort/complete_binary_max_heap.png)]</td>
-<td>.right[![:scale Max Heap in Array, 80%](../images/HeapSort/heap_in_array_both_views.svg)]</td></tr></table>
+![Complete Binary Max Heap](images/HeapSort/complete_binary_max_heap.png)
 
 ---
 
+## Heap Convention
+
+It is convention (not strictly a requirement) that heaps "fill in" at the leaf level from left-to-right, as shown in the image below.
+
++ All leaves are on the tree at level $h$ or $h-1$ where $h$ is the tree height.
++ The tree is balanced.
++ Leaves are added at level $h$ from left-to-right.
+
+::: {.columns}
+:::: {.column width=50%}
+![Complete Binary Max Heap](images/HeapSort/complete_binary_max_heap.png)
+::::
+:::: {.column width=50%}
+
+\
+
+:::{.small-75}
+\
+
+\
+:::
+
+![Max Heap in Array](images/HeapSort/heap_in_array_both_views.svg)
+::::
+:::
+
+---
 
 ## Heap Convention
 
@@ -102,10 +101,9 @@ This allows us to make an easy representation of a heap in an array, by applying
 - An item at any index $i$ can find its left-child at index $2i+1$ and its right-child at index $2i+2$.
     - By inverse relation, the parent of any node is at index $(i-1)/2$ using integer division.
 
-.center[![:scale Max Heap in Array, 80%](../images/HeapSort/heap_in_array_both_views.svg)]
+![Max Heap in Array](images/HeapSort/heap_in_array_both_views.svg)
 
 ---
-
 
 ## Inserting Into a Heap
 
@@ -116,10 +114,9 @@ When inserting a new item in an existing heap, the item must be placed into a le
 - Restore Heap
     + "Percolate up"
 
-.center[![:scale Max Heap in Array, 80%](../images/HeapSort/heap_in_array_both_views.svg)]
+![Max Heap in Array](images/HeapSort/heap_in_array_both_views.svg)
 
 ---
-
 
 ## Removing From a Heap
 
@@ -131,7 +128,7 @@ We generally only care about removing the item at the root of the heap.
     - This re-heapify is a simple operation.
     - Usually referred to as "_sift-down_".
 
-.center[![:scale Max Heap in Array, 80%](../images/HeapSort/heap_in_array_both_views.svg)]
+![Max Heap in Array](images/HeapSort/heap_in_array_both_views.svg)
 
 ---
 
@@ -169,7 +166,6 @@ If an array can be represented as a tree, then it should be possible to convert 
 
 ---
 
-
 ## Uses for Heaps
 
 - Priorty Queue
@@ -177,7 +173,6 @@ If an array can be represented as a tree, then it should be possible to convert 
 - As the underlying data structure for _Heapsort_.
 
 ---
-
 
 ## Heapsort
 
@@ -187,7 +182,6 @@ If an array can be represented as a tree, then it should be possible to convert 
     + The maximum item is always at the top, so on each iteration, "remove" it by swapping it with the last element of the remaining heap.
         * reduce the "size" of the heap by 1
     + Restore the heap property by performing a sift-down from the root.
-
 
 ---
 
@@ -210,6 +204,3 @@ If an array can be represented as a tree, then it should be possible to convert 
 - $n$ passes are required to sort all items.
 - _Sift-Down_ takes $O(\lg(n))$ steps. <br /><br />
 - Overall:  $O(n\lg(n))$
-
-
-

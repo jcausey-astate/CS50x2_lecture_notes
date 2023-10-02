@@ -477,12 +477,22 @@
 <p><br>
 </p>
 <p><strong>Example</strong></p>
-<pre><code>struct Rectangle {   |   class Rectangle {
-    double length;   |       public:
-    double width;    |           double length;
-    double area;     |           double width;
-};                   |           double area();
-                     |   };</code></pre>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">struct</span> Rectangle <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="dt">double</span> length<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="dt">double</span> width<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="dt">double</span> area<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>        <span class="dt">double</span> length<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>        <span class="dt">double</span> width<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>        <span class="dt">double</span> area<span class="op">();</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
 <section id="access-specifiers" class="slide level2">
 <h2>Access Specifiers</h2>
@@ -525,6 +535,33 @@
 <li>Implementation ( <code>.cpp</code> ) files can be compiled; header files cannot.</li>
 <li><strong>NEVER</strong> <code>#include</code> a <code>.cpp</code> file!</li>
 </ul>
+</section>
+<section class="slide level2">
+
+<h4 id="example-separate-specification-and-implementation.">Example: Separate specification and implementation.</h4>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><em><code>Rectangle.h</code></em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#ifndef RECTANGLE_H</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="pp">#define RECTANGLE_H</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>        <span class="dt">double</span> length<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>        <span class="dt">double</span> width<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>        <span class="dt">double</span> area<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="op">};</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="pp">#endif</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<p><em><code>Rectangle.cpp</code></em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">#include </span><span class="im">"Rectangle.h"</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="dt">double</span> Rectangle<span class="op">::</span>area<span class="op">()</span> <span class="at">const</span><span class="op">{</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="cf">return</span> length <span class="op">*</span> width<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 </section>
 <section id="accessors-and-mutators" class="slide level2 morespace">
 <h2>Accessors and Mutators</h2>
@@ -570,15 +607,15 @@
 <p>A constructor’s job is to initialize attributes of the class:</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb3" data-code-line-numbers="3-6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>        Rectangle <span class="op">(</span><span class="dt">int</span> l<span class="op">,</span> <span class="dt">int</span> w<span class="op">){</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>            length <span class="op">=</span> l<span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>            width  <span class="op">=</span> w<span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>        <span class="op">}</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>        <span class="dt">int</span> length<span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>        <span class="dt">int</span> width<span class="op">;</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6" data-code-line-numbers="3-6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>        Rectangle <span class="op">(</span><span class="dt">int</span> l<span class="op">,</span> <span class="dt">int</span> w<span class="op">){</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>            length <span class="op">=</span> l<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>            width  <span class="op">=</span> w<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>        <span class="op">}</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>        <span class="dt">int</span> length<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>        <span class="dt">int</span> width<span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="c-tor-initialization-lists" class="slide level2 morespace">
 <h2>c-tor initialization lists</h2>
@@ -592,16 +629,16 @@ But… there is another way to do it: <strong><em>Constructor initialization lis
 <section class="slide level2">
 
 <h3 id="example-c-tor-initialization-list">Example: c-tor initialization list</h3>
-<div class="sourceCode" id="cb4" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>        Rectangle <span class="op">(</span><span class="dt">int</span> l<span class="op">,</span> <span class="dt">int</span> w<span class="op">)</span> <span class="op">:</span> length<span class="op">{</span>l<span class="op">},</span> width<span class="op">{</span>w<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>        <span class="dt">int</span> length <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>        <span class="dt">int</span> width  <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>        Rectangle <span class="op">(</span><span class="dt">int</span> l<span class="op">,</span> <span class="dt">int</span> w<span class="op">)</span> <span class="op">:</span> length<span class="op">{</span>l<span class="op">},</span> width<span class="op">{</span>w<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>        <span class="dt">int</span> length <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>        <span class="dt">int</span> width  <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>This:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a> <span class="op">:</span> length<span class="op">{</span>l<span class="op">},</span> width<span class="op">{</span>w<span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a> <span class="op">:</span> length<span class="op">{</span>l<span class="op">},</span> width<span class="op">{</span>w<span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Is the <em>constructor initialization list</em>. It is followed in this case by an <em>empty</em> method body <code>{}</code>, which is OK since there is nothing more for this constructor to do.</p>
 <p><br>
 </p>
@@ -614,13 +651,13 @@ But… there is another way to do it: <strong><em>Constructor initialization lis
 <h3 id="no-scope-resolution-ambiguity">No scope resolution ambiguity!</h3>
 <p><br>
 </p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>        Rectangle <span class="op">(</span><span class="dt">int</span> length<span class="op">,</span> <span class="dt">int</span> width<span class="op">)</span> </span>
-<span id="cb6-4"><a href="#cb6-4"></a>            <span class="op">:</span> length<span class="op">{</span>length<span class="op">},</span> width<span class="op">{</span>width<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>        <span class="dt">int</span> length <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>        <span class="dt">int</span> width  <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">class</span> Rectangle <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>        Rectangle <span class="op">(</span><span class="dt">int</span> length<span class="op">,</span> <span class="dt">int</span> width<span class="op">)</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>            <span class="op">:</span> length<span class="op">{</span>length<span class="op">},</span> width<span class="op">{</span>width<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>        <span class="dt">int</span> length <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>        <span class="dt">int</span> width  <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <ul>
@@ -684,16 +721,16 @@ But… there is another way to do it: <strong><em>Constructor initialization lis
 <li>Used to disambiguate naming within method bodies.</li>
 </ul>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">class</span> Rectangle<span class="op">{</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>    Rectangle<span class="op">(</span><span class="dt">int</span> l<span class="op">,</span> <span class="dt">int</span> w<span class="op">);</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>    <span class="dt">void</span> set_length<span class="op">(</span><span class="dt">int</span> length<span class="op">){</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>        <span class="kw">this</span><span class="op">-&gt;</span>length <span class="op">=</span> length<span class="op">;</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="op">}</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    <span class="co">// [...] other methods not shown.</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>    <span class="dt">int</span> length<span class="op">;</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>    <span class="dt">int</span> width<span class="op">;</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">class</span> Rectangle<span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>    Rectangle<span class="op">(</span><span class="dt">int</span> l<span class="op">,</span> <span class="dt">int</span> w<span class="op">);</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>    <span class="dt">void</span> set_length<span class="op">(</span><span class="dt">int</span> length<span class="op">){</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>        <span class="kw">this</span><span class="op">-&gt;</span>length <span class="op">=</span> length<span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>    <span class="op">}</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>    <span class="co">// [...] other methods not shown.</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>    <span class="dt">int</span> length<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>    <span class="dt">int</span> width<span class="op">;</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p><a href="https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c8-use-class-rather-than-struct-if-any-member-is-non-public" class="small">CPP Core Guideline: Use a class if any member is non-public.</a></p>
@@ -712,10 +749,10 @@ But… there is another way to do it: <strong><em>Constructor initialization lis
 <p><br>
 </p>
 <p><strong>Example:</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">int</span>       age<span class="op">{</span><span class="dv">23</span><span class="op">};</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>Rectangle classroom<span class="op">{</span><span class="dv">24</span><span class="op">,</span> <span class="dv">30</span><span class="op">};</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">// The following is an array - we will talk more about these soon:</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="dt">double</span>    temperatures<span class="op">[]{</span><span class="fl">78.8</span><span class="op">,</span> <span class="fl">80.2</span><span class="op">,</span> <span class="fl">92.4</span><span class="op">,</span> <span class="fl">87.5</span><span class="op">,</span> <span class="fl">95.3</span><span class="op">,</span> <span class="fl">95.1</span><span class="op">,</span> <span class="fl">92.8</span><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="dt">int</span>       age<span class="op">{</span><span class="dv">23</span><span class="op">};</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>Rectangle classroom<span class="op">{</span><span class="dv">24</span><span class="op">,</span> <span class="dv">30</span><span class="op">};</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">// The following is an array - we will talk more about these soon:</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="dt">double</span>    temperatures<span class="op">[]{</span><span class="fl">78.8</span><span class="op">,</span> <span class="fl">80.2</span><span class="op">,</span> <span class="fl">92.4</span><span class="op">,</span> <span class="fl">87.5</span><span class="op">,</span> <span class="fl">95.3</span><span class="op">,</span> <span class="fl">95.1</span><span class="op">,</span> <span class="fl">92.8</span><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="other-details" class="slide level2 morespace">
 <h2>Other Details</h2>
@@ -740,14 +777,14 @@ But… there is another way to do it: <strong><em>Constructor initialization lis
 </ul></li>
 <li>accomplished by marking methods as <code>const</code>:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">class</span> Rectangle<span class="op">{</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>    <span class="dt">int</span> get_length<span class="op">()</span> <span class="at">const</span><span class="op">;</span>  <span class="co">// const method</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>    <span class="co">//[... other code not shown ...]</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>    <span class="dt">int</span> length <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>    <span class="dt">int</span> width  <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">class</span> Rectangle<span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="dt">int</span> get_length<span class="op">()</span> <span class="at">const</span><span class="op">;</span>  <span class="co">// const method</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>    <span class="co">//[... other code not shown ...]</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>    <span class="dt">int</span> length <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>    <span class="dt">int</span> width  <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>get_length()</code> <em>cannot</em> modify the attributes (<code>length</code> and <code>width</code>).</p>
 <ul>
 <li>This protection is often added to accessors, and <span class="highlight"><em>should</em> be added whenever possible</span>.
@@ -1139,9 +1176,10 @@ But… there is another way to do it: <strong><em>Constructor initialization lis
         }
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
         var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
      	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
