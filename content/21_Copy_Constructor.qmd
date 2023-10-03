@@ -8,7 +8,6 @@ textbook: "Gaddis 14.3--14.4"
 # Memberwise Assignment
 
 \
-\
 
 Given:
 
@@ -20,6 +19,8 @@ class Rectangle {
         int width  = 0;
 };
 ```
+
+\
 
 What happens when you do:
 
