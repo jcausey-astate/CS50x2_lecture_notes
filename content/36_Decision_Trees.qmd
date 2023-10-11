@@ -1,27 +1,20 @@
 ---
-title: '36: Decision Trees'
-subtitle: 'Drozdek, Ch. 9.2'
-author: Jason L Causey
-date: 2022-11-13
-draft: true
----
-
-# Decision Trees
-
-## Drozdek Chapter 9.2
-
+number: 36
+title: 'Decision Trees'
+textbook: "Drozdek (Ch. 9.2)"
+draft: false
 ---
 
 ## Decision Trees
 
-A .term[decision tree] is a special form of tree with the following properties:
+A **_decision tree_** is a special form of tree with the following properties:
 
 * Every node has either zero or two children.
   * i.e. they are strict binary trees.
-* Nodes represent a .term[decision], which is a _condition_ or _query_ on some value in a dataset of interest.  The decision must evaluate to a Boolean result.
+* Nodes represent a **_decision_**, which is a _condition_ or _query_ on some value in a dataset of interest.  The decision must evaluate to a Boolean result.
 * Edges represent the value of the result from the originating node: either _True_ or _False_.
   * (or "yes/no", or other binary synonym)
-* Leaf nodes contain a .term[result], which is the value selected by the sequence of decisions represented by the path followed from the root to arrive at the leaf.
+* Leaf nodes contain a **_result_**, which is the value selected by the sequence of decisions represented by the path followed from the root to arrive at the leaf.
 
 ---
 
@@ -29,17 +22,24 @@ A .term[decision tree] is a special form of tree with the following properties:
 
 There are many uses for decision trees as a logical representation.  Any problem where a sequence of "questions" or "queries" leads to a final result can be represented as a decision tree.  Drozdek (Ch. 9.2) uses the example of a decision tree representing a sorting algorithm.
 
+\
+
 Evaluating a decision tree is functionally equivalent to executing an "_if-else chain_" control structure, where each control path is required to eventually produce a value (which may be e.g. "None") and is not allowed to perform any additional computation beyond the conditional expressions themselves (but these can be arbitrarily complex).
 
-.green[Application areas:  Machine learning, data mining, financial analysis, artificial intelligence, business process control, personnel management, ...  (your imagination is the limit)]
+\
+
+[Application areas:  Machine learning, data mining, financial analysis, artificial intelligence, business process control, personnel management, ...  (your imagination is the limit)]{.green}
 
 ---
 
-## Example:  Determine letter grade given a score: C++
+## Example:  Determine letter grade given a score:
 
-.left-column[
+\
 
-.center[ **Code** ]
+::: {.columns}
+:::: {.column width=50%}
+
+[ **Code** ]{.center}
 
 ```cpp
 // Assume `score` is an integer, 
@@ -59,28 +59,35 @@ else if( score >= 60 )
 else
     grade = 'F';
 ```
-]
-.right-column[
-.center[ **Decision Tree** ]
+::::
+:::: {.column width=50%}
 
-.center[![A decision tree for a grading scale.](../images/decision_trees/grading_scale_dt.svg)]
-]
+[ **Decision Tree** ]{.center}
+
+![A decision tree for a grading scale.](images/decision_trees/grading_scale_dt.svg){width=60%}
+
+::::
+:::
 
 ---
 
-## Example:  Determine letter grade given a score: C++
+## Example:  Determine letter grade given a score:
 
-Notice that we could optimize the search tree a bit.  Here is an alternate version (and corresponding code):
+\
 
-.left-column[
-.center[ **Decision Tree** ]
+Notice that we could optimize the tree a bit.  Here is an alternate version (and corresponding code):
 
-.center[![A decision tree for a grading scale.](../images/decision_trees/grading_scale_dt_optim.svg)]
-]
+::: {.columns}
+:::: {.column width=50%}
 
-.right-column[
+[ **Decision Tree** ]{.center}
 
-.center[ **Code** ]
+![A decision tree for a grading scale.](images/decision_trees/grading_scale_dt_optim.svg){width=65%}
+
+::::
+:::: {.column width=50%}
+
+[ **Code** ]{.center}
 
 ```cpp
 if( score >= 70 )
@@ -96,7 +103,8 @@ else if( score >= 60 )
 else
     grade = 'F';
 ```
-]
+::::
+:::
 
 ---
 
@@ -106,25 +114,28 @@ In the book, Drozdek uses the relationship between decision trees and search alg
 
 Here is "insertion sort" as one possible decision tree (sorting three values in variables `a`, `b`, and `c`):
 
-.center[![Insertion sort as a DT.](../images/decision_trees/fig_9.4a.png)]
+![Insertion sort as a DT.](images/decision_trees/fig_9.4a.png)
 
-.footnote[Ref: Drozdek, Figure 9.4]
+
+[Ref: Drozdek, Figure 9.4]{.footnotes}
 
 ---
 
 ## How many leaves?
 
+\
+
 In general for an array of $n$ elements, there are $n!$ possible orderings.
 
-That corresponds to _at least_ $n!$ leaf nodes in the decision tree! .red[There could be more...]
+That corresponds to _at least_ $n!$ leaf nodes in the decision tree! [There could be more...]{.red}
 
 ---
 
 Here is a possible decision tree for "Bubble Sort":
 
-.center[![Bubble Sort as a DT.](../images/decision_trees/fig_9.4b.png)]
+![Bubble Sort as a DT.](images/decision_trees/fig_9.4b.png)
 
-.footnote[Ref: Drozdek, Figure 9.4]
+[Ref: Drozdek, Figure 9.4]{.footnotes}
 
 ---
 
@@ -134,7 +145,7 @@ So, the total number of leaves in a decision tree representing a sort will be **
 
 Given that, what is the _optimal_ height of the tree (which corresponds to the optimal sorting algorithm)?
 
---
+\
 
 We know that a complete binary tree with $k$ leaves contains $k-1$ interior nodes for a total of $2k-1$ nodes, and the height of a complete binary tree is $\lceil \lg(N)\rceil$.  We can express that in terms of the leaves alone by saying a complete tree's height is $lg(k) + 1$, or in general (for non-complete but balanced trees) $\lceil lg(k) + 1\rceil$.
 
@@ -144,13 +155,12 @@ We know that a complete binary tree with $k$ leaves contains $k-1$ interior node
 
 So what is the height of an decision tree representing an optimal search?  There are $k = n!$ leaves (at least), so it will be at least $lg(n!)$ ... But what is the log of $n!$?
 
---
+\
 
-The log of $n!$ turns out to be $O(n \lg(n))$..ref[1]
+The log of $n!$ turns out to be $O(n \lg(n))$.[^1]
 
-.footnote[[1]: See Drozdek, Appendix A, section A.2 <br>Related: https://en.m.wikipedia.org/wiki/Stirling%27s_approximation]
+[^1]: See Drozdek, Appendix A, section A.2 <br>Related: https://en.m.wikipedia.org/wiki/Stirling%27s_approximation
 
---
+\
 
 So, the best sorting algorithm we could possibly hope for would be $O(n \lg(n))$.
-

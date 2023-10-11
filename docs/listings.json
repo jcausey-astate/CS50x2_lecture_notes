@@ -36,7 +36,11 @@
       "/content/32_AVL_Trees.html",
       "/content/33_Heaps_and_Heapsort.html",
       "/content/34_Multiway_Trees.html",
-      "/content/35_Graphs.html"
+      "/content/35_Graphs.html",
+      "/content/36_Decision_Trees.html",
+      "/content/37_Efficient_Sorting.html",
+      "/content/38_Hashing.html",
+      "/content/99_cmath_epsilon_comparison.html"
     ]
   }
 ]

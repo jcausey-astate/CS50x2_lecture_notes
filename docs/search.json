@@ -1,5 +1,75 @@
 [
   {
+    "objectID": "content/99_cmath_epsilon_comparison.html#mathematical-functions",
+    "href": "content/99_cmath_epsilon_comparison.html#mathematical-functions",
+    "title": "Supplement: cmath and Epsilon Comparison",
+    "section": "Mathematical Functions",
+    "text": "Mathematical Functions\nThere are many mathematical functions that do not have an operator in C++. The &lt;cmath&gt; library provides definitions for these. Some examples are:\n\n    Function Name      Description\n    --------------------------------------------------------\n    pow(base, exp)     Returns base raised to power of exp\n    sqrt(x)            Returns square root of x\n    floor(x)           Returns the mathematical floor of x\n    ceil(x)            Returns the mathematical ceiling of x\n    fabs(x)            Returns the absolute value of x\n    sin(theta)         Returns the mathematical sine of theta\n    (other trig functions available also; measure in radians)"
+  },
+  {
+    "objectID": "content/99_cmath_epsilon_comparison.html#numerical-inaccuracy",
+    "href": "content/99_cmath_epsilon_comparison.html#numerical-inaccuracy",
+    "title": "Supplement: cmath and Epsilon Comparison",
+    "section": "Numerical Inaccuracy",
+    "text": "Numerical Inaccuracy\n\n\n\nComputers use binary (base-2) numbers internally.\n\nOur base-10 numbers must be converted.\nConversion for integers is 1-1\nConversion for Real numbers is not so simple…"
+  },
+  {
+    "objectID": "content/99_cmath_epsilon_comparison.html#irrational-numbers",
+    "href": "content/99_cmath_epsilon_comparison.html#irrational-numbers",
+    "title": "Supplement: cmath and Epsilon Comparison",
+    "section": "Irrational Numbers",
+    "text": "Irrational Numbers\n\n\n\nEven in base-10, we have many numbers that are irrational (they are non-terminating and non-repeating decimals). You cannot represent these exactly with any finite number of digits.\n\nExamples: \\(\\pi\\), \\(e\\)\n\n\n\n\n\nSome numbers that can be expressed precisely in base-10 cannot be expressed precisely in binary:\n\nExamples: \\(0.1\\), \\(0.3\\)\n\n\n\n\n\nWe are forced to round such numbers. The computer does the same."
+  },
+  {
+    "objectID": "content/99_cmath_epsilon_comparison.html#rounding-errors",
+    "href": "content/99_cmath_epsilon_comparison.html#rounding-errors",
+    "title": "Supplement: cmath and Epsilon Comparison",
+    "section": "Rounding Errors",
+    "text": "Rounding Errors\n\nThe conversion for literal values (like 0.1) into binary is deterministic, meaning it will always produce the same binary representation for the same decimal value.\n\nIf it were not, the entire computing architecture would be broken.\n\n\n\n\n\nHowever, the values are being rounded; thus, the internal representation contains some rounding error."
+  },
+  {
+    "objectID": "content/99_cmath_epsilon_comparison.html#rounding-errors-1",
+    "href": "content/99_cmath_epsilon_comparison.html#rounding-errors-1",
+    "title": "Supplement: cmath and Epsilon Comparison",
+    "section": "Rounding Errors",
+    "text": "Rounding Errors\n\nInternal representations of floating-point values may contain some rounding error.\n\nApplying repeated mathematical operations to floating-point values amplifies this rounding error.\n\n\n\n\n\nTesting a calculated floating-point value for equality against another value is not guaranteed to produce the correct result, since rounding errors may have accumulated in the calculated value."
+  },
+  {
+    "objectID": "content/99_cmath_epsilon_comparison.html#what-is-equal",
+    "href": "content/99_cmath_epsilon_comparison.html#what-is-equal",
+    "title": "Supplement: cmath and Epsilon Comparison",
+    "section": "What is “Equal”?",
+    "text": "What is “Equal”?\nThe values 3.1415926535897931 and 3.1415926535897927 are very nearly equal.\nIn most disciplines, a difference in the 15th decimal position would not be unacceptable.\nThe problem is that the == operator is often too strict a test. What we really want to know is whether the values are “equal” to within an acceptable tolerance."
+  },
+  {
+    "objectID": "content/99_cmath_epsilon_comparison.html#epsilon-comparison",
+    "href": "content/99_cmath_epsilon_comparison.html#epsilon-comparison",
+    "title": "Supplement: cmath and Epsilon Comparison",
+    "section": "Epsilon Comparison",
+    "text": "Epsilon Comparison\nIf we can define the amount of error (or variation) that we are willing to accept, we can test for “near equality” by checking that the difference between two values is acceptably small.\n\nEpsilon Comparison involves testing that the magitude of the difference between two values is less than an established tolerance usually referred to as epsilon.\n\nconst double EPSILON = 1e-12;\n// [...]\nif( fabs(a - b) &lt; EPSILON ){\n    // a is essentially equal to b\n}"
+  },
+  {
+    "objectID": "content/99_cmath_epsilon_comparison.html#summary",
+    "href": "content/99_cmath_epsilon_comparison.html#summary",
+    "title": "Supplement: cmath and Epsilon Comparison",
+    "section": "Summary",
+    "text": "Summary\n\nNever test floating-point values using == or !=.\nUse an epsilon comparison instead.\nThe value of epsilon may vary depending on your application.\n\nHow much precision do you really need?\nHow many mathematical calculations are being performed before the test for “equality”?\n\nFor more information on this topic, see:\n\n\n\nhttp://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/\nhttp://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/\nhttp://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nSupplement: cmath and Epsilon Comparison"
+  },
+  {
+    "objectID": "content/37_Efficient_Sorting.html#first---simple-sorting-may-be-review",
+    "href": "content/37_Efficient_Sorting.html#first---simple-sorting-may-be-review",
+    "title": "Efficient Sorting",
+    "section": "First - Simple sorting (may be review)",
+    "text": "First - Simple sorting (may be review)\n\n\nWe will look at (or review) the following “simple” sorting algorithms:\n\nBubble Sort\nSelection Sort\nInsertion Sort"
+  },
+  {
+    "objectID": "content/37_Efficient_Sorting.html#more-efficient-algorithms",
+    "href": "content/37_Efficient_Sorting.html#more-efficient-algorithms",
+    "title": "Efficient Sorting",
+    "section": "More efficient algorithms",
+    "text": "More efficient algorithms\n\n\nNow, let’s consider the following more efficient sorting algorithms:\n\nHeap sort\nQuick sort\nMerge sort\nRadix sort"
+  },
+  {
     "objectID": "content/35_Graphs.html#definition-and-terminology",
     "href": "content/35_Graphs.html#definition-and-terminology",
     "title": "Graphs",
@@ -1642,7 +1712,7 @@
     "href": "index.html",
     "title": "CS 50x2 Slides",
     "section": "",
-    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\n\n\n\nSTL and Vectors\n\n\n\n\n\n\n\n\n\n\nInput and Output\n\n\n\n\n\n\n\n\n\n\nSearching and Sorting\n\n\n\n\n\n\n\n\n\n\nStructures\n\n\n\n\n\n\n\n\n\n\nBinary Files and Random Access\n\n\n\n\n\n\n\n\n\n\nDynamic Memory\n\n\n\n\n\n\n\n\n\n\nExceptions\n\n\n\n\n\n\n\n\n\n\nClasses and Objects\n\n\n\n\n\n\n\n\n\n\nAggregation\n\n\n\n\n\n\n\n\n\n\nAssignment, Copy Constructor\n\n\n\n\n\n\n\n\n\n\nOperator Overloading\n\n\n\n\n\n\n\n\n\n\nLinked Lists\n\n\n\n\n\n\n\n\n\n\nStacks, Queues, and Circular Lists\n\n\n\n\n\n\n\n\n\n\nTemplates and Generic Programming\n\n\n\n\n\n\n\n\n\n\nInheritance\n\n\n\n\n\n\n\n\n\n\nVirtual Methods and Polymorphism\n\n\n\n\n\n\n\n\n\n\nSparse Tables\n\n\n\n\n\n\n\n\n\n\nSkip Lists\n\n\n\n\n\n\n\n\n\n\nSelf-Organizing Lists\n\n\n\n\n\n\n\n\n\n\nTrees - Binary Search Trees\n\n\n\n\n\n\n\n\n\n\nBalancing Trees - AVL Trees\n\n\n\n\n\n\n\n\n\n\nHeaps and HeapSort\n\n\n\n\n\n\n\n\n\n\nMultiway Trees (m-Trees)\n\n\n\n\n\n\n\n\n\n\nGraphs\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Structured Programming Basics\n\n\n\n\n\n\n\n\n\n\nVariables, Operators, Common Errors\n\n\n\n\n\n\n\n\n\n\nSelection\n\n\n\n\n\n\n\n\n\n\nRepetition\n\n\n\n\n\n\n\n\n\n\nFunctions and Value Parameters\n\n\n\n\n\n\n\n\n\n\nFunctions and Reference Parameters\n\n\n\n\n\n\n\n\n\n\nRecursion\n\n\n\n\n\n\n\n\n\n\nArrays\n\n\n\n\n\n\n\n\n\n\nCharacters and C-Style Strings\n\n\n\n\n\n\n\n\n\n\nParallel and Multi-Dimensional Arrays\n\n\n\n\n\n\n\n\n\n\nPointers\n\n\n\n\n\n\n\n\n\n\nSTL and Vectors\n\n\n\n\n\n\n\n\n\n\nInput and Output\n\n\n\n\n\n\n\n\n\n\nSearching and Sorting\n\n\n\n\n\n\n\n\n\n\nStructures\n\n\n\n\n\n\n\n\n\n\nBinary Files and Random Access\n\n\n\n\n\n\n\n\n\n\nDynamic Memory\n\n\n\n\n\n\n\n\n\n\nExceptions\n\n\n\n\n\n\n\n\n\n\nClasses and Objects\n\n\n\n\n\n\n\n\n\n\nAggregation\n\n\n\n\n\n\n\n\n\n\nAssignment, Copy Constructor\n\n\n\n\n\n\n\n\n\n\nOperator Overloading\n\n\n\n\n\n\n\n\n\n\nLinked Lists\n\n\n\n\n\n\n\n\n\n\nStacks, Queues, and Circular Lists\n\n\n\n\n\n\n\n\n\n\nTemplates and Generic Programming\n\n\n\n\n\n\n\n\n\n\nInheritance\n\n\n\n\n\n\n\n\n\n\nVirtual Methods and Polymorphism\n\n\n\n\n\n\n\n\n\n\nSparse Tables\n\n\n\n\n\n\n\n\n\n\nSkip Lists\n\n\n\n\n\n\n\n\n\n\nSelf-Organizing Lists\n\n\n\n\n\n\n\n\n\n\nTrees - Binary Search Trees\n\n\n\n\n\n\n\n\n\n\nBalancing Trees - AVL Trees\n\n\n\n\n\n\n\n\n\n\nHeaps and HeapSort\n\n\n\n\n\n\n\n\n\n\nMultiway Trees (m-Trees)\n\n\n\n\n\n\n\n\n\n\nGraphs\n\n\n\n\n\n\n\n\n\n\nDecision Trees\n\n\n\n\n\n\n\n\n\n\nEfficient Sorting\n\n\n\n\n\n\n\n\n\n\nHashing\n\n\n\n\n\n\n\n\n\n\nSupplement: cmath and Epsilon Comparison\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "content/02_Variables_Operators_Errors.html#variables-operators-common-errors",
@@ -2693,5 +2763,159 @@
     "title": "Multiway Trees (m-Trees)",
     "section": "Tries",
     "text": "Tries\n\nPronounced “try”, but comes from the word “retrieval”. 🤷‍♂️\nEach node contains only a part of the key being searched.\n\nOften, the keys are “words” (sequences of letters); each node contains a single letter.\nNodes are either leaf nodes (containing a word or the suffix or a word), or non-leaf nodes (with an array of pointers to sub-tries).\nVery fast for things like spell checkers, etc.\nTrie height depends on the length of common prefixes.\nSee Drozdek 364-372"
+  },
+  {
+    "objectID": "content/36_Decision_Trees.html#decision-trees",
+    "href": "content/36_Decision_Trees.html#decision-trees",
+    "title": "Decision Trees",
+    "section": "Decision Trees",
+    "text": "Decision Trees\nA decision tree is a special form of tree with the following properties:\n\nEvery node has either zero or two children.\n\ni.e. they are strict binary trees.\n\nNodes represent a decision, which is a condition or query on some value in a dataset of interest. The decision must evaluate to a Boolean result.\nEdges represent the value of the result from the originating node: either True or False.\n\n(or “yes/no”, or other binary synonym)\n\nLeaf nodes contain a result, which is the value selected by the sequence of decisions represented by the path followed from the root to arrive at the leaf."
+  },
+  {
+    "objectID": "content/36_Decision_Trees.html#decision-trees-uses",
+    "href": "content/36_Decision_Trees.html#decision-trees-uses",
+    "title": "Decision Trees",
+    "section": "Decision Trees: Uses",
+    "text": "Decision Trees: Uses\nThere are many uses for decision trees as a logical representation. Any problem where a sequence of “questions” or “queries” leads to a final result can be represented as a decision tree. Drozdek (Ch. 9.2) uses the example of a decision tree representing a sorting algorithm.\n\n\nEvaluating a decision tree is functionally equivalent to executing an “if-else chain” control structure, where each control path is required to eventually produce a value (which may be e.g. “None”) and is not allowed to perform any additional computation beyond the conditional expressions themselves (but these can be arbitrarily complex).\n\n\nApplication areas: Machine learning, data mining, financial analysis, artificial intelligence, business process control, personnel management, … (your imagination is the limit)"
+  },
+  {
+    "objectID": "content/36_Decision_Trees.html#example-determine-letter-grade-given-a-score",
+    "href": "content/36_Decision_Trees.html#example-determine-letter-grade-given-a-score",
+    "title": "Decision Trees",
+    "section": "Example: Determine letter grade given a score:",
+    "text": "Example: Determine letter grade given a score:\n\n\n\n\nCode\n// Assume `score` is an integer, \n// for simplicity.\n// Assume `grade` is a character \n// variable that will hold\n// our result.\n\nif( score &gt;= 90 )\n    grade = 'A';\nelse if( score &gt;= 80 )\n    grade = 'B';\nelse if( score &gt;= 70 )\n    grade = 'C';\nelse if( score &gt;= 60 )\n    grade = 'D';\nelse\n    grade = 'F';\n\nDecision Tree\n\n\n\nA decision tree for a grading scale."
+  },
+  {
+    "objectID": "content/36_Decision_Trees.html#example-determine-letter-grade-given-a-score-1",
+    "href": "content/36_Decision_Trees.html#example-determine-letter-grade-given-a-score-1",
+    "title": "Decision Trees",
+    "section": "Example: Determine letter grade given a score:",
+    "text": "Example: Determine letter grade given a score:\n\n\nNotice that we could optimize the tree a bit. Here is an alternate version (and corresponding code):\n\n\nDecision Tree\n\n\n\nA decision tree for a grading scale.\n\n\n\nCode\nif( score &gt;= 70 )\n    if(score &gt;= 80 )\n        if(score &gt;= 90)\n            grade = 'A';\n        else\n            grade = 'B';\n    else\n        grade = 'C'\nelse if( score &gt;= 60 )\n    grade = 'D';\nelse\n    grade = 'F';"
+  },
+  {
+    "objectID": "content/36_Decision_Trees.html#sorting-visualized-as-a-dt",
+    "href": "content/36_Decision_Trees.html#sorting-visualized-as-a-dt",
+    "title": "Decision Trees",
+    "section": "Sorting visualized as a DT",
+    "text": "Sorting visualized as a DT\nIn the book, Drozdek uses the relationship between decision trees and search algorithms for an illustration of theoretical optimal search complexity.\nHere is “insertion sort” as one possible decision tree (sorting three values in variables a, b, and c):\n\nInsertion sort as a DT.Ref: Drozdek, Figure 9.4"
+  },
+  {
+    "objectID": "content/36_Decision_Trees.html#how-many-leaves",
+    "href": "content/36_Decision_Trees.html#how-many-leaves",
+    "title": "Decision Trees",
+    "section": "How many leaves?",
+    "text": "How many leaves?\n\n\nIn general for an array of \\(n\\) elements, there are \\(n!\\) possible orderings.\nThat corresponds to at least \\(n!\\) leaf nodes in the decision tree! There could be more…"
+  },
+  {
+    "objectID": "content/38_Hashing.html#what-is-hashing",
+    "href": "content/38_Hashing.html#what-is-hashing",
+    "title": "Hashing",
+    "section": "What is Hashing?",
+    "text": "What is Hashing?\nSearching often involves looking for a key, which is a way of uniquely identifying a record.\nIf the key is known, a hash table can be created using the value of the key as the only indication of position.\n\n\nSearching is then a \\(O(1)\\) operation…\n\n\nIf you know the key, you can go directly to the correct record in the table.\nIn practice, we can never perfectly achieve this, but we can get close."
+  },
+  {
+    "objectID": "content/38_Hashing.html#you-may-have-seen-this-before.",
+    "href": "content/38_Hashing.html#you-may-have-seen-this-before.",
+    "title": "Hashing",
+    "section": "You may have seen this before.",
+    "text": "You may have seen this before.\nIf you have ever used dictionaries in Python, you are familiar with the concept of looking up a value in a collection by using a key that is not restricted to being an integer.\nMany languages have a concept of an associative array - that is just another name for this same kind of collection.\nIn C++ we have the std::map and std::multimap STL containers that provide this kind of collection.\nThe generic term is a key-value store.\nNote that none of these container types necessarily implies the underlying implementation is a hash table, but they all allow the kind of access that a hash table is designed to optimize."
+  },
+  {
+    "objectID": "content/38_Hashing.html#terminology",
+    "href": "content/38_Hashing.html#terminology",
+    "title": "Hashing",
+    "section": "Terminology",
+    "text": "Terminology\nThe simplest possible example of a hash table is the C++ array.  The key is the index into the array.\nFor any more complex data than non-negative integers, we must somehow convert the non-integer key to a value we can use as an index.\nWe call a function that does this a hash function.1 \\[\nh(k) \\rightarrow i\n\\]\nA hash function that perfectly transforms all different keys into different numbers is called a perfect hash function.\n\\[\nh(k_n) \\rightarrow i_n,  \\;  \\textrm{s.t.} \\;  i_n \\neq i_m \\; \\forall \\; n \\neq m\n\\]\nThe term hash function is also used to describe the family of cryptographic hash functions, whose job is to provide a unique but unpredictable one-way mapping from an input data blob to an output signature representation. Cryptographic hash functions are different from the hash functions described here, and have very different operating characteristics."
+  },
+  {
+    "objectID": "content/38_Hashing.html#terminology-1",
+    "href": "content/38_Hashing.html#terminology-1",
+    "title": "Hashing",
+    "section": "Terminology",
+    "text": "Terminology\nSo, a hash table must be large enough to accommodate all unique keys to be stored…\nIdeally, a function must be found that will convert all possible unique keys to unique table indices.\n\n\nThis is often difficult to achieve.\n\n\nAn imperfect hash function is one that produces the same number for two or more different keys.\nTwo keys that hash to the same value result in a collision."
+  },
+  {
+    "objectID": "content/38_Hashing.html#example",
+    "href": "content/38_Hashing.html#example",
+    "title": "Hashing",
+    "section": "Example",
+    "text": "Example\nHash strings by adding up the integer (ASCII) values of each character in the string.\n\n\n“abc” would hash to 294  (97 + 98 + 99)\n\\[h( \\text{ abc } ) \\; \\rightarrow \\; 294\\]"
+  },
+  {
+    "objectID": "content/38_Hashing.html#example-1",
+    "href": "content/38_Hashing.html#example-1",
+    "title": "Hashing",
+    "section": "Example",
+    "text": "Example\nHash strings by adding up the integer (ASCII) values of each character in the string.\n\n\n“abc” would hash to 294  (97 + 98 + 99)\n\\[h( \\text{ abc } ) \\; \\rightarrow \\; 294\\]\nProblem:  So would “cba” or “bac” or “bca” or “acb” or “cab”!"
+  },
+  {
+    "objectID": "content/38_Hashing.html#example-2",
+    "href": "content/38_Hashing.html#example-2",
+    "title": "Hashing",
+    "section": "Example",
+    "text": "Example\nHash strings by adding up the integer (ASCII) values of each character in the string.\n\n\n“abc” would hash to 294  (97 + 98 + 99)\n\\[h( \\text{ abc } ) \\; \\rightarrow \\; 294\\]\nProblem:  So would “cba” or “bac” or “bca” or “acb” or “cab”!\nA good hash function must try to avoid collisions, while still being as efficient as possible.\nFor the lookup to be fast, the hash function must be fast!1\nThis is a sharp contrast to cryptographic hash functions, where speed is not always a desirable feature."
+  },
+  {
+    "objectID": "content/38_Hashing.html#how-many-hash-functions-are-there",
+    "href": "content/38_Hashing.html#how-many-hash-functions-are-there",
+    "title": "Hashing",
+    "section": "How Many Hash Functions Are There?",
+    "text": "How Many Hash Functions Are There?\n\n\nTo assign positions to \\(n\\) items in a table of \\(m\\) positions (with \\(n \\leq m\\)), there are \\(m^n\\) possible hash functions.\n\n\nThe number of perfect hash functions is \\(\\frac{m!}{(m-n)!}\\). This is the number of placements of the items in the table.\n\n\nFor 50 elements in a 100-element table,  there are \\(100^{50}\\) = \\(10^{100}\\) hash functions, of which only \\(10^{94}\\) are perfect.\n\n\nSounds like it would be easy to find one… right?"
+  },
+  {
+    "objectID": "content/38_Hashing.html#hash-table-size",
+    "href": "content/38_Hashing.html#hash-table-size",
+    "title": "Hashing",
+    "section": "Hash Table Size",
+    "text": "Hash Table Size\nA larger hash table can reduce the number of collisions…\n\n\nBut only if your hash function produces unique-enough addresses to take advantage of the increase in table size.\n\n\nExample:  If you are hashing based on the ASCII value of the first letter of a string, the value will be in the integer range \\([0,127]\\).\n\n\nMaking a hash table larger than 128 would just waste space."
+  },
+  {
+    "objectID": "content/38_Hashing.html#handling-collisions",
+    "href": "content/38_Hashing.html#handling-collisions",
+    "title": "Hashing",
+    "section": "Handling Collisions",
+    "text": "Handling Collisions\nIn many cases, a perfect hash function cannot be found, or is impractical (too difficult or too computationally complex).\n\n\nSome method of dealing with collisions must be found."
+  },
+  {
+    "objectID": "content/38_Hashing.html#hash-table-deletion",
+    "href": "content/38_Hashing.html#hash-table-deletion",
+    "title": "Hashing",
+    "section": "Hash Table Deletion",
+    "text": "Hash Table Deletion\nSimply remove the data – unless there was a collision…\n\n\nIn open addressing, deleting may break the pattern of probes…\n\n\nYou could leave a marker indicating that an element in position \\(i\\) with key \\(K\\) has been deleted, but that probing for other keys should continue.\n\nInserting new keys would overwrite a space-filler entry if possible.\nTable can become overloaded with “deleted entry” markers, making searches take longer than desired.\n\nTo avoid this, occasionally shift existing elements “up” the table to fill the deleted locations.  (The book calls this “purging” the table of deletion markers.)"
+  },
+  {
+    "objectID": "content/38_Hashing.html#perfect-hash-functions",
+    "href": "content/38_Hashing.html#perfect-hash-functions",
+    "title": "Hashing",
+    "section": "Perfect Hash Functions",
+    "text": "Perfect Hash Functions\nUnless the set of possible keys is known in advance, it is usually not possible to find a perfect hash function…\n\n\nHowever, if the keys are known, a perfect hash function can be computed.\n\n\nExample:  A lookup table for the reserved words for a programming language.\n\n\nA perfect hash function that also requires only as many cells in the table as the number of data items is called a minimal perfect hash."
+  },
+  {
+    "objectID": "content/38_Hashing.html#perfect-hash-functions-1",
+    "href": "content/38_Hashing.html#perfect-hash-functions-1",
+    "title": "Hashing",
+    "section": "Perfect Hash Functions",
+    "text": "Perfect Hash Functions\nMinimal perfect hash functions avoid both wasted time (for collision resolution) and space (for empty table cells).\n\n\nAlgorithms for choosing perfect hash functions are usually tedious.\n\n\nFor 50 elements in a 100 element table, only 1 in a million of the possible hash functions are perfect."
+  },
+  {
+    "objectID": "content/38_Hashing.html#perfect-hash-functions-cichellis-method",
+    "href": "content/38_Hashing.html#perfect-hash-functions-cichellis-method",
+    "title": "Hashing",
+    "section": "Perfect Hash Functions : Cichelli’s Method",
+    "text": "Perfect Hash Functions : Cichelli’s Method\nDesigned for hashing a relatively small number of reserved words:\nh(word) = (length(word) \n            + g(firstletter(word))\n            + g(lastletter(word))\n          ) mod Tsize\nWhere \\(g\\) is the function to be constructed.\n\\(g\\) assigns values to letters so that the resulting hash function returns a unique hash for all words in a predefined language (set of words).\n\n\nThe values assigned by \\(g\\) to specific letters do not have to be unique.\n\n\nCichelli’s Algorithm is given in the book on pg. 539-540."
+  },
+  {
+    "objectID": "content/38_Hashing.html#perfect-hash-functions-fhcd-algorithm",
+    "href": "content/38_Hashing.html#perfect-hash-functions-fhcd-algorithm",
+    "title": "Hashing",
+    "section": "Perfect Hash Functions : FHCD Algorithm",
+    "text": "Perfect Hash Functions : FHCD Algorithm\nAn extension of Cichilli’s Algorithm.\n\n\nHash is of the form\nh(word) = (h0(word) \n            + g(h1(word))\n            + g(h2(word))\n          ) mod Tsize\n\n\nProduces a table of g-values that must be stored in memory during operation (to make hashing efficient).\n\n\nSee section 10.4.2 in the textbook."
+  },
+  {
+    "objectID": "content/38_Hashing.html#extendable-hashing",
+    "href": "content/38_Hashing.html#extendable-hashing",
+    "title": "Hashing",
+    "section": "Extendable Hashing",
+    "text": "Extendable Hashing\n\n\nIf the size of the hash table may change, additional complexity is added to the hashing algorithms.\n\n\nSee the book pgs. 571-573.\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nHashing"
   }
 ]

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/99_cmath_epsilon_comparison.html</loc>
+    <lastmod>2023-10-11T00:38:07.462Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/37_Efficient_Sorting.html</loc>
+    <lastmod>2023-10-11T00:06:58.421Z</lastmod>
+  </url>
+  <url>
     <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/35_Graphs.html</loc>
     <lastmod>2023-10-02T02:15:28.221Z</lastmod>
   </url>
@@ -143,5 +151,13 @@
   <url>
     <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/34_Multiway_Trees.html</loc>
     <lastmod>2023-10-02T01:45:42.816Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/36_Decision_Trees.html</loc>
+    <lastmod>2023-10-10T21:05:01.351Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jcausey-astate.github.io/CS50x2_lecture_notes/content/38_Hashing.html</loc>
+    <lastmod>2023-10-11T00:33:42.471Z</lastmod>
   </url>
 </urlset>

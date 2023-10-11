@@ -1,18 +1,15 @@
 ---
-title: "S1: Supplement: cmath and Epsilon Comparison"
-date: 2021-01-13T12:00:00-05:00
-draft: true
----
-# Epsilon Comparison
-## Gaddis Ch. 4 Supplement
-
+number: 99
+title: "Supplement: cmath and Epsilon Comparison"
+textbook: "Gaddis (Ch. 4) Supplement"
+draft: false
 ---
 
 ## Mathematical Functions
 
 There are many mathematical functions that do not have an operator in C++.  The `<cmath>` library provides definitions for these.  Some examples are:
 
-
+:::{.noborder}
         Function Name      Description
         --------------------------------------------------------
         pow(base, exp)     Returns base raised to power of exp
@@ -22,7 +19,7 @@ There are many mathematical functions that do not have an operator in C++.  The 
         fabs(x)            Returns the absolute value of x
         sin(theta)         Returns the mathematical sine of theta
         (other trig functions available also; measure in radians)
-
+:::
 
 ---
 
@@ -44,6 +41,8 @@ int main(){
 
 ## Numerical Inaccuracy
 
+\
+
 * Computers use binary (base-2) numbers internally.
     - Our base-10 numbers must be converted.
     - Conversion for integers is 1-1
@@ -53,10 +52,18 @@ int main(){
 
 ## Irrational Numbers
 
+\
+
 * Even in base-10, we have many numbers that are _irrational_  (they are non-terminating and non-repeating decimals).  You cannot represent these exactly with any finite number of digits.
     - Examples:  $\pi$, $e$
+
+\
+
 * Some numbers that _can_ be expressed precisely in base-10 _cannot_ be expressed precisely in binary:
     - Examples:  $0.1$, $0.3$
+
+\
+
 * We are forced to _round_ such numbers.  The computer does the same.
 
 ---
@@ -65,6 +72,9 @@ int main(){
 
 * The conversion for literal values (like 0.1) into binary is _deterministic_, meaning it will always produce the same binary representation for the same decimal value.
     - If it were not, the entire computing architecture would be broken.
+
+\
+
 * However, the values are being rounded; thus, the internal representation contains some _rounding error_.
 
 ---
@@ -73,6 +83,9 @@ int main(){
 
 * Internal representations of floating-point values may contain some _rounding error_.
     - Applying repeated mathematical operations to floating-point values amplifies this rounding error.
+
+\
+
 * Testing a _calculated_ floating-point value for __equality__ against another value is **_not guaranteed to produce the correct result_**, since rounding errors may have accumulated in the calculated value.
 
 ---
@@ -90,6 +103,7 @@ else{
               << pi2 << "!\n";
 }
 ```
+
 This will _likely_ produce the output:
 
 `An error occurred: 3.14159 != 3.14159!`
@@ -125,7 +139,7 @@ The values 3.1415926535897931 and 3.1415926535897927 are _very nearly equal_.
 
 In most disciplines, a difference in the 15<sup>th</sup> decimal position would not be unacceptable.
 
-The problem is that the `==` operator is often .red[_too strict a test_].  What we really want to know is whether the values are "equal" to _within an acceptable tolerance_.
+The problem is that the `==` operator is often [_too strict a test_]{.red}.  What we really want to know is whether the values are "equal" to _within an acceptable tolerance_.
 
 ---
 
@@ -170,13 +184,15 @@ else{
 ## Summary
 
 * **Never** test floating-point values using `==` or `!=`. 
-* Use an _epsilon comparison_ instead.
+* Use an **_epsilon comparison_** instead.
 * The value of _epsilon_ may vary depending on your application.
     - How much precision do you really _need_?
     - How many mathematical calculations are being performed before the test for "equality"?
 * For more information on this topic, see: 
-.small-75[
-- http://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/ 
-- http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/ 
-- http://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/ 
-]
+
+:::{.small-75}
+- <http://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/>
+- <http://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/>
+- <http://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/>
+
+:::
