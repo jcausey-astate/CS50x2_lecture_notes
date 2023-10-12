@@ -29,6 +29,7 @@ format:
     sc-sb-title: true
     title-as-header: true
     hide-from-titleSlide: text
+    self-contained-math: true
 
 course: "CS 50x2 Accelerated Programming Series"
 

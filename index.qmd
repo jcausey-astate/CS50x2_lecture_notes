@@ -7,6 +7,8 @@ format:
       theme: journal
       css: styles.css
       link-external-newwindow: true
+      embed-resources: true
+      self-contained-math: true
 listing:
   - id: slide-list
     contents: "content/*.qmd"
