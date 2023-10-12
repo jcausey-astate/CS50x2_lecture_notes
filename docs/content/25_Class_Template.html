@@ -414,7 +414,7 @@
   <h1 class="title">Templates and Generic Programming</h1>
   <p class="textbook"><span class="textbook-intro">📚 </span>Gaddis (Ch. 16, 19)</p>
 </section>
-<section id="function-templates" class="slide level2">
+<section id="function-templates" class="slide level2 tight">
 <h2>Function Templates</h2>
 <p>Function templates provide a pattern for a function that can work with many types of data.</p>
 <ul>
@@ -433,13 +433,15 @@
 </div>
 </div>
 </div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">// Using the function:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="bu">std::</span> cout <span class="op">&lt;&lt;</span> times10<span class="op">(</span><span class="fl">3.14</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> Numeric<span class="op">&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>Numeric times10<span class="op">(</span>Numeric num<span class="op">){</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>     <span class="cf">return</span> <span class="dv">10</span> <span class="op">*</span> num<span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> Numeric<span class="op">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>Numeric times10<span class="op">(</span>Numeric num<span class="op">){</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>     <span class="cf">return</span> <span class="dv">10</span> <span class="op">*</span> num<span class="op">;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -458,6 +460,19 @@
 <div class="callout-content">
 <p>Write the function for a normal data type first, then convert to a function template!</p>
 </div>
+</div>
+</div>
+<div class="columns">
+<div class="column highlight-green" style="width:50%;">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="dt">double</span> times10<span class="op">(</span><span class="dt">double</span> num<span class="op">){</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>     <span class="cf">return</span> <span class="dv">10</span> <span class="op">*</span> num<span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column highlight-green" style="width:50%;">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> Numeric<span class="op">&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>Numeric times10<span class="op">(</span>Numeric num<span class="op">){</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>     <span class="cf">return</span> <span class="dv">10</span> <span class="op">*</span> num<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -482,10 +497,10 @@
 <p><strong>Multiple type parameters can be defined.</strong></p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> Type1<span class="op">,</span> <span class="kw">typename</span> Type2<span class="op">&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="dt">void</span> print_pair<span class="op">(</span><span class="at">const</span> Type1<span class="op">&amp;</span> v1<span class="op">,</span> <span class="at">const</span> Type2<span class="op">&amp;</span> v2<span class="op">){</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="ch">'('</span> <span class="op">&lt;&lt;</span> v1 <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> v2 <span class="op">&lt;&lt;</span> <span class="ch">')'</span><span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> Type1<span class="op">,</span> <span class="kw">typename</span> Type2<span class="op">&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="dt">void</span> print_pair<span class="op">(</span><span class="at">const</span> Type1<span class="op">&amp;</span> v1<span class="op">,</span> <span class="at">const</span> Type2<span class="op">&amp;</span> v2<span class="op">){</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="ch">'('</span> <span class="op">&lt;&lt;</span> v1 <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> v2 <span class="op">&lt;&lt;</span> <span class="ch">')'</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-important no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -493,17 +508,19 @@
 </div>
 </div>
 </div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">// Using the function:</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>print_pair<span class="op">(</span><span class="st">"Naomi"</span><span class="op">,</span> <span class="dv">27</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <p><strong>Function templates can be overloaded (as long as each overload has a unique signature).</strong></p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> ValueType<span class="op">&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="dt">void</span> add<span class="op">(</span>ValueType v1<span class="op">,</span> ValueType v2<span class="op">);</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> ValueType<span class="op">&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="dt">void</span> add<span class="op">(</span>ValueType v1<span class="op">,</span> ValueType v2<span class="op">,</span> ValueType v3<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> ValueType<span class="op">&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="dt">void</span> add<span class="op">(</span>ValueType v1<span class="op">,</span> ValueType v2<span class="op">);</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> ValueType<span class="op">&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="dt">void</span> add<span class="op">(</span>ValueType v1<span class="op">,</span> ValueType v2<span class="op">,</span> ValueType v3<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="function-template-notes-1" class="slide level2">
 <h2>Function Template Notes</h2>
@@ -519,6 +536,24 @@
 <li>Be sure to document these requirements in your function documentation!</li>
 </ul></li>
 </ul>
+</section>
+<section class="slide level2">
+
+<h3 id="documentation-example">Documentation Example</h3>
+<p>Template parameters can be specified by using the <code>@tparam</code> Doxygen tag.</p>
+<p><br>
+</p>
+<div class="sourceCode" id="cb9" data-code-line-numbers="1-7"><pre class="sourceCode numberSource .cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">/**</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">    Multiplies the given `num` by 10.</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">    </span><span class="an">@param</span><span class="co">  </span><span class="cv">num</span><span class="co">      The value to multiply by 10.</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">    </span><span class="an">@tparam</span><span class="co"> </span><span class="cv">Numeric</span><span class="co">  Represents the type of the `num` parameter. Must</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">        be copyable, and must support multiplication as the right-hand</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">        operand with an `int` (e.g. `10 * num`).</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">*/</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> Numeric<span class="op">&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>Numeric times10<span class="op">(</span>Numeric num<span class="op">){</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>     <span class="cf">return</span> <span class="dv">10</span> <span class="op">*</span> num<span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="class-templates" class="slide level2">
 <h2>Class Templates</h2>
@@ -536,33 +571,33 @@
 <h3 id="example">Example</h3>
 <p><br>
 </p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> GradeType<span class="op">&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">class</span> Grade<span class="op">{</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>        Grade<span class="op">(</span><span class="at">const</span> GradeType<span class="op">&amp;);</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>        <span class="dt">void</span>      setGrade<span class="op">(</span><span class="at">const</span> GradeType<span class="op">&amp;);</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>        GradeType getGrade<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>    <span class="kw">private</span><span class="op">:</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>        GradeType  grade<span class="op">;</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> GradeType<span class="op">&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">class</span> Grade<span class="op">{</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>        Grade<span class="op">(</span><span class="at">const</span> GradeType<span class="op">&amp;);</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>        <span class="dt">void</span>      setGrade<span class="op">(</span><span class="at">const</span> GradeType<span class="op">&amp;);</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>        GradeType getGrade<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="kw">private</span><span class="op">:</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>        GradeType  grade<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="example-implementation">Example (implementation)</h3>
 <p><br>
 </p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> GradeType<span class="op">&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>Grade<span class="op">&lt;</span>GradeType<span class="op">&gt;::</span>Grade<span class="op">(</span><span class="at">const</span> GradeType<span class="op">&amp;</span> newgrade<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>    grade <span class="op">=</span> newgrade<span class="op">;</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="op">}</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> GradeType<span class="op">&gt;</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="dt">void</span> Grade<span class="op">&lt;</span>GradeType<span class="op">&gt;::</span>setGrade<span class="op">(</span><span class="at">const</span> GradeType<span class="op">&amp;</span> newgrade<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>    grade <span class="op">=</span> newgrade<span class="op">;</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="op">}</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> GradeType<span class="op">&gt;</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>GradeType Grade<span class="op">&lt;</span>GradeType<span class="op">&gt;::</span>getGrade<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>    <span class="cf">return</span> grade<span class="op">;</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> GradeType<span class="op">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>Grade<span class="op">&lt;</span>GradeType<span class="op">&gt;::</span>Grade<span class="op">(</span><span class="at">const</span> GradeType<span class="op">&amp;</span> newgrade<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>    grade <span class="op">=</span> newgrade<span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="op">}</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> GradeType<span class="op">&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="dt">void</span> Grade<span class="op">&lt;</span>GradeType<span class="op">&gt;::</span>setGrade<span class="op">(</span><span class="at">const</span> GradeType<span class="op">&amp;</span> newgrade<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>    grade <span class="op">=</span> newgrade<span class="op">;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="op">}</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="kw">template</span><span class="op">&lt;</span><span class="kw">typename</span> GradeType<span class="op">&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>GradeType Grade<span class="op">&lt;</span>GradeType<span class="op">&gt;::</span>getGrade<span class="op">()</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>    <span class="cf">return</span> grade<span class="op">;</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="class-template-notes" class="slide level2">
 <h2>Class Template Notes</h2>
@@ -586,140 +621,138 @@
 <p>A linked list node just joins a “payload” value to a pointer to the next node… We don’t really care about what <em>type</em> the payload is…</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">// This node only holds integers...</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>    Node<span class="op">(</span><span class="dt">int</span> v<span class="op">);</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="dt">int</span>   get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    Node<span class="op">*</span> get_next <span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>    <span class="dt">void</span>  set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>    <span class="dt">int</span>   payload<span class="op">;</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>    Node<span class="op">*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section class="slide level2">
-
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">// This node only holds integers...</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>    Node<span class="op">(</span><span class="dt">int</span> v<span class="op">);</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="dt">int</span>   get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>    Node<span class="op">*</span> get_next <span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="dt">void</span>  set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="dt">int</span>   payload<span class="op">;</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>    Node<span class="op">*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br>
-</p>
-<p>We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload…</p>
-</section>
-<section class="slide level2">
-
-<p>We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload…</p>
-<p><br>
-</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="op">*</span><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">class</span> Node<span class="op">{</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section class="slide level2">
-
-<p>Now, we <em>carefully</em> replace any reference to the <em>type</em> that was associated with the payload with the parameterized <code>PayloadType</code>. That means we will be replacing <code>int</code> with <code>PayloadType</code> whenever the <code>int</code> referred to the type of the payload (beware of loop counters, etc.).</p>
-<p><br>
-</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>    Node<span class="op">(</span><span class="er">`</span>int<span class="er">`</span> v<span class="op">);</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>    <span class="er">`</span>int<span class="er">`</span>   get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>    Node<span class="op">*</span> get_next <span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a>    <span class="dt">void</span>  set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>    <span class="er">`</span>int<span class="er">`</span>   payload<span class="op">;</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a>    Node<span class="op">*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section class="slide level2">
-
-<p>Now, we <em>carefully</em> replace any reference to the <em>type</em> that was associated with the payload with the parameterized <code>PayloadType</code>. That means we will be replacing <code>int</code> with <code>PayloadType</code> whenever the <code>int</code> referred to the type of the payload (beware of loop counters, etc.).</p>
-<p><br>
-</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>    Node<span class="op">(</span><span class="er">`</span>PayloadType<span class="er">`</span> v<span class="op">);</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>    <span class="er">`</span>PayloadType<span class="er">`</span> get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>    Node<span class="op">*</span>       get_next<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a>    <span class="dt">void</span>        set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>    <span class="er">`</span>PayloadType<span class="er">`</span> payload<span class="op">;</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a>    Node<span class="op">*</span>       next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section class="slide level2">
-
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">// This node only holds integers...</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>    Node<span class="op">(</span>PayloadType v<span class="op">);</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>    PayloadType get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>    <span class="er">`</span>Node<span class="er">`</span><span class="op">*</span>       get_next<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>    <span class="dt">void</span>        set_next<span class="op">(</span><span class="er">`</span>Node<span class="er">`</span><span class="op">*</span> n<span class="op">);</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>    Node<span class="op">(</span><span class="dt">int</span> v<span class="op">);</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>    <span class="dt">int</span>   get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>    Node<span class="op">*</span> get_next <span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>    <span class="dt">void</span>  set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
 <span id="cb12-8"><a href="#cb12-8"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a>    PayloadType payload<span class="op">;</span></span>
-<span id="cb12-10"><a href="#cb12-10"></a>    <span class="er">`</span>Node<span class="er">`</span><span class="op">*</span>       next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>    <span class="dt">int</span>   payload<span class="op">;</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>    Node<span class="op">*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
 <span id="cb12-11"><a href="#cb12-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">// This node only holds integers...</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>    Node<span class="op">(</span><span class="dt">int</span> v<span class="op">);</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>    <span class="dt">int</span>   get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>    Node<span class="op">*</span> get_next <span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="dt">void</span>  set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="dt">int</span>   payload<span class="op">;</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>    Node<span class="op">*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+</p>
+<p>We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload…</p>
+</section>
+<section class="slide level2">
+
+<p>We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload…</p>
+<p><br>
+</p>
+<div class="sourceCode" id="cb14" data-code-line-numbers="1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">class</span> Node<span class="op">{</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<p>Now, we <em>carefully</em> replace any reference to the <em>type</em> that was associated with the payload with the parameterized <code>PayloadType</code>. That means we will be replacing <code>int</code> with <code>PayloadType</code> whenever the <code>int</code> referred to the type of the payload (beware of loop counters, etc.).</p>
+<p><br>
+</p>
+<div class="sourceCode" id="cb15" data-code-line-numbers="4,5,9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>    Node<span class="op">(</span><span class="dt">int</span> v<span class="op">);</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>    <span class="dt">int</span>   get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>    Node<span class="op">*</span> get_next <span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>    <span class="dt">void</span>  set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>    <span class="dt">int</span>   payload<span class="op">;</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a>    Node<span class="op">*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<p>Now, we <em>carefully</em> replace any reference to the <em>type</em> that was associated with the payload with the parameterized <code>PayloadType</code>. That means we will be replacing <code>int</code> with <code>PayloadType</code> whenever the <code>int</code> referred to the type of the payload (beware of loop counters, etc.).</p>
+<p><br>
+</p>
+<div class="sourceCode" id="cb16" data-code-line-numbers="4,5,9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>    Node<span class="op">(</span>PayloadType v<span class="op">);</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>    PayloadType get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>    Node<span class="op">*</span>       get_next<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>    <span class="dt">void</span>        set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>    PayloadType payload<span class="op">;</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a>    Node<span class="op">*</span>       next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<div class="sourceCode" id="cb17" data-code-line-numbers="6,10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>    Node<span class="op">(</span>PayloadType v<span class="op">);</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>    PayloadType get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>    Node<span class="op">*</span>       get_next<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>    <span class="dt">void</span>        set_next<span class="op">(</span>Node<span class="op">*</span> n<span class="op">);</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>    PayloadType payload<span class="op">;</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>    Node<span class="op">*</span>       next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>Next, we replace any instance of the class name <code>Node</code> that is being used as a typename, so that we add the template parameterization list to it…</p>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>    Node<span class="op">(</span>PayloadType v<span class="op">);</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>    PayloadType        get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a>    <span class="er">`</span>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;</span><span class="er">`</span><span class="op">*</span> get_next<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>    <span class="dt">void</span>               set_next<span class="op">(</span><span class="er">`</span>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;</span><span class="er">`</span><span class="op">*</span> n<span class="op">);</span></span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb13-9"><a href="#cb13-9"></a>    PayloadType        payload<span class="op">;</span></span>
-<span id="cb13-10"><a href="#cb13-10"></a>    <span class="er">`</span>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;</span><span class="er">`</span><span class="op">*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
-<span id="cb13-11"><a href="#cb13-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18" data-code-line-numbers="6,10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>    Node<span class="op">(</span>PayloadType v<span class="op">);</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>    PayloadType        get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>    Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> get_next<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>    <span class="dt">void</span>               set_next<span class="op">(</span>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> n<span class="op">);</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a>    PayloadType        payload<span class="op">;</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>    Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>Now, we have a fully templated class definition.</p>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>    Node<span class="op">(</span>PayloadType v<span class="op">);</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>    PayloadType        get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>    Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> get_next<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>    <span class="dt">void</span>               set_next<span class="op">(</span>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> n<span class="op">);</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a>    PayloadType        payload<span class="op">;</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a>    Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
-<span id="cb14-11"><a href="#cb14-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="kw">class</span> Node<span class="op">{</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>    Node<span class="op">(</span>PayloadType v<span class="op">);</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>    PayloadType        get_value<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>    Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> get_next<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>    <span class="dt">void</span>               set_next<span class="op">(</span>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> n<span class="op">);</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>    PayloadType        payload<span class="op">;</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a>    Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> next <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span>
+<span id="cb19-11"><a href="#cb19-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>Here are two example method implementations:</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;::</span>get_next<span class="op">()</span> <span class="at">const</span><span class="op">{</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>    <span class="cf">return</span> next<span class="op">;</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="op">}</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a></span>
-<span id="cb15-6"><a href="#cb15-6"></a>\</span>
-<span id="cb15-7"><a href="#cb15-7"></a></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="dt">void</span> Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;::</span>set_next<span class="op">(</span>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> n<span class="op">){</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>    next <span class="op">=</span> n<span class="op">;</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;::</span>get_next<span class="op">()</span> <span class="at">const</span><span class="op">{</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>    <span class="cf">return</span> next<span class="op">;</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="op">}</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="dt">void</span> Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;::</span>set_next<span class="op">(</span>Node<span class="op">&lt;</span>PayloadType<span class="op">&gt;*</span> n<span class="op">){</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>    next <span class="op">=</span> n<span class="op">;</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">

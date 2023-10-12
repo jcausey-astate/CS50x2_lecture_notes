@@ -5,7 +5,7 @@ textbook: "Gaddis (Ch. 16, 19)"
 # draft: true
 ---
 
-## Function Templates
+## Function Templates {.tight}
 
 Function templates provide a pattern for a function that can work with many types of data.
 
@@ -25,6 +25,11 @@ Numeric times10(Numeric num){
 `Numeric` is the _type parameter_ (it can be any valid identifier, but is usually capitalized (`UpperCamelCase` or sometimes `ALL_CAPS`) by convention.
 :::
 
+```cpp
+// Using the function:
+std:: cout << times10(3.14) << '\n';
+```
+
 ---
 
 ```cpp
@@ -41,6 +46,25 @@ Numeric times10(Numeric num){
 ::: {.callout-tip appearance="simple"}
 ### Tip
 Write the function for a normal data type first, then convert to a function template!</i>
+:::
+
+::: {.columns}
+:::: {.column width=50% .highlight-green}
+```cpp
+
+double times10(double num){
+     return 10 * num;
+}
+```
+::::
+:::: {.column width=50% .highlight-green}
+```cpp
+template<typename Numeric>
+Numeric times10(Numeric num){
+     return 10 * num;
+}
+```
+::::
 :::
 
 ---
@@ -73,6 +97,11 @@ void print_pair(const Type1& v1, const Type2& v2){
 All type parameters specified in template prefix must be used in the definition.
 :::
 
+```cpp
+// Using the function:
+print_pair("Naomi", 27);
+```
+
 ---
 
 **Function templates can be overloaded (as long as each overload has a unique signature).**
@@ -98,6 +127,28 @@ void add(ValueType v1, ValueType v2, ValueType v3);
     - If the function is expecting a number, your object must be able to _behave_ like a number.
     - You can determine the requirements by examining _operators_ and _operations_ performed on the parameters.
     - Be sure to document these requirements in your function documentation!
+
+---
+
+### Documentation Example
+
+Template parameters can be specified by using the `@tparam` Doxygen tag.
+
+\
+
+```.cpp {code-line-numbers="1-7"}
+/**
+    Multiplies the given `num` by 10.
+    @param  num      The value to multiply by 10.
+    @tparam Numeric  Represents the type of the `num` parameter. Must
+        be copyable, and must support multiplication as the right-hand
+        operand with an `int` (e.g. `10 * num`).
+*/
+template<typename Numeric>
+Numeric times10(Numeric num){
+     return 10 * num;
+}
+```
 
 ---
 
@@ -215,8 +266,8 @@ We can take this implementation and make it generic by introducing a template pa
 
 \
 
-```cpp
-*template <typename PayloadType>
+```cpp {code-line-numbers="1"}
+template <typename PayloadType>
 class Node{
 ```
 
@@ -226,16 +277,16 @@ Now, we _carefully_ replace any reference to the _type_ that was associated with
 
 \
 
-```cpp
+```cpp {code-line-numbers="4,5,9"}
 template <typename PayloadType>
 class Node{
 public:
-    Node(`int` v);
-    `int`   get_value() const;
+    Node(int v);
+    int   get_value() const;
     Node* get_next () const;
     void  set_next(Node* n);
 private:
-    `int`   payload;
+    int   payload;
     Node* next = nullptr;
 };
 ```
@@ -246,33 +297,33 @@ Now, we _carefully_ replace any reference to the _type_ that was associated with
 
 \
 
-```cpp
+```cpp {code-line-numbers="4,5,9"}
 template <typename PayloadType>
 class Node{
 public:
-    Node(`PayloadType` v);
-    `PayloadType` get_value() const;
+    Node(PayloadType v);
+    PayloadType get_value() const;
     Node*       get_next()  const;
     void        set_next(Node* n);
 private:
-    `PayloadType` payload;
+    PayloadType payload;
     Node*       next = nullptr;
 };
 ```
 
 ---
 
-```cpp
+```cpp {code-line-numbers="6,10"}
 template <typename PayloadType>
 class Node{
 public:
     Node(PayloadType v);
     PayloadType get_value() const;
-    `Node`*       get_next()  const;
-    void        set_next(`Node`* n);
+    Node*       get_next()  const;
+    void        set_next(Node* n);
 private:
     PayloadType payload;
-    `Node`*       next = nullptr;
+    Node*       next = nullptr;
 };
 ```
 
@@ -282,17 +333,17 @@ Next, we replace any instance of the class name `Node` that is being used as a t
 
 ---
 
-```cpp
+```cpp {code-line-numbers="6,10"}
 template <typename PayloadType>
 class Node{
 public:
     Node(PayloadType v);
     PayloadType        get_value() const;
-    `Node<PayloadType>`* get_next()  const;
-    void               set_next(`Node<PayloadType>`* n);
+    Node<PayloadType>* get_next()  const;
+    void               set_next(Node<PayloadType>* n);
 private:
     PayloadType        payload;
-    `Node<PayloadType>`* next = nullptr;
+    Node<PayloadType>* next = nullptr;
 };
 ```
 
@@ -327,8 +378,6 @@ template <typename PayloadType>
 Node<PayloadType>* Node<PayloadType>::get_next() const{
     return next;
 }
-
-\
 
 template <typename PayloadType>
 void Node<PayloadType>::set_next(Node<PayloadType>* n){

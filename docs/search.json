@@ -718,7 +718,7 @@
     "href": "content/25_Class_Template.html#function-templates",
     "title": "Templates and Generic Programming",
     "section": "Function Templates",
-    "text": "Function Templates\nFunction templates provide a pattern for a function that can work with many types of data.\n\nWhen written, the data type specifiers are replaced with type parameters.\nWhen called, the compiler generates a function with actual data types that match those provided in the call.\n\nExample\ntemplate&lt;typename Numeric&gt;\nNumeric times10(Numeric num){\n     return 10 * num;\n}\n\n\n\nNumeric is the type parameter (it can be any valid identifier, but is usually capitalized (UpperCamelCase or sometimes ALL_CAPS) by convention."
+    "text": "Function Templates\nFunction templates provide a pattern for a function that can work with many types of data.\n\nWhen written, the data type specifiers are replaced with type parameters.\nWhen called, the compiler generates a function with actual data types that match those provided in the call.\n\nExample\ntemplate&lt;typename Numeric&gt;\nNumeric times10(Numeric num){\n     return 10 * num;\n}\n\n\n\nNumeric is the type parameter (it can be any valid identifier, but is usually capitalized (UpperCamelCase or sometimes ALL_CAPS) by convention.\n\n\n\n// Using the function:\nstd:: cout &lt;&lt; times10(3.14) &lt;&lt; '\\n';"
   },
   {
     "objectID": "content/25_Class_Template.html#function-template-notes",
