@@ -113,7 +113,7 @@ You may also inherit with a selected maximum level of access:
 * Derived class may pass arguments to base class constructor:
 
 ```cpp
-    Square::Square(int s) : `Rectangle{s, s}` { }
+    Square::Square(int s) : Rectangle{s, s} { }
 ```
 
 You _must_ use the constructor's _member initialization list_ for this.
@@ -245,13 +245,13 @@ public:
 
 \
 
-```cpp
+```cpp {code-line-numbers="5-6"}
 Square s1{3}; // 3x3 square
 s1.print();   // "w=3, h=3"
 s1.set_side_length(4)
 s1.print();   // "w=4, h=4" Better...
-*s1.set_width(5);
-*s1.print();   // "w=5, h=4" ERROR STILL!
+s1.set_width(5);
+s1.print();   // "w=5, h=4" ERROR STILL!
 ```
 
 \
@@ -274,13 +274,13 @@ public:
 
 \
 
-```cpp
+```cpp {code-line-numbers="5-6"}
 Square s1{3}; // 3x3 square
 s1.print();   // "w=3, h=3"
 s1.set_side_length(4)
 s1.print();   // "w=4, h=4" Better...
-*s1.set_width(5);
-*s1.print();   // "w=5, h=5" FIXED!
+s1.set_width(5);
+s1.print();   // "w=5, h=5" FIXED!
 ```
 
 \

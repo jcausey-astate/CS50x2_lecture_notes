@@ -2601,7 +2601,7 @@
     "href": "content/26_Inheritance.html#building-and-tearing-down",
     "title": "Inheritance",
     "section": "Building and Tearing-Down",
-    "text": "Building and Tearing-Down\n\nBase class must be constructed before derived class.\nDerived class must be destructed before the base class.\nDerived class may pass arguments to base class constructor:\n\n    Square::Square(int s) : `Rectangle{s, s}` { }\nYou must use the constructor’s member initialization list for this."
+    "text": "Building and Tearing-Down\n\nBase class must be constructed before derived class.\nDerived class must be destructed before the base class.\nDerived class may pass arguments to base class constructor:\n\n    Square::Square(int s) : Rectangle{s, s} { }\nYou must use the constructor’s member initialization list for this."
   },
   {
     "objectID": "content/28_Sparse_Tables.html#possible-solution-using-linked-lists.",
