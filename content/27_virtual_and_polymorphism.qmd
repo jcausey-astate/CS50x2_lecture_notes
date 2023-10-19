@@ -496,5 +496,5 @@ int main() {
 
 **With `virtual` Inheritance**
 
-![Diamond Problem in a Physical Object](images/virtual_Polymorphism/ga_example_physical_object_virtual_inheritance.svg){height=7em}
+![Solved Diamond Problem in a Physical Object](images/virtual_Polymorphism/ga_example_physical_object_virtual_inheritance.svg){height=7em}
 
