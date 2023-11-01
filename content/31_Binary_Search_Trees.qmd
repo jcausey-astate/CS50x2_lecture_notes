@@ -114,17 +114,17 @@ Binary search trees are shaped by the order in which values are added to the con
 ### Search for items
 
 ::: {.algorithm .small-95}
-    algorithm binary search tree search (item, root):
+    algorithm binary search tree search (target, root):
         let current := root
         let answer  := not_found_indicator
-        if item == value at current:
+        if target == value at current:
             let answer := current
-        otherwise, if item < value at current:
+        otherwise, if target < value at current:
             if current has a left child:
-                let answer := tree search for item at current's left child.
+                let answer := tree search for target at current's left child.
         otherwise:
             if current has a right child:
-                let answer := tree search for item at current's right child.
+                let answer := tree search for target at current's right child.
         return answer.
 :::
 
@@ -212,13 +212,48 @@ We will take a look at the simple cases, and then the more complicated ones.
 
 ![Delete a node with a single subtree.](images/Trees/tree_delete_node-with-one-child_fig_6.27.png)
 
+
+:::{.footnotes}
+Figures: Drozdek, Figure 6.26 (top), Figure 6.27 (bottom).
+:::
+
 ---
 
-#### Tree deletion - delete by merge (refer to Drozdek Ch. 6.6 for algorithms)
+#### Tree deletion - **_delete by merge_** (refer to Drozdek Ch. 6.6 for algorithms)
 
 ![Delete by merging.](images/Trees/tree_delete_by-merge_fig_6.28.png)
 
 ![Delete by merging.](images/Trees/tree_delete_by-merge-steps_fig_6.30.png)
+
+:::{.footnotes}
+Figures: Drozdek, Figure 6.28 (top), Figure 6.30 (bottom)
+:::
+
+---
+
+When _delete by merge_ is used, the height of the tree may change rather dramatically, either increasing or decreasing:
+
+![The height of a tree can be (a) increased or (b) reduced after deleting by merging.](images/Trees/tree_delete_height-change-after-merge.png)
+
+:::{.footnotes}
+Figure: Drozdek, Figure 6.31
+:::
+
+---
+
+#### Tree deletion - **_delete by copy_**
+
+If the value in a node is mutable, you can perform a _delete by copy_.
+
+Delete by copy first locates the smallest value in the left subtree OR the largest value in the right subtree (just like _delete by merge_)--let's call that value `tmp`.  Then it simply copies the value from `tmp` into the target, then deletes node `tmp`.
+
+![](images/Trees/tree_delete_by_copy_fig_6.33.png)
+
+When _delete by copy_ is used, the height of the tree will always either remain the same, or be reduced.
+
+:::{.footnotes}
+Figure: Drozdek, Figure 6.33
+:::
 
 ---
 

@@ -1064,6 +1064,9 @@ Pay attention to the <em>type argument</em> <strong><code>&lt;double[]&gt;</code
           if (!isInternal(link.href)) {
               // target, if specified
               link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
           }
         }
     });

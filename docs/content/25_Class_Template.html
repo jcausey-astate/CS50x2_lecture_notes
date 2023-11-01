@@ -655,7 +655,7 @@
 <p>We can take this implementation and make it generic by introducing a template parameter to represent the type of the payload…</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb14" data-code-line-numbers="1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> PayloadType<span class="op">&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="kw">class</span> Node<span class="op">{</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
@@ -1149,6 +1149,9 @@
           if (!isInternal(link.href)) {
               // target, if specified
               link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
           }
         }
     });

@@ -1188,6 +1188,9 @@ But… there is another way to do it: <strong><em>Constructor initialization lis
           if (!isInternal(link.href)) {
               // target, if specified
               link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
           }
         }
     });

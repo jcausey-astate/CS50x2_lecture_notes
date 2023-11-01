@@ -1096,6 +1096,9 @@ Exceptions require some new documentation… Here’s an example:</p>
           if (!isInternal(link.href)) {
               // target, if specified
               link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
           }
         }
     });

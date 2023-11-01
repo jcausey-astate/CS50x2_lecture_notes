@@ -1192,6 +1192,9 @@ h(K), h(K) + h_p(K),\dots,h(K)+ i\cdot h_p(K),\dots
           if (!isInternal(link.href)) {
               // target, if specified
               link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
           }
         }
     });

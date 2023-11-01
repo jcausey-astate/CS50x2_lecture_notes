@@ -507,7 +507,7 @@
 <section class="slide level2">
 
 <h3 id="example-non-fruitful">Example (non-fruitful)</h3>
-<div class="sourceCode" id="cb1" data-code-line-numbers="1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">void</span> greeting<span class="op">(</span> <span class="bu">std::</span>string name <span class="op">){</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">void</span> greeting<span class="op">(</span> <span class="bu">std::</span>string name <span class="op">){</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Hello, "</span> <span class="op">&lt;&lt;</span> name <span class="op">&lt;&lt;</span> <span class="st">"!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <em>function header</em> is the first line of the function definition.<br>
@@ -524,7 +524,7 @@ It defines the function’s</p>
 <section class="slide level2">
 
 <h3 id="example-fruitful">Example (fruitful)</h3>
-<div class="sourceCode" id="cb2" data-code-line-numbers="1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">int</span> read_age<span class="op">(){</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">int</span> read_age<span class="op">(){</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="dt">int</span> age<span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your age: "</span><span class="op">;</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> age<span class="op">;</span></span>
@@ -1247,6 +1247,9 @@ More complex functions can use the <code>@brief</code> and <code>@detailed</code
           if (!isInternal(link.href)) {
               // target, if specified
               link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
           }
         }
     });

@@ -1071,6 +1071,9 @@ If you specify initializers, you will not be able to use <em>uniform initializer
           if (!isInternal(link.href)) {
               // target, if specified
               link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
           }
         }
     });

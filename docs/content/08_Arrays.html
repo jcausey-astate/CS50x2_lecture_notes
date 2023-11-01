@@ -651,7 +651,7 @@
 </p>
 <p>Arrays are passed by reference—always.<br>
 </p>
-<div class="sourceCode" id="cb14" data-code-line-numbers="1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="dt">void</span> print_tests<span class="op">(</span><span class="at">const</span> <span class="dt">int</span> tests<span class="op">[],</span> <span class="dt">int</span> size<span class="op">){</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="dt">void</span> print_tests<span class="op">(</span><span class="at">const</span> <span class="dt">int</span> tests<span class="op">[],</span> <span class="dt">int</span> size<span class="op">){</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> size<span class="op">;</span> i<span class="op">++){</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> tests<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a>    <span class="op">}</span></span>
@@ -1073,6 +1073,9 @@
           if (!isInternal(link.href)) {
               // target, if specified
               link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
           }
         }
     });
