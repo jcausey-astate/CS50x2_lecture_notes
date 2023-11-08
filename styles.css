@@ -1,6 +1,6 @@
 /* index page css styles */
 
-.navbar-dark {
+.navbar-dark .navbar{
     background-image: url(images/astAte.png);
     background-repeat: no-repeat;
     background-position: left;
@@ -8,6 +8,10 @@
     background-color: #b7151d;
     background-origin: content-box;
     min-height: 60px;
+}
+
+.navbar {
+    background-color: #b7151d;
 }
 
 .navbar-container {
