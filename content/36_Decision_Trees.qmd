@@ -147,13 +147,13 @@ Given that, what is the _optimal_ height of the tree (which corresponds to the o
 
 \
 
-We know that a complete binary tree with $k$ leaves contains $k-1$ interior nodes for a total of $2k-1$ nodes, and the height of a complete binary tree is $\lceil \lg(N)\rceil$.  We can express that in terms of the leaves alone by saying a complete tree's height is $lg(k) + 1$, or in general (for non-complete but balanced trees) $\lceil lg(k) + 1\rceil$.
+We know that a complete binary tree with $k$ leaves contains $k-1$ interior nodes for a total of $2k-1$ nodes, and the height of a complete binary tree is $\lceil \lg(N)\rceil$.  We can express that in terms of the leaves alone by saying a complete tree's height is $\lg(k) + 1$, or in general (for non-complete but balanced trees) $\lceil \lg(k) + 1\rceil$.
 
 ---
 
-We know that a complete binary tree with $k$ leaves contains $k-1$ interior nodes for a total of $2k-1$ nodes, and the height of a complete binary tree is $\lceil \lg(N)\rceil$.  We can express that in terms of the leaves alone by saying a complete tree's height is $lg(k) + 1$, or in general (for non-complete but balanced trees) $\lceil lg(k) + 1\rceil$.
+We know that a complete binary tree with $k$ leaves contains $k-1$ interior nodes for a total of $2k-1$ nodes, and the height of a complete binary tree is $\lceil \lg(N)\rceil$.  We can express that in terms of the leaves alone by saying a complete tree's height is $\lg(k) + 1$, or in general (for non-complete but balanced trees) $\lceil \lg(k) + 1\rceil$.
 
-So what is the height of an decision tree representing an optimal search?  There are $k = n!$ leaves (at least), so it will be at least $lg(n!)$ ... But what is the log of $n!$?
+So what is the height of an decision tree representing an optimal search?  There are $k = n!$ leaves (at least), so it will be at least $\lg(n!)$ ... But what is the log of $n!$?
 
 \
 
