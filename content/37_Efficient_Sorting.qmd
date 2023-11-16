@@ -313,7 +313,7 @@ Although in practice we often aren't merging the _whole array_ - we are merging 
 
 \
 
-::: {.algorithm}
+::: {.algorithm .small-75}
     merge_sort(A[]):
       if `A[]` contains at least two elements:
         merge_sort(_left half of `A[]`_);
