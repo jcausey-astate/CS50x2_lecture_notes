@@ -1,0 +1,727 @@
+/*-- scss:defaults --*/
+
+$presentation-font-size-root: 23pt;
+$presentation-font-smaller: 0.80;
+$presentation-block-margin: 6pt;
+$scarlet: #cc092f;
+$text-muted: #5a5a5a;
+$grey: #777;
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: $text-muted;
+}
+
+/* Put top and bottom borders on the slides */
+body {
+  border-top: 1.75em solid $scarlet;
+}
+
+.reveal-header .header-logo img {
+  height: auto;
+  max-width: 1.28em !important;
+  padding-top: 0 !important;
+  margin-top: -0.1em !important;
+}
+
+.reveal-header .title-text {
+  min-width: 20em;
+}
+
+.reveal-header * {
+  max-height: 1.7em;
+  color: white !important;
+  font-size: .75em !important;
+}
+
+// .reveal-header p {
+//   color: white !important;
+// }
+
+.slide-number {
+  font-size: 0.9em !important;
+  padding-top: 0 !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+a {
+  color: darkblue;
+}
+
+pre code:not(.sourceCode) {
+  font-size: 1.45em;
+  line-height: normal;
+  white-space: pre;
+  border: 1px solid var(--quarto-border-color);
+  border-radius: 0.2em;
+  font-family: var(--r-code-font);
+}
+div.noborder *{
+  border: none !important;
+}
+div.clean > pre code:not(.sourceCode), div.noborder > pre code {
+  border: none;
+  line-height: 1.33em;
+}
+
+div.sourceCode {
+  max-height: 66vh !important;
+}
+div.sourceCode pre.sourceCode, div.sourceCode pre.sourceCode code {
+  max-height: fit-content !important;
+  overflow-y: auto;
+  overflow-x: visible;
+}
+
+div.algorithm > pre code:not(.sourceCode) {
+  border: none;
+  max-height: fit-content;
+}
+
+div.noscroll > pre code:not(.sourceCode) {
+  overflow-y: visible;
+}
+
+div.sourceCode {
+  background-color: white;
+}
+
+.reveal .footer {
+  position: fixed;
+  top: calc(100vh - 20px);
+  /* negative value of footer height */
+  height: 30px;
+  clear: both;
+  background-color: rgb(95, 95, 95);
+}
+
+span.textbook-intro {
+  font-size: 0.70em;
+  vertical-align: middle;
+  padding-right: 0.2em;
+}
+
+.footer p {
+  padding-top: 0.4em;
+  font-size: 0.5em;
+  color: whitesmoke;
+}
+
+.reveal .slide-logo {
+  top: calc(100vh - 64px);
+  // z-index: 9999;
+}
+
+/* push top of text toward top of screen */
+.reveal .slide {
+  margin-top: -1em;
+}
+
+/* Get the hamburger button out of the way of the footer line */
+.reveal .slide-menu-button {
+  top: calc(100vh - 60px);
+}
+
+.reveal img:not(right) {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+}
+
+.reveal img.right {
+  display: block;
+  float: right !important;
+  padding-left: 0.1em;
+  margin-right: 0px;
+  padding-right: 0px;
+  width: 50%;
+  height: auto;
+}
+
+.reveal aside ol:not(.aside-footnotes) {
+  margin-top: 3px;
+  border-top: 1px solid $grey;
+  padding-top: .3em;
+  width: 100%;
+  font-size: 9pt;
+}
+
+.reveal aside ol.aside-footnotes {
+  margin-top: 3px;
+  border-top: 1px solid $grey;
+  padding-top: .3em;
+  width: 100%;
+  font-size: 9pt;
+}
+
+/* Make footnotes small */
+.reveal aside .aside-footnotes,
+.reveal div .aside-footnotes,
+.reveal span .aside-footnotes {
+  position: absolute;
+  bottom: 1em;
+  height: 1em;
+  line-height: 1em;
+  overflow: visible;
+  font-size: 9pt;
+  min-width: 1000px;
+  max-width: 1024px;
+}
+
+/* Support non-numbered footnotes. */
+.reveal div.footnotes,
+.reveal span.footnotes {
+  position: absolute;
+  display: block;
+  bottom: 1.8pt;
+  height: 1em;
+  line-height: 1em;
+  overflow: visible;
+  font-size: 9pt;
+  min-width: 1000px;
+  max-width: 1024px;
+  color: $text-muted;
+}
+
+ol.aside-footnotes li, ul.aside-footnotes li {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.reveal div.footnotes p {
+  font-size: 9pt !important;
+  height: 1em;
+  line-height: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+// fixme: this is hackish and doesn't work well - must find a better way to
+// lock footnotes in the right place on the title slide if necessary.
+#title-slide div.footnotes {
+  position: fixed;
+  bottom: 38vh;
+  left: -7em;
+  text-align: left;
+}
+
+.reveal .slide div.aside-small {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.575em;
+  color: $text-muted;
+}
+
+// .reveal div.callout-title {
+//   height: 1.2em;
+// }
+// .reveal .callout-icon::before {
+//   background-size: 1rem 1rem !important;
+//   top: -0.5rem !important;
+//   margin-bottom: 0.3rem !important;
+// }
+
+img.quarto-figure-center+p.caption, figcaption {
+  text-align: center;
+}
+
+p.caption {
+  color: $text-muted;
+}
+
+/* Key terms are bold, then italic ***term*** or ___term___ or **_term_** */
+/* Or, they have the class 'term' */
+b>i,
+strong>em,
+.term {
+  font-weight: bolder;
+  color: blue;
+}
+
+/* colors for highlighting text */
+.red {
+  color: $scarlet;
+}
+
+.blue {
+  color: blue;
+}
+
+.lightblue {
+  color: cornflowerblue;
+}
+
+.green {
+  color: darkgreen;
+}
+
+.orange {
+  color: orange;
+}
+
+.purple {
+  color: purple;
+}
+
+.grey {
+  color: $grey;
+}
+
+/* Highlight text that isn't part of a fragment (fragment highlight has another behavior in Reveal.js) */
+.highlight-red:not(.fragment),
+.bg-highlight-red {
+  background-color: rgba($scarlet, .1);
+}
+
+.highlight-green:not(.fragment),
+.bg-highlight-green {
+  background-color: rgba(green, .1);
+}
+
+.highlight-blue:not(.fragment),
+.bg-highlight-blue {
+  background-color: rgba(blue, .1);
+}
+
+.highlight-orange:not(.fragment),
+.bg-highlight-orange {
+  background-color: rgba(orange, .25);
+}
+
+.highlight-yellow:not(.fragment),
+.bg-highlight-yellow,
+.highlight {
+  background-color: rgba(yellow, .25);
+}
+
+.reveal .slide section .fragment.highlight-blue.visible {
+  color: blue;
+}
+
+.fragment.visible.current-fragment blockquote {
+  color: inherit;
+  border-color: inherit;
+}
+
+/* Other special treatments */
+.example-bad {
+  background-color: rgba(204, 9, 47, 0.15);
+}
+
+.example-good {
+  background-color: rgba(106, 221, 21, 0.30);
+}
+
+.example {
+  background-color: rgba(173, 216, 230, 0.30);
+}
+
+.brightquote {
+  background-color: rgba(255, 165, 0, 0.25);
+}
+
+.noscroll, .noscroll * {
+  overflow: visible !important;
+  min-height: 100% !important;
+}
+
+.tt {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+/* Code highlights */
+
+.reveal div.sourceCode pre code.has-line-highlights > span:not(.highlight-line){
+  opacity: 1.0 !important;
+}
+
+.reveal div.sourceCode pre code.has-line-highlights > span.highlight-line{
+  opacity: 1.0 !important;
+  font-weight: bolder;
+  background-color: rgba(dodgerblue, .1);
+  width: 104.5%;  // KLUDGE: want the highlight to match container box width.
+  overflow: hidden;
+}
+
+/* Special for syntax specification */
+div .syntax {
+  display: block;
+  white-space: pre;
+  font-style: italic;
+  color: var(--quarto-hl-fu-color);
+  font-size: var(--r-main-font-size);
+  font-family: var(--r-code-font);
+  line-height: .2em;
+}
+div .syntax p {
+  margin: 0 !important;
+  padding: 0;
+  line-height: .65em;
+}
+div.syntax .pseudo { // pseudocode inside a syntax definition
+  background-color: rgba(dodgerblue, .08);
+  border-radius: .25em;
+  font-style: italic;
+  color: var(--quarto-hl-fu-color);
+  opacity: 0.7;
+  font-size: calc(var(--r-main-font-size) * 0.9);
+  font-family: var(--r-code-font);
+}
+
+/* Size classes */
+
+.tiny {
+  font-size: 0.4em;
+}
+
+.footnotesize {
+  font-size: 0.55em;
+}
+
+.small {
+  font-size: 0.7em;
+}
+
+.small-40 {
+  font-size: 0.40em;
+}
+
+.small-45 {
+  font-size: 0.45em;
+}
+
+.small-50 {
+  font-size: 0.50em;
+}
+
+.small-55 {
+  font-size: 0.55em;
+}
+
+.small-60 {
+  font-size: 0.60em;
+}
+
+.small-65 {
+  font-size: 0.65em;
+}
+
+.small-70 {
+  font-size: 0.70em;
+}
+
+.small-75 {
+  font-size: 0.75em;
+}
+
+.small-80 {
+  font-size: 0.80em;
+}
+
+.small-85 {
+  font-size: 0.85em;
+}
+
+.small-90 {
+  font-size: 0.90em;
+}
+
+.small-95 {
+  font-size: 0.95em;
+}
+
+// ---------------------
+
+.large {
+  font-size: 1.33em;
+}
+
+.larger {
+  font-size: 1.50em;
+}
+
+.large-5 {
+  font-size: 1.05em;
+}
+
+.large-10 {
+  font-size: 1.05em;
+}
+
+.large-15 {
+  font-size: 1.05em;
+}
+
+.large-20 {
+  font-size: 1.05em;
+}
+
+.large-25 {
+  font-size: 1.05em;
+}
+
+.large-30 {
+  font-size: 1.05em;
+}
+
+.large-35 {
+  font-size: 1.05em;
+}
+
+.large-40 {
+  font-size: 1.05em;
+}
+
+.large-45 {
+  font-size: 1.05em;
+}
+
+.large-50 {
+  font-size: 1.05em;
+}
+
+.large-66 {
+  font-size: 1.66em;
+}
+
+.large-75 {
+  font-size: 1.75em;
+}
+
+.large-80 {
+  font-size: 1.8em;
+}
+
+.large-90 {
+  font-size: 1.9em;
+}
+
+.huge {
+  font-size: 2.0em;
+}
+
+.tight p {
+  font-size: 0.8em;
+}
+
+.tight>p {
+  font-size: 0.8em;
+  margin-top: .25em;
+  margin-bottom: .45em;
+  line-height: 1.1em;
+}
+
+.tight li {
+  margin-top: .15em;
+  margin-bottom: .25em;
+  line-height: .88em;
+}
+.morespace>ul{
+  margin-top: .6em;
+}
+.morespace ul > li {
+  padding-bottom: .6em;
+}
+
+/* 
+a blockquote inside an algorithm-class element is specialized to look
+"code like", while maintaining the ability to use italics, bold, etc. 
+*/
+.algorithm blockquote {
+  font-family: 'Yanone Kaffeesatz', 'Courier New', 'Ubuntu Mono', monospace;
+  border-left: none !important;
+  border-radius: 0.08em;  
+  margin: 0;
+  margin-top: 1em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  padding-left: 0.2em;
+  /* Make it behave like a `pre` element w.r.t. newlines */
+  white-space: pre;
+}
+
+.algorithm blockquote>p {
+  line-height: normal;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  padding-bottom: .10em;
+  padding-top: .10em;
+}
+
+.algorithm blockquote>p:first-child {
+  margin-top: -1em;
+}
+
+.algorithm blockquote>p:last-child {
+  margin-bottom: -1em;
+}
+
+div.algorithm {
+  border-left: 0.10em solid blue;
+  border-radius: 0.08em;
+  line-height: 1em;
+  margin: 0;
+  margin-top: 1em;
+  padding-top: 0em;
+  padding-bottom: 0em;
+  padding-left: 0.2em;
+}
+
+.mono {
+  font-family: 'Yanone Kaffeesatz', 'Courier New', 'Ubuntu Mono', monospace;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 48%;
+  -ms-transform: translateY(-52%);
+  transform: translateY(-52%);
+}
+
+.middle {
+  display: block;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 48%;
+  -ms-transform: translateY(-52%);
+  transform: translateY(-52%);
+}
+
+.pull-left {
+  float: left;
+  width: 47%;
+}
+
+.pull-right {
+  float: right;
+  width: 47%;
+}
+
+.pull-right~p {
+  clear: both;
+}
+
+.inverse {
+  background: #272822;
+  color: #777872;
+  text-shadow: 0 0 20px #333;
+}
+
+.inverse h1,
+.inverse h2 {
+  color: #f3f3f3;
+  line-height: 0.8em;
+}
+
+.left-column-grey {
+  color: $grey;
+  min-width: 20%;
+  max-width: 49%;
+  height: 92%;
+  float: left;
+  margin-bottom: -.75em;
+  margin-top: 0;
+}
+
+.left-column {
+  min-width: 20%;
+  max-width: 49%;
+  height: 92%;
+  float: left;
+  margin-bottom: -.75em;
+  margin-top: 0;
+}
+
+.left-column h2:last-of-type,
+.left-column h3:last-child {
+  color: #000;
+}
+
+.right-column {
+  min-width: 20%;
+  max-width: 49%;
+  height: 92%;
+  float: right;
+  padding-top: .2em;
+}
+
+// Math
+.reveal span.math {
+  margin-left: .1em;
+  margin-right: .1em;
+}
+.reveal div.MathJax_Display {
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+/************/
+/* Printing */
+/************/
+
+.printable * {
+  display: block;
+}
+
+.printable .slides {
+  margin-top: 0.25in;
+}
+
+@media print {
+  .reveal {
+    /* print filling whole paper
+      found at https://bl.ocks.org/bellbind/cbe25c08651ce56637dfb08346a8cfee
+    */
+    left: 5vw !important;
+    width: 90vw !important;
+    top: 5vh !important;
+    height: 90vh !important;
+    transform: scale(1) !important;
+    overflow: visible;
+    background-color: #fff;
+  }
+
+  .slides {
+    display: block;
+    position: relative;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -webkit-transform-origin: initial;
+    box-shadow: none;
+  }
+
+  #quarto-log-error-modal {
+    visibility: hidden;
+    display: none;
+  }
+
+  .deck-header {
+    visibility: hidden;
+    display: none;
+  }
+
+  .home-button {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+@page {
+  margin: 0;
+}
