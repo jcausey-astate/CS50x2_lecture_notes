@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Structures</title>
+  <title>CS 50x2 Slides – Structures</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0be79836d237d42b59157ec31cdbf0f9.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -438,11 +438,11 @@
 <li>Low-level, not very flexible.</li>
 <li>Example:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">enum</span> WorkDayAbr <span class="op">=</span> <span class="op">{</span>mon<span class="op">,</span> tue<span class="op">,</span> wed<span class="op">,</span> thr<span class="op">,</span> fri<span class="op">};</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">//... later in the program ...</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>WorkDayAbr today <span class="op">=</span> mon<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a></a><span class="kw">enum</span> WorkDayAbr <span class="op">=</span> <span class="op">{</span>mon<span class="op">,</span> tue<span class="op">,</span> wed<span class="op">,</span> thr<span class="op">,</span> fri<span class="op">};</span></span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a><span class="co">//... later in the program ...</span></span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a>WorkDayAbr today <span class="op">=</span> mon<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -452,30 +452,30 @@
 <li><code>enum</code> will implicitly cast to <code>int</code>, but not vice-versa.</li>
 <li>Limited to creation of custom literals (you cannot really create a complex data type using <code>enum</code>).</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">enum</span> WorkDayAbr<span class="op">{</span> mon<span class="op">,</span> tue<span class="op">,</span> wed<span class="op">,</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>                 thr<span class="op">,</span> fri <span class="op">};</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="op">-----------------------------------------</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="dt">int</span> rain<span class="op">[</span><span class="dv">5</span><span class="op">]</span>     <span class="op">{</span><span class="dv">5</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">35</span><span class="op">,</span> <span class="dv">95</span><span class="op">,</span> <span class="dv">10</span><span class="op">};</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>string names<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">{</span><span class="st">"Monday"</span><span class="op">,</span> <span class="st">"Tuesday"</span><span class="op">,</span> <span class="st">"Wednesday"</span><span class="op">,</span> </span>
-<span id="cb2-6"><a href="#cb2-6"></a>                 <span class="st">"Thursday"</span><span class="op">,</span><span class="st">"Friday"</span><span class="op">};</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> mon<span class="op">;</span> i <span class="op">&lt;=</span> fri<span class="op">;</span> <span class="op">++</span>i<span class="op">){</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Rain chance for "</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>         <span class="op">&lt;&lt;</span> names<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> rain<span class="op">[</span>i<span class="op">]</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>         <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a></a><span class="kw">enum</span> WorkDayAbr<span class="op">{</span> mon<span class="op">,</span> tue<span class="op">,</span> wed<span class="op">,</span></span>
+<span id="cb2-2"><a></a>                 thr<span class="op">,</span> fri <span class="op">};</span></span>
+<span id="cb2-3"><a></a><span class="op">-----------------------------------------</span></span>
+<span id="cb2-4"><a></a><span class="dt">int</span> rain<span class="op">[</span><span class="dv">5</span><span class="op">]</span>     <span class="op">{</span><span class="dv">5</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">35</span><span class="op">,</span> <span class="dv">95</span><span class="op">,</span> <span class="dv">10</span><span class="op">};</span></span>
+<span id="cb2-5"><a></a>string names<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">{</span><span class="st">"Monday"</span><span class="op">,</span> <span class="st">"Tuesday"</span><span class="op">,</span> <span class="st">"Wednesday"</span><span class="op">,</span> </span>
+<span id="cb2-6"><a></a>                 <span class="st">"Thursday"</span><span class="op">,</span><span class="st">"Friday"</span><span class="op">};</span></span>
+<span id="cb2-7"><a></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> mon<span class="op">;</span> i <span class="op">&lt;=</span> fri<span class="op">;</span> <span class="op">++</span>i<span class="op">){</span></span>
+<span id="cb2-8"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Rain chance for "</span></span>
+<span id="cb2-9"><a></a>         <span class="op">&lt;&lt;</span> names<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> rain<span class="op">[</span>i<span class="op">]</span></span>
+<span id="cb2-10"><a></a>         <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-11"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="modern-c-prefers-scoped-enum" class="slide level2">
 <h2>Modern C++ prefers “scoped <code>enum</code>”</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">enum</span> <span class="kw">class</span> WorkDayAbr<span class="op">{</span> mon<span class="op">,</span> tue<span class="op">,</span> wed<span class="op">,</span>   <span class="co">// struct or class</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>                       thr<span class="op">,</span> fri <span class="op">};</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="op">-----------------------------------------</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="dt">int</span> rain<span class="op">[</span><span class="dv">5</span><span class="op">]</span>     <span class="op">{</span><span class="dv">5</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">35</span><span class="op">,</span> <span class="dv">95</span><span class="op">,</span> <span class="dv">10</span><span class="op">};</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>string names<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">{</span><span class="st">"Monday"</span><span class="op">,</span> <span class="st">"Tuesday"</span><span class="op">,</span> <span class="st">"Wednesday"</span><span class="op">,</span> </span>
-<span id="cb3-6"><a href="#cb3-6"></a>                 <span class="st">"Thursday"</span><span class="op">,</span><span class="st">"Friday"</span><span class="op">};</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>WorkDayAbr<span class="op">::</span>mon<span class="op">);</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>     i <span class="op">&lt;=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>WorkDayAbr<span class="op">::</span>fri<span class="op">);</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Rain chance for "</span> <span class="op">&lt;&lt;</span> names<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> rain<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a><span class="kw">enum</span> <span class="kw">class</span> WorkDayAbr<span class="op">{</span> mon<span class="op">,</span> tue<span class="op">,</span> wed<span class="op">,</span>   <span class="co">// struct or class</span></span>
+<span id="cb3-2"><a></a>                       thr<span class="op">,</span> fri <span class="op">};</span></span>
+<span id="cb3-3"><a></a><span class="op">-----------------------------------------</span></span>
+<span id="cb3-4"><a></a><span class="dt">int</span> rain<span class="op">[</span><span class="dv">5</span><span class="op">]</span>     <span class="op">{</span><span class="dv">5</span><span class="op">,</span> <span class="dv">15</span><span class="op">,</span> <span class="dv">35</span><span class="op">,</span> <span class="dv">95</span><span class="op">,</span> <span class="dv">10</span><span class="op">};</span></span>
+<span id="cb3-5"><a></a>string names<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">{</span><span class="st">"Monday"</span><span class="op">,</span> <span class="st">"Tuesday"</span><span class="op">,</span> <span class="st">"Wednesday"</span><span class="op">,</span> </span>
+<span id="cb3-6"><a></a>                 <span class="st">"Thursday"</span><span class="op">,</span><span class="st">"Friday"</span><span class="op">};</span></span>
+<span id="cb3-7"><a></a><span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>WorkDayAbr<span class="op">::</span>mon<span class="op">);</span></span>
+<span id="cb3-8"><a></a>     i <span class="op">&lt;=</span> <span class="kw">static_cast</span><span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>WorkDayAbr<span class="op">::</span>fri<span class="op">);</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-9"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Rain chance for "</span> <span class="op">&lt;&lt;</span> names<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span> <span class="op">&lt;&lt;</span> rain<span class="op">[</span>i<span class="op">]</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb3-10"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>enum</code> values do not implicitly cast to <code>int</code> - you have to <code>static_cast</code>.</li>
 <li>You can define your own operators (like <code>++</code>) to make it easier to work with these…</li>
@@ -490,11 +490,11 @@
 <li>Structures specify attributes, and potentially also behaviors.</li>
 <li>The keyword <code>struct</code> is used to define a structure:</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">struct</span> Circle <span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>   <span class="dt">int</span> x<span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>   <span class="dt">int</span> y<span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>   <span class="dt">double</span> radius<span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="op">};</span>  <span class="co">// Notice the semicolon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a></a><span class="kw">struct</span> Circle <span class="op">{</span></span>
+<span id="cb4-2"><a></a>   <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb4-3"><a></a>   <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb4-4"><a></a>   <span class="dt">double</span> radius<span class="op">;</span></span>
+<span id="cb4-5"><a></a><span class="op">};</span>  <span class="co">// Notice the semicolon!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -503,13 +503,13 @@
 <li>The variables declared in a structure definition are called <em>attributes</em> (or sometimes “members”).</li>
 <li>You can create a variable (or <em>instance</em>) of the new type:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a>Circle unitCircle<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a>Circle unitCircle<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Then you can access its attributes using “<em>dot notation</em>”:</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a>unitCircle<span class="op">.</span>x      <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>unitCircle<span class="op">.</span>y      <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>unitCircle<span class="op">.</span>radius <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a>unitCircle<span class="op">.</span>x      <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-2"><a></a>unitCircle<span class="op">.</span>y      <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb6-3"><a></a>unitCircle<span class="op">.</span>radius <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -518,34 +518,34 @@
 <li><p>The <em>member access operator</em> (AKA the “dot operator”): &nbsp;&nbsp;&nbsp; <strong><code>.</code></strong></p></li>
 <li><p>Initialize with C++11’s <strong><em>uniform intializer syntax</em></strong>:</p></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a>Circle anotherCircle<span class="op">{</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="fl">3.8</span><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a>Circle anotherCircle<span class="op">{</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="fl">3.8</span><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Notice that the order of items in the list matters!</li>
 <li>You can find out the size of a structure using <code>sizeof()</code>:</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a>cout <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span>anotherCircle<span class="op">);</span>  <span class="co">// using an instance</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="co">// ... or ...</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>cout <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span>Circle<span class="op">);</span>         <span class="co">// using the type</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a>cout <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span>anotherCircle<span class="op">);</span>  <span class="co">// using an instance</span></span>
+<span id="cb8-2"><a></a><span class="co">// ... or ...</span></span>
+<span id="cb8-3"><a></a>cout <span class="op">&lt;&lt;</span> <span class="kw">sizeof</span><span class="op">(</span>Circle<span class="op">);</span>         <span class="co">// using the type</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <aside><div>
 <p>Legacy C++ code may use the following syntax to initialize a structure:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a>Circle yetAnotherCircle <span class="op">=</span> <span class="op">{</span><span class="dv">3</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">2.4</span><span class="op">};</span> <span class="co">// old style, deprecated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a></a>Circle yetAnotherCircle <span class="op">=</span> <span class="op">{</span><span class="dv">3</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">2.4</span><span class="op">};</span> <span class="co">// old style, deprecated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></aside></section>
 <section class="slide level2">
 
 <h3 id="structures-continued-2">Structures (continued)</h3>
 <p><em><strong>Structures create a new type!</strong></em></p>
 <p>Do not expect built-in functions or operators to work with the new type by default:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a>Circle myCircle<span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">3.1</span><span class="op">};</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>cout <span class="op">&lt;&lt;</span> myCircle <span class="op">&lt;&lt;</span> endl<span class="op">;</span>   <span class="co">// Will NOT work!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a></a>Circle myCircle<span class="op">{</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">3.1</span><span class="op">};</span></span>
+<span id="cb10-2"><a></a>cout <span class="op">&lt;&lt;</span> myCircle <span class="op">&lt;&lt;</span> endl<span class="op">;</span>   <span class="co">// Will NOT work!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>You can define your own functions:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="dt">void</span> printCircle<span class="op">(</span>Circle c<span class="op">){</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"("</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>x</span>
-<span id="cb11-3"><a href="#cb11-3"></a>         <span class="op">&lt;&lt;</span> <span class="st">","</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>y</span>
-<span id="cb11-4"><a href="#cb11-4"></a>         <span class="op">&lt;&lt;</span> <span class="st">") r = "</span> <span class="op">&lt;&lt;</span> c<span class="op">.</span>radius<span class="op">;</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a></a><span class="dt">void</span> printCircle<span class="op">(</span>Circle c<span class="op">){</span></span>
+<span id="cb11-2"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"("</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>x</span>
+<span id="cb11-3"><a></a>         <span class="op">&lt;&lt;</span> <span class="st">","</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>y</span>
+<span id="cb11-4"><a></a>         <span class="op">&lt;&lt;</span> <span class="st">") r = "</span> <span class="op">&lt;&lt;</span> c<span class="op">.</span>radius<span class="op">;</span></span>
+<span id="cb11-5"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="structures-and-functions" class="slide level2">
 <h2>Structures and Functions</h2>
@@ -554,18 +554,18 @@
 <li><em>Is this a good idea?</em></li>
 <li>Consider passing by (<code>const</code>) reference instead:</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="dt">void</span> printCircle<span class="op">(</span><span class="at">const</span> Circle<span class="op">&amp;</span> c<span class="op">){</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"("</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>x</span>
-<span id="cb12-3"><a href="#cb12-3"></a>         <span class="op">&lt;&lt;</span> <span class="st">","</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>y</span>
-<span id="cb12-4"><a href="#cb12-4"></a>         <span class="op">&lt;&lt;</span> <span class="st">") r = "</span> <span class="op">&lt;&lt;</span> c<span class="op">.</span>radius<span class="op">;</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a></a><span class="dt">void</span> printCircle<span class="op">(</span><span class="at">const</span> Circle<span class="op">&amp;</span> c<span class="op">){</span></span>
+<span id="cb12-2"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"("</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>x</span>
+<span id="cb12-3"><a></a>         <span class="op">&lt;&lt;</span> <span class="st">","</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>y</span>
+<span id="cb12-4"><a></a>         <span class="op">&lt;&lt;</span> <span class="st">") r = "</span> <span class="op">&lt;&lt;</span> c<span class="op">.</span>radius<span class="op">;</span></span>
+<span id="cb12-5"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And if you need the parameter to be changed by the function, use non-<code>const</code> reference:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="dt">void</span> readCircle<span class="op">(</span>Circle<span class="op">&amp;</span> c<span class="op">){</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter x and y: "</span><span class="op">;</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>    cin  <span class="op">&gt;&gt;</span> c<span class="op">.</span>x <span class="op">&gt;&gt;</span> c<span class="op">.</span>y<span class="op">;</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter radius:  "</span><span class="op">;</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>    cin  <span class="op">&gt;&gt;</span> c<span class="op">.</span>radius<span class="op">;</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a></a><span class="dt">void</span> readCircle<span class="op">(</span>Circle<span class="op">&amp;</span> c<span class="op">){</span></span>
+<span id="cb13-2"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter x and y: "</span><span class="op">;</span></span>
+<span id="cb13-3"><a></a>    cin  <span class="op">&gt;&gt;</span> c<span class="op">.</span>x <span class="op">&gt;&gt;</span> c<span class="op">.</span>y<span class="op">;</span></span>
+<span id="cb13-4"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter radius:  "</span><span class="op">;</span></span>
+<span id="cb13-5"><a></a>    cin  <span class="op">&gt;&gt;</span> c<span class="op">.</span>radius<span class="op">;</span></span>
+<span id="cb13-6"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="parallel-arrays-vs-structures" class="slide level2">
 <h2>Parallel Arrays VS Structures</h2>
@@ -604,13 +604,13 @@
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="bu">std::</span>ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;</span> <span class="op">(</span><span class="bu">std::</span>ostream<span class="op">&amp;</span> outstr<span class="op">,</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>                          <span class="at">const</span> Circle<span class="op">&amp;</span> c<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>    outstr <span class="op">&lt;&lt;</span> <span class="st">"("</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>x</span>
-<span id="cb14-4"><a href="#cb14-4"></a>           <span class="op">&lt;&lt;</span> <span class="st">","</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>y</span>
-<span id="cb14-5"><a href="#cb14-5"></a>           <span class="op">&lt;&lt;</span> <span class="st">") r = "</span> <span class="op">&lt;&lt;</span> c<span class="op">.</span>radius<span class="op">;</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>    <span class="cf">return</span> outstr<span class="op">;</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a></a><span class="bu">std::</span>ostream<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">&lt;&lt;</span> <span class="op">(</span><span class="bu">std::</span>ostream<span class="op">&amp;</span> outstr<span class="op">,</span></span>
+<span id="cb14-2"><a></a>                          <span class="at">const</span> Circle<span class="op">&amp;</span> c<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-3"><a></a>    outstr <span class="op">&lt;&lt;</span> <span class="st">"("</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>x</span>
+<span id="cb14-4"><a></a>           <span class="op">&lt;&lt;</span> <span class="st">","</span>      <span class="op">&lt;&lt;</span> c<span class="op">.</span>y</span>
+<span id="cb14-5"><a></a>           <span class="op">&lt;&lt;</span> <span class="st">") r = "</span> <span class="op">&lt;&lt;</span> c<span class="op">.</span>radius<span class="op">;</span></span>
+<span id="cb14-6"><a></a>    <span class="cf">return</span> outstr<span class="op">;</span></span>
+<span id="cb14-7"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p><em><strong>More info on operator overloading is coming soon … or read ahead to Chapter 14, or search online.</strong></em></p>
@@ -644,15 +644,15 @@
 <section id="initial-values" class="slide level2">
 <h2>Initial Values</h2>
 <p>C++11 added the ability to include <em>initialization</em> in a structure definition:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">struct</span> Person <span class="op">{</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>    <span class="dt">int</span>    age   <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>    <span class="co">// initialize to 0</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>    string name<span class="op">;</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a></a><span class="kw">struct</span> Person <span class="op">{</span></span>
+<span id="cb15-2"><a></a>    <span class="dt">int</span>    age   <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>    <span class="co">// initialize to 0</span></span>
+<span id="cb15-3"><a></a>    string name<span class="op">;</span></span>
+<span id="cb15-4"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 Here, <em>inline member initialization</em> is used to provide initial values for <code>age</code>.</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1"></a>Person p3<span class="op">{</span><span class="dv">20</span><span class="op">,</span> <span class="st">"Cassandra"</span><span class="op">};</span> <span class="co">// only if -std=c++14 or later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a></a>Person p3<span class="op">{</span><span class="dv">20</span><span class="op">,</span> <span class="st">"Cassandra"</span><span class="op">};</span> <span class="co">// only if -std=c++14 or later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <aside><div>
 <p><strong>C++ version warning:</strong><br>
@@ -662,24 +662,26 @@ If you specify initializers, you will not be able to use <em>uniform initializer
 
 <h3 id="optional-initial-values-uniform-syntax">(optional) Initial Values (Uniform Syntax)</h3>
 <p>You can also set initial values using <em>uniform initializer syntax</em>:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">struct</span> Person <span class="op">{</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>    <span class="dt">int</span>    age<span class="op">{</span><span class="dv">0</span><span class="op">};</span>         <span class="co">// initialize to 0</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>    string name<span class="op">;</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a></a><span class="kw">struct</span> Person <span class="op">{</span></span>
+<span id="cb17-2"><a></a>    <span class="dt">int</span>    age<span class="op">{</span><span class="dv">0</span><span class="op">};</span>         <span class="co">// initialize to 0</span></span>
+<span id="cb17-3"><a></a>    string name<span class="op">;</span></span>
+<span id="cb17-4"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 Here, <em>uniform initializer syntax</em> is used to provide initial values for all members of both structures.</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1"></a>Person p3<span class="op">{</span><span class="dv">20</span><span class="op">,</span> <span class="st">"Cassandra"</span><span class="op">};</span> <span class="co">// only if -std=c++14 or later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a></a>Person p3<span class="op">{</span><span class="dv">20</span><span class="op">,</span> <span class="st">"Cassandra"</span><span class="op">};</span> <span class="co">// only if -std=c++14 or later</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-<p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
+<div class="quarto-auto-generated-content">
+<p><img src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>CS 50x2 Accelerated Programming Series</p>
 </div>
+</div>
 <div class="reveal-header">
 <div class="header-logo">
-<img data-src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/home_grid.svg">
+<img data-src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/home_grid.svg">
 </div>
 <div class="sc-title">
 <p> </p>
@@ -938,18 +940,7 @@ If you specify initializers, you will not be able to use <em>uniform initializer
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -981,7 +972,29 @@ If you specify initializers, you will not be able to use <em>uniform initializer
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
@@ -989,10 +1002,15 @@ If you specify initializers, you will not be able to use <em>uniform initializer
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1036,7 +1054,11 @@ If you specify initializers, you will not be able to use <em>uniform initializer
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

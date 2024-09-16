@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Pointers</title>
+  <title>CS 50x2 Slides – Pointers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0be79836d237d42b59157ec31cdbf0f9.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -422,11 +422,16 @@
 <p>The unary <strong><code>&amp;</code></strong> is the <strong><em>address operator</em></strong>; the address operator retrieves the address of its operand:</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb1" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">// Print out the address at which x is stored:</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>x <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb1-2"><a></a><span class="co">// Print out the address at which x is stored:</span></span>
+<span id="cb1-3"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">&amp;</span>x <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<aside><div>
+<div class="quarto-auto-generated-content">
+<p><img src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/astAte.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>CS 50x2 Accelerated Programming Series</p>
+</div>
+</div><aside><div>
 <p>We don’t usually care about the address ourselves, and our users wouldn’t care either. So, printing it to the screen is only useful as a learning exercise. But what we <strong>do</strong> care about is what we can do with the address of a variable. Read on…</p>
 </div></aside></section>
 <section id="pointers" class="slide level2">
@@ -441,10 +446,10 @@
 </ul></li>
 </ul>
 <p><strong>Example: (pointer to an <code>int</code>)</strong></p>
-<div class="sourceCode" id="cb2" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>    <span class="co">// just a normal integer</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">// [...]</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>     <span class="co">// declare a pointer to an int</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>     <span class="co">// point xPtr to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>    <span class="co">// just a normal integer</span></span>
+<span id="cb2-2"><a></a><span class="co">// [...]</span></span>
+<span id="cb2-3"><a></a><span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>     <span class="co">// declare a pointer to an int</span></span>
+<span id="cb2-4"><a></a>xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>     <span class="co">// point xPtr to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="why" class="slide level2">
 <h2>Why?</h2>
@@ -479,28 +484,28 @@
 </section>
 <section id="physical-view" class="slide level2">
 <h2>Physical View</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>    <span class="co">// just a normal integer</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">// [...]</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>     <span class="co">// declare a pointer to an int</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>     <span class="co">// point xPtr to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>    <span class="co">// just a normal integer</span></span>
+<span id="cb3-2"><a></a><span class="co">// [...]</span></span>
+<span id="cb3-3"><a></a><span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>     <span class="co">// declare a pointer to an int</span></span>
+<span id="cb3-4"><a></a>xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>     <span class="co">// point xPtr to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The following figure illustrates the <em>physical view</em> of what a pointer actually looks like in memory. The pointer <code>xPtr</code> contains the <em>address</em> of the location where <code>x</code> is stored:</p>
 
 <img data-src="images/shared/pointer_in_memory.svg" class="r-stretch quarto-figure-center"><p class="caption">Physical view of pointer in memory.</p></section>
 <section id="logical-view" class="slide level2">
 <h2>Logical View</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>    <span class="co">// just a normal integer</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co">// [...]</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>     <span class="co">// declare a pointer to an int</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>     <span class="co">// point xPtr to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>    <span class="co">// just a normal integer</span></span>
+<span id="cb4-2"><a></a><span class="co">// [...]</span></span>
+<span id="cb4-3"><a></a><span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>     <span class="co">// declare a pointer to an int</span></span>
+<span id="cb4-4"><a></a>xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>     <span class="co">// point xPtr to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The following figure illustrates the <em>logical view</em> of what a pointer conceptually does. The pointer <code>xPtr</code> <em>points to</em> the the variable <code>x</code>:</p>
 
 <img data-src="images/shared/pointer_in_memory_conceptual.svg" class="r-stretch quarto-figure-center"><p class="caption">Conceptual view of pointer in memory.</p></section>
 <section id="physical-and-logical-view" class="slide level2">
 <h2>Physical and Logical View</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>    <span class="co">// just a normal integer</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">// [...]</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>     <span class="co">// declare a pointer to an int</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>     <span class="co">// point xPtr to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>    <span class="co">// just a normal integer</span></span>
+<span id="cb5-2"><a></a><span class="co">// [...]</span></span>
+<span id="cb5-3"><a></a><span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>     <span class="co">// declare a pointer to an int</span></span>
+<span id="cb5-4"><a></a>xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>     <span class="co">// point xPtr to x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/shared/pointer_in_memory.svg"></p>
@@ -529,18 +534,18 @@
 <section class="slide level2">
 
 <h3 id="example-using-a-pointer">Example: Using a Pointer</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a> <span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>                  <span class="co">// just a normal integer</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a> </span>
-<span id="cb6-3"><a href="#cb6-3"></a> <span class="co">// [...]          </span></span>
-<span id="cb6-4"><a href="#cb6-4"></a> </span>
-<span id="cb6-5"><a href="#cb6-5"></a> <span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>                   <span class="co">// declare a pointer to an int</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a> xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>                   <span class="co">// point xPtr to x</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a> </span>
-<span id="cb6-8"><a href="#cb6-8"></a> <span class="co">// [...]          </span></span>
-<span id="cb6-9"><a href="#cb6-9"></a> </span>
-<span id="cb6-10"><a href="#cb6-10"></a> <span class="op">*</span>xPtr <span class="op">=</span> <span class="dv">100</span><span class="op">;</span>                 <span class="co">// use xPtr, change value in x</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a> <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>xPtr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// prints 100</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a> <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> x     <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// x is also 100 now.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a> <span class="dt">int</span> x <span class="op">=</span> <span class="dv">75</span><span class="op">;</span>                  <span class="co">// just a normal integer</span></span>
+<span id="cb6-2"><a></a> </span>
+<span id="cb6-3"><a></a> <span class="co">// [...]          </span></span>
+<span id="cb6-4"><a></a> </span>
+<span id="cb6-5"><a></a> <span class="dt">int</span><span class="op">*</span> xPtr<span class="op">;</span>                   <span class="co">// declare a pointer to an int</span></span>
+<span id="cb6-6"><a></a> xPtr <span class="op">=</span> <span class="op">&amp;</span>x<span class="op">;</span>                   <span class="co">// point xPtr to x</span></span>
+<span id="cb6-7"><a></a> </span>
+<span id="cb6-8"><a></a> <span class="co">// [...]          </span></span>
+<span id="cb6-9"><a></a> </span>
+<span id="cb6-10"><a></a> <span class="op">*</span>xPtr <span class="op">=</span> <span class="dv">100</span><span class="op">;</span>                 <span class="co">// use xPtr, change value in x</span></span>
+<span id="cb6-11"><a></a> <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>xPtr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// prints 100</span></span>
+<span id="cb6-12"><a></a> <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> x     <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// x is also 100 now.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="null-pointers" class="slide level2">
 <h2>“Null” Pointers</h2>
@@ -548,7 +553,7 @@
 <ul>
 <li>C++11 added a keyword to represent the literal value of a null pointer: <code>nullptr</code>.</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">int</span><span class="op">*</span> x <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span> <span class="co">// declare and initialize to nullptr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a><span class="dt">int</span><span class="op">*</span> x <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span> <span class="co">// declare and initialize to nullptr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Setting a pointer to <code>nullptr</code> guarantees that it cannot be <em>dereferenced</em>.
 <ul>
@@ -574,14 +579,14 @@
 </section>
 <section id="pointers-to-arrays" class="slide level2">
 <h2>Pointers to Arrays</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">int</span> a<span class="op">[</span><span class="dv">5</span><span class="op">]{</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span> <span class="op">};</span>  <span class="co">// normal array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="dt">int</span> a<span class="op">[</span><span class="dv">5</span><span class="op">]{</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span> <span class="op">};</span>  <span class="co">// normal array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Pointers can be used to access elements of an array.</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">int</span><span class="op">*</span> aPtr <span class="op">=</span> a<span class="op">;</span> <span class="co">// no need for `&amp;`: `a` degrades to a pointer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a></a><span class="dt">int</span><span class="op">*</span> aPtr <span class="op">=</span> a<span class="op">;</span> <span class="co">// no need for `&amp;`: `a` degrades to a pointer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Pointer mathematics.</strong><br>
 <small style="font-size: 70%;"><i>This is why the <strong>type</strong> is important for pointers.</i></small></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*(</span>aPtr <span class="op">+</span> <span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// prints a[2]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*(</span>aPtr <span class="op">+</span> <span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// prints a[2]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Pointer and array notation is interchangeable.</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> aPtr<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// easier than "*(aPtr + 2)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> aPtr<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// easier than "*(aPtr + 2)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="more-pointer-math" class="slide level2">
 <h2>More Pointer Math</h2>
@@ -600,15 +605,15 @@
 <section id="pointers-as-iterators" class="slide level2">
 <h2>Pointers as “Iterators”</h2>
 <p>You can use a pointer to “move around” in an array:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="dt">int</span> a<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span> <span class="op">};</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="co">// [...]</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="dt">int</span><span class="op">*</span> begin <span class="op">=</span> a<span class="op">;</span>               <span class="co">// start is first addr of a</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="dt">int</span><span class="op">*</span> end   <span class="op">=</span> a <span class="op">+</span> <span class="dv">5</span><span class="op">;</span>           <span class="co">// end is start + size</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="co">// "For each element in a", using a pointer for movement:</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span><span class="op">*</span> current <span class="op">=</span> begin<span class="op">;</span> current <span class="op">!=</span> end<span class="op">;</span> current<span class="op">++){</span></span>
-<span id="cb13-8"><a href="#cb13-8"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>current <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb13-9"><a href="#cb13-9"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a></a><span class="dt">int</span> a<span class="op">[</span><span class="dv">5</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">7</span><span class="op">,</span> <span class="dv">9</span> <span class="op">};</span></span>
+<span id="cb13-2"><a></a><span class="co">// [...]</span></span>
+<span id="cb13-3"><a></a><span class="dt">int</span><span class="op">*</span> begin <span class="op">=</span> a<span class="op">;</span>               <span class="co">// start is first addr of a</span></span>
+<span id="cb13-4"><a></a><span class="dt">int</span><span class="op">*</span> end   <span class="op">=</span> a <span class="op">+</span> <span class="dv">5</span><span class="op">;</span>           <span class="co">// end is start + size</span></span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a><span class="co">// "For each element in a", using a pointer for movement:</span></span>
+<span id="cb13-7"><a></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span><span class="op">*</span> current <span class="op">=</span> begin<span class="op">;</span> current <span class="op">!=</span> end<span class="op">;</span> current<span class="op">++){</span></span>
+<span id="cb13-8"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>current <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb13-9"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This design pattern is very common in the C++ Standard Template Library.</p>
 </section>
 <section class="slide level2">
@@ -657,18 +662,18 @@
 </section>
 <section id="common-design-pattern-range-based-operations-with-pointers-to-arrays" class="slide level2">
 <h2>Common design pattern: “Range”-based operations with pointers to arrays</h2>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">// Assume array `a` already declared as `int a[5];`</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="dt">int</span><span class="op">*</span> begin <span class="op">=</span> a<span class="op">;</span>     <span class="co">// "left" edge of array</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="dt">int</span><span class="op">*</span> end   <span class="op">=</span> a <span class="op">+</span> <span class="dv">5</span><span class="op">;</span> <span class="co">// "right" edge of array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a></a><span class="co">// Assume array `a` already declared as `int a[5];`</span></span>
+<span id="cb14-2"><a></a><span class="dt">int</span><span class="op">*</span> begin <span class="op">=</span> a<span class="op">;</span>     <span class="co">// "left" edge of array</span></span>
+<span id="cb14-3"><a></a><span class="dt">int</span><span class="op">*</span> end   <span class="op">=</span> a <span class="op">+</span> <span class="dv">5</span><span class="op">;</span> <span class="co">// "right" edge of array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/shared/range_iterators_in_array.svg" class="r-stretch quarto-figure-center"><p class="caption">Pointers to range in array <code>a</code>.</p><p>Notice that <code>end</code> physically points to the first memory address <em>beyond</em> the end of the array. For this reason, i<strong>t would be an error to try to dereference <code>end</code></strong>. We must be careful to ensure that never happens.</p>
 <p><strong>This pattern also applies to <em>iterators</em> to array-like data structures.</strong></p>
 </section>
 <section id="common-design-pattern-range-based-operations-with-pointers-to-sub-arrays" class="slide level2">
 <h2>Common design pattern: “Range”-based operations with pointers to sub-arrays</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">// Assume array `a` already declared as `int a[5];`</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="dt">int</span><span class="op">*</span> first <span class="op">=</span> a <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>  <span class="co">// "left" edge of subrange</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="dt">int</span><span class="op">*</span> last  <span class="op">=</span> a <span class="op">+</span> <span class="dv">4</span><span class="op">;</span>  <span class="co">// "right" edge of subrange</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a></a><span class="co">// Assume array `a` already declared as `int a[5];`</span></span>
+<span id="cb15-2"><a></a><span class="dt">int</span><span class="op">*</span> first <span class="op">=</span> a <span class="op">+</span> <span class="dv">1</span><span class="op">;</span>  <span class="co">// "left" edge of subrange</span></span>
+<span id="cb15-3"><a></a><span class="dt">int</span><span class="op">*</span> last  <span class="op">=</span> a <span class="op">+</span> <span class="dv">4</span><span class="op">;</span>  <span class="co">// "right" edge of subrange</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/shared/range_iterators_to_subrange.svg" class="r-stretch quarto-figure-center"><p class="caption">Pointers to range in array <code>a</code>.</p><p>In this usage, we are bracketing a <em>subrange</em> of values within the larger array. Again, notice that the <code>last</code> pointer points to a value outside that subrange - it should not be dereferenced.</p>
 <p><strong>This pattern also applies to <em>iterators</em> to array-like data structures.</strong></p>
@@ -917,18 +922,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -960,7 +954,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
@@ -968,10 +984,15 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1015,7 +1036,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -53,7 +53,7 @@
     "href": "content/99_cmath_epsilon_comparison.html#summary",
     "title": "Supplement: cmath and Epsilon Comparison",
     "section": "Summary",
-    "text": "Summary\n\nNever test floating-point values using == or !=.\nUse an epsilon comparison instead.\nThe value of epsilon may vary depending on your application.\n\nHow much precision do you really need?\nHow many mathematical calculations are being performed before the test for “equality”?\n\nFor more information on this topic, see:\n\n\n\nhttp://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/\nhttp://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/\nhttp://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nSupplement: cmath and Epsilon Comparison"
+    "text": "Summary\n\nNever test floating-point values using == or !=.\nUse an epsilon comparison instead.\nThe value of epsilon may vary depending on your application.\n\nHow much precision do you really need?\nHow many mathematical calculations are being performed before the test for “equality”?\n\nFor more information on this topic, see:\n\n\n\nhttp://www.learncpp.com/cpp-tutorial/25-floating-point-numbers/\nhttp://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/\nhttp://randomascii.wordpress.com/2012/06/26/doubles-are-not-floats-so-dont-compare-them/\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nSupplement: cmath and Epsilon Comparison"
   },
   {
     "objectID": "content/37_Efficient_Sorting.html#first---simple-sorting-may-be-review",
@@ -431,7 +431,7 @@
     "href": "content/35_Graphs.html#the-traveling-salesman-problem-tsp",
     "title": "Graphs",
     "section": "The Traveling Salesman Problem (TSP)",
-    "text": "The Traveling Salesman Problem (TSP)\nGiven a set of \\(n\\) cities, find the minimum length tour in which each city is visited exactly once, then you return home.\n\nThis is equivalent to finding the minimum Hamiltonian cycle.\nIf distances between each of the \\(n\\) cities are known, there are \\((n - 1)!\\) possible routes.\n\nEliminating reverse routes, you get \\(\\frac{(n - 1)!}{2}\\)\nClever algorithms can do it in a polynomial factor of \\(2^n\\) steps…\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nGraphs"
+    "text": "The Traveling Salesman Problem (TSP)\nGiven a set of \\(n\\) cities, find the minimum length tour in which each city is visited exactly once, then you return home.\n\nThis is equivalent to finding the minimum Hamiltonian cycle.\nIf distances between each of the \\(n\\) cities are known, there are \\((n - 1)!\\) possible routes.\n\nEliminating reverse routes, you get \\(\\frac{(n - 1)!}{2}\\)\nClever algorithms can do it in a polynomial factor of \\(2^n\\) steps…\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nGraphs"
   },
   {
     "objectID": "content/33_Heaps_and_Heapsort.html#heaps",
@@ -550,7 +550,7 @@
     "href": "content/33_Heaps_and_Heapsort.html#heapsort-complexity-1",
     "title": "Heaps and HeapSort",
     "section": "Heapsort Complexity",
-    "text": "Heapsort Complexity\n\nHeapify (bottom-up) takes \\(O(n)\\) steps.\n\n(top-down) takes \\(O(n\\lg(n))\\) steps.\n\n(done once)\n\n\nEach “pass” yields 1 value in the right place.\n\\(n\\) passes are required to sort all items.\nSift-Down takes \\(O(\\lg(n))\\) steps. \nOverall: \\(O(n\\lg(n))\\)\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nHeaps and HeapSort"
+    "text": "Heapsort Complexity\n\nHeapify (bottom-up) takes \\(O(n)\\) steps.\n\n(top-down) takes \\(O(n\\lg(n))\\) steps.\n\n(done once)\n\n\nEach “pass” yields 1 value in the right place.\n\\(n\\) passes are required to sort all items.\nSift-Down takes \\(O(\\lg(n))\\) steps. \nOverall: \\(O(n\\lg(n))\\)\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nHeaps and HeapSort"
   },
   {
     "objectID": "content/31_Binary_Search_Trees.html#trees",
@@ -592,7 +592,7 @@
     "href": "content/31_Binary_Search_Trees.html#visualizations",
     "title": "Trees - Binary Search Trees",
     "section": "Visualizations",
-    "text": "Visualizations\n\n\nhttps://www.cs.usfca.edu/~galles/visualization/BST.html\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nTrees - Binary Search Trees"
+    "text": "Visualizations\n\n\nhttps://www.cs.usfca.edu/~galles/visualization/BST.html\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nTrees - Binary Search Trees"
   },
   {
     "objectID": "content/29_Skip_Lists.html#linked-list-efficiency",
@@ -837,7 +837,7 @@
     "href": "content/21_Copy_Constructor.html#copy-constructor-dry-principle",
     "title": "Assignment, Copy Constructor",
     "section": "Copy Constructor: DRY Principle",
-    "text": "Copy Constructor: DRY Principle\n\n“Don’t Repeat Yourself”\n\nThe copy constructor and the assignment operator perform nearly the same operation (both make an independent copy of the source object). It is common to see the copy c-tor implemented in terms of the assignment operator:\nMyClass{\n    public:\n        MyClass(const MyClass& orig);              // copy c-tor\n        MyClass& operator=(const MyClass& source); // assignment op\n    [...]\n};\n// - - - -\n// Copy c-tor Implementation\nMyClass::MyClass(const MyClass& orig){\n    *this = orig;\n}\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nAssignment, Copy Constructor\n\n\n \n\n\n\nThe DRY Principle states: “Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”."
+    "text": "Copy Constructor: DRY Principle\n\n“Don’t Repeat Yourself”\n\nThe copy constructor and the assignment operator perform nearly the same operation (both make an independent copy of the source object). It is common to see the copy c-tor implemented in terms of the assignment operator:\nMyClass{\n    public:\n        MyClass(const MyClass& orig);              // copy c-tor\n        MyClass& operator=(const MyClass& source); // assignment op\n    [...]\n};\n// - - - -\n// Copy c-tor Implementation\nMyClass::MyClass(const MyClass& orig){\n    *this = orig;\n}\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nAssignment, Copy Constructor\n\n\n \n\n\n\nThe DRY Principle states: “Every piece of knowledge must have a single, unambiguous, authoritative representation within a system”."
   },
   {
     "objectID": "content/19_Classes_and_Objects.html#introduction",
@@ -970,7 +970,7 @@
     "href": "content/19_Classes_and_Objects.html#const-methods",
     "title": "Classes and Objects",
     "section": "const methods",
-    "text": "const methods\n\nIn classes / structures, a method can “promise” not to modify the state of the object.\n\nmeaning, values of attributes will not be modified\n\naccomplished by marking methods as const:\n\nclass Rectangle{\npublic:\n    int get_length() const;  // const method\n    //[... other code not shown ...]\nprivate:\n    int length = 0;\n    int width  = 0;\n};\nget_length() cannot modify the attributes (length and width).\n\nThis protection is often added to accessors, and should be added whenever possible.\n\nMutators cannot be const methods, since they need to change the state of the object.\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nClasses and Objects"
+    "text": "const methods\n\nIn classes / structures, a method can “promise” not to modify the state of the object.\n\nmeaning, values of attributes will not be modified\n\naccomplished by marking methods as const:\n\nclass Rectangle{\npublic:\n    int get_length() const;  // const method\n    //[... other code not shown ...]\nprivate:\n    int length = 0;\n    int width  = 0;\n};\nget_length() cannot modify the attributes (length and width).\n\nThis protection is often added to accessors, and should be added whenever possible.\n\nMutators cannot be const methods, since they need to change the state of the object.\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nClasses and Objects"
   },
   {
     "objectID": "content/17_Dynamic_Memory.html#dynamic-memory-notes",
@@ -1040,7 +1040,7 @@
     "href": "content/17_Dynamic_Memory.html#putting-it-together-with-auto",
     "title": "Dynamic Memory",
     "section": "Putting it together with auto:",
-    "text": "Putting it together with auto:\n\n\n\nint main(){\n    auto ptr{ std::make_unique(99) };         // allocate and init\n    std::cout &lt;&lt; *ptr &lt;&lt; \"\\n\";                // print value at ptr (99)\n    \n    int n_scores;                             // size for array\n    std::cout &lt;&lt; \"Enter number of scores: \";\n    std::cin  &gt;&gt; n_scores;\n\n    // allocate array and take ownership with `scores`:\n    auto scores{ std::make_unique&lt;double[]&gt;(n_scores) };\n\n    for(int i = 0; i &lt; n_scores; i++){\n        std::cout &lt;&lt; \"Enter score \" &lt;&lt; (i+1) &lt;&lt; \": \";\n        std::cin  &gt;&gt; scores[i];\n    }\n    // [...]    Use the data for something interesting...\n    return 0;   // scores and ptr are de-allocated automatically\n}\n\nChoose the version you think is easier to understand.\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nDynamic Memory"
+    "text": "Putting it together with auto:\n\n\n\nint main(){\n    auto ptr{ std::make_unique(99) };         // allocate and init\n    std::cout &lt;&lt; *ptr &lt;&lt; \"\\n\";                // print value at ptr (99)\n    \n    int n_scores;                             // size for array\n    std::cout &lt;&lt; \"Enter number of scores: \";\n    std::cin  &gt;&gt; n_scores;\n\n    // allocate array and take ownership with `scores`:\n    auto scores{ std::make_unique&lt;double[]&gt;(n_scores) };\n\n    for(int i = 0; i &lt; n_scores; i++){\n        std::cout &lt;&lt; \"Enter score \" &lt;&lt; (i+1) &lt;&lt; \": \";\n        std::cin  &gt;&gt; scores[i];\n    }\n    // [...]    Use the data for something interesting...\n    return 0;   // scores and ptr are de-allocated automatically\n}\n\nChoose the version you think is easier to understand.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nDynamic Memory"
   },
   {
     "objectID": "content/15_Structures.html#enum",
@@ -1201,7 +1201,7 @@
     "href": "content/11_Pointers.html#addresses-and-data",
     "title": "Pointers",
     "section": "Addresses and Data",
-    "text": "Addresses and Data\nEvery variable in a program is stored at a unique memory address.\n\n\nThe unary & is the address operator; the address operator retrieves the address of its operand:\n\n\nint x = 42;\n// Print out the address at which x is stored:\nstd::cout &lt;&lt; &x &lt;&lt; \"\\n\";\n\n\nWe don’t usually care about the address ourselves, and our users wouldn’t care either. So, printing it to the screen is only useful as a learning exercise. But what we do care about is what we can do with the address of a variable. Read on…"
+    "text": "Addresses and Data\nEvery variable in a program is stored at a unique memory address.\n\n\nThe unary & is the address operator; the address operator retrieves the address of its operand:\n\n\nint x = 42;\n// Print out the address at which x is stored:\nstd::cout &lt;&lt; &x &lt;&lt; \"\\n\";\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\nWe don’t usually care about the address ourselves, and our users wouldn’t care either. So, printing it to the screen is only useful as a learning exercise. But what we do care about is what we can do with the address of a variable. Read on…"
   },
   {
     "objectID": "content/11_Pointers.html#pointers",
@@ -1642,7 +1642,7 @@
     "href": "content/03_Selection.html#final-details",
     "title": "Selection",
     "section": "Final Details",
-    "text": "Final Details\n\nC++ control structures do not strictly require conditions to be type bool.\n\nAny non-zero value will be considered equivalent to “true”.\nAny value that compares “equal to” zero is considered equivalent to “false”.\n\nBeware of the assignment operator! See example below:\n\n// This will print \"8 is 4!\" ... Why?\nint x = 8;\n// [...]\nstd::cout &lt;&lt; x;\nif( x = 4 ) {\n    std::cout &lt;&lt; \" is 4!\";\n}\n\nx is assigned 8. So far so good…\n\n\nWe print x, which is 8 right now. Still OK.\n\n\nThe expression x = 4 assigns the value 4 to x. Then, it evaluates to 4, which is not zero, so the if considers it to be equivalent to true…\nNow we have a problem.\n\n\nWe print the string \" is 4!\", since the if condition was “true-like”.\nThe exact output is:\nx is 4!\n\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nSelection"
+    "text": "Final Details\n\nC++ control structures do not strictly require conditions to be type bool.\n\nAny non-zero value will be considered equivalent to “true”.\nAny value that compares “equal to” zero is considered equivalent to “false”.\n\nBeware of the assignment operator! See example below:\n\n// This will print \"8 is 4!\" ... Why?\nint x = 8;\n// [...]\nstd::cout &lt;&lt; x;\nif( x = 4 ) {\n    std::cout &lt;&lt; \" is 4!\";\n}\n\nx is assigned 8. So far so good…\n\n\nWe print x, which is 8 right now. Still OK.\n\n\nThe expression x = 4 assigns the value 4 to x. Then, it evaluates to 4, which is not zero, so the if considers it to be equivalent to true…\nNow we have a problem.\n\n\nWe print the string \" is 4!\", since the if condition was “true-like”.\nThe exact output is:\nx is 4!\n\n\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nSelection"
   },
   {
     "objectID": "content/01_SP_Basics.html#first-principles",
@@ -1705,7 +1705,7 @@
     "href": "content/01_SP_Basics.html#practice-developing-and-compiling",
     "title": "Structured Programming Basics",
     "section": "Practice Developing and Compiling",
-    "text": "Practice Developing and Compiling\n#include &lt;iostream&gt;\n\nint main(){\n    std::cout &lt;&lt; \"Hello, World!\\n\";\n    return 0;\n}\nMake modifications to the program so that it will print out your name, favorite food, and favorite TV series.\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nStructured Programming Basics"
+    "text": "Practice Developing and Compiling\n#include &lt;iostream&gt;\n\nint main(){\n    std::cout &lt;&lt; \"Hello, World!\\n\";\n    return 0;\n}\nMake modifications to the program so that it will print out your name, favorite food, and favorite TV series.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nStructured Programming Basics"
   },
   {
     "objectID": "index.html",
@@ -1880,7 +1880,7 @@
     "href": "content/02_Variables_Operators_Errors.html#tips-and-tricks",
     "title": "Variables, Operators, Common Errors",
     "section": "Tips and Tricks",
-    "text": "Tips and Tricks\n\nCompile early, compile often.\n\nWrite small amounts, then compile/test/continue.\n\nThe first error is the only one that matters!\n\nAlways fix the first error before moving on to other errors.\nRe-compile after fixing the error, then repeat the process.\n\nPay attention to line numbers.\n\nThe compiler will tell you which line it was examining when it found the error.\n\nThe line containing the error will either be that line or a line above that point in the program.\n\nStart with the flagged line, work your way upward a line at a time.\n\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nVariables, Operators, Common Errors"
+    "text": "Tips and Tricks\n\nCompile early, compile often.\n\nWrite small amounts, then compile/test/continue.\n\nThe first error is the only one that matters!\n\nAlways fix the first error before moving on to other errors.\nRe-compile after fixing the error, then repeat the process.\n\nPay attention to line numbers.\n\nThe compiler will tell you which line it was examining when it found the error.\n\nThe line containing the error will either be that line or a line above that point in the program.\n\nStart with the flagged line, work your way upward a line at a time.\n\n\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nVariables, Operators, Common Errors"
   },
   {
     "objectID": "content/04_Repetition.html#first-some-helpful-new-operators",
@@ -1957,7 +1957,7 @@
     "href": "content/04_Repetition.html#which-loop-to-choose",
     "title": "Repetition",
     "section": "Which Loop to Choose?",
-    "text": "Which Loop to Choose?\n\nwhile\n\npre-test loop\nwell suited to Event Controlled Loops\n\nfor\n\npre-test loop\nwell suited to Iterative Loops\nrange-based for is great for containers\n\ndo-while\n\npost-test loop\nwell suited to Event Controlled Loops used for validation\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nRepetition"
+    "text": "Which Loop to Choose?\n\nwhile\n\npre-test loop\nwell suited to Event Controlled Loops\n\nfor\n\npre-test loop\nwell suited to Iterative Loops\nrange-based for is great for containers\n\ndo-while\n\npost-test loop\nwell suited to Event Controlled Loops used for validation\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nRepetition"
   },
   {
     "objectID": "content/06_Functions_Reference_Parameters.html#review-pass-by-value",
@@ -2076,7 +2076,7 @@
     "href": "content/08_Arrays.html#d-arrays-key-points-summary",
     "title": "Arrays",
     "section": "1-D Arrays Key Points Summary",
-    "text": "1-D Arrays Key Points Summary\n\nSize declarator must be a literal or constant.\nC++ provides no bounds-checking for indices.\nArray elements start out uninitialized if their base types do.\n\nThey are default constructed if the base type is a structured or object type.\n\nArrays cannot be directly assigned.\nArrays are always passed by reference to functions.\nArrays do not “know” their own size.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nArrays"
+    "text": "1-D Arrays Key Points Summary\n\nSize declarator must be a literal or constant.\nC++ provides no bounds-checking for indices.\nArray elements start out uninitialized if their base types do.\n\nThey are default constructed if the base type is a structured or object type.\n\nArrays cannot be directly assigned.\nArrays are always passed by reference to functions.\nArrays do not “know” their own size.\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nArrays"
   },
   {
     "objectID": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#parallel-arrays",
@@ -2153,7 +2153,7 @@
     "href": "content/10_Parallel_and_Multi-Dimensional_Arrays.html#arrays-of-higher-dimension-1",
     "title": "Parallel and Multi-Dimensional Arrays",
     "section": "Arrays of Higher Dimension",
-    "text": "Arrays of Higher Dimension\nOperations just require more nested loops (one for each dimension):\n\n\nfor(int move = 0; move &lt; MOVES; move++){\n    for(int r = 0; r &lt; ROWS; r++){\n        for(int c = 0; c &lt; COLUMNS; c++){\n            cout &lt;&lt; game_board_over_time[move][r][c]\n                 &lt;&lt; \"\\t\";\n        }\n        cout &lt;&lt; \"\\n\";\n    }\n}\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nParallel and Multi-Dimensional Arrays"
+    "text": "Arrays of Higher Dimension\nOperations just require more nested loops (one for each dimension):\n\n\nfor(int move = 0; move &lt; MOVES; move++){\n    for(int r = 0; r &lt; ROWS; r++){\n        for(int c = 0; c &lt; COLUMNS; c++){\n            cout &lt;&lt; game_board_over_time[move][r][c]\n                 &lt;&lt; \"\\t\";\n        }\n        cout &lt;&lt; \"\\n\";\n    }\n}\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nParallel and Multi-Dimensional Arrays"
   },
   {
     "objectID": "content/12_vector.html#the-c-standard-template-library",
@@ -2384,7 +2384,7 @@
     "href": "content/16_random_access.html#zero-memory-quickly",
     "title": "Binary Files and Random Access",
     "section": "Zero Memory Quickly",
-    "text": "Zero Memory Quickly\nFor security, it is often desirable to clear all bytes associated with an object’s memory allocation. This can be done efficiently with memset():\nmemset() : (not a method) – useful for clearing memory within a record.\n\nmemset is defined in the &lt;cstring&gt; header file.\n\nSyntax:\nmemset(start,value,size)\n\n\n// zero all bytes contained in `myObj`:\nmemset(&myObj, 0, sizeof(myObj));\n// IMPORTANT:  Don't try this if your object contains non-primitive\n//             attributes or is a derived class!\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nBinary Files and Random Access"
+    "text": "Zero Memory Quickly\nFor security, it is often desirable to clear all bytes associated with an object’s memory allocation. This can be done efficiently with memset():\nmemset() : (not a method) – useful for clearing memory within a record.\n\nmemset is defined in the &lt;cstring&gt; header file.\n\nSyntax:\nmemset(start,value,size)\n\n\n// zero all bytes contained in `myObj`:\nmemset(&myObj, 0, sizeof(myObj));\n// IMPORTANT:  Don't try this if your object contains non-primitive\n//             attributes or is a derived class!\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nBinary Files and Random Access"
   },
   {
     "objectID": "content/18_Exceptions.html#exceptions",
@@ -2468,7 +2468,7 @@
     "href": "content/18_Exceptions.html#documentation-guidelines",
     "title": "Exceptions",
     "section": "Documentation Guidelines",
-    "text": "Documentation Guidelines\n\nExceptions require some new documentation… Here’s an example:\n\n\n/**\n * converts a numerical ranking in {1,2,3} to the corresponding \n * medal color from {\"gold\",\"silver\",\"bronze\"}\n * \n * @param  rank  integer numerical ranking; should be in {1,2,3}\n * @return the corresponding metal color for `rank` is returned \n *         from the set {\"gold\", \"silver\", \"bronze\"}.\n * @throw  std::invalid_argument is thrown if `rank` is not one\n *         of {1,2,3}.\n */\n\nNotice the @throw Doxygen tag – it should be used once for each type of exception your function may throw.\nBe sure to describe the exception type, as well as when/why it would be thrown.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nExceptions"
+    "text": "Documentation Guidelines\n\nExceptions require some new documentation… Here’s an example:\n\n\n/**\n * converts a numerical ranking in {1,2,3} to the corresponding \n * medal color from {\"gold\",\"silver\",\"bronze\"}\n * \n * @param  rank  integer numerical ranking; should be in {1,2,3}\n * @return the corresponding metal color for `rank` is returned \n *         from the set {\"gold\", \"silver\", \"bronze\"}.\n * @throw  std::invalid_argument is thrown if `rank` is not one\n *         of {1,2,3}.\n */\n\nNotice the @throw Doxygen tag – it should be used once for each type of exception your function may throw.\nBe sure to describe the exception type, as well as when/why it would be thrown.\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nExceptions"
   },
   {
     "objectID": "content/22_Operator_Overloading.html#operators-are-functions",
@@ -2510,7 +2510,7 @@
     "href": "content/22_Operator_Overloading.html#and---",
     "title": "Operator Overloading",
     "section": "++ and --",
-    "text": "++ and --\n\n\nPrefix (++x or --x) \ntype& operator++ (type& rhs);\ntype& operator-- (type& rhs);\n\n\nPostfix (x++ or x--) \ntype operator++(type& lhs, int);\ntype operator--(type& lhs, int);\n\nNotice the “phantom” int second parameter — this is used only so that the compiler can tell the prefix and postfix versions apart.\nAlso note that a copy of lhs (with its previous value) is returned.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nOperator Overloading"
+    "text": "++ and --\n\n\nPrefix (++x or --x) \ntype& operator++ (type& rhs);\ntype& operator-- (type& rhs);\n\n\nPostfix (x++ or x--) \ntype operator++(type& lhs, int);\ntype operator--(type& lhs, int);\n\nNotice the “phantom” int second parameter — this is used only so that the compiler can tell the prefix and postfix versions apart.\nAlso note that a copy of lhs (with its previous value) is returned.\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nOperator Overloading"
   },
   {
     "objectID": "content/24_Stack_Queue_CircularList.html#stacks",
@@ -2545,7 +2545,7 @@
     "href": "content/24_Stack_Queue_CircularList.html#circular-list",
     "title": "Stacks, Queues, and Circular Lists",
     "section": "Circular List",
-    "text": "Circular List\nA circular list is a list in which following the “next” pointer from the end of the list will place you back at the beginning of the list.\nUseful for tasks that need to be repeated.\nThe underlying list may be a singly-linked list or a doubly-linked list. You can also use an array as the underlying data structure.\n\n\n\nCircular Singly-Linked List\n\n\n\n\n\nCircular Doubly-Linked List\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nStacks, Queues, and Circular Lists"
+    "text": "Circular List\nA circular list is a list in which following the “next” pointer from the end of the list will place you back at the beginning of the list.\nUseful for tasks that need to be repeated.\nThe underlying list may be a singly-linked list or a doubly-linked list. You can also use an array as the underlying data structure.\n\n\n\nCircular Singly-Linked List\n\n\n\n\n\nCircular Doubly-Linked List\n\n\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nStacks, Queues, and Circular Lists"
   },
   {
     "objectID": "content/26_Inheritance.html#inheritance",
@@ -2643,7 +2643,7 @@
     "href": "content/32_AVL_Trees.html#visualizations",
     "title": "Balancing Trees - AVL Trees",
     "section": "Visualizations",
-    "text": "Visualizations\n\n\nhttps://www.cs.usfca.edu/~galles/visualization/AVLtree.html\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nBalancing Trees - AVL Trees"
+    "text": "Visualizations\n\n\nhttps://www.cs.usfca.edu/~galles/visualization/AVLtree.html\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nBalancing Trees - AVL Trees"
   },
   {
     "objectID": "content/34_Multiway_Trees.html#definition",
@@ -2916,6 +2916,6 @@
     "href": "content/38_Hashing.html#extendable-hashing",
     "title": "Hashing",
     "section": "Extendable Hashing",
-    "text": "Extendable Hashing\n\n\nIf the size of the hash table may change, additional complexity is added to the hashing algorithms.\n\n\nSee the book pgs. 571-573.\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n \n\n\nHashing"
+    "text": "Extendable Hashing\n\n\nIf the size of the hash table may change, additional complexity is added to the hashing algorithms.\n\n\nSee the book pgs. 571-573.\n\n\n\n\nCS 50x2 Accelerated Programming Series\n\n\n\n\n\n\n\n \n\n\nHashing"
   }
 ]

@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Binary Files and Random Access</title>
+  <title>CS 50x2 Slides – Binary Files and Random Access</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0be79836d237d42b59157ec31cdbf0f9.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -455,7 +455,7 @@
 
 <h3 id="file-modes">File modes</h3>
 <div class="small-85">
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 10%">
 <col style="width: 89%">
@@ -511,14 +511,14 @@
 </ul></li>
 </ul>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a>fstream fin<span class="op">{</span><span class="st">"my_file"</span><span class="op">,</span> ios<span class="op">::</span>in<span class="op">|</span>ios<span class="op">::</span>binary<span class="op">};</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="dt">char</span> ch<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>fin<span class="op">.</span>read<span class="op">(&amp;</span>ch<span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">char</span><span class="op">));</span> <span class="co">// read 1 character.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a></a>fstream fin<span class="op">{</span><span class="st">"my_file"</span><span class="op">,</span> ios<span class="op">::</span>in<span class="op">|</span>ios<span class="op">::</span>binary<span class="op">};</span></span>
+<span id="cb1-2"><a></a><span class="dt">char</span> ch<span class="op">;</span></span>
+<span id="cb1-3"><a></a>fin<span class="op">.</span>read<span class="op">(&amp;</span>ch<span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">char</span><span class="op">));</span> <span class="co">// read 1 character.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="binary-files-1" class="slide level2">
 <h2>Binary Files</h2>
 <p>To read/write non-character data, you must cast using:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">reinterpret_cast</span><span class="op">&lt;</span><span class="dt">char</span><span class="op">*&gt;(</span> address_of_object <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a></a><span class="kw">reinterpret_cast</span><span class="op">&lt;</span><span class="dt">char</span><span class="op">*&gt;(</span> address_of_object <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p><em><strong>Reason:</strong></em> The <code>read()</code> and <code>write()</code> methods are designed to input/output raw <em>bytes</em> of data. <code>char</code> is a convenient “package” for raw bytes.</p>
@@ -528,8 +528,8 @@
 <p><br>
 </p>
 <p>Here are the prototypes for <code>read()</code> and <code>write()</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a>istream<span class="op">&amp;</span> read <span class="op">(</span><span class="dt">char</span><span class="op">*</span> s<span class="op">,</span> streamsize n<span class="op">);</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>ostream<span class="op">&amp;</span> write <span class="op">(</span><span class="dt">char</span><span class="op">*</span> s<span class="op">,</span> streamsize n<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a>istream<span class="op">&amp;</span> read <span class="op">(</span><span class="dt">char</span><span class="op">*</span> s<span class="op">,</span> streamsize n<span class="op">);</span></span>
+<span id="cb3-2"><a></a>ostream<span class="op">&amp;</span> write <span class="op">(</span><span class="dt">char</span><span class="op">*</span> s<span class="op">,</span> streamsize n<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -539,9 +539,9 @@
 <p>Reading / writing any value that isn’t type <code>char</code> requires casting the pointer (first argument) to type <code>char*</code>:</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a>fstream fin<span class="op">{</span><span class="st">"my_file"</span><span class="op">,</span> ios<span class="op">::</span>in<span class="op">|</span>ios<span class="op">::</span>binary<span class="op">};</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="dt">int</span> x<span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>fin<span class="op">.</span>read<span class="op">(</span><span class="kw">reinterpret_cast</span><span class="op">&lt;</span><span class="dt">char</span><span class="op">*&gt;(&amp;</span>x<span class="op">),</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span> <span class="co">// read 1 int (4 bytes).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a></a>fstream fin<span class="op">{</span><span class="st">"my_file"</span><span class="op">,</span> ios<span class="op">::</span>in<span class="op">|</span>ios<span class="op">::</span>binary<span class="op">};</span></span>
+<span id="cb4-2"><a></a><span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb4-3"><a></a>fin<span class="op">.</span>read<span class="op">(</span><span class="kw">reinterpret_cast</span><span class="op">&lt;</span><span class="dt">char</span><span class="op">*&gt;(&amp;</span>x<span class="op">),</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">int</span><span class="op">));</span> <span class="co">// read 1 int (4 bytes).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="random-access" class="slide level2">
 <h2>Random Access</h2>
@@ -591,8 +591,8 @@
 <p><em><code>stream</code></em><code>.seekg(</code><em><code>offset</code></em><code>,</code><em><code>mode</code></em><code>)</code><br>
 <em><code>stream</code></em><code>.seekp(</code><em><code>offset</code></em><code>,</code><em><code>mode</code></em><code>)</code></p>
 <p>Where <em>stream</em> is the file stream, offset_ is distance to seek (bytes), <em>mode</em> is where to start from (mathematically).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">// seek 25 bytes from the beginning of stream `fin`</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>fin<span class="op">.</span>seekg<span class="op">(</span><span class="dv">25</span><span class="bu">L</span><span class="op">,</span> ios<span class="op">::</span>beg<span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a><span class="co">// seek 25 bytes from the beginning of stream `fin`</span></span>
+<span id="cb5-2"><a></a>fin<span class="op">.</span>seekg<span class="op">(</span><span class="dv">25</span><span class="bu">L</span><span class="op">,</span> ios<span class="op">::</span>beg<span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="useful-ios-methods" class="slide level2">
 <h2>Useful <code>ios</code> Methods</h2>
@@ -616,60 +616,60 @@
 <li><a href="http://en.cppreference.com/w/cpp/types/is_trivially_copyable" class="uri">http://en.cppreference.com/w/cpp/types/is_trivially_copyable</a></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="pp">#include </span><span class="im">&lt;type_traits&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">//[...]</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">// Let class A be the class you are interested in...</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>boolalpha<span class="op">;</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>A<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">// if the output is 'false' then A is not trivially copyable.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb6-2"><a></a><span class="pp">#include </span><span class="im">&lt;type_traits&gt;</span></span>
+<span id="cb6-3"><a></a><span class="co">//[...]</span></span>
+<span id="cb6-4"><a></a><span class="co">// Let class A be the class you are interested in...</span></span>
+<span id="cb6-5"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>boolalpha<span class="op">;</span></span>
+<span id="cb6-6"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>A<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb6-7"><a></a><span class="co">// if the output is 'false' then A is not trivially copyable.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <div class="small-70 noborder">
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="pp">#include </span><span class="im">&lt;type_traits&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="kw">struct</span> A<span class="op">{</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    <span class="dt">int</span> x<span class="op">;</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>    <span class="dt">int</span> y<span class="op">;</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="op">};</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="kw">struct</span> B<span class="op">{</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a>    <span class="dt">int</span> x<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>    <span class="dt">int</span> y<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="op">};</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="kw">struct</span> C<span class="op">{</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a>    <span class="dt">int</span> x<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb7-19"><a href="#cb7-19"></a>    <span class="bu">std::</span>string s<span class="op">;</span>              <span class="co">// not OK!</span></span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb7-21"><a href="#cb7-21"></a>    <span class="dt">int</span> y<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
-<span id="cb7-22"><a href="#cb7-22"></a><span class="op">};</span></span>
-<span id="cb7-23"><a href="#cb7-23"></a></span>
-<span id="cb7-24"><a href="#cb7-24"></a><span class="kw">struct</span> D<span class="op">{</span></span>
-<span id="cb7-25"><a href="#cb7-25"></a>    <span class="dt">int</span><span class="op">*</span> x <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>           <span class="co">// watch out! probably not OK...</span></span>
-<span id="cb7-26"><a href="#cb7-26"></a><span class="op">};</span></span>
-<span id="cb7-27"><a href="#cb7-27"></a></span>
-<span id="cb7-28"><a href="#cb7-28"></a><span class="kw">struct</span> E<span class="op">{</span></span>
-<span id="cb7-29"><a href="#cb7-29"></a>    <span class="dt">int</span><span class="op">*</span> x <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>           </span>
-<span id="cb7-30"><a href="#cb7-30"></a>    E <span class="op">()</span> <span class="op">:</span> x<span class="op">{</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">{</span><span class="dv">3</span><span class="op">}</span> <span class="op">}</span> <span class="op">{}</span>   <span class="co">// not OK!</span></span>
-<span id="cb7-31"><a href="#cb7-31"></a>    <span class="op">~</span>E<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> x<span class="op">;</span> <span class="op">}</span></span>
-<span id="cb7-32"><a href="#cb7-32"></a><span class="op">};</span></span>
-<span id="cb7-33"><a href="#cb7-33"></a> </span>
-<span id="cb7-34"><a href="#cb7-34"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb7-35"><a href="#cb7-35"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>boolalpha<span class="op">;</span></span>
-<span id="cb7-36"><a href="#cb7-36"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>A<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// true</span></span>
-<span id="cb7-37"><a href="#cb7-37"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>B<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// true</span></span>
-<span id="cb7-38"><a href="#cb7-38"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>C<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// false</span></span>
-<span id="cb7-39"><a href="#cb7-39"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>D<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// true</span></span>
-<span id="cb7-40"><a href="#cb7-40"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>E<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// false</span></span>
-<span id="cb7-41"><a href="#cb7-41"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="cb7-42"><a href="#cb7-42"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb7-43"><a href="#cb7-43"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb7-2"><a></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb7-3"><a></a><span class="pp">#include </span><span class="im">&lt;type_traits&gt;</span></span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a><span class="kw">struct</span> A<span class="op">{</span></span>
+<span id="cb7-6"><a></a>    <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb7-7"><a></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb7-8"><a></a>    <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb7-9"><a></a><span class="op">};</span></span>
+<span id="cb7-10"><a></a></span>
+<span id="cb7-11"><a></a><span class="kw">struct</span> B<span class="op">{</span></span>
+<span id="cb7-12"><a></a>    <span class="dt">int</span> x<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb7-13"><a></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb7-14"><a></a>    <span class="dt">int</span> y<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb7-15"><a></a><span class="op">};</span></span>
+<span id="cb7-16"><a></a></span>
+<span id="cb7-17"><a></a><span class="kw">struct</span> C<span class="op">{</span></span>
+<span id="cb7-18"><a></a>    <span class="dt">int</span> x<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb7-19"><a></a>    <span class="bu">std::</span>string s<span class="op">;</span>              <span class="co">// not OK!</span></span>
+<span id="cb7-20"><a></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb7-21"><a></a>    <span class="dt">int</span> y<span class="op">[</span><span class="dv">10</span><span class="op">];</span></span>
+<span id="cb7-22"><a></a><span class="op">};</span></span>
+<span id="cb7-23"><a></a></span>
+<span id="cb7-24"><a></a><span class="kw">struct</span> D<span class="op">{</span></span>
+<span id="cb7-25"><a></a>    <span class="dt">int</span><span class="op">*</span> x <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>           <span class="co">// watch out! probably not OK...</span></span>
+<span id="cb7-26"><a></a><span class="op">};</span></span>
+<span id="cb7-27"><a></a></span>
+<span id="cb7-28"><a></a><span class="kw">struct</span> E<span class="op">{</span></span>
+<span id="cb7-29"><a></a>    <span class="dt">int</span><span class="op">*</span> x <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>           </span>
+<span id="cb7-30"><a></a>    E <span class="op">()</span> <span class="op">:</span> x<span class="op">{</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">{</span><span class="dv">3</span><span class="op">}</span> <span class="op">}</span> <span class="op">{}</span>   <span class="co">// not OK!</span></span>
+<span id="cb7-31"><a></a>    <span class="op">~</span>E<span class="op">()</span> <span class="op">{</span> <span class="kw">delete</span> x<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb7-32"><a></a><span class="op">};</span></span>
+<span id="cb7-33"><a></a> </span>
+<span id="cb7-34"><a></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb7-35"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>boolalpha<span class="op">;</span></span>
+<span id="cb7-36"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>A<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb7-37"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>B<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb7-38"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>C<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb7-39"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>D<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// true</span></span>
+<span id="cb7-40"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>is_trivially_copyable<span class="op">&lt;</span>E<span class="op">&gt;::</span>value <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span> <span class="co">// false</span></span>
+<span id="cb7-41"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb7-42"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb7-43"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="zero-memory-quickly" class="slide level2">
@@ -683,18 +683,20 @@
 <code>memset(</code><em><code>start</code></em><code>,</code><em><code>value</code></em><code>,</code><em><code>size</code></em><code>)</code></p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">// zero all bytes contained in `myObj`:</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>memset<span class="op">(&amp;</span>myObj<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>myObj<span class="op">));</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">// IMPORTANT:  Don't try this if your object contains non-primitive</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co">//             attributes or is a derived class!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="co">// zero all bytes contained in `myObj`:</span></span>
+<span id="cb8-2"><a></a>memset<span class="op">(&amp;</span>myObj<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>myObj<span class="op">));</span></span>
+<span id="cb8-3"><a></a><span class="co">// IMPORTANT:  Don't try this if your object contains non-primitive</span></span>
+<span id="cb8-4"><a></a><span class="co">//             attributes or is a derived class!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
+<div class="quarto-auto-generated-content">
+<p><img src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>CS 50x2 Accelerated Programming Series</p>
 </div>
+</div>
 <div class="reveal-header">
 <div class="header-logo">
-<img data-src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/home_grid.svg">
+<img data-src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/home_grid.svg">
 </div>
 <div class="sc-title">
 <p> </p>
@@ -950,18 +952,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -993,7 +984,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
@@ -1001,10 +1014,15 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1048,7 +1066,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

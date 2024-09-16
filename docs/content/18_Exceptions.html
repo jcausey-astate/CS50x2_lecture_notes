@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Exceptions</title>
+  <title>CS 50x2 Slides – Exceptions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0be79836d237d42b59157ec31cdbf0f9.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -485,35 +485,35 @@
 <h3 id="example">Example</h3>
 <p><br>
 </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">// function that *may* throw an exception</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="dt">int</span> totalDays<span class="op">(</span><span class="dt">int</span> days<span class="op">,</span> <span class="dt">int</span> weeks<span class="op">){</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="cf">if</span><span class="op">((</span>days <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">||</span> <span class="op">(</span>days <span class="op">&gt;</span> <span class="dv">7</span><span class="op">)){</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>        <span class="co">// value being thrown is a C-string:</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a>        <span class="cf">throw</span> <span class="st">"Invalid value for days."</span><span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>    <span class="op">}</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>    <span class="cf">if</span><span class="op">(</span>weeks <span class="op">&lt;</span> <span class="dv">0</span><span class="op">){</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a>        <span class="cf">throw</span> <span class="st">"Invalid value for weeks."</span><span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9"></a>    <span class="op">}</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>    <span class="cf">return</span> <span class="dv">7</span> <span class="op">*</span> weeks <span class="op">+</span> days<span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a></a><span class="co">// function that *may* throw an exception</span></span>
+<span id="cb1-2"><a></a><span class="dt">int</span> totalDays<span class="op">(</span><span class="dt">int</span> days<span class="op">,</span> <span class="dt">int</span> weeks<span class="op">){</span></span>
+<span id="cb1-3"><a></a>    <span class="cf">if</span><span class="op">((</span>days <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">||</span> <span class="op">(</span>days <span class="op">&gt;</span> <span class="dv">7</span><span class="op">)){</span></span>
+<span id="cb1-4"><a></a>        <span class="co">// value being thrown is a C-string:</span></span>
+<span id="cb1-5"><a></a>        <span class="cf">throw</span> <span class="st">"Invalid value for days."</span><span class="op">;</span></span>
+<span id="cb1-6"><a></a>    <span class="op">}</span></span>
+<span id="cb1-7"><a></a>    <span class="cf">if</span><span class="op">(</span>weeks <span class="op">&lt;</span> <span class="dv">0</span><span class="op">){</span></span>
+<span id="cb1-8"><a></a>        <span class="cf">throw</span> <span class="st">"Invalid value for weeks."</span><span class="op">;</span></span>
+<span id="cb1-9"><a></a>    <span class="op">}</span></span>
+<span id="cb1-10"><a></a>    <span class="cf">return</span> <span class="dv">7</span> <span class="op">*</span> weeks <span class="op">+</span> days<span class="op">;</span></span>
+<span id="cb1-11"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="example-handling-the-exception">Example: Handling the Exception</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="dt">int</span> days<span class="op">,</span> weeks<span class="op">;</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter days and weeks separated by space: </span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    cin  <span class="op">&gt;&gt;</span> days <span class="op">&gt;&gt;</span> weeks<span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>    </span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="cf">try</span> <span class="op">{</span>  </span>
-<span id="cb2-7"><a href="#cb2-7"></a>        <span class="dt">int</span> totDays <span class="op">=</span> totalDays<span class="op">(</span>days<span class="op">,</span> weeks<span class="op">);</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Total days: "</span> <span class="op">&lt;&lt;</span> totDays<span class="op">;</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="op">}</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> <span class="dt">char</span><span class="op">*</span> msg<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Error: "</span> <span class="op">&lt;&lt;</span> msg<span class="op">;</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>    <span class="op">}</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb2-2"><a></a>    <span class="dt">int</span> days<span class="op">,</span> weeks<span class="op">;</span></span>
+<span id="cb2-3"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter days and weeks separated by space: </span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb2-4"><a></a>    cin  <span class="op">&gt;&gt;</span> days <span class="op">&gt;&gt;</span> weeks<span class="op">;</span></span>
+<span id="cb2-5"><a></a>    </span>
+<span id="cb2-6"><a></a>    <span class="cf">try</span> <span class="op">{</span>  </span>
+<span id="cb2-7"><a></a>        <span class="dt">int</span> totDays <span class="op">=</span> totalDays<span class="op">(</span>days<span class="op">,</span> weeks<span class="op">);</span></span>
+<span id="cb2-8"><a></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Total days: "</span> <span class="op">&lt;&lt;</span> totDays<span class="op">;</span></span>
+<span id="cb2-9"><a></a>    <span class="op">}</span></span>
+<span id="cb2-10"><a></a>    <span class="cf">catch</span> <span class="op">(</span><span class="at">const</span> <span class="dt">char</span><span class="op">*</span> msg<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-11"><a></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Error: "</span> <span class="op">&lt;&lt;</span> msg<span class="op">;</span></span>
+<span id="cb2-12"><a></a>    <span class="op">}</span></span>
+<span id="cb2-13"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-14"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>Should</em> you <em>rely</em> on exception handling here?<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="small-80">(<strong>NO</strong>, you should check the values first.)</span></p>
 <p><br>
@@ -534,16 +534,16 @@ But, exceptions provide an impossible-to-ignore <span class="green">failsafe</sp
 <h3 id="example-exceptions-cant-be-ignored">Example: Exceptions Can’t be Ignored</h3>
 <p><br>
 </p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>    <span class="dt">int</span> days<span class="op">,</span> weeks<span class="op">;</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter days and weeks separated by space: </span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>    cin  <span class="op">&gt;&gt;</span> days <span class="op">&gt;&gt;</span> weeks<span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>    <span class="co">// No validity check at all!</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>    <span class="dt">int</span> totDays <span class="op">=</span> totalDays<span class="op">(</span>days<span class="op">,</span> weeks<span class="op">);</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Total days: "</span> <span class="op">&lt;&lt;</span> totDays<span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb3-2"><a></a>    <span class="dt">int</span> days<span class="op">,</span> weeks<span class="op">;</span></span>
+<span id="cb3-3"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter days and weeks separated by space: </span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb3-4"><a></a>    cin  <span class="op">&gt;&gt;</span> days <span class="op">&gt;&gt;</span> weeks<span class="op">;</span></span>
+<span id="cb3-5"><a></a>    <span class="co">// No validity check at all!</span></span>
+<span id="cb3-6"><a></a>    <span class="dt">int</span> totDays <span class="op">=</span> totalDays<span class="op">(</span>days<span class="op">,</span> weeks<span class="op">);</span></span>
+<span id="cb3-7"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Total days: "</span> <span class="op">&lt;&lt;</span> totDays<span class="op">;</span></span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-10"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>This code does not check to see if the values entered are valid.</p>
@@ -557,20 +557,20 @@ But, exceptions provide an impossible-to-ignore <span class="green">failsafe</sp
 <h3 id="example-checking-pre-conditions">Example: Checking Pre-Conditions</h3>
 <p><br>
 </p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>    <span class="dt">int</span> days<span class="op">,</span> weeks<span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter days and weeks separated by space: </span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>    cin  <span class="op">&gt;&gt;</span> days <span class="op">&gt;&gt;</span> weeks<span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>    <span class="co">// check pre-conditions first:</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>    <span class="cf">if</span><span class="op">(</span> days <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> days <span class="op">&lt;</span> <span class="dv">7</span> <span class="op">&amp;&amp;</span> weeks <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">){</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>        <span class="dt">int</span> totDays <span class="op">=</span> totalDays<span class="op">(</span>days<span class="op">,</span> weeks<span class="op">);</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Total days: "</span> <span class="op">&lt;&lt;</span> totDays <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a>    <span class="op">}</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>    <span class="cf">else</span><span class="op">{</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"You entered invalid values.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a>    <span class="op">}</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb4-2"><a></a>    <span class="dt">int</span> days<span class="op">,</span> weeks<span class="op">;</span></span>
+<span id="cb4-3"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"Enter days and weeks separated by space: </span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb4-4"><a></a>    cin  <span class="op">&gt;&gt;</span> days <span class="op">&gt;&gt;</span> weeks<span class="op">;</span></span>
+<span id="cb4-5"><a></a>    <span class="co">// check pre-conditions first:</span></span>
+<span id="cb4-6"><a></a>    <span class="cf">if</span><span class="op">(</span> days <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> days <span class="op">&lt;</span> <span class="dv">7</span> <span class="op">&amp;&amp;</span> weeks <span class="op">&gt;=</span> <span class="dv">0</span> <span class="op">){</span></span>
+<span id="cb4-7"><a></a>        <span class="dt">int</span> totDays <span class="op">=</span> totalDays<span class="op">(</span>days<span class="op">,</span> weeks<span class="op">);</span></span>
+<span id="cb4-8"><a></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"Total days: "</span> <span class="op">&lt;&lt;</span> totDays <span class="op">&lt;&lt;</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb4-9"><a></a>    <span class="op">}</span></span>
+<span id="cb4-10"><a></a>    <span class="cf">else</span><span class="op">{</span></span>
+<span id="cb4-11"><a></a>        cout <span class="op">&lt;&lt;</span> <span class="st">"You entered invalid values.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb4-12"><a></a>    <span class="op">}</span></span>
+<span id="cb4-13"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-14"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>This code checks the pre-conditions before calling <code>totDays()</code>, so the exception can’t be thrown.</p>
@@ -617,12 +617,12 @@ But, exceptions provide an impossible-to-ignore <span class="green">failsafe</sp
 </ul></li>
 </ul>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">class</span> NullPointerException<span class="op">{</span> <span class="op">};</span>  <span class="co">// empty</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a><span class="kw">class</span> NullPointerException<span class="op">{</span> <span class="op">};</span>  <span class="co">// empty</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> NullPointerException<span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>        string msg<span class="op">;</span>            <span class="co">// with attribute</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a><span class="kw">class</span> NullPointerException<span class="op">{</span></span>
+<span id="cb6-2"><a></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-3"><a></a>        string msg<span class="op">;</span>            <span class="co">// with attribute</span></span>
+<span id="cb6-4"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="standard-exceptions" class="slide level2">
 <h2>Standard Exceptions</h2>
@@ -630,26 +630,26 @@ But, exceptions provide an impossible-to-ignore <span class="green">failsafe</sp
 <ul>
 <li>Useful (later) to make our own exceptions with nice <span class="green">common behaviors</span>.</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">#include</span><span class="im">&lt;exception&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">using</span> <span class="bu">std::</span>exception<span class="op">;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="kw">class</span> NullPointerException <span class="op">:</span> <span class="kw">public</span> exception<span class="op">{</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>        <span class="kw">virtual</span> <span class="at">const</span> <span class="dt">char</span><span class="op">*</span> what<span class="op">()</span><span class="at">const</span> <span class="op">{</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>            <span class="cf">return</span> “A null pointer was encountered<span class="op">.</span>”<span class="op">;</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>        <span class="op">}</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a><span class="pp">#include</span><span class="im">&lt;exception&gt;</span></span>
+<span id="cb7-2"><a></a><span class="kw">using</span> <span class="bu">std::</span>exception<span class="op">;</span></span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a><span class="kw">class</span> NullPointerException <span class="op">:</span> <span class="kw">public</span> exception<span class="op">{</span></span>
+<span id="cb7-5"><a></a>    <span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-6"><a></a>        <span class="kw">virtual</span> <span class="at">const</span> <span class="dt">char</span><span class="op">*</span> what<span class="op">()</span><span class="at">const</span> <span class="op">{</span></span>
+<span id="cb7-7"><a></a>            <span class="cf">return</span> “A null pointer was encountered<span class="op">.</span>”<span class="op">;</span></span>
+<span id="cb7-8"><a></a>        <span class="op">}</span></span>
+<span id="cb7-9"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="standard-exceptions-1" class="slide level2">
 <h2>Standard Exceptions</h2>
 <p>Also, <em>Polymorphism</em>!</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">try</span><span class="op">{</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>    <span class="op">[...]</span> </span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="op">}</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="cf">catch</span><span class="op">(</span>exception<span class="op">&amp;</span> e<span class="op">){</span>   </span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="co">// catches _any_ standard exception!</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>    cout <span class="op">&lt;&lt;</span> e<span class="op">.</span>what<span class="op">()</span>  <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="cf">try</span><span class="op">{</span></span>
+<span id="cb8-2"><a></a>    <span class="op">[...]</span> </span>
+<span id="cb8-3"><a></a><span class="op">}</span></span>
+<span id="cb8-4"><a></a><span class="cf">catch</span><span class="op">(</span>exception<span class="op">&amp;</span> e<span class="op">){</span>   </span>
+<span id="cb8-5"><a></a>    <span class="co">// catches _any_ standard exception!</span></span>
+<span id="cb8-6"><a></a>    cout <span class="op">&lt;&lt;</span> e<span class="op">.</span>what<span class="op">()</span>  <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb8-7"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -657,28 +657,28 @@ But, exceptions provide an impossible-to-ignore <span class="green">failsafe</sp
 <p>The <code>&lt;stdexcept&gt;</code> header defines some standard exception classes that are ready-to-use. They are divided into two sets (names are self-explanatory):<br>
 <br>
 <strong>Logic errors</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a>logic_error      </span>
-<span id="cb9-2"><a href="#cb9-2"></a>domain_error     </span>
-<span id="cb9-3"><a href="#cb9-3"></a>invalid_argument </span>
-<span id="cb9-4"><a href="#cb9-4"></a>length_error</span>
-<span id="cb9-5"><a href="#cb9-5"></a>out_of_range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a></a>logic_error      </span>
+<span id="cb9-2"><a></a>domain_error     </span>
+<span id="cb9-3"><a></a>invalid_argument </span>
+<span id="cb9-4"><a></a>length_error</span>
+<span id="cb9-5"><a></a>out_of_range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Runtime errors</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a>runtime_error   </span>
-<span id="cb10-2"><a href="#cb10-2"></a>range_error     </span>
-<span id="cb10-3"><a href="#cb10-3"></a>overflow_error  </span>
-<span id="cb10-4"><a href="#cb10-4"></a>underflow_error </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a></a>runtime_error   </span>
+<span id="cb10-2"><a></a>range_error     </span>
+<span id="cb10-3"><a></a>overflow_error  </span>
+<span id="cb10-4"><a></a>underflow_error </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="other-useful-standard-library-exceptions">Other Useful Standard Library Exceptions</h3>
 <p><br>
 </p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a>    exception</span>
-<span id="cb11-2"><a href="#cb11-2"></a>    bad_alloc</span>
-<span id="cb11-3"><a href="#cb11-3"></a>    bad_cast</span>
-<span id="cb11-4"><a href="#cb11-4"></a>    bad_exception</span>
-<span id="cb11-5"><a href="#cb11-5"></a>    bad_typeid</span>
-<span id="cb11-6"><a href="#cb11-6"></a>    ios_base<span class="op">::</span>failure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a></a>    exception</span>
+<span id="cb11-2"><a></a>    bad_alloc</span>
+<span id="cb11-3"><a></a>    bad_cast</span>
+<span id="cb11-4"><a></a>    bad_exception</span>
+<span id="cb11-5"><a></a>    bad_typeid</span>
+<span id="cb11-6"><a></a>    ios_base<span class="op">::</span>failure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="documentation-guidelines" class="slide level2">
 <h2>Documentation Guidelines</h2>
@@ -686,28 +686,30 @@ But, exceptions provide an impossible-to-ignore <span class="green">failsafe</sp
 Exceptions require some new documentation… Here’s an example:</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">/**</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="co"> * converts a numerical ranking in {1,2,3} to the corresponding </span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="co"> * medal color from {"gold","silver","bronze"}</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="co"> * </span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="co"> * </span><span class="an">@param</span><span class="co">  </span><span class="cv">rank</span><span class="co">  integer numerical ranking; should be in {1,2,3}</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="co"> * </span><span class="an">@return</span><span class="co"> the corresponding metal color for `rank` is returned </span></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="co"> *         from the set {"gold", "silver", "bronze"}.</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="co"> * </span><span class="an">@throw</span><span class="co">  </span><span class="cv">std::invalid_argument</span><span class="co"> is thrown if `rank` is not one</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="co"> *         of {1,2,3}.</span></span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="co"> */</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a></a><span class="co">/**</span></span>
+<span id="cb12-2"><a></a><span class="co"> * converts a numerical ranking in {1,2,3} to the corresponding </span></span>
+<span id="cb12-3"><a></a><span class="co"> * medal color from {"gold","silver","bronze"}</span></span>
+<span id="cb12-4"><a></a><span class="co"> * </span></span>
+<span id="cb12-5"><a></a><span class="co"> * </span><span class="an">@param</span><span class="co">  </span><span class="cv">rank</span><span class="co">  integer numerical ranking; should be in {1,2,3}</span></span>
+<span id="cb12-6"><a></a><span class="co"> * </span><span class="an">@return</span><span class="co"> the corresponding metal color for `rank` is returned </span></span>
+<span id="cb12-7"><a></a><span class="co"> *         from the set {"gold", "silver", "bronze"}.</span></span>
+<span id="cb12-8"><a></a><span class="co"> * </span><span class="an">@throw</span><span class="co">  </span><span class="cv">std::invalid_argument</span><span class="co"> is thrown if `rank` is not one</span></span>
+<span id="cb12-9"><a></a><span class="co"> *         of {1,2,3}.</span></span>
+<span id="cb12-10"><a></a><span class="co"> */</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment" data-code-focus="8-9">
 <p>Notice the <code>@throw</code> Doxygen tag – it should be used once for <em>each type</em> of exception your function may throw.</p>
 <p>Be sure to describe the exception <em>type</em>, as well as when/why it would be thrown.</p>
 </div>
 
-<p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
+<div class="quarto-auto-generated-content">
+<p><img src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>CS 50x2 Accelerated Programming Series</p>
 </div>
+</div>
 <div class="reveal-header">
 <div class="header-logo">
-<img data-src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/home_grid.svg">
+<img data-src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/home_grid.svg">
 </div>
 <div class="sc-title">
 <p> </p>
@@ -963,18 +965,7 @@ Exceptions require some new documentation… Here’s an example:</p>
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1006,7 +997,29 @@ Exceptions require some new documentation… Here’s an example:</p>
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
@@ -1014,10 +1027,15 @@ Exceptions require some new documentation… Here’s an example:</p>
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1061,7 +1079,11 @@ Exceptions require some new documentation… Here’s an example:</p>
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

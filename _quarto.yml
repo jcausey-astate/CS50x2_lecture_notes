@@ -22,7 +22,7 @@ website:
   page-footer: "Copyright &copy; 2023 Jason Causey, Arkansas State University"
 
 format:
-  astate-codeslides-revealjs:
+  astate_codeslides-revealjs:
     footer: "{{< meta course >}}"
     link-external-newwindow: true
     slide-number: true

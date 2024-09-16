@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Variables, Operators, Common Errors</title>
+  <title>CS 50x2 Slides – Variables, Operators, Common Errors</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0be79836d237d42b59157ec31cdbf0f9.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -471,13 +471,13 @@
 <li><strong>variable</strong> : a named storage location for data within a program</li>
 <li><strong>variable declaration</strong> : a statement used to tell the compiler that a new variable should be created; contains the identifier and type for the variable.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">int</span> temperature<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a></a><span class="dt">int</span> temperature<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The declaration statement above tells the compiler to create a variable named <code>temperature</code> that will store an integer.</p>
 </section>
 <section id="data-types" class="slide level2">
 <h2>Data Types</h2>
 <p>So what types of things can we store in variables?</p>
-<table>
+<table class="caption-top">
 <thead>
 <tr class="header">
 <th style="text-align: center;">Type Name</th>
@@ -570,7 +570,7 @@
 <section id="declaration" class="slide level2">
 <h2>Declaration</h2>
 <p>Declaring a variable allows the compiler to reserve memory for the data, as well as managing the association between the data’s memory address and the identifier chosen to represent the variable in the program.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">int</span> temperature<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a><span class="dt">int</span> temperature<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The declaration above produces the situation in memory shown below:</p>
 
 <img data-src="images/Variables_Operators_Errors/int_temperature_memory.svg" class="r-stretch quarto-figure-center"><p class="caption">Variable Declaration</p></section>
@@ -601,24 +601,24 @@
 <li>Variables always begin in an <em>uninitialized</em> state.</li>
 </ul>
 <p><strong>Example:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a></a><span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The statement above <em>declares</em> a variable named <code>temperature</code> <strong>and</strong> <em>initializes</em> <code>temperature</code> to contain the value <code>82</code>.</p>
 </section>
 <section class="slide level2">
 
 <h3 id="example">Example</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="op">{</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>    <span class="co">// Declare a variable to store the temperature:</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>    <span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a>    <span class="co">// Print its initial value to the screen:</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The temperature is: "</span> <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>    </span>
-<span id="cb5-10"><a href="#cb5-10"></a>    </span>
-<span id="cb5-11"><a href="#cb5-11"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb5-4"><a></a><span class="op">{</span></span>
+<span id="cb5-5"><a></a>    <span class="co">// Declare a variable to store the temperature:</span></span>
+<span id="cb5-6"><a></a>    <span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a>    <span class="co">// Print its initial value to the screen:</span></span>
+<span id="cb5-9"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The temperature is: "</span> <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>    </span>
+<span id="cb5-10"><a></a>    </span>
+<span id="cb5-11"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-12"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="the-auto-keyword" class="slide level2">
 <h2>The <code>auto</code> Keyword</h2>
@@ -629,8 +629,8 @@
 </ul></li>
 </ul>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">auto</span> interestRate <span class="op">=</span> <span class="fl">12.75</span><span class="op">;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">auto</span> stockCode    <span class="op">=</span> <span class="ch">'C'</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a><span class="kw">auto</span> interestRate <span class="op">=</span> <span class="fl">12.75</span><span class="op">;</span></span>
+<span id="cb6-2"><a></a><span class="kw">auto</span> stockCode    <span class="op">=</span> <span class="ch">'C'</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here, <code>interestRate</code> will be of type <code>double</code> and <code>stockCode</code> will be type <code>char</code> — the compiler can determine this by examining the type of the literals used to initialize the variables.</p>
 </section>
 <section id="when-to-use-auto" class="slide level2">
@@ -682,10 +682,10 @@
 </ul></li>
 </ul>
 <p><strong>Example</strong>:</p>
-<div class="sourceCode" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Initial temperature: "</span> <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>temperature <span class="op">=</span> <span class="dv">75</span><span class="op">;</span> <span class="co">// change the value of temperature to 75</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Temperature now: "</span>     <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a><span class="dt">int</span> temperature <span class="op">=</span> <span class="dv">82</span><span class="op">;</span></span>
+<span id="cb7-2"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Initial temperature: "</span> <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb7-3"><a></a>temperature <span class="op">=</span> <span class="dv">75</span><span class="op">;</span> <span class="co">// change the value of temperature to 75</span></span>
+<span id="cb7-4"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Temperature now: "</span>     <span class="op">&lt;&lt;</span> temperature <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The third line should be read as “<code>temperature</code> is assigned 75”.</p>
 </section>
 <section class="slide level2">
@@ -732,9 +732,9 @@
 <li>The <code>&gt;&gt;</code> operator is the C++ <em>stream extraction operator</em>.</li>
 <li>It takes a value from the stream on the left (often we use <code>std::cin</code>) and places it into the variable on the right:</li>
 </ul>
-<div class="sourceCode" id="cb8" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">int</span> x<span class="op">;</span>                                   <span class="co">// declare x</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter an integer value: "</span><span class="op">;</span> <span class="co">// prompt</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> x<span class="op">;</span>                          <span class="co">// read x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8" data-code-line-numbers="3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="dt">int</span> x<span class="op">;</span>                                   <span class="co">// declare x</span></span>
+<span id="cb8-2"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter an integer value: "</span><span class="op">;</span> <span class="co">// prompt</span></span>
+<span id="cb8-3"><a></a><span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> x<span class="op">;</span>                          <span class="co">// read x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Notice that the stream extraction operation works like assignment, except that the new value comes from a stream.</li>
 <li><code>std::cin</code> is the <em>standard input stream</em> (usually attached to the keyboard)</li>
@@ -783,12 +783,12 @@
 <h2>Expressions</h2>
 <p>An expression may consist of one or more operations on data, and will evaluate to a result whose type is the most precise type involved in the expression.<br> <small><i>(This is highly simplified… but is true most of the time.)</i></small></p>
 <p><strong>Example:</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">7</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// produces 36</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> x <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> y <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>             <span class="co">// produces 7</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="dt">double</span> z <span class="op">=</span> <span class="fl">4.0</span><span class="op">;</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> y <span class="op">/</span> z <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>         <span class="co">// produces 1.75</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">7</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// produces 36</span></span>
+<span id="cb11-2"><a></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb11-3"><a></a><span class="dt">int</span> y <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> x <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb11-4"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> y <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>             <span class="co">// produces 7</span></span>
+<span id="cb11-5"><a></a><span class="dt">double</span> z <span class="op">=</span> <span class="fl">4.0</span><span class="op">;</span></span>
+<span id="cb11-6"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> y <span class="op">/</span> z <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>         <span class="co">// produces 1.75</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="the-const-modifier" class="slide level2">
 <h2>The <code>const</code> Modifier</h2>
@@ -806,17 +806,17 @@
 <li><strong>Avoid</strong> defining non-<code>const</code> variables globally!</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb12" data-code-line-numbers="4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="co">// PI should be known everywhere, global </span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="co">// constants are OK for this purpose</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="at">const</span> <span class="dt">double</span> PI <span class="op">=</span> <span class="fl">3.14159</span><span class="op">;</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>    <span class="dt">int</span>    radius <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
-<span id="cb12-8"><a href="#cb12-8"></a>    <span class="dt">double</span> area   <span class="op">=</span> PI <span class="op">*</span> <span class="op">(</span>radius <span class="op">*</span> radius<span class="op">);</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The area of a circle with radius "</span> </span>
-<span id="cb12-10"><a href="#cb12-10"></a>              <span class="op">&lt;&lt;</span> radius <span class="op">&lt;&lt;</span> <span class="st">" is: "</span> <span class="op">&lt;&lt;</span> area <span class="op">&lt;&lt;</span> <span class="st">".</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12" data-code-line-numbers="4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb12-2"><a></a><span class="co">// PI should be known everywhere, global </span></span>
+<span id="cb12-3"><a></a><span class="co">// constants are OK for this purpose</span></span>
+<span id="cb12-4"><a></a><span class="at">const</span> <span class="dt">double</span> PI <span class="op">=</span> <span class="fl">3.14159</span><span class="op">;</span></span>
+<span id="cb12-5"><a></a></span>
+<span id="cb12-6"><a></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb12-7"><a></a>    <span class="dt">int</span>    radius <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb12-8"><a></a>    <span class="dt">double</span> area   <span class="op">=</span> PI <span class="op">*</span> <span class="op">(</span>radius <span class="op">*</span> radius<span class="op">);</span></span>
+<span id="cb12-9"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"The area of a circle with radius "</span> </span>
+<span id="cb12-10"><a></a>              <span class="op">&lt;&lt;</span> radius <span class="op">&lt;&lt;</span> <span class="st">" is: "</span> <span class="op">&lt;&lt;</span> area <span class="op">&lt;&lt;</span> <span class="st">".</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb12-11"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="comments" class="slide level2">
 <h2>Comments</h2>
@@ -887,13 +887,15 @@
 </ul></li>
 </ul>
 
-<p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
+<div class="quarto-auto-generated-content">
+<p><img src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>CS 50x2 Accelerated Programming Series</p>
 </div>
+</div>
 <div class="reveal-header">
 <div class="header-logo">
-<img data-src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/home_grid.svg">
+<img data-src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/home_grid.svg">
 </div>
 <div class="sc-title">
 <p> </p>
@@ -1149,18 +1151,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1192,7 +1183,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
@@ -1200,10 +1213,15 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1247,7 +1265,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

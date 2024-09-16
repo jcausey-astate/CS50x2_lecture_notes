@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Dynamic Memory</title>
+  <title>CS 50x2 Slides – Dynamic Memory</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0be79836d237d42b59157ec31cdbf0f9.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -435,17 +435,17 @@
 <section class="slide level2">
 
 <h3 id="example-single-item">Example (single item)</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">// Allocate a single Real-number value:</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="dt">double</span><span class="op">*</span> rPtr <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter rainfall amount from last night: "</span><span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> <span class="op">*</span>rPtr<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"It rained "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>rPtr <span class="op">&lt;&lt;</span> <span class="st">" inches last night.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">// De-allocate the memory when you are finished with it:</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">delete</span> rPtr<span class="op">;</span>        <span class="co">// delete doesn't change `rPtr`'s value...</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>rPtr <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>     <span class="co">// null the pointer to safely disable it.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a></a><span class="co">// Allocate a single Real-number value:</span></span>
+<span id="cb1-2"><a></a><span class="dt">double</span><span class="op">*</span> rPtr <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">;</span></span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter rainfall amount from last night: "</span><span class="op">;</span></span>
+<span id="cb1-5"><a></a><span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> <span class="op">*</span>rPtr<span class="op">;</span></span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"It rained "</span> <span class="op">&lt;&lt;</span> <span class="op">*</span>rPtr <span class="op">&lt;&lt;</span> <span class="st">" inches last night.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="co">// De-allocate the memory when you are finished with it:</span></span>
+<span id="cb1-10"><a></a><span class="kw">delete</span> rPtr<span class="op">;</span>        <span class="co">// delete doesn't change `rPtr`'s value...</span></span>
+<span id="cb1-11"><a></a>rPtr <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>     <span class="co">// null the pointer to safely disable it.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <img data-src="images/shared/dynamic_memory_double.svg" class="r-stretch quarto-figure-center"><p class="caption">One double allocated dynamically.</p></section>
 <section id="dynamic-memory-notes" class="slide level2">
@@ -488,22 +488,22 @@
 <section class="slide level2">
 
 <h3 id="example-dynamic-array">Example (dynamic array)</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">double</span><span class="op">*</span> scores <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>               <span class="co">// array ptr</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="dt">int</span> n_scores<span class="op">;</span>                           <span class="co">// size</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter number of scores: "</span><span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> n_scores<span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a>scores <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">[</span>n_scores<span class="op">];</span>          <span class="co">// var size is OK</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n_scores<span class="op">;</span> i<span class="op">++){</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter score "</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>i<span class="op">+</span><span class="dv">1</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> scores<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="op">}</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">// [...]    Use the data for something interesting...</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="kw">delete</span> <span class="op">[]</span> scores<span class="op">;</span>                       <span class="co">// de-allocate space</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a>scores <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>                       <span class="co">// disable the ptr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a></a><span class="dt">double</span><span class="op">*</span> scores <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>               <span class="co">// array ptr</span></span>
+<span id="cb2-2"><a></a><span class="dt">int</span> n_scores<span class="op">;</span>                           <span class="co">// size</span></span>
+<span id="cb2-3"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter number of scores: "</span><span class="op">;</span></span>
+<span id="cb2-4"><a></a><span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> n_scores<span class="op">;</span></span>
+<span id="cb2-5"><a></a></span>
+<span id="cb2-6"><a></a>scores <span class="op">=</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">[</span>n_scores<span class="op">];</span>          <span class="co">// var size is OK</span></span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a><span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n_scores<span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb2-9"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter score "</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>i<span class="op">+</span><span class="dv">1</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
+<span id="cb2-10"><a></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> scores<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb2-11"><a></a><span class="op">}</span></span>
+<span id="cb2-12"><a></a></span>
+<span id="cb2-13"><a></a><span class="co">// [...]    Use the data for something interesting...</span></span>
+<span id="cb2-14"><a></a></span>
+<span id="cb2-15"><a></a><span class="kw">delete</span> <span class="op">[]</span> scores<span class="op">;</span>                       <span class="co">// de-allocate space</span></span>
+<span id="cb2-16"><a></a>scores <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span>                       <span class="co">// disable the ptr</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dynamic-array-notes" class="slide level2">
 <h2>Dynamic Array Notes</h2>
@@ -512,11 +512,11 @@
 <p>Note the different <code>new</code> and <code>delete</code> operators for arrays:</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">int</span> size <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="dt">int</span><span class="op">*</span> a <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span>   <span class="co">// new array</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">// [...]</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">delete</span> <span class="op">[]</span> a<span class="op">;</span>              <span class="co">// delete array</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>a <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a><span class="dt">int</span> size <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb3-2"><a></a><span class="dt">int</span><span class="op">*</span> a <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>size<span class="op">];</span>   <span class="co">// new array</span></span>
+<span id="cb3-3"><a></a><span class="co">// [...]</span></span>
+<span id="cb3-4"><a></a><span class="kw">delete</span> <span class="op">[]</span> a<span class="op">;</span>              <span class="co">// delete array</span></span>
+<span id="cb3-5"><a></a>a <span class="op">=</span> <span class="kw">nullptr</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <dl>
@@ -540,7 +540,7 @@
 <li><p>An exception is thrown and the program will terminate if there is not enough free memory to complete the request.</p></li>
 <li><p>Or, you can use the (<code>std::nothrow</code>) version:</p></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">int</span> <span class="op">*</span>xPtr <span class="op">=</span> <span class="kw">new</span><span class="op">(</span><span class="bu">std::</span>nothrow<span class="op">)</span> <span class="dt">int</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a></a><span class="dt">int</span> <span class="op">*</span>xPtr <span class="op">=</span> <span class="kw">new</span><span class="op">(</span><span class="bu">std::</span>nothrow<span class="op">)</span> <span class="dt">int</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>In this case, test that the address returned isn’t nullptr (nullptr will indicate failure).</p>
@@ -585,12 +585,12 @@
 <p>A <code>unique_ptr</code> retains sole ownership of an object, and destroys the object when the <code>unique_ptr</code> goes out of scope.<br>
 <br>
 <strong>Example</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">int</span> main<span class="op">(){</span>   </span>
-<span id="cb5-2"><a href="#cb5-2"></a>   unique_ptr<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> ptr<span class="op">{</span> <span class="kw">new</span> <span class="dt">int</span> <span class="op">};</span> <span class="co">// allocate &amp; take ownership</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>   <span class="op">*</span>ptr <span class="op">=</span> <span class="dv">99</span><span class="op">;</span>                      <span class="co">// place 99 at ptr</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>   <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>ptr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>      <span class="co">// print value at ptr (99)</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>   <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>                       <span class="co">// frees memory as ptr leaves</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="op">}</span>                                  <span class="co">// its local scope</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a><span class="dt">int</span> main<span class="op">(){</span>   </span>
+<span id="cb5-2"><a></a>   unique_ptr<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> ptr<span class="op">{</span> <span class="kw">new</span> <span class="dt">int</span> <span class="op">};</span> <span class="co">// allocate &amp; take ownership</span></span>
+<span id="cb5-3"><a></a>   <span class="op">*</span>ptr <span class="op">=</span> <span class="dv">99</span><span class="op">;</span>                      <span class="co">// place 99 at ptr</span></span>
+<span id="cb5-4"><a></a>   <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>ptr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>      <span class="co">// print value at ptr (99)</span></span>
+<span id="cb5-5"><a></a>   <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>                       <span class="co">// frees memory as ptr leaves</span></span>
+<span id="cb5-6"><a></a><span class="op">}</span>                                  <span class="co">// its local scope</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>You must tell the <code>unique_ptr</code> what <em>type</em> of data it will point to.
 <ul>
@@ -601,21 +601,21 @@
 </section>
 <section id="unique_ptr-to-array" class="slide level2">
 <h2><code>unique_ptr</code> to Array</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>    <span class="dt">int</span> n_scores<span class="op">;</span>                           <span class="co">// size</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter number of scores: "</span><span class="op">;</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> n_scores<span class="op">;</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a></span>
-<span id="cb6-6"><a href="#cb6-6"></a>    <span class="co">// allocate array and take ownership with `scores`:</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>    <span class="bu">std::</span>unique_ptr<span class="op">&lt;</span><span class="dt">double</span><span class="op">[]&gt;</span> scores<span class="op">{</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">[</span>n_scores<span class="op">]</span> <span class="op">};</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a></span>
-<span id="cb6-9"><a href="#cb6-9"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n_scores<span class="op">;</span> i<span class="op">++){</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter score "</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>i<span class="op">+</span><span class="dv">1</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>        <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> scores<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>    <span class="op">}</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a>    <span class="co">// [...]    Use the data for something interesting...</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>   <span class="co">// scores gets de-allocated automatically</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb6-2"><a></a>    <span class="dt">int</span> n_scores<span class="op">;</span>                           <span class="co">// size</span></span>
+<span id="cb6-3"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter number of scores: "</span><span class="op">;</span></span>
+<span id="cb6-4"><a></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> n_scores<span class="op">;</span></span>
+<span id="cb6-5"><a></a></span>
+<span id="cb6-6"><a></a>    <span class="co">// allocate array and take ownership with `scores`:</span></span>
+<span id="cb6-7"><a></a>    <span class="bu">std::</span>unique_ptr<span class="op">&lt;</span><span class="dt">double</span><span class="op">[]&gt;</span> scores<span class="op">{</span> <span class="kw">new</span> <span class="dt">double</span><span class="op">[</span>n_scores<span class="op">]</span> <span class="op">};</span></span>
+<span id="cb6-8"><a></a></span>
+<span id="cb6-9"><a></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n_scores<span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb6-10"><a></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter score "</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>i<span class="op">+</span><span class="dv">1</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
+<span id="cb6-11"><a></a>        <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> scores<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb6-12"><a></a>    <span class="op">}</span></span>
+<span id="cb6-13"><a></a>    <span class="co">// [...]    Use the data for something interesting...</span></span>
+<span id="cb6-14"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>   <span class="co">// scores gets de-allocated automatically</span></span>
+<span id="cb6-15"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 Pay attention to the <em>type argument</em> <strong><code>&lt;double[]&gt;</code></strong> : Type <code>&lt;double*&gt;</code> will not work here.</p>
 </section>
@@ -624,58 +624,60 @@ Pay attention to the <em>type argument</em> <strong><code>&lt;double[]&gt;</code
 <p>Modern C++ idioms seem to be pushing toward using the <code>make_unique()</code> function (and <code>make_shared()</code> for <code>shared_ptr</code>):<br>
 <br>
 </p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>    unique_ptr<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> ptr<span class="op">{</span> <span class="bu">std::</span>make_unique<span class="op">(</span><span class="dv">99</span><span class="op">)</span> <span class="op">};</span> <span class="co">// allocate and init</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>ptr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>                   <span class="co">// print value at ptr (99)</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>    </span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="dt">int</span> n_scores<span class="op">;</span>                                <span class="co">// size for array</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter number of scores: "</span><span class="op">;</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> n_scores<span class="op">;</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a></span>
-<span id="cb7-9"><a href="#cb7-9"></a>    <span class="co">// allocate array and take ownership with `scores`:</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>    <span class="bu">std::</span>unique_ptr<span class="op">&lt;</span><span class="dt">double</span><span class="op">[]&gt;</span> scores<span class="op">{</span> <span class="bu">std::</span>make_unique<span class="op">&lt;</span><span class="dt">double</span><span class="op">[]&gt;(</span>n_scores<span class="op">)</span> <span class="op">};</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a></span>
-<span id="cb7-12"><a href="#cb7-12"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n_scores<span class="op">;</span> i<span class="op">++){</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter score "</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>i<span class="op">+</span><span class="dv">1</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>        <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> scores<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a>    <span class="op">}</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a>    <span class="co">// [...]    Use the data for something interesting...</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>   <span class="co">// scores and ptr are de-allocated automatically</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb7-2"><a></a>    unique_ptr<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> ptr<span class="op">{</span> <span class="bu">std::</span>make_unique<span class="op">(</span><span class="dv">99</span><span class="op">)</span> <span class="op">};</span> <span class="co">// allocate and init</span></span>
+<span id="cb7-3"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>ptr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>                   <span class="co">// print value at ptr (99)</span></span>
+<span id="cb7-4"><a></a>    </span>
+<span id="cb7-5"><a></a>    <span class="dt">int</span> n_scores<span class="op">;</span>                                <span class="co">// size for array</span></span>
+<span id="cb7-6"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter number of scores: "</span><span class="op">;</span></span>
+<span id="cb7-7"><a></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> n_scores<span class="op">;</span></span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a>    <span class="co">// allocate array and take ownership with `scores`:</span></span>
+<span id="cb7-10"><a></a>    <span class="bu">std::</span>unique_ptr<span class="op">&lt;</span><span class="dt">double</span><span class="op">[]&gt;</span> scores<span class="op">{</span> <span class="bu">std::</span>make_unique<span class="op">&lt;</span><span class="dt">double</span><span class="op">[]&gt;(</span>n_scores<span class="op">)</span> <span class="op">};</span></span>
+<span id="cb7-11"><a></a></span>
+<span id="cb7-12"><a></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n_scores<span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb7-13"><a></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter score "</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>i<span class="op">+</span><span class="dv">1</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
+<span id="cb7-14"><a></a>        <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> scores<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb7-15"><a></a>    <span class="op">}</span></span>
+<span id="cb7-16"><a></a>    <span class="co">// [...]    Use the data for something interesting...</span></span>
+<span id="cb7-17"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>   <span class="co">// scores and ptr are de-allocated automatically</span></span>
+<span id="cb7-18"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="putting-it-together-with-auto" class="slide level2">
 <h2>Putting it together with <code>auto</code>:</h2>
 <p><br>
 <br>
 </p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">int</span> main<span class="op">(){</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>    <span class="kw">auto</span> ptr<span class="op">{</span> <span class="bu">std::</span>make_unique<span class="op">(</span><span class="dv">99</span><span class="op">)</span> <span class="op">};</span>         <span class="co">// allocate and init</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>ptr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>                <span class="co">// print value at ptr (99)</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>    </span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="dt">int</span> n_scores<span class="op">;</span>                             <span class="co">// size for array</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter number of scores: "</span><span class="op">;</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> n_scores<span class="op">;</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a></span>
-<span id="cb8-9"><a href="#cb8-9"></a>    <span class="co">// allocate array and take ownership with `scores`:</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>    <span class="kw">auto</span> scores<span class="op">{</span> <span class="bu">std::</span>make_unique<span class="op">&lt;</span><span class="dt">double</span><span class="op">[]&gt;(</span>n_scores<span class="op">)</span> <span class="op">};</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a></span>
-<span id="cb8-12"><a href="#cb8-12"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n_scores<span class="op">;</span> i<span class="op">++){</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter score "</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>i<span class="op">+</span><span class="dv">1</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a>        <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> scores<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>    <span class="op">}</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a>    <span class="co">// [...]    Use the data for something interesting...</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>   <span class="co">// scores and ptr are de-allocated automatically</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="dt">int</span> main<span class="op">(){</span></span>
+<span id="cb8-2"><a></a>    <span class="kw">auto</span> ptr<span class="op">{</span> <span class="bu">std::</span>make_unique<span class="op">(</span><span class="dv">99</span><span class="op">)</span> <span class="op">};</span>         <span class="co">// allocate and init</span></span>
+<span id="cb8-3"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="op">*</span>ptr <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>                <span class="co">// print value at ptr (99)</span></span>
+<span id="cb8-4"><a></a>    </span>
+<span id="cb8-5"><a></a>    <span class="dt">int</span> n_scores<span class="op">;</span>                             <span class="co">// size for array</span></span>
+<span id="cb8-6"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter number of scores: "</span><span class="op">;</span></span>
+<span id="cb8-7"><a></a>    <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> n_scores<span class="op">;</span></span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a>    <span class="co">// allocate array and take ownership with `scores`:</span></span>
+<span id="cb8-10"><a></a>    <span class="kw">auto</span> scores<span class="op">{</span> <span class="bu">std::</span>make_unique<span class="op">&lt;</span><span class="dt">double</span><span class="op">[]&gt;(</span>n_scores<span class="op">)</span> <span class="op">};</span></span>
+<span id="cb8-11"><a></a></span>
+<span id="cb8-12"><a></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n_scores<span class="op">;</span> i<span class="op">++){</span></span>
+<span id="cb8-13"><a></a>        <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter score "</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>i<span class="op">+</span><span class="dv">1</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">": "</span><span class="op">;</span></span>
+<span id="cb8-14"><a></a>        <span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> scores<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb8-15"><a></a>    <span class="op">}</span></span>
+<span id="cb8-16"><a></a>    <span class="co">// [...]    Use the data for something interesting...</span></span>
+<span id="cb8-17"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span>   <span class="co">// scores and ptr are de-allocated automatically</span></span>
+<span id="cb8-18"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 <span class="green">Choose the version you think is easier to understand.</span></p>
 
-<p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
+<div class="quarto-auto-generated-content">
+<p><img src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>CS 50x2 Accelerated Programming Series</p>
 </div>
+</div>
 <div class="reveal-header">
 <div class="header-logo">
-<img data-src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/home_grid.svg">
+<img data-src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/home_grid.svg">
 </div>
 <div class="sc-title">
 <p> </p>
@@ -931,18 +933,7 @@ Pay attention to the <em>type argument</em> <strong><code>&lt;double[]&gt;</code
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -974,7 +965,29 @@ Pay attention to the <em>type argument</em> <strong><code>&lt;double[]&gt;</code
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
@@ -982,10 +995,15 @@ Pay attention to the <em>type argument</em> <strong><code>&lt;double[]&gt;</code
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1029,7 +1047,11 @@ Pay attention to the <em>type argument</em> <strong><code>&lt;double[]&gt;</code
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

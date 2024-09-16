@@ -188,7 +188,7 @@ $$
 ```cpp
 int factorial(int x){
     int ans = 1;                  // Assume base condition.
-    if( x > 0 ){                  // Check "not base cond."
+    if( x > 1 ){                  // Check "not base cond."
         ans = x * factorial(x-1); // Recursive step.
     }                             
     return ans;                   

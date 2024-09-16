@@ -148,6 +148,10 @@ span.textbook-intro {
   height: auto;
 }
 
+.reveal aside {
+  margin-bottom: .6em;
+}
+
 .reveal aside ol:not(.aside-footnotes) {
   margin-top: 3px;
   border-top: 1px solid $grey;
@@ -183,8 +187,8 @@ span.textbook-intro {
 .reveal span.footnotes {
   position: absolute;
   display: block;
-  bottom: 1.8pt;
-  height: 1em;
+  bottom: 1em;
+  height: 2em;
   line-height: 1em;
   overflow: visible;
   font-size: 9pt;
@@ -659,6 +663,13 @@ div.algorithm {
   height: 92%;
   float: right;
   padding-top: .2em;
+}
+
+.columns {
+  display: table; /* Make the container element behave like a table */
+}
+*.columns>.column {
+  display: table-cell; /* Make elements inside the container behave like table cells */
 }
 
 // Math

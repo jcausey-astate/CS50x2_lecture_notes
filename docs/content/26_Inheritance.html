@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Inheritance</title>
+  <title>CS 50x2 Slides – Inheritance</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0be79836d237d42b59157ec31cdbf0f9.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -528,7 +528,7 @@
 <li><p>Derived class must be destructed before the base class.</p></li>
 <li><p>Derived class may pass arguments to base class constructor:</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a>    Square<span class="op">::</span>Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{</span> <span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a></a>    Square<span class="op">::</span>Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{</span> <span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You <em>must</em> use the constructor’s <em>member initialization list</em> for this.</p>
 </section>
 <section class="slide level2">
@@ -541,103 +541,102 @@
 </blockquote>
 <p><br>
 </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> Rectangle<span class="op">{</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>    Rectangle<span class="op">(</span><span class="dt">int</span> w<span class="op">,</span> <span class="dt">int</span> h<span class="op">)</span> <span class="op">:</span> width<span class="op">{</span>w<span class="op">},</span> height<span class="op">{</span>h<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="dt">int</span>  get_width<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="dt">int</span>  get_height<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="dt">int</span>  get_area<span class="op">()</span>   <span class="at">const</span><span class="op">;</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>    <span class="dt">void</span> print<span class="op">()</span>      <span class="at">const</span><span class="op">;</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>    <span class="dt">void</span> set_width<span class="op">(</span><span class="dt">int</span> w<span class="op">);</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>    <span class="dt">void</span> set_height<span class="op">(</span><span class="dt">int</span> w<span class="op">);</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>    <span class="dt">int</span> width<span class="op">;</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a>    <span class="dt">int</span> height<span class="op">;</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a></a><span class="kw">class</span> Rectangle<span class="op">{</span></span>
+<span id="cb2-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb2-3"><a></a>    Rectangle<span class="op">(</span><span class="dt">int</span> w<span class="op">,</span> <span class="dt">int</span> h<span class="op">)</span> <span class="op">:</span> width<span class="op">{</span>w<span class="op">},</span> height<span class="op">{</span>h<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb2-4"><a></a>    <span class="dt">int</span>  get_width<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
+<span id="cb2-5"><a></a>    <span class="dt">int</span>  get_height<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb2-6"><a></a>    <span class="dt">int</span>  get_area<span class="op">()</span>   <span class="at">const</span><span class="op">;</span></span>
+<span id="cb2-7"><a></a>    <span class="dt">void</span> print<span class="op">()</span>      <span class="at">const</span><span class="op">;</span></span>
+<span id="cb2-8"><a></a>    <span class="dt">void</span> set_width<span class="op">(</span><span class="dt">int</span> w<span class="op">);</span></span>
+<span id="cb2-9"><a></a>    <span class="dt">void</span> set_height<span class="op">(</span><span class="dt">int</span> w<span class="op">);</span></span>
+<span id="cb2-10"><a></a></span>
+<span id="cb2-11"><a></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb2-12"><a></a>    <span class="dt">int</span> width<span class="op">;</span></span>
+<span id="cb2-13"><a></a>    <span class="dt">int</span> height<span class="op">;</span></span>
+<span id="cb2-14"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">class</span> Rectangle<span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a>    Rectangle<span class="op">(</span><span class="dt">int</span> w<span class="op">,</span> <span class="dt">int</span> h<span class="op">)</span> <span class="op">:</span> width<span class="op">{</span>w<span class="op">},</span> height<span class="op">{</span>h<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>    <span class="dt">int</span>  get_width<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>    <span class="dt">int</span>  get_height<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>    <span class="dt">int</span>  get_area<span class="op">()</span>   <span class="at">const</span><span class="op">;</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>    <span class="dt">void</span> print<span class="op">()</span>      <span class="at">const</span><span class="op">;</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>    <span class="dt">void</span> set_width<span class="op">(</span><span class="dt">int</span> w<span class="op">);</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>    <span class="dt">void</span> set_height<span class="op">(</span><span class="dt">int</span> w<span class="op">);</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>    <span class="dt">int</span> width<span class="op">;</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a>    <span class="dt">int</span> height<span class="op">;</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="op">};</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a><span class="kw">class</span> Rectangle<span class="op">{</span></span>
+<span id="cb3-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-3"><a></a>    Rectangle<span class="op">(</span><span class="dt">int</span> w<span class="op">,</span> <span class="dt">int</span> h<span class="op">)</span> <span class="op">:</span> width<span class="op">{</span>w<span class="op">},</span> height<span class="op">{</span>h<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb3-4"><a></a>    <span class="dt">int</span>  get_width<span class="op">()</span>  <span class="at">const</span><span class="op">;</span></span>
+<span id="cb3-5"><a></a>    <span class="dt">int</span>  get_height<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb3-6"><a></a>    <span class="dt">int</span>  get_area<span class="op">()</span>   <span class="at">const</span><span class="op">;</span></span>
+<span id="cb3-7"><a></a>    <span class="dt">void</span> print<span class="op">()</span>      <span class="at">const</span><span class="op">;</span></span>
+<span id="cb3-8"><a></a>    <span class="dt">void</span> set_width<span class="op">(</span><span class="dt">int</span> w<span class="op">);</span></span>
+<span id="cb3-9"><a></a>    <span class="dt">void</span> set_height<span class="op">(</span><span class="dt">int</span> w<span class="op">);</span></span>
+<span id="cb3-10"><a></a></span>
+<span id="cb3-11"><a></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb3-12"><a></a>    <span class="dt">int</span> width<span class="op">;</span></span>
+<span id="cb3-13"><a></a>    <span class="dt">int</span> height<span class="op">;</span></span>
+<span id="cb3-14"><a></a><span class="op">};</span></span>
+<span id="cb3-15"><a></a></span>
+<span id="cb3-16"><a></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
+<span id="cb3-17"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-18"><a></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb3-19"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><span class="green">Simple!</span> <span class="highlight-red">But, it leads to an issue.</span></p>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
+<span id="cb4-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-3"><a></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb4-4"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <div class="columns">
 <div class="column">
 <p><span class="green">Simple!</span> But, it leads to an issue.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a>Square s1<span class="op">{</span><span class="dv">3</span><span class="op">};</span> <span class="co">// 3x3 square</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=3, h=3"</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>s1<span class="op">.</span>set_width<span class="op">(</span><span class="dv">4</span><span class="op">);</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=4, h=3" ERROR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a>Square s1<span class="op">{</span><span class="dv">3</span><span class="op">};</span> <span class="co">// 3x3 square</span></span>
+<span id="cb5-2"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=3, h=3"</span></span>
+<span id="cb5-3"><a></a>s1<span class="op">.</span>set_width<span class="op">(</span><span class="dv">4</span><span class="op">);</span></span>
+<span id="cb5-4"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=4, h=3" ERROR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <p>We inherited by <code>public</code> from <code>Rectangle</code>, so we can use any <code>Rectangle</code> method.</p>
 <p>Bad news - this lets us make a <span class="red">mistake</span> by setting width/height <em>independently</em>.</p>
-</div>
-</div>
+</div></div>
 <p>How can we fix this problem?</p>
 </section>
 <section class="slide level2">
 
 <p>What if we define a “safe” way to set the side length?</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>        set_width<span class="op">(</span>s<span class="op">);</span> </span>
-<span id="cb6-6"><a href="#cb6-6"></a>        set_height<span class="op">(</span>s<span class="op">);</span> </span>
-<span id="cb6-7"><a href="#cb6-7"></a>    <span class="op">}</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
+<span id="cb6-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-3"><a></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb6-4"><a></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-5"><a></a>        set_width<span class="op">(</span>s<span class="op">);</span> </span>
+<span id="cb6-6"><a></a>        set_height<span class="op">(</span>s<span class="op">);</span> </span>
+<span id="cb6-7"><a></a>    <span class="op">}</span></span>
+<span id="cb6-8"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a>Square s1<span class="op">{</span><span class="dv">3</span><span class="op">};</span> <span class="co">// 3x3 square</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=3, h=3"</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>s1<span class="op">.</span>set_side_length<span class="op">(</span><span class="dv">4</span><span class="op">)</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=4, h=4" Better...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a>Square s1<span class="op">{</span><span class="dv">3</span><span class="op">};</span> <span class="co">// 3x3 square</span></span>
+<span id="cb7-2"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=3, h=3"</span></span>
+<span id="cb7-3"><a></a>s1<span class="op">.</span>set_side_length<span class="op">(</span><span class="dv">4</span><span class="op">)</span></span>
+<span id="cb7-4"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=4, h=4" Better...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <p>What if we define a “safe” way to set the side length?</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>        set_width<span class="op">(</span>s<span class="op">);</span> </span>
-<span id="cb8-6"><a href="#cb8-6"></a>        set_height<span class="op">(</span>s<span class="op">);</span> </span>
-<span id="cb8-7"><a href="#cb8-7"></a>    <span class="op">}</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
+<span id="cb8-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb8-3"><a></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb8-4"><a></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-5"><a></a>        set_width<span class="op">(</span>s<span class="op">);</span> </span>
+<span id="cb8-6"><a></a>        set_height<span class="op">(</span>s<span class="op">);</span> </span>
+<span id="cb8-7"><a></a>    <span class="op">}</span></span>
+<span id="cb8-8"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
-<div class="sourceCode" id="cb9" data-code-line-numbers="5-6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a>Square s1<span class="op">{</span><span class="dv">3</span><span class="op">};</span> <span class="co">// 3x3 square</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=3, h=3"</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>s1<span class="op">.</span>set_side_length<span class="op">(</span><span class="dv">4</span><span class="op">)</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=4, h=4" Better...</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>s1<span class="op">.</span>set_width<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=5, h=4" ERROR STILL!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-code-line-numbers="5-6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a></a>Square s1<span class="op">{</span><span class="dv">3</span><span class="op">};</span> <span class="co">// 3x3 square</span></span>
+<span id="cb9-2"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=3, h=3"</span></span>
+<span id="cb9-3"><a></a>s1<span class="op">.</span>set_side_length<span class="op">(</span><span class="dv">4</span><span class="op">)</span></span>
+<span id="cb9-4"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=4, h=4" Better...</span></span>
+<span id="cb9-5"><a></a>s1<span class="op">.</span>set_width<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb9-6"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=5, h=4" ERROR STILL!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>The new method <span class="green">allows us</span> to do the right thing, but it does not <span class="red">prevent us</span> from doing the wrong thing. We can do better…</p>
@@ -645,34 +644,34 @@
 <section class="slide level2">
 
 <p>What if we redefine the behavior of the <code>set</code> methods for width/height?</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">);</span>  <span class="co">// sets both width and height</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>    <span class="dt">void</span> set_width<span class="op">(</span><span class="dt">int</span> w<span class="op">)</span>  <span class="op">{</span> set_side_length<span class="op">(</span>w<span class="op">);</span> <span class="op">}</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>    <span class="dt">void</span> set_height<span class="op">(</span><span class="dt">int</span> h<span class="op">)</span> <span class="op">{</span> set_side_length<span class="op">(</span>h<span class="op">);</span> <span class="op">}</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
+<span id="cb10-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb10-3"><a></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb10-4"><a></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">);</span>  <span class="co">// sets both width and height</span></span>
+<span id="cb10-5"><a></a>    <span class="dt">void</span> set_width<span class="op">(</span><span class="dt">int</span> w<span class="op">)</span>  <span class="op">{</span> set_side_length<span class="op">(</span>w<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb10-6"><a></a>    <span class="dt">void</span> set_height<span class="op">(</span><span class="dt">int</span> h<span class="op">)</span> <span class="op">{</span> set_side_length<span class="op">(</span>h<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb10-7"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
-<div class="sourceCode" id="cb11" data-code-line-numbers="5-6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a>Square s1<span class="op">{</span><span class="dv">3</span><span class="op">};</span> <span class="co">// 3x3 square</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=3, h=3"</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>s1<span class="op">.</span>set_side_length<span class="op">(</span><span class="dv">4</span><span class="op">)</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=4, h=4" Better...</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>s1<span class="op">.</span>set_width<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=5, h=5" FIXED!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11" data-code-line-numbers="5-6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a></a>Square s1<span class="op">{</span><span class="dv">3</span><span class="op">};</span> <span class="co">// 3x3 square</span></span>
+<span id="cb11-2"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=3, h=3"</span></span>
+<span id="cb11-3"><a></a>s1<span class="op">.</span>set_side_length<span class="op">(</span><span class="dv">4</span><span class="op">)</span></span>
+<span id="cb11-4"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=4, h=4" Better...</span></span>
+<span id="cb11-5"><a></a>s1<span class="op">.</span>set_width<span class="op">(</span><span class="dv">5</span><span class="op">);</span></span>
+<span id="cb11-6"><a></a>s1<span class="op">.</span>print<span class="op">();</span>   <span class="co">// "w=5, h=5" FIXED!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>Now, we are <span class="blue">able</span> to interact with the object in any way we expect, but it will <span class="green">always do the “right” thing</span>. It prevents us from ending up in an inconsistent state.</p>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">);</span>  <span class="co">// sets both width and height</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>    <span class="dt">void</span> set_width<span class="op">(</span><span class="dt">int</span> w<span class="op">)</span>  <span class="op">{</span> set_side_length<span class="op">(</span>w<span class="op">);</span> <span class="op">}</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>    <span class="dt">void</span> set_height<span class="op">(</span><span class="dt">int</span> h<span class="op">)</span> <span class="op">{</span> set_side_length<span class="op">(</span>h<span class="op">);</span> <span class="op">}</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">public</span> Rectangle<span class="op">{</span></span>
+<span id="cb12-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb12-3"><a></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb12-4"><a></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">);</span>  <span class="co">// sets both width and height</span></span>
+<span id="cb12-5"><a></a>    <span class="dt">void</span> set_width<span class="op">(</span><span class="dt">int</span> w<span class="op">)</span>  <span class="op">{</span> set_side_length<span class="op">(</span>w<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb12-6"><a></a>    <span class="dt">void</span> set_height<span class="op">(</span><span class="dt">int</span> h<span class="op">)</span> <span class="op">{</span> set_side_length<span class="op">(</span>h<span class="op">);</span> <span class="op">}</span></span>
+<span id="cb12-7"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>What are the benefits / problems of this solution?</p>
@@ -688,17 +687,17 @@
 <p>What about <code>protected</code> inheritance?</p>
 <p><br>
 </p>
-<div class="sourceCode" id="cb13" data-code-line-numbers="4-6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">protected</span> Rectangle<span class="op">{</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>    <span class="dt">int</span>  get_side_length<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> get_width<span class="op">();</span> <span class="op">}</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>    <span class="dt">int</span>  get_area<span class="op">()</span>        <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> Rectangle<span class="op">::</span>get_area<span class="op">();</span> <span class="op">}</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a>    <span class="dt">void</span> print<span class="op">()</span>           <span class="at">const</span> <span class="op">{</span> Rectangle<span class="op">::</span>print<span class="op">();</span> <span class="op">}</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">{</span> </span>
-<span id="cb13-8"><a href="#cb13-8"></a>        set_width<span class="op">(</span>s<span class="op">);</span> </span>
-<span id="cb13-9"><a href="#cb13-9"></a>        set_height<span class="op">(</span>s<span class="op">);</span> </span>
-<span id="cb13-10"><a href="#cb13-10"></a>    <span class="op">}</span></span>
-<span id="cb13-11"><a href="#cb13-11"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13" data-code-line-numbers="4-6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">protected</span> Rectangle<span class="op">{</span></span>
+<span id="cb13-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb13-3"><a></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb13-4"><a></a>    <span class="dt">int</span>  get_side_length<span class="op">()</span> <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> get_width<span class="op">();</span> <span class="op">}</span></span>
+<span id="cb13-5"><a></a>    <span class="dt">int</span>  get_area<span class="op">()</span>        <span class="at">const</span> <span class="op">{</span> <span class="cf">return</span> Rectangle<span class="op">::</span>get_area<span class="op">();</span> <span class="op">}</span></span>
+<span id="cb13-6"><a></a>    <span class="dt">void</span> print<span class="op">()</span>           <span class="at">const</span> <span class="op">{</span> Rectangle<span class="op">::</span>print<span class="op">();</span> <span class="op">}</span></span>
+<span id="cb13-7"><a></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">{</span> </span>
+<span id="cb13-8"><a></a>        set_width<span class="op">(</span>s<span class="op">);</span> </span>
+<span id="cb13-9"><a></a>        set_height<span class="op">(</span>s<span class="op">);</span> </span>
+<span id="cb13-10"><a></a>    <span class="op">}</span></span>
+<span id="cb13-11"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <ul>
@@ -709,21 +708,21 @@
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">protected</span> Rectangle<span class="op">{</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>    <span class="dt">int</span>  get_side_length<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>    <span class="dt">int</span>  get_area<span class="op">()</span>        <span class="at">const</span><span class="op">;</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a>    <span class="dt">void</span> print<span class="op">()</span>           <span class="at">const</span><span class="op">;</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">);</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a></a><span class="kw">class</span> Square <span class="op">:</span> <span class="kw">protected</span> Rectangle<span class="op">{</span></span>
+<span id="cb14-2"><a></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb14-3"><a></a>    Square<span class="op">(</span><span class="dt">int</span> s<span class="op">)</span> <span class="op">:</span> Rectangle<span class="op">{</span>s<span class="op">,</span> s<span class="op">}</span> <span class="op">{}</span></span>
+<span id="cb14-4"><a></a>    <span class="dt">int</span>  get_side_length<span class="op">()</span> <span class="at">const</span><span class="op">;</span></span>
+<span id="cb14-5"><a></a>    <span class="dt">int</span>  get_area<span class="op">()</span>        <span class="at">const</span><span class="op">;</span></span>
+<span id="cb14-6"><a></a>    <span class="dt">void</span> print<span class="op">()</span>           <span class="at">const</span><span class="op">;</span></span>
+<span id="cb14-7"><a></a>    <span class="dt">void</span> set_side_length<span class="op">(</span><span class="dt">int</span> s<span class="op">);</span></span>
+<span id="cb14-8"><a></a><span class="op">};</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Are there any remaining problems?</p>
 <p><br>
 </p>
 <p>Maybe <code>print()</code> needs to be customized:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a><span class="dt">void</span> Square<span class="op">::</span>print<span class="op">()</span> <span class="at">const</span><span class="op">{</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"s="</span> <span class="op">&lt;&lt;</span> get_side_length<span class="op">();</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a></a><span class="dt">void</span> Square<span class="op">::</span>print<span class="op">()</span> <span class="at">const</span><span class="op">{</span></span>
+<span id="cb15-2"><a></a>    cout <span class="op">&lt;&lt;</span> <span class="st">"s="</span> <span class="op">&lt;&lt;</span> get_side_length<span class="op">();</span></span>
+<span id="cb15-3"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <div class="blue">
@@ -731,13 +730,15 @@
 <p>But we’ll see more about that soon…</p>
 </div>
 
-<p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
+<div class="quarto-auto-generated-content">
+<p><img src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>CS 50x2 Accelerated Programming Series</p>
 </div>
+</div>
 <div class="reveal-header">
 <div class="header-logo">
-<img data-src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/home_grid.svg">
+<img data-src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/home_grid.svg">
 </div>
 <div class="sc-title">
 <p> </p>
@@ -993,18 +994,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1036,7 +1026,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
@@ -1044,10 +1056,15 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1091,7 +1108,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

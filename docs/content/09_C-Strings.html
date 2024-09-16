@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
@@ -16,7 +16,7 @@
   <meta name="generator" content="quarto-99.9.9">
 
   <meta name="dcterms.date" content="last-modified">
-  <title>CS 50x2 Slides - Characters and C-Style Strings</title>
+  <title>CS 50x2 Slides – Characters and C-Style Strings</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -47,7 +47,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -75,7 +75,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -89,7 +89,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -100,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0be79836d237d42b59157ec31cdbf0f9.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -438,17 +438,17 @@
 </section>
 <section id="case-conversion-example" class="slide level2">
 <h2>Case Conversion Example</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">char</span> ch1 <span class="op">=</span> <span class="ch">'H'</span><span class="op">;</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="dt">char</span> ch2 <span class="op">=</span> <span class="ch">'e'</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="dt">char</span> ch3 <span class="op">=</span> <span class="ch">'!'</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>cout <span class="op">&lt;&lt;</span> toupper<span class="op">(</span>ch1<span class="op">);</span>  <span class="co">// displays 'H’</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>cout <span class="op">&lt;&lt;</span> toupper<span class="op">(</span>ch2<span class="op">);</span>  <span class="co">// displays 'E’</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a>cout <span class="op">&lt;&lt;</span> toupper<span class="op">(</span>ch3<span class="op">);</span>  <span class="co">// displays '!'</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>cout <span class="op">&lt;&lt;</span> tolower<span class="op">(</span>ch1<span class="op">);</span>  <span class="co">// displays 'h’</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>cout <span class="op">&lt;&lt;</span> tolower<span class="op">(</span>ch2<span class="op">);</span>  <span class="co">// displays 'e’</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>cout <span class="op">&lt;&lt;</span> tolower<span class="op">(</span>ch3<span class="op">);</span>  <span class="co">// displays '!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a></a><span class="dt">char</span> ch1 <span class="op">=</span> <span class="ch">'H'</span><span class="op">;</span></span>
+<span id="cb1-2"><a></a><span class="dt">char</span> ch2 <span class="op">=</span> <span class="ch">'e'</span><span class="op">;</span></span>
+<span id="cb1-3"><a></a><span class="dt">char</span> ch3 <span class="op">=</span> <span class="ch">'!'</span><span class="op">;</span></span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a>cout <span class="op">&lt;&lt;</span> toupper<span class="op">(</span>ch1<span class="op">);</span>  <span class="co">// displays 'H’</span></span>
+<span id="cb1-6"><a></a>cout <span class="op">&lt;&lt;</span> toupper<span class="op">(</span>ch2<span class="op">);</span>  <span class="co">// displays 'E’</span></span>
+<span id="cb1-7"><a></a>cout <span class="op">&lt;&lt;</span> toupper<span class="op">(</span>ch3<span class="op">);</span>  <span class="co">// displays '!'</span></span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a>cout <span class="op">&lt;&lt;</span> tolower<span class="op">(</span>ch1<span class="op">);</span>  <span class="co">// displays 'h’</span></span>
+<span id="cb1-10"><a></a>cout <span class="op">&lt;&lt;</span> tolower<span class="op">(</span>ch2<span class="op">);</span>  <span class="co">// displays 'e’</span></span>
+<span id="cb1-11"><a></a>cout <span class="op">&lt;&lt;</span> tolower<span class="op">(</span>ch3<span class="op">);</span>  <span class="co">// displays '!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="c-style-strings" class="slide level2">
 <h2>C-Style Strings</h2>
@@ -462,7 +462,7 @@
 <section id="c-string-variables" class="slide level2">
 <h2>C-String Variables</h2>
 <p>Variables that store c-strings are just arrays of type <code>char</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">char</span> name<span class="op">[</span><span class="dv">6</span><span class="op">]</span> <span class="op">=</span> <span class="st">"SMITH"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a></a><span class="dt">char</span> name<span class="op">[</span><span class="dv">6</span><span class="op">]</span> <span class="op">=</span> <span class="st">"SMITH"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Produces:</p>
 <p><br>
 </p>
@@ -485,10 +485,10 @@
 <li>For input containing whitespace, and to control the amount of input, use <strong><code>cin.getline()</code></strong>:</li>
 </ul>
 <p><strong>Syntax:</strong> <br> <strong><code>std::cin.getline(</code><em><code>c_str_name</code></em><code>,</code><em><code>max_size</code></em><code>)</code></strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="at">const</span> <span class="dt">int</span> SIZE <span class="op">=</span> <span class="dv">64</span><span class="op">;</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="dt">char</span>      name<span class="op">[</span>SIZE<span class="op">];</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your name: "</span><span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>name<span class="op">,</span> SIZE<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a></a><span class="at">const</span> <span class="dt">int</span> SIZE <span class="op">=</span> <span class="dv">64</span><span class="op">;</span></span>
+<span id="cb3-2"><a></a><span class="dt">char</span>      name<span class="op">[</span>SIZE<span class="op">];</span></span>
+<span id="cb3-3"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your name: "</span><span class="op">;</span></span>
+<span id="cb3-4"><a></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>name<span class="op">,</span> SIZE<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="what-c-strings-cannot-do" class="slide level2">
 <h2>What C-Strings <strong>Cannot</strong> Do</h2>
@@ -531,141 +531,141 @@
 <section class="slide level2">
 
 <h3 id="example-strlen">Example: <code>strlen()</code></h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">char</span> dessert1<span class="op">[]</span> <span class="op">=</span> <span class="st">"Cheesecake"</span><span class="op">;</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="dt">char</span> dessert2<span class="op">[]</span> <span class="op">=</span> <span class="st">"Baked Alaska"</span><span class="op">;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">// `strlen()` returns the _logical_ size of the </span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">// c-string (not counting the terminating '\0').</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> strlen<span class="op">(</span>dessert1<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// prints "10"</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">// Make a column wide enough for the dessert with</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">// the longest name, plus 2 spaces for padding:</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="dt">int</span> width <span class="op">=</span> strlen<span class="op">(</span>dessert1<span class="op">);</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="cf">if</span><span class="op">(</span>strlen<span class="op">(</span>dessert2<span class="op">)</span> <span class="op">&gt;</span> width<span class="op">){</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>    width <span class="op">=</span> strlen<span class="op">(</span>dessert2<span class="op">);</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="op">}</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a>width <span class="op">+=</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="co">// print dessert menu:</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span>width<span class="op">)</span> <span class="op">&lt;&lt;</span> dessert1 <span class="op">&lt;&lt;</span> <span class="st">"$ 9.99</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span>width<span class="op">)</span> <span class="op">&lt;&lt;</span> dessert2 <span class="op">&lt;&lt;</span> <span class="st">"$12.50</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a><span class="dt">char</span> dessert1<span class="op">[]</span> <span class="op">=</span> <span class="st">"Cheesecake"</span><span class="op">;</span></span>
+<span id="cb5-2"><a></a><span class="dt">char</span> dessert2<span class="op">[]</span> <span class="op">=</span> <span class="st">"Baked Alaska"</span><span class="op">;</span></span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a><span class="co">// `strlen()` returns the _logical_ size of the </span></span>
+<span id="cb5-5"><a></a><span class="co">// c-string (not counting the terminating '\0').</span></span>
+<span id="cb5-6"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> strlen<span class="op">(</span>dessert1<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> <span class="co">// prints "10"</span></span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a><span class="co">// Make a column wide enough for the dessert with</span></span>
+<span id="cb5-9"><a></a><span class="co">// the longest name, plus 2 spaces for padding:</span></span>
+<span id="cb5-10"><a></a><span class="dt">int</span> width <span class="op">=</span> strlen<span class="op">(</span>dessert1<span class="op">);</span></span>
+<span id="cb5-11"><a></a><span class="cf">if</span><span class="op">(</span>strlen<span class="op">(</span>dessert2<span class="op">)</span> <span class="op">&gt;</span> width<span class="op">){</span></span>
+<span id="cb5-12"><a></a>    width <span class="op">=</span> strlen<span class="op">(</span>dessert2<span class="op">);</span></span>
+<span id="cb5-13"><a></a><span class="op">}</span></span>
+<span id="cb5-14"><a></a>width <span class="op">+=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb5-15"><a></a></span>
+<span id="cb5-16"><a></a><span class="co">// print dessert menu:</span></span>
+<span id="cb5-17"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span>width<span class="op">)</span> <span class="op">&lt;&lt;</span> dessert1 <span class="op">&lt;&lt;</span> <span class="st">"$ 9.99</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb5-18"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span>width<span class="op">)</span> <span class="op">&lt;&lt;</span> dessert2 <span class="op">&lt;&lt;</span> <span class="st">"$12.50</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="example-strcmp">Example: <code>strcmp()</code></h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="dt">char</span> dessert1<span class="op">[]</span> <span class="op">=</span> <span class="st">"Cheesecake"</span><span class="op">;</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="dt">char</span> dessert2<span class="op">[]</span> <span class="op">=</span> <span class="st">"Baked Alaska"</span><span class="op">;</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">// Print the two desserts out in alphabetical order:</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="cf">if</span><span class="op">(</span> strcmp<span class="op">(</span>dessert1<span class="op">,</span> dessert2<span class="op">)</span> <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">){</span> <span class="co">// dessert1 first?</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> dessert1 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span> <span class="op">&lt;&lt;</span> dessert2 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="op">}</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="cf">else</span><span class="op">{</span> <span class="co">// dessert2 is first alphabetically...</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> dessert2 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span> <span class="op">&lt;&lt;</span> dessert1 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a><span class="dt">char</span> dessert1<span class="op">[]</span> <span class="op">=</span> <span class="st">"Cheesecake"</span><span class="op">;</span></span>
+<span id="cb6-2"><a></a><span class="dt">char</span> dessert2<span class="op">[]</span> <span class="op">=</span> <span class="st">"Baked Alaska"</span><span class="op">;</span></span>
+<span id="cb6-3"><a></a></span>
+<span id="cb6-4"><a></a><span class="co">// Print the two desserts out in alphabetical order:</span></span>
+<span id="cb6-5"><a></a><span class="cf">if</span><span class="op">(</span> strcmp<span class="op">(</span>dessert1<span class="op">,</span> dessert2<span class="op">)</span> <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">){</span> <span class="co">// dessert1 first?</span></span>
+<span id="cb6-6"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> dessert1 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span> <span class="op">&lt;&lt;</span> dessert2 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb6-7"><a></a><span class="op">}</span></span>
+<span id="cb6-8"><a></a><span class="cf">else</span><span class="op">{</span> <span class="co">// dessert2 is first alphabetically...</span></span>
+<span id="cb6-9"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> dessert2 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span> <span class="op">&lt;&lt;</span> dessert1 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb6-10"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="example-2-strcmp">Example 2: <code>strcmp()</code></h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="at">const</span> <span class="dt">int</span> PWDMAX <span class="op">=</span> <span class="dv">512</span><span class="op">;</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="dt">char</span>  password<span class="op">[</span>PWDMAX<span class="op">];</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="dt">char</span>  password_confirm<span class="op">[</span>PWDMAX<span class="op">];</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">// Get new password (twice, to confirm):</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter new password: "</span><span class="op">;</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>password<span class="op">,</span> PWDMAX<span class="op">);</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter password again: "</span><span class="op">;</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>password_confirm<span class="op">,</span> PWDMAX<span class="op">);</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">// Make sure passwords match:</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="cf">if</span><span class="op">(</span> strcmp<span class="op">(</span>password<span class="op">,</span> password_confirm<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span> <span class="op">){</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Error: Passwords did not match.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>    exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span> <span class="co">// If they didn't exit with an error code.</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="op">}</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="cf">else</span><span class="op">{</span> <span class="co">// Passwords matched!  OK...</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Password changed.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a><span class="at">const</span> <span class="dt">int</span> PWDMAX <span class="op">=</span> <span class="dv">512</span><span class="op">;</span></span>
+<span id="cb7-2"><a></a><span class="dt">char</span>  password<span class="op">[</span>PWDMAX<span class="op">];</span></span>
+<span id="cb7-3"><a></a><span class="dt">char</span>  password_confirm<span class="op">[</span>PWDMAX<span class="op">];</span></span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a><span class="co">// Get new password (twice, to confirm):</span></span>
+<span id="cb7-6"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter new password: "</span><span class="op">;</span></span>
+<span id="cb7-7"><a></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>password<span class="op">,</span> PWDMAX<span class="op">);</span></span>
+<span id="cb7-8"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter password again: "</span><span class="op">;</span></span>
+<span id="cb7-9"><a></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>password_confirm<span class="op">,</span> PWDMAX<span class="op">);</span></span>
+<span id="cb7-10"><a></a></span>
+<span id="cb7-11"><a></a><span class="co">// Make sure passwords match:</span></span>
+<span id="cb7-12"><a></a><span class="cf">if</span><span class="op">(</span> strcmp<span class="op">(</span>password<span class="op">,</span> password_confirm<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span> <span class="op">){</span></span>
+<span id="cb7-13"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Error: Passwords did not match.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb7-14"><a></a>    exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span> <span class="co">// If they didn't exit with an error code.</span></span>
+<span id="cb7-15"><a></a><span class="op">}</span></span>
+<span id="cb7-16"><a></a><span class="cf">else</span><span class="op">{</span> <span class="co">// Passwords matched!  OK...</span></span>
+<span id="cb7-17"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Password changed.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb7-18"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="example-strcpy">Example: <code>strcpy()</code></h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">// this code was left intentionally blank</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a></span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">// because you should (almost) never use</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">// `strcpy()`...</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a></span>
-<span id="cb8-10"><a href="#cb8-10"></a></span>
-<span id="cb8-11"><a href="#cb8-11"></a></span>
-<span id="cb8-12"><a href="#cb8-12"></a></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="co">// use `strncpy()` instead</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="co">// this code was left intentionally blank</span></span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a></span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a></span>
+<span id="cb8-7"><a></a><span class="co">// because you should (almost) never use</span></span>
+<span id="cb8-8"><a></a><span class="co">// `strcpy()`...</span></span>
+<span id="cb8-9"><a></a></span>
+<span id="cb8-10"><a></a></span>
+<span id="cb8-11"><a></a></span>
+<span id="cb8-12"><a></a></span>
+<span id="cb8-13"><a></a><span class="co">// use `strncpy()` instead</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="example-strncpy">Example: <code>strncpy()</code></h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">char</span> longStr<span class="op">[]</span>  <span class="op">=</span> <span class="st">"Mighty Muddy Mississippi"</span><span class="op">;</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="dt">char</span> shortStr<span class="op">[]</span> <span class="op">=</span> <span class="st">"Yo"</span><span class="op">;</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="at">const</span> <span class="dt">int</span> DESTMAX <span class="op">=</span> <span class="dv">16</span><span class="op">;</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="dt">char</span>  destination<span class="op">[</span>DESTMAX<span class="op">];</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">// DON'T do this:</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a>strcpy<span class="op">(</span>destination<span class="op">,</span> longStr<span class="op">);</span>      <span class="co">// BUFFER OVERFLOW!!!</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">// Do this instead:</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a>strncpy<span class="op">(</span>destination<span class="op">,</span> longStr<span class="op">,</span> DESTMAX<span class="op">);</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a>destination<span class="op">[</span>DESTMAX<span class="op">-</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span>     <span class="co">// must terminate</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> destination <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// what prints?</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a></span>
-<span id="cb9-16"><a href="#cb9-16"></a>strncpy<span class="op">(</span>destination<span class="op">,</span> shortStr<span class="op">,</span> DESTMAX<span class="op">);</span></span>
-<span id="cb9-17"><a href="#cb9-17"></a>destination<span class="op">[</span>DESTMAX<span class="op">-</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span></span>
-<span id="cb9-18"><a href="#cb9-18"></a></span>
-<span id="cb9-19"><a href="#cb9-19"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> destination <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// what prints?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a></a><span class="dt">char</span> longStr<span class="op">[]</span>  <span class="op">=</span> <span class="st">"Mighty Muddy Mississippi"</span><span class="op">;</span></span>
+<span id="cb9-2"><a></a><span class="dt">char</span> shortStr<span class="op">[]</span> <span class="op">=</span> <span class="st">"Yo"</span><span class="op">;</span></span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="at">const</span> <span class="dt">int</span> DESTMAX <span class="op">=</span> <span class="dv">16</span><span class="op">;</span></span>
+<span id="cb9-5"><a></a><span class="dt">char</span>  destination<span class="op">[</span>DESTMAX<span class="op">];</span></span>
+<span id="cb9-6"><a></a></span>
+<span id="cb9-7"><a></a><span class="co">// DON'T do this:</span></span>
+<span id="cb9-8"><a></a>strcpy<span class="op">(</span>destination<span class="op">,</span> longStr<span class="op">);</span>      <span class="co">// BUFFER OVERFLOW!!!</span></span>
+<span id="cb9-9"><a></a></span>
+<span id="cb9-10"><a></a><span class="co">// Do this instead:</span></span>
+<span id="cb9-11"><a></a>strncpy<span class="op">(</span>destination<span class="op">,</span> longStr<span class="op">,</span> DESTMAX<span class="op">);</span></span>
+<span id="cb9-12"><a></a>destination<span class="op">[</span>DESTMAX<span class="op">-</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span>     <span class="co">// must terminate</span></span>
+<span id="cb9-13"><a></a></span>
+<span id="cb9-14"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> destination <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// what prints?</span></span>
+<span id="cb9-15"><a></a></span>
+<span id="cb9-16"><a></a>strncpy<span class="op">(</span>destination<span class="op">,</span> shortStr<span class="op">,</span> DESTMAX<span class="op">);</span></span>
+<span id="cb9-17"><a></a>destination<span class="op">[</span>DESTMAX<span class="op">-</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span></span>
+<span id="cb9-18"><a></a></span>
+<span id="cb9-19"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> destination <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// what prints?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="example-strcat">Example: <code>strcat()</code></h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">// this code was left intentionally blank</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a></span>
-<span id="cb10-6"><a href="#cb10-6"></a></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="co">// because you should (almost) never use</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="co">// `strcat()`...</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a></span>
-<span id="cb10-10"><a href="#cb10-10"></a></span>
-<span id="cb10-11"><a href="#cb10-11"></a></span>
-<span id="cb10-12"><a href="#cb10-12"></a></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="co">// use `strncat()` instead</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a></a><span class="co">// this code was left intentionally blank</span></span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a><span class="co">// because you should (almost) never use</span></span>
+<span id="cb10-8"><a></a><span class="co">// `strcat()`...</span></span>
+<span id="cb10-9"><a></a></span>
+<span id="cb10-10"><a></a></span>
+<span id="cb10-11"><a></a></span>
+<span id="cb10-12"><a></a></span>
+<span id="cb10-13"><a></a><span class="co">// use `strncat()` instead</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
 <h3 id="example-strncat">Example: <code>strncat()</code></h3>
 <p><small style="font-size: 90%;"></small></p><small style="font-size: 90%;">
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="at">const</span> <span class="dt">int</span> DESTMAX   <span class="op">=</span> <span class="dv">16</span><span class="op">;</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="dt">char</span> destination<span class="op">[</span>DESTMAX<span class="op">];</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="dt">char</span> adj1<span class="op">[]</span>         <span class="op">=</span> <span class="st">"Mighty "</span><span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="dt">char</span> adj2<span class="op">[]</span>         <span class="op">=</span> <span class="st">"Muddy "</span><span class="op">;</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="dt">char</span> river<span class="op">[]</span>        <span class="op">=</span> <span class="st">"Mississippi"</span><span class="op">;</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co">// Start the full description by copying over the first</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co">// adjective:</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>destination<span class="op">[</span>DESTMAX<span class="op">-</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span> <span class="co">// alt. method: null first!</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a>strncpy<span class="op">(</span>destination<span class="op">,</span> adj1<span class="op">,</span> DESTMAX<span class="op">-</span><span class="dv">1</span><span class="op">);</span> <span class="co">// notice -1 here</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="co">// Now concatenate together the rest of the river description...</span></span>
-<span id="cb11-12"><a href="#cb11-12"></a><span class="co">// But be careful not to overflow!</span></span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="co">// Calculate the remaining space:</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a><span class="dt">int</span> remaining <span class="op">=</span> DESTMAX <span class="op">-</span> <span class="dv">1</span> <span class="op">-</span> strlen<span class="op">(</span>destination<span class="op">);</span> <span class="co">// why -1?</span></span>
-<span id="cb11-15"><a href="#cb11-15"></a>strncat<span class="op">(</span>destination<span class="op">,</span> adj2<span class="op">,</span> remaining<span class="op">);</span></span>
-<span id="cb11-16"><a href="#cb11-16"></a>remaining <span class="op">-=</span> strlen<span class="op">(</span>adj2<span class="op">);</span> <span class="co">// update remaining space</span></span>
-<span id="cb11-17"><a href="#cb11-17"></a>strncat<span class="op">(</span>destination<span class="op">,</span> river<span class="op">,</span> remaining<span class="op">);</span></span>
-<span id="cb11-18"><a href="#cb11-18"></a></span>
-<span id="cb11-19"><a href="#cb11-19"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> destination <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// What prints?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a></a><span class="at">const</span> <span class="dt">int</span> DESTMAX   <span class="op">=</span> <span class="dv">16</span><span class="op">;</span></span>
+<span id="cb11-2"><a></a><span class="dt">char</span> destination<span class="op">[</span>DESTMAX<span class="op">];</span></span>
+<span id="cb11-3"><a></a><span class="dt">char</span> adj1<span class="op">[]</span>         <span class="op">=</span> <span class="st">"Mighty "</span><span class="op">;</span></span>
+<span id="cb11-4"><a></a><span class="dt">char</span> adj2<span class="op">[]</span>         <span class="op">=</span> <span class="st">"Muddy "</span><span class="op">;</span></span>
+<span id="cb11-5"><a></a><span class="dt">char</span> river<span class="op">[]</span>        <span class="op">=</span> <span class="st">"Mississippi"</span><span class="op">;</span></span>
+<span id="cb11-6"><a></a></span>
+<span id="cb11-7"><a></a><span class="co">// Start the full description by copying over the first</span></span>
+<span id="cb11-8"><a></a><span class="co">// adjective:</span></span>
+<span id="cb11-9"><a></a>destination<span class="op">[</span>DESTMAX<span class="op">-</span><span class="dv">1</span><span class="op">]</span> <span class="op">=</span> <span class="ch">'</span><span class="sc">\0</span><span class="ch">'</span><span class="op">;</span> <span class="co">// alt. method: null first!</span></span>
+<span id="cb11-10"><a></a>strncpy<span class="op">(</span>destination<span class="op">,</span> adj1<span class="op">,</span> DESTMAX<span class="op">-</span><span class="dv">1</span><span class="op">);</span> <span class="co">// notice -1 here</span></span>
+<span id="cb11-11"><a></a><span class="co">// Now concatenate together the rest of the river description...</span></span>
+<span id="cb11-12"><a></a><span class="co">// But be careful not to overflow!</span></span>
+<span id="cb11-13"><a></a><span class="co">// Calculate the remaining space:</span></span>
+<span id="cb11-14"><a></a><span class="dt">int</span> remaining <span class="op">=</span> DESTMAX <span class="op">-</span> <span class="dv">1</span> <span class="op">-</span> strlen<span class="op">(</span>destination<span class="op">);</span> <span class="co">// why -1?</span></span>
+<span id="cb11-15"><a></a>strncat<span class="op">(</span>destination<span class="op">,</span> adj2<span class="op">,</span> remaining<span class="op">);</span></span>
+<span id="cb11-16"><a></a>remaining <span class="op">-=</span> strlen<span class="op">(</span>adj2<span class="op">);</span> <span class="co">// update remaining space</span></span>
+<span id="cb11-17"><a></a>strncat<span class="op">(</span>destination<span class="op">,</span> river<span class="op">,</span> remaining<span class="op">);</span></span>
+<span id="cb11-18"><a></a></span>
+<span id="cb11-19"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> destination <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span>  <span class="co">// What prints?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </small><p><small style="font-size: 90%;"></small></p>
 </section>
 <section id="conversion-functions" class="slide level2">
@@ -680,32 +680,34 @@
 <section class="slide level2">
 
 <h3 id="example-atoi-atof">Example: <code>atoi(), atof()</code></h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="at">const</span>  <span class="dt">int</span> BUFMAX <span class="op">=</span> <span class="dv">256</span><span class="op">;</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="dt">char</span>   buffer<span class="op">[</span>BUFMAX<span class="op">];</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="dt">int</span>    quantity<span class="op">;</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="dt">double</span> price<span class="op">;</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter quantity sold: "</span><span class="op">;</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>buffer<span class="op">,</span> BUFMAX<span class="op">);</span></span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="co">// Extract an integer value from buffer into quantity:</span></span>
-<span id="cb13-9"><a href="#cb13-9"></a>quantity <span class="op">=</span> atoi<span class="op">(</span>buffer<span class="op">);</span></span>
-<span id="cb13-10"><a href="#cb13-10"></a></span>
-<span id="cb13-11"><a href="#cb13-11"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter price of item: "</span><span class="op">;</span></span>
-<span id="cb13-12"><a href="#cb13-12"></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>buffer<span class="op">,</span> BUFMAX<span class="op">);</span></span>
-<span id="cb13-13"><a href="#cb13-13"></a><span class="co">// Extract the floating-point (double) price:</span></span>
-<span id="cb13-14"><a href="#cb13-14"></a>price <span class="op">=</span> atof<span class="op">(</span>buffer<span class="op">);</span></span>
-<span id="cb13-15"><a href="#cb13-15"></a></span>
-<span id="cb13-16"><a href="#cb13-16"></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Sold "</span>    <span class="op">&lt;&lt;</span> quantity <span class="op">&lt;&lt;</span> <span class="st">" items at $"</span></span>
-<span id="cb13-17"><a href="#cb13-17"></a>          <span class="op">&lt;&lt;</span> <span class="bu">std::</span>fixed <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setprecision<span class="op">(</span><span class="dv">2</span><span class="op">)</span></span>
-<span id="cb13-18"><a href="#cb13-18"></a>          <span class="op">&lt;&lt;</span> price      <span class="op">&lt;&lt;</span> <span class="st">" each.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a></a><span class="at">const</span>  <span class="dt">int</span> BUFMAX <span class="op">=</span> <span class="dv">256</span><span class="op">;</span></span>
+<span id="cb13-2"><a></a><span class="dt">char</span>   buffer<span class="op">[</span>BUFMAX<span class="op">];</span></span>
+<span id="cb13-3"><a></a><span class="dt">int</span>    quantity<span class="op">;</span></span>
+<span id="cb13-4"><a></a><span class="dt">double</span> price<span class="op">;</span></span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter quantity sold: "</span><span class="op">;</span></span>
+<span id="cb13-7"><a></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>buffer<span class="op">,</span> BUFMAX<span class="op">);</span></span>
+<span id="cb13-8"><a></a><span class="co">// Extract an integer value from buffer into quantity:</span></span>
+<span id="cb13-9"><a></a>quantity <span class="op">=</span> atoi<span class="op">(</span>buffer<span class="op">);</span></span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter price of item: "</span><span class="op">;</span></span>
+<span id="cb13-12"><a></a><span class="bu">std::</span>cin<span class="op">.</span>getline<span class="op">(</span>buffer<span class="op">,</span> BUFMAX<span class="op">);</span></span>
+<span id="cb13-13"><a></a><span class="co">// Extract the floating-point (double) price:</span></span>
+<span id="cb13-14"><a></a>price <span class="op">=</span> atof<span class="op">(</span>buffer<span class="op">);</span></span>
+<span id="cb13-15"><a></a></span>
+<span id="cb13-16"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Sold "</span>    <span class="op">&lt;&lt;</span> quantity <span class="op">&lt;&lt;</span> <span class="st">" items at $"</span></span>
+<span id="cb13-17"><a></a>          <span class="op">&lt;&lt;</span> <span class="bu">std::</span>fixed <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setprecision<span class="op">(</span><span class="dv">2</span><span class="op">)</span></span>
+<span id="cb13-18"><a></a>          <span class="op">&lt;&lt;</span> price      <span class="op">&lt;&lt;</span> <span class="st">" each.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<p><img src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/astAte.png" class="slide-logo"></p>
+<div class="quarto-auto-generated-content">
+<p><img src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/astAte.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>CS 50x2 Accelerated Programming Series</p>
 </div>
+</div>
 <div class="reveal-header">
 <div class="header-logo">
-<img data-src="../site_libs/quarto-contrib/quarto-project/astate-codeslides/resources/home_grid.svg">
+<img data-src="../site_libs/quarto-contrib/quarto-project/astate_codeslides/resources/home_grid.svg">
 </div>
 <div class="sc-title">
 <p> </p>
@@ -961,18 +963,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1004,7 +995,29 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp("https:\/\/jcausey-astate\.github\.io\/CS50x2_lecture_notes\/");
@@ -1012,10 +1025,15 @@
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1059,7 +1077,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
