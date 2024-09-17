@@ -1327,7 +1327,7 @@
     "href": "content/09_C-Strings.html#case-conversion-example",
     "title": "Characters and C-Style Strings",
     "section": "Case Conversion Example",
-    "text": "Case Conversion Example\nchar ch1 = 'H';\nchar ch2 = 'e';\nchar ch3 = '!';\n\ncout &lt;&lt; toupper(ch1);  // displays 'H’\ncout &lt;&lt; toupper(ch2);  // displays 'E’\ncout &lt;&lt; toupper(ch3);  // displays '!'\n\ncout &lt;&lt; tolower(ch1);  // displays 'h’\ncout &lt;&lt; tolower(ch2);  // displays 'e’\ncout &lt;&lt; tolower(ch3);  // displays '!'"
+    "text": "Case Conversion Example\nchar ch1 = 'H';\nchar ch2 = 'e';\nchar ch3 = '!';\n\ncout &lt;&lt; static_cast&lt;char&gt;(toupper(ch1)); //-&gt;'H’\ncout &lt;&lt; static_cast&lt;char&gt;(toupper(ch2)); //-&gt;'E’\ncout &lt;&lt; static_cast&lt;char&gt;(toupper(ch3)); //-&gt;'!'\n\ncout &lt;&lt; static_cast&lt;char&gt;(tolower(ch1)); //-&gt;'h’\ncout &lt;&lt; static_cast&lt;char&gt;(tolower(ch2)); //-&gt;'e’\ncout &lt;&lt; static_cast&lt;char&gt;(tolower(ch3)); //-&gt;'!'"
   },
   {
     "objectID": "content/09_C-Strings.html#c-style-strings",

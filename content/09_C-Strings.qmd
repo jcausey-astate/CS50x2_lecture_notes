@@ -43,13 +43,13 @@ char ch1 = 'H';
 char ch2 = 'e';
 char ch3 = '!';
 
-cout << toupper(ch1);  // displays 'H’
-cout << toupper(ch2);  // displays 'E’
-cout << toupper(ch3);  // displays '!'
+cout << static_cast<char>(toupper(ch1)); //->'H’
+cout << static_cast<char>(toupper(ch2)); //->'E’
+cout << static_cast<char>(toupper(ch3)); //->'!'
 
-cout << tolower(ch1);  // displays 'h’
-cout << tolower(ch2);  // displays 'e’
-cout << tolower(ch3);  // displays '!'
+cout << static_cast<char>(tolower(ch1)); //->'h’
+cout << static_cast<char>(tolower(ch2)); //->'e’
+cout << static_cast<char>(tolower(ch3)); //->'!'
 ```
 
 
