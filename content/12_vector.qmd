@@ -196,6 +196,14 @@ for( auto item : v ){                    // for each item
 
 _`std::to_string()` is contained in `<std::string>`_
 
+::: {.callout-important appearance="minimal"}
+The "pre-size" declaration will only work with non-integer `vector` types.  To pre-size an analogous `vector<int>`, you would do:
+
+```cpp
+std::vector<int> v;
+v.resize(3);
+```
+:::
 
 ---
 
@@ -286,11 +294,8 @@ Inserts `value` at the position pointed to by the iterator `it_position`, shifti
 
 ```cpp
 std::vector<int> v{4,8,16,23,42,108};
-std::vector<int>::iterator pos = v.begin();
-                   // Move pos to the third element:
-pos += 2;          // by skipping the first two
 
-v.insert(pos, 15); // insert before 16
+v.insert(v.begin() + 2, 15); // insert before 16
 
 for( auto value : v ){
     std::cout << value << '\t';

@@ -2223,7 +2223,7 @@
     "href": "content/12_vector.html#stdvector-example-4",
     "title": "STL and Vectors",
     "section": "std::vector Example 4",
-    "text": "std::vector Example 4\nauto v = std::vector&lt;std::string&gt;{3};    // pre-size to 3\n\nint  n = 1;\nfor( auto& item : v){                    // each item (by ref.)\n    item = std::string{\"The number is \"} // generate message\n         + std::to_string(10 * n++);     // and store in item\n}\n\ncout &lt;&lt; \"Loop by range:\" &lt;&lt; endl;\n\nfor( auto item : v ){                    // for each item\n   cout &lt;&lt; item &lt;&lt; endl;                 // print the item\n}\nstd::to_string() is contained in &lt;std::string&gt;"
+    "text": "std::vector Example 4\nauto v = std::vector&lt;std::string&gt;{3};    // pre-size to 3\n\nint  n = 1;\nfor( auto& item : v){                    // each item (by ref.)\n    item = std::string{\"The number is \"} // generate message\n         + std::to_string(10 * n++);     // and store in item\n}\n\ncout &lt;&lt; \"Loop by range:\" &lt;&lt; endl;\n\nfor( auto item : v ){                    // for each item\n   cout &lt;&lt; item &lt;&lt; endl;                 // print the item\n}\nstd::to_string() is contained in &lt;std::string&gt;\n\n\n\nThe “pre-size” declaration will only work with non-integer vector types. To pre-size an analogous vector&lt;int&gt;, you would do:\nstd::vector&lt;int&gt; v;\nv.resize(3);"
   },
   {
     "objectID": "content/12_vector.html#iterators",
