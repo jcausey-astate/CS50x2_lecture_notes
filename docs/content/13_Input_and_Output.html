@@ -521,6 +521,29 @@ Then, the rainfall total is read as a Real-number value and stored in <code>rain
 </div>
 </div>
 </div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a><span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb5-2"><a></a><span class="bu">std::</span>string fav_food<span class="op">;</span></span>
+<span id="cb5-3"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your age: "</span><span class="op">;</span></span>
+<span id="cb5-4"><a></a><span class="bu">std::</span>cin  <span class="op">&gt;&gt;</span> age<span class="op">;</span></span>
+<span id="cb5-5"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Enter your favorite food: "</span><span class="op">;</span></span>
+<span id="cb5-6"><a></a>getline<span class="op">(</span><span class="bu">std::</span>cin<span class="op">,</span> fav_food<span class="op">);</span>    <span class="co">// will _seem_ to fail!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>getline()</code> is <em>newline-delimited</em> by default.
+<ul>
+<li>It will appear that the <code>getline()</code> was “skipped”. Actually, it saw the <code>'\n'</code> and stopped.</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="mixing-getline-and-1">Mixing <code>getline()</code> and <code>&gt;&gt;</code></h3>
+<div class="callout callout-caution no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Problem:</strong> Stream extraction ( <code>&gt;&gt;</code> ) leaves the delimiting whitespace in the input stream (usually a <code>'\n'</code>).</p>
+</div>
+</div>
+</div>
 <ul>
 <li><code>getline()</code> is <em>newline-delimited</em> by default.
 <ul>
@@ -531,18 +554,18 @@ Then, the rainfall total is read as a Real-number value and stored in <code>rain
 <li>Ex: <code>std::cin.ignore();</code></li>
 <li>Better:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a></a><span class="bu">std::</span>cin<span class="op">.</span>ignore<span class="op">(</span><span class="bu">std::</span>numeric_limits<span class="op">&lt;</span><span class="bu">std::</span>streamsize<span class="op">&gt;::</span>max<span class="op">(),</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a><span class="bu">std::</span>cin<span class="op">.</span>ignore<span class="op">(</span><span class="bu">std::</span>numeric_limits<span class="op">&lt;</span><span class="bu">std::</span>streamsize<span class="op">&gt;::</span>max<span class="op">(),</span> <span class="ch">'</span><span class="sc">\n</span><span class="ch">'</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="cin.get" class="slide level2">
 <h2><code>cin.get()</code></h2>
 <p>The <code>cin.get()</code> function can be used to read a single character, which may be whitespace, from the standard input stream.</p>
 <p><strong>Example</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a></a><span class="dt">char</span> ch<span class="op">;</span></span>
-<span id="cb6-2"><a></a><span class="co">// Reading the &lt;ENTER&gt; key with `&gt;&gt;` alone is difficult... </span></span>
-<span id="cb6-3"><a></a><span class="co">// So, use `get()`:</span></span>
-<span id="cb6-4"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Press &lt;ENTER&gt; to continue..."</span><span class="op">;</span></span>
-<span id="cb6-5"><a></a><span class="bu">std::</span>cin<span class="op">.</span>get<span class="op">(</span>ch<span class="op">);</span> <span class="co">// Will wait for the enter key, then continue.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a><span class="dt">char</span> ch<span class="op">;</span></span>
+<span id="cb7-2"><a></a><span class="co">// Reading the &lt;ENTER&gt; key with `&gt;&gt;` alone is difficult... </span></span>
+<span id="cb7-3"><a></a><span class="co">// So, use `get()`:</span></span>
+<span id="cb7-4"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Press &lt;ENTER&gt; to continue..."</span><span class="op">;</span></span>
+<span id="cb7-5"><a></a><span class="bu">std::</span>cin<span class="op">.</span>get<span class="op">(</span>ch<span class="op">);</span> <span class="co">// Will wait for the enter key, then continue.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>get()</code> function also works with other streams, in general the syntax is: <br> <em><code>stream</code></em><code>.get(</code><em><code>character_var</code></em><code>)</code></p>
 </section>
 <section id="in-case-the-stream-goes-bad" class="slide level2">
@@ -553,7 +576,7 @@ Then, the rainfall total is read as a Real-number value and stored in <code>rain
 <li>End-of-file (or end of stream) encountered during a “read” operation.</li>
 </ul>
 <p>In these cases you may be able to remedy the problem – perhaps by removing unwanted characters from the stream with <code>ignore()</code>, or by moving the stream position “earlier” in the stream in case of EOF – then resume operation. The <code>clear()</code> method will help with this by clearing the stream’s <em>state flags</em>:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a></a><span class="bu">std::</span>cin<span class="op">.</span>clear<span class="op">();</span>  <span class="co">// clears the state flags on `cin`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="bu">std::</span>cin<span class="op">.</span>clear<span class="op">();</span>  <span class="co">// clears the state flags on `cin`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <!--- --- --->
 </section></section>
 <section>
@@ -599,46 +622,46 @@ Then, the rainfall total is read as a Real-number value and stored in <code>rain
 <ul>
 <li>Create a <code>std::ofstream</code> file stream object and use it to open and manipulate the file:</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a></a><span class="dt">double</span> value1 <span class="op">=</span> <span class="fl">4.4</span><span class="op">,</span> value2 <span class="op">=</span> <span class="fl">3.8</span><span class="op">;</span>       </span>
-<span id="cb8-2"><a></a><span class="bu">std::</span>ofstream fout<span class="op">;</span>             <span class="co">// declare a stream</span></span>
-<span id="cb8-3"><a></a>fout<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span> <span class="co">// open the file</span></span>
-<span id="cb8-4"><a></a>fout <span class="op">&lt;&lt;</span> value1                  <span class="co">// insert values</span></span>
-<span id="cb8-5"><a></a>     <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>                    <span class="co">// separated on</span></span>
-<span id="cb8-6"><a></a>     <span class="op">&lt;&lt;</span> value2<span class="op">;</span>                 <span class="co">// two lines</span></span>
-<span id="cb8-7"><a></a>fout<span class="op">.</span>close<span class="op">();</span>                   <span class="co">// close the file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a></a><span class="dt">double</span> value1 <span class="op">=</span> <span class="fl">4.4</span><span class="op">,</span> value2 <span class="op">=</span> <span class="fl">3.8</span><span class="op">;</span>       </span>
+<span id="cb9-2"><a></a><span class="bu">std::</span>ofstream fout<span class="op">;</span>             <span class="co">// declare a stream</span></span>
+<span id="cb9-3"><a></a>fout<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span> <span class="co">// open the file</span></span>
+<span id="cb9-4"><a></a>fout <span class="op">&lt;&lt;</span> value1                  <span class="co">// insert values</span></span>
+<span id="cb9-5"><a></a>     <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>                    <span class="co">// separated on</span></span>
+<span id="cb9-6"><a></a>     <span class="op">&lt;&lt;</span> value2<span class="op">;</span>                 <span class="co">// two lines</span></span>
+<span id="cb9-7"><a></a>fout<span class="op">.</span>close<span class="op">();</span>                   <span class="co">// close the file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="input-file-streams" class="slide level2">
 <h2>Input File Streams</h2>
 <ul>
 <li>Create a <code>std::ifstream</code> file stream object and use it to open and manipulate the file:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a></a><span class="dt">double</span> value1<span class="op">,</span> value2<span class="op">;</span>        </span>
-<span id="cb9-2"><a></a><span class="bu">std::</span>ifstream fin<span class="op">;</span>             <span class="co">// declare a stream</span></span>
-<span id="cb9-3"><a></a>fin<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span> <span class="co">// open the file</span></span>
-<span id="cb9-4"><a></a>fin <span class="op">&gt;&gt;</span> value1 <span class="op">&gt;&gt;</span> value2<span class="op">;</span>       <span class="co">// read some values</span></span>
-<span id="cb9-5"><a></a>fin<span class="op">.</span>close<span class="op">();</span>                   <span class="co">// close the file</span></span>
-<span id="cb9-6"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> value1 <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> value2 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a></a><span class="dt">double</span> value1<span class="op">,</span> value2<span class="op">;</span>        </span>
+<span id="cb10-2"><a></a><span class="bu">std::</span>ifstream fin<span class="op">;</span>             <span class="co">// declare a stream</span></span>
+<span id="cb10-3"><a></a>fin<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span> <span class="co">// open the file</span></span>
+<span id="cb10-4"><a></a>fin <span class="op">&gt;&gt;</span> value1 <span class="op">&gt;&gt;</span> value2<span class="op">;</span>       <span class="co">// read some values</span></span>
+<span id="cb10-5"><a></a>fin<span class="op">.</span>close<span class="op">();</span>                   <span class="co">// close the file</span></span>
+<span id="cb10-6"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> value1 <span class="op">&lt;&lt;</span> <span class="st">", "</span> <span class="op">&lt;&lt;</span> value2 <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="alternatives" class="slide level2">
 <h2>Alternatives</h2>
 <ul>
 <li>You can also declare and open in one line:</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a></a><span class="bu">std::</span>ifstream fin<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a></a><span class="bu">std::</span>ifstream fin<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>A <code>std::fstream</code> object can do <em>either</em> input or output – or both, but you must specify the <em>open mode</em>:</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a></a><span class="bu">std::</span>fstream fp<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a></a><span class="bu">std::</span>fstream fp<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a></a><span class="bu">std::</span>fstream fp<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a></a><span class="bu">std::</span>fstream fp<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now you can open for input:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::in<span class="op">);</span> <span class="co">// open for input</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::in<span class="op">);</span> <span class="co">// open for input</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or for output:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::out<span class="op">);</span> <span class="co">// open for output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::out<span class="op">);</span> <span class="co">// open for output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or append to the end of the file:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::out<span class="op">|</span><span class="bu">std::</span>ios::app<span class="op">);</span> <span class="co">// append mode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a></a>fp<span class="op">.</span>open<span class="op">(</span><span class="st">"my_file.txt"</span><span class="op">,</span> <span class="bu">std::</span>ios::out<span class="op">|</span><span class="bu">std::</span>ios::app<span class="op">);</span> <span class="co">// append mode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="open-modes" class="slide level2">
 <h2>Open Modes</h2>
@@ -679,12 +702,12 @@ std:: ios::app  Use with ios::out to append
 <h2>Testing for File Open Success</h2>
 <p>File streams support a function called <code>is_open()</code> that will return <code>true</code> if the file was opened successfully. This function can be used to check for a failure to open.</p>
 <p>We will cover <code>if</code> statements soon, but here is a sneak peek:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a></a><span class="bu">std::</span>ifstream fin<span class="op">;</span>                         </span>
-<span id="cb17-2"><a></a>fin<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span>             </span>
-<span id="cb17-3"><a></a><span class="cf">if</span><span class="op">(</span> <span class="op">!</span>fin<span class="op">.</span>is_open<span class="op">()</span> <span class="op">){</span>                      </span>
-<span id="cb17-4"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Failed to open file.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> </span>
-<span id="cb17-5"><a></a>    exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span>                               </span>
-<span id="cb17-6"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb18-1"><a></a><span class="bu">std::</span>ifstream fin<span class="op">;</span>                         </span>
+<span id="cb18-2"><a></a>fin<span class="op">.</span>open<span class="op">(</span><span class="st">"my_input_file.txt"</span><span class="op">);</span>             </span>
+<span id="cb18-3"><a></a><span class="cf">if</span><span class="op">(</span> <span class="op">!</span>fin<span class="op">.</span>is_open<span class="op">()</span> <span class="op">){</span>                      </span>
+<span id="cb18-4"><a></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Failed to open file.</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span> </span>
+<span id="cb18-5"><a></a>    exit<span class="op">(</span><span class="dv">1</span><span class="op">);</span>                               </span>
+<span id="cb18-6"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="formatted-output" class="title-slide slide level1 center">
@@ -711,12 +734,12 @@ std::right             set alignment to right-aligned</code></pre>
 <section class="slide level2">
 
 <h3 id="example-2">Example</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a></a><span class="dt">double</span> price <span class="op">=</span> <span class="fl">100.0</span> <span class="op">/</span> <span class="fl">3.0</span><span class="op">;</span>  <span class="co">// 33.3333333...</span></span>
-<span id="cb19-2"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setprecision<span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>fixed<span class="op">;</span></span>
-<span id="cb19-3"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Total price: $"</span> </span>
-<span id="cb19-4"><a></a>          <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span><span class="dv">8</span><span class="op">)</span> <span class="op">&lt;&lt;</span> price <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
-<span id="cb19-5"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"100 items:   $"</span> </span>
-<span id="cb19-6"><a></a>          <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span><span class="dv">8</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="dv">100</span> <span class="op">*</span> price <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource cpp number-lines code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a></a><span class="dt">double</span> price <span class="op">=</span> <span class="fl">100.0</span> <span class="op">/</span> <span class="fl">3.0</span><span class="op">;</span>  <span class="co">// 33.3333333...</span></span>
+<span id="cb20-2"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setprecision<span class="op">(</span><span class="dv">2</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="bu">std::</span>fixed<span class="op">;</span></span>
+<span id="cb20-3"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"Total price: $"</span> </span>
+<span id="cb20-4"><a></a>          <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span><span class="dv">8</span><span class="op">)</span> <span class="op">&lt;&lt;</span> price <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb20-5"><a></a><span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">"100 items:   $"</span> </span>
+<span id="cb20-6"><a></a>          <span class="op">&lt;&lt;</span> <span class="bu">std::</span>setw<span class="op">(</span><span class="dv">8</span><span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="dv">100</span> <span class="op">*</span> price <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Output:</p>
 <pre><code>Total price: $   33.33
 100 items:   $ 3333.33</code></pre>

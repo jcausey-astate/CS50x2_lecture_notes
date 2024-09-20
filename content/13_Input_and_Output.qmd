@@ -118,6 +118,26 @@ std::cout << "Hello, " << full_name << "!\n";
 **Problem:** Stream extraction ( `>>` ) leaves the delimiting whitespace in the input stream (usually a `'\n'`).
 :::
 
+```cpp
+int age;
+std::string fav_food;
+std::cout << "Enter your age: ";
+std::cin  >> age;
+std::cout << "Enter your favorite food: ";
+getline(std::cin, fav_food);    // will _seem_ to fail!
+```
+
+* `getline()` is _newline-delimited_ by default.  
+    - It will appear that the `getline()` was "skipped".  Actually, it saw the `'\n'` and stopped.
+
+---
+
+### Mixing `getline()` and `>>`
+
+::: {.callout-caution appearance="minimal"}
+**Problem:** Stream extraction ( `>>` ) leaves the delimiting whitespace in the input stream (usually a `'\n'`).
+:::
+
 * `getline()` is _newline-delimited_ by default.  
     - It will appear that the `getline()` was "skipped".  Actually, it saw the `'\n'` and stopped.
 * To remove the `'\n'`, use: <br /> _`stream_name`_`.ignore()`
