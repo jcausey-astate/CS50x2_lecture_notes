@@ -249,7 +249,7 @@ std::cout << value1 << ", " << value2 << "\n";
 
 * You can also declare and open in one line:
 ``` cpp 
-std::ifstream fin("my_input_file.txt");
+std::ifstream fin{"my_input_file.txt"};
 ```
 * A `std::fstream` object can do _either_ input or output -- or both, but you must specify the _open mode_:
 ```cpp
@@ -333,15 +333,15 @@ The `<iomanip>` library supplies a set of _stream manipulators_ that may be used
     Manipulator            Description
     -----------------------------------------------------------
     std::setw( w )         set the width of the next item in the
-                        stream to 'w'
+                           stream to 'w'
     std::setprecision( p ) set number of significant figures in 
-                        output to 'p', or set the number of 
-                        decimal places to 'p' if used in 
-                        conjunction with 'fixed'.
+                           output to 'p', or set the number of 
+                           decimal places to 'p' if used in 
+                           conjunction with 'fixed'.
     std::fixed             set numeric output to fixed-point 
-                        mode (use the number of decimal 
-                        places specified by 'setprecision'; 
-                        no scientific notation)
+                           mode (use the number of decimal 
+                           places specified by 'setprecision'; 
+                           no scientific notation)
     std::showpoint         always show the decimal point 
     std::left              set alignment to left-aligned
     std::right             set alignment to right-aligned

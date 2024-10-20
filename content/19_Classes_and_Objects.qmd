@@ -164,7 +164,45 @@ double Rectangle::area() const{
 :::
 ::::
 
+---
 
+## Include Guards
+
+```{.cpp code-line-numbers="1-2,11"}
+#ifndef RECTANGLE_H 
+#define RECTANGLE_H 
+
+class Rectangle {
+    public:
+        double length;
+        double width;
+        double area() const;
+};
+
+#endif
+```
+**_Include Guards_** protect the definitions in a header file from being included more than once in a project.
+
+---
+
+### Include Guards {.tight}
+
+```cpp
+#ifndef RECTANGLE_H // <1>
+#define RECTANGLE_H // <2>
+
+class Rectangle {
+    public:
+        double length;
+        double width;
+        double area() const;
+};
+
+#endif // <3>
+```
+1. [The `#ifndef` directive checks to see whether the identifier^[Preprocessor identifiers are called **_macros_**.] `RECTANGLE_H` has **not** been defined.  If it hasn't, the check succeeds and the body of the `if` (until the `#endif`) is processed.  This will be the case if this header file has never been included yet.]{.small-90} 
+2. [The `#define` directive _declares_ the identifier `RECTANGLE_H`.  Now, it will be defined in case this header is included again (causing the `ifndef` check to fail.)]{.small-90} 
+3. [`#endif` marks the end of the `#ifndef ... #endif` control structure.]{.small-90}^[There are other preprocessor control structures, but we won't cover them at this time.] 
 
 ---
 
