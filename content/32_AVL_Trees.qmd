@@ -80,10 +80,10 @@ The single rotations only solve the problem when the tree is "heavy" along the "
 If the tree is "heavy" in the "inside" of a subtree (either the right-side of a left child, or the left-side of a right child) then a double rotation is required:
 
 * left-right
-    * Just a left-rotate at the child, followed by a right-rotate at the original (pivot) node.
+    * Just a left-rotate at the child, followed by a right-rotate at the original (pivot) node with the &plusmn;2 balance factor.
 
 * right-left
-    * Just a right-rotate at the child, followed by a left-rotate at the original (pivot) node.
+    * Just a right-rotate at the child, followed by a left-rotate at the original (pivot) node with the &plusmn;2 balance factor.
 
 ---
 
