@@ -245,7 +245,7 @@ Figure: Drozdek, Figure 6.31
 
 If the value in a node is mutable, you can perform a _delete by copy_.
 
-Delete by copy first locates the smallest value in the left subtree OR the largest value in the right subtree (just like _delete by merge_)--let's call that value `tmp`.  Then it simply copies the value from `tmp` into the target, then deletes node `tmp`.
+Delete by copy first locates the largest value in the left subtree OR the smallest value in the right subtree (just like _delete by merge_)--let's call that value `tmp`.  Then it simply copies the value from `tmp` into the target, then deletes node `tmp`.
 
 ![](images/Trees/tree_delete_by_copy_fig_6.33.png)
 
