@@ -2643,7 +2643,7 @@
     "href": "content/32_AVL_Trees.html#double-rotations",
     "title": "Balancing Trees - AVL Trees",
     "section": "Double-Rotations",
-    "text": "Double-Rotations\nIf the tree is “heavy” in the “inside” of a subtree (either the right-side of a left child, or the left-side of a right child) then a double rotation is required:\n\nleft-right\n\nJust a left-rotate at the child, followed by a right-rotate at the original (pivot) node with the ±2 balance factor.\n\nright-left\n\nJust a right-rotate at the child, followed by a left-rotate at the original (pivot) node with the ±2 balance factor."
+    "text": "Double-Rotations\nIf the tree is “heavy” in the “inside” of a subtree (either the right-side of a left child, or the left-side of a right child) then a double rotation is required:\n\nleft-right\n\nJust a left-rotate at the child, followed by a right-rotate at the original (pivot) node.\n\nright-left\n\nJust a right-rotate at the child, followed by a left-rotate at the original (pivot) node."
   },
   {
     "objectID": "content/32_AVL_Trees.html#visualizations",
