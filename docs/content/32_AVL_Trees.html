@@ -187,8 +187,13 @@
 
 <h3 id="rotations">Rotations</h3>
 <p><strong><em><strong>Rotate Left</strong></em></strong></p>
-
-<img data-src="images/avl_tree/tree_rotate_left.svg" title="Rotate Left - $Q$ is the pivot node." class="r-stretch quarto-figure-center"><p class="caption">Rotate Left - <span class="math inline">\(Q\)</span> is the pivot node.</p><div class="tight">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/avl_tree/tree_rotate_left.svg" title="Rotate Left - $Q$ is the pivot node." style="height:7.5em"></p>
+<figcaption>Rotate Left - <span class="math inline">\(Q\)</span> is the pivot node.</figcaption>
+</figure>
+</div>
+<div class="tight">
 <ol type="a">
 <li><p>The tree is balanced w.r.t. node <em>P</em></p></li>
 <li><p>A value is added to the subtree on the right of <em>Q</em>, increasing its height by one. This causes the balance factor at <em>P</em> to become +2, which is no longer considered balanced.</p></li>
@@ -199,13 +204,16 @@
 <section class="slide level2">
 
 <h3 id="rotations-1">Rotations</h3>
-<p><strong>Rotate Left</strong></p>
-
-<img data-src="images/avl_tree/tree_rotate_left.svg" title="Rotate Left - $Q$ is the pivot node." class="r-stretch quarto-figure-center"><p class="caption">Rotate Left - <span class="math inline">\(Q\)</span> is the pivot node.</p><p><strong><em><strong>Rotate Right</strong></em></strong></p>
-<ul>
-<li><em>Mirror image of above.</em></li>
-</ul>
-<p>The single rotations only solve the problem when the tree is “heavy” along the “outside” of the subtree (heavy on left side of left child, or on right side of right child).</p>
+<p><strong><em><strong>Rotate Right</strong></em></strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/avl_tree/tree_rotate_right.svg" title="Rotate Right - $Q$ is the pivot node." style="height:7.5em"></p>
+<figcaption>Rotate Right - <span class="math inline">\(Q\)</span> is the pivot node.</figcaption>
+</figure>
+</div>
+<div class="tight">
+<p>The single rotations only solve the problem when the tree is “heavy” along the “outside” of the <strong>subtree</strong> (heavy on left side of left child, or on right side of right child).</p>
+</div>
 </section>
 <section id="double-rotations" class="slide level2">
 <h2>Double-Rotations</h2>
