@@ -73,15 +73,21 @@ The single rotations only solve the problem when the tree is "heavy" along the "
 
 ---
 
-## Double-Rotations
+#### Double-Rotations
 
-If the tree is "heavy" in the "inside" of a subtree (either the right-side of a left child, or the left-side of a right child) then a double rotation is required:
+::: {.tight .small-85}
+[If the tree is "heavy" in the "inside" of a subtree (either the right-side of a left child, or the left-side of a right child) then a double rotation is required:]{.small}
 
 * left-right
     * Just a left-rotate at the child, followed by a right-rotate at the original (pivot) node.
 
+![[Subtree (a) becomes heavy on "inside" of left subtree (b), requiring a left rotation to shift height to the left (c) then a right rotation to balance the subtree (d).]{.small-60}](images/avl_tree/tree_rotate_left-right.svg "Subtree (a) becomes heavy on "inside" of left subtree (b), requiring a left rotation to shift height to the left (c) then a right rotation to balance the subtree (d)."){height=7em}
+
 * right-left
     * Just a right-rotate at the child, followed by a left-rotate at the original (pivot) node.
+
+![[Subtree (a) becomes heavy on "inside" of right subtree (b), requiring a right rotation to shift height to the right (c) then a left rotation to balance the subtree (d).]{.small-60}](images/avl_tree/tree_rotate_right-left.svg "Subtree (a) becomes heavy on "inside" of right subtree (b), requiring a right rotation to shift height to the right (c) then a left rotation to balance the subtree (d)."){height=7em}
+:::
 
 ---
 

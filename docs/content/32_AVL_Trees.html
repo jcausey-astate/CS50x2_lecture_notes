@@ -215,19 +215,36 @@
 <p>The single rotations only solve the problem when the tree is “heavy” along the “outside” of the <strong>subtree</strong> (heavy on left side of left child, or on right side of right child).</p>
 </div>
 </section>
-<section id="double-rotations" class="slide level2">
-<h2>Double-Rotations</h2>
-<p>If the tree is “heavy” in the “inside” of a subtree (either the right-side of a left child, or the left-side of a right child) then a double rotation is required:</p>
+<section class="slide level2">
+
+<h4 id="double-rotations">Double-Rotations</h4>
+<div class="tight small-85">
+<p><span class="small">If the tree is “heavy” in the “inside” of a subtree (either the right-side of a left child, or the left-side of a right child) then a double rotation is required:</span></p>
 <ul>
 <li>left-right
 <ul>
 <li>Just a left-rotate at the child, followed by a right-rotate at the original (pivot) node.</li>
 </ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/avl_tree/tree_rotate_left-right.svg" title="Subtree (a) becomes heavy on &quot;inside&quot; of left subtree (b), requiring a left rotation to shift height to the left (c) then a right rotation to balance the subtree (d)." style="height:7em"></p>
+<figcaption><span class="small-60">Subtree (a) becomes heavy on “inside” of left subtree (b), requiring a left rotation to shift height to the left (c) then a right rotation to balance the subtree (d).</span></figcaption>
+</figure>
+</div>
+<ul>
 <li>right-left
 <ul>
 <li>Just a right-rotate at the child, followed by a left-rotate at the original (pivot) node.</li>
 </ul></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/avl_tree/tree_rotate_right-left.svg" title="Subtree (a) becomes heavy on &quot;inside&quot; of right subtree (b), requiring a right rotation to shift height to the right (c) then a left rotation to balance the subtree (d)." style="height:7em"></p>
+<figcaption><span class="small-60">Subtree (a) becomes heavy on “inside” of right subtree (b), requiring a right rotation to shift height to the right (c) then a left rotation to balance the subtree (d).</span></figcaption>
+</figure>
+</div>
+</div>
 </section>
 <section id="visualizations" class="slide level2">
 <h2>Visualizations</h2>
