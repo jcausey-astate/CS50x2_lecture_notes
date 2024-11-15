@@ -52,11 +52,15 @@ the other.
 ![Rotate Left - $Q$ is the pivot node.](images/avl_tree/tree_rotate_left.svg "Rotate Left - $Q$ is the pivot node."){height=7.5em}
 
 ::: {.tight}
-(a) The tree is balanced w.r.t. node _P_
+(a) The subtree rooted at $P$ is balanced.
 
-(b) A value is added to the subtree on the right of _Q_, increasing its height by one. This causes the balance factor at _P_ to become +2, which is no longer considered balanced.
+(b) A value is added to the subtree on the right of $Q$, increasing its height by one. This causes the balance factor at $P$ to become +2, which is no longer considered balanced.
 
-(c) A single **_left rotation_** is performed at node _P_.  This results in _Q_ becoming the parent of _P_, and the tree is again balanced.  (Note that _Q_'s left subtree became _P_'s right subtree in the rotation.)
+(c) A single **_left rotation_** is performed rooted at node $P$ with pivot represented by node $Q$.  This results in $Q$ becoming the parent of $P$, and the tree is again balanced.  (Note that $Q$'s left subtree became $P$'s right subtree in the rotation.)
+:::
+
+::: {.footnotes}
+$G$ in the figure above represents the "_Grandparent_" node, which is the parent of the subtree being rotated.  An outgoing link from the grandparent must be updated to point to the new root of the subtree ($Q$).  There is an edge case where $P$ was the root of the entire tree---in this case, there is no grandparent node, and the tree's _root_ pointer itself must be updated.
 :::
 
 ---

@@ -195,10 +195,13 @@
 </div>
 <div class="tight">
 <ol type="a">
-<li><p>The tree is balanced w.r.t. node <em>P</em></p></li>
-<li><p>A value is added to the subtree on the right of <em>Q</em>, increasing its height by one. This causes the balance factor at <em>P</em> to become +2, which is no longer considered balanced.</p></li>
-<li><p>A single <strong><em>left rotation</em></strong> is performed at node <em>P</em>. This results in <em>Q</em> becoming the parent of <em>P</em>, and the tree is again balanced. (Note that <em>Q</em>’s left subtree became <em>P</em>’s right subtree in the rotation.)</p></li>
+<li><p>The subtree rooted at <span class="math inline">\(P\)</span> is balanced.</p></li>
+<li><p>A value is added to the subtree on the right of <span class="math inline">\(Q\)</span>, increasing its height by one. This causes the balance factor at <span class="math inline">\(P\)</span> to become +2, which is no longer considered balanced.</p></li>
+<li><p>A single <strong><em>left rotation</em></strong> is performed rooted at node <span class="math inline">\(P\)</span> with pivot represented by node <span class="math inline">\(Q\)</span>. This results in <span class="math inline">\(Q\)</span> becoming the parent of <span class="math inline">\(P\)</span>, and the tree is again balanced. (Note that <span class="math inline">\(Q\)</span>’s left subtree became <span class="math inline">\(P\)</span>’s right subtree in the rotation.)</p></li>
 </ol>
+</div>
+<div class="footnotes">
+<p><span class="math inline">\(G\)</span> in the figure above represents the “<em>Grandparent</em>” node, which is the parent of the subtree being rotated. An outgoing link from the grandparent must be updated to point to the new root of the subtree (<span class="math inline">\(Q\)</span>). There is an edge case where <span class="math inline">\(P\)</span> was the root of the entire tree—in this case, there is no grandparent node, and the tree’s <em>root</em> pointer itself must be updated.</p>
 </div>
 </section>
 <section class="slide level2">
