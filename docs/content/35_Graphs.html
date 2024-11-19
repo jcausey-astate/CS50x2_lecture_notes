@@ -99,7 +99,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4d1dc7b8b31e8b01a6c7cdf22895afbd.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-c5b39b0ccf9d0f2b255dc82a027dd65a.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -607,6 +607,8 @@
 </section>
 <section id="dijkstras-algorithm" class="slide level2">
 <h2>Dijkstra’s Algorithm</h2>
+<p>Dijkstra’s Algorithm is a method for finding the <strong><em>shortest path</em></strong> from a given <em>starting node</em> in a graph to all other nodes that are reachable from that starting node.</p>
+<p>It proceeds as follows:</p>
 <ul>
 <li>Let the node at which we are starting be called the <em>initial node</em>. Let the distance of node <span class="math inline">\(Y\)</span> be the distance from the initial node to <span class="math inline">\(Y\)</span>. Dijkstra’s algorithm will assign some initial distance values and will try to improve them step by step.</li>
 </ul>
@@ -1256,8 +1258,6 @@
       });
       clipboard.on('success', onCopySuccess);
       if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
         const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
           text: getTextToCopy,
           container: window.document.getElementById('quarto-embedded-source-code-modal')

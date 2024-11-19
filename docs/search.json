@@ -235,7 +235,7 @@
     "href": "content/35_Graphs.html#dijkstras-algorithm",
     "title": "Graphs",
     "section": "Dijkstra’s Algorithm",
-    "text": "Dijkstra’s Algorithm\n\nLet the node at which we are starting be called the initial node. Let the distance of node \\(Y\\) be the distance from the initial node to \\(Y\\). Dijkstra’s algorithm will assign some initial distance values and will try to improve them step by step."
+    "text": "Dijkstra’s Algorithm\nDijkstra’s Algorithm is a method for finding the shortest path from a given starting node in a graph to all other nodes that are reachable from that starting node.\nIt proceeds as follows:\n\nLet the node at which we are starting be called the initial node. Let the distance of node \\(Y\\) be the distance from the initial node to \\(Y\\). Dijkstra’s algorithm will assign some initial distance values and will try to improve them step by step."
   },
   {
     "objectID": "content/35_Graphs.html#dijkstras-algorithm-1",

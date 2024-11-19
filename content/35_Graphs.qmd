@@ -441,6 +441,10 @@ Edges that were traversed are shown in solid black; edges not traversed are show
 
 ##  Dijkstra's Algorithm 
 
+Dijkstra's Algorithm is a method for finding the **_shortest path_** from a given _starting node_ in a graph to all other nodes that are reachable from that starting node.
+
+It proceeds as follows:
+
 * Let the node at which we are starting be called the _initial node_. Let the distance of node $Y$ be the distance from the initial node to $Y$.  Dijkstra's algorithm will assign some initial distance values and will try to improve them step by step.
 
 ---
