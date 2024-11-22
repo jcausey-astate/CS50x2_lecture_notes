@@ -208,7 +208,7 @@ Expanding the `heap_remove` function inline, we get:
 
 Let $N$ represent the size of the array.
 
-* The bottom-up make heap algorithm has $O(N)$ asymtotic complexity.
+* The bottom-up make heap algorithm has $O(N)$ asymptotic complexity.
 * The loop runs $N-1$ times.
   * for each iteration of the loop, the _heap remove_ algorithm needs to perform a swap and a _sift-down_.  The complexity of _sift-down_ is $O(\lg(N))$.
 
