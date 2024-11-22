@@ -448,20 +448,20 @@ This figure shows the first element being chosen for _pivot_ for simplicity.  We
 #### In-place Quicksort (detailed with comments)
 
 ::: {.algorithm}
-    quick_sort(A[], size):
-      quick_sort_helper (A, 0, size-1);
+quick_sort(A[], size):
+  quick_sort_helper (A, 0, size-1);
 
-    quick_sort_helper(A[], left_index, right_index):
-      // If the array has 1 or more items
-      if left_index <= right_index:
-        // Choose a pivot (how you do this may vary):
-        pivot_index = choose any $i$ such that left_index $\leq i \leq$ right_index;
-        // Get subarrays and final position of pivot
-        split_index := partition(A, left_index, right_index, pivot_index);
-        // Recursively sort elements smaller than the pivot
-        quick_sort_helper(A, left_index, split_index - 1);
-        // Recursively sort elements at least as big as the pivot
-        quick_sort_helper(A, split_index + 1, right_index);
+quick_sort_helper(A[], left_index, right_index):
+  // If the array has 1 or more items
+  if left_index <= right_index:
+    // Choose a pivot (how you do this may vary):
+    pivot_index = choose any $i$ such that left_index $\leq i \leq$ right_index;
+    // Get subarrays and final position of pivot
+    split_index := partition(A, left_index, right_index, pivot_index);
+    // Recursively sort elements smaller than the pivot
+    quick_sort_helper(A, left_index, split_index - 1);
+    // Recursively sort elements at least as big as the pivot
+    quick_sort_helper(A, split_index + 1, right_index);
 :::
 
 ---
@@ -573,7 +573,7 @@ Let $N$ represent the size of the array.
         * The loop inside the second inner loop runs an unknown number of times, but it must necessarily be less than $N$ (worst case is all elements are in the same pile).
 :::
 
-So, radix sort's complexity is $O( N\cdot d )$.   [Assuming $d << N$, performance characteristics approach constant time as $N \rightarrow \infty$.]{.small}
+So, radix sort's complexity is $O( N\cdot d )$.   [Assuming $d << N$, performance characteristics approach linear time as $N \rightarrow \infty$.]{.small}
 
 **Overall complexity:  $O(N \cdot d )$**
 
