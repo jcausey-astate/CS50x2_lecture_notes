@@ -296,7 +296,7 @@ $H$ is universal if no pair of distinct keys are mapped onto the same index by a
 
 [
 $$
-H=\lbrace h\_{a, b}(K): h\_{a, b}(K)=((a K+b) \bmod p) \bmod {TSize} \textrm{ and }  0 \leq a, b<p \rbrace
+H=\lbrace h_{a, b}(K): h_{a, b}(K)=((a K+b) \bmod p) \bmod {TSize} \textrm{ and }  0 \leq a, b<p \rbrace
 $$
 ]{.small-90}
 
